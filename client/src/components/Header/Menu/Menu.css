@@ -1,0 +1,95 @@
+.Menu_Icon{
+    display: block;
+}
+.Menu_Icon_Item{
+    display: block;
+    height: 3px;
+    width: 24px;
+    background-color: white;
+    margin-bottom: 4px;
+}
+
+.Menu_Wrapper{
+    color:white;
+}
+
+.Menu_List{
+    list-style: none;
+    margin:0;
+    padding:0;
+    font-size: 21px;
+    margin-left:50px;
+    width: 306px;
+    margin:0 auto;
+}
+.Menu_Wrapper{
+    position: absolute;
+    background-color: #262626;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+    display: none;
+
+}
+.MenuActive{
+    display: block;
+    display: flex;
+    align-items: center;
+}
+.Menu_List_Item:first-child{
+    margin:0;
+}
+.Menu_List_Item{
+    margin-top:27px;
+    cursor: pointer;
+}
+.Menu_Icon{
+    z-index: 999999999;
+    display: block;
+    position: relative;
+}
+
+.Menu_List_Item > a {
+    text-decoration: none;
+    color:inherit;
+}
+
+@media (min-width: 950px) { 
+    .Menu_Wrapper{
+        display: block;
+        width: auto;
+        height: auto;
+        background: none;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+    }
+    .Menu_List{
+        display: flex;
+        font-size: inherit;
+        width: auto;
+    }
+    .Menu_List_Item-Mobile{
+        display: none;
+    }
+    .Menu_List_Item{
+        margin-right: 125px;
+    }
+    .Menu_Icon{
+        display: none;
+    }
+    .Menu{
+        display: block;
+        width: auto;
+        order:2;
+        margin-left:auto
+    }
+    .Menu_List_Item{
+        margin-top:0px;
+    }
+
+
+    
+}

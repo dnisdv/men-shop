@@ -1,0 +1,46 @@
+.Header{
+    width: 306px;
+    margin:0 auto;
+    display: flex;
+    justify-content: space-between;
+    color:#fff;
+    padding-top:40px;
+    padding-bottom: 40px;
+}
+.Header_wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Header_Logo{
+    cursor: pointer;
+}
+.Header_Logo_Link{
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+@media (min-width: 950px) { 
+    .Header_wrapper{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .Header{
+        width: 1604px;
+        margin:0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 17px;
+        position: relative;
+    }
+    .Header_Logo{
+        order:1
+    }
+
+
+}

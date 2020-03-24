@@ -1,0 +1,37 @@
+.Cart{
+    color:black;
+    cursor: pointer;
+}
+.Cart_Title{display: none;}
+
+.CartWrapper{
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Cart_Link{
+    display: flex;
+    color:inherit;
+    align-items: center;
+    text-decoration: none;
+}
+@media (min-width: 950px) { 
+    .Cart_Title{
+        display: block;
+        color:white;
+    }
+    .Cart{
+        color:black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        order:3;
+    }
+    .CartWrapper{
+        margin-left:9px;
+    }
+}
