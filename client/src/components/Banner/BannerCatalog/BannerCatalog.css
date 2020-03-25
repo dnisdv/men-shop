@@ -1,0 +1,82 @@
+.BannerCatalog{
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.BanerCatalog_ImgWrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    display: none;
+}
+.BanerCatalog_ImgWrapper:first-child{
+    display: flex;
+}
+.BannerCatalog_Img--Main{
+    width: 100%;
+    height: 374px;
+    object-fit: cover;
+}
+.BannerCatalog_Img{
+    z-index: 9;
+}
+
+.BannerCatalog_Img--Second{
+    width: 100%;
+    height: 334px;
+    object-fit: cover;
+    margin-top:41px;
+    display: none;
+}
+
+.BannerCatalog_Img--Third{
+    display: none;
+    width: 100%;
+    height: 334px;
+    object-fit: cover;
+    margin-top:41px;    
+    margin-left:41px;
+}
+
+@media (min-width: 950px) { 
+
+    .BannerCatalog{
+        width: 967px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    .BanerCatalog_ImgWrapper{
+        width: auto;
+    }
+    .BanerCatalog_ImgWrapper{
+        display: block;
+        /* flex-direction: row; */
+    }
+    .BannerCatalog_Img--Main{
+        width: 751px;
+        height: 600px;
+        object-fit: cover;
+        margin-left:70px;
+        display: block;
+    }
+
+    .BannerCatalog_Img--Second{
+        width: 313px;
+        height: 236px;
+        object-fit: cover;
+        margin-top:41px;
+        display: block;
+    }
+    
+    .BannerCatalog_Img--Third{
+        width: 464px;
+        height: 351px;
+        object-fit: cover;
+        margin-top:41px;    
+        margin-left:41px;
+        display: block;
+    }
+
+}

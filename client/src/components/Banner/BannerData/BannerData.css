@@ -1,0 +1,89 @@
+.BannerData{
+
+}
+.BannerData_Title{
+    margin:0;
+    position: absolute;
+    top:0;
+    left:-10px;
+    font-size: 69px;
+    width:340px;
+    z-index: -1;
+}
+.BannerData_Title{
+    position: absolute;
+}
+.BannerData_Title_Shadow{
+    margin:0;
+    position: absolute;
+    top:0;
+    left:-10px;
+    font-size: 69px;
+    width:340px;
+    z-index: 999;
+    background: none;
+    -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: rgba(0,0,0, 0);
+    }
+    .BannerData_Addition{
+        display: flex;
+        justify-content: space-between;    
+        margin-top:47px;
+
+    }
+    .BannerData_Button{
+        margin-top:47px;
+        display: flex;
+        justify-content: center;
+    }
+    .BannerData_Addition_Data{
+        text-align: left;
+        margin:0;
+        font-size: 14px;
+        width: 118px;
+    }
+
+
+@media (min-width: 950px) { 
+    .BannerData{
+        margin-left:230px;
+        margin-top:64px;
+    }
+
+    .BannerData_Button{
+        margin:0;
+        display: block;
+    }
+    .BannerData_Title_Shadow{
+        opacity: 0.08;
+        cursor: default;
+    }
+    .BannerData_Addition{
+        display: none;
+    }
+    .BannerData_Title{
+        width: 300px;
+        font-size: 58px;
+        margin:0;
+        margin-bottom: 149px;
+        position: relative;
+    }
+    .BannerData_Title::after{
+        content: "";
+        display: block;
+        width: 149px;
+        height: 8px;
+        background-color: #fff;
+        position: absolute;
+        bottom:-60px;
+    }
+    .BannerData_Addition_Data{
+        
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        -khtml-user-select: none; 
+        -webkit-user-select: none; 
+        -webkit-touch-callout: none;
+    }
+    
+}

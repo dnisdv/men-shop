@@ -11,6 +11,7 @@
 
 .Menu_Wrapper{
     color:white;
+    z-index: 99999999;
 }
 
 .Menu_List{
