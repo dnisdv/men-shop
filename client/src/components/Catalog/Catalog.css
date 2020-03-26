@@ -1,0 +1,38 @@
+.Catalog{
+    width: 306px;
+    margin:0 auto;
+    margin-top:62px;
+}
+
+.Catalog_Title{
+    color:white;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media (min-width: 950px) { 
+    .Catalog{
+        width: 1604px;
+    }
+    .Catalog_Button{
+        display: flex;
+        justify-content: center;
+        margin-top:161px;
+        text-decoration: none;
+        font-style: 18px;
+    }
+    .Catalog_Addition{
+        color:#fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .Catalog_Addition_Title{
+        font-size: 48px;
+        width: 501px;
+    }
+    .Catalog_Addition_Data{
+        width: 200px;
+    }
+
+}

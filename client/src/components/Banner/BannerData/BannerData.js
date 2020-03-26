@@ -1,7 +1,6 @@
 import React from 'react'
 import './BannerData.css'
 import Button from '../../Button/Button'
-import { Link } from "react-router-dom";
 
 
 const BannerData = () => {
@@ -15,9 +14,7 @@ const BannerData = () => {
             <p className="BannerData_Addition_Data">Good organized inside antiprotect +  on water</p>
         </div>
 
-        <Link className='BannerData_Button' to='/Products'>
-            <Button variant='primary'>See Catalog</Button>
-        </Link>
+            <Button classN='BannerData_Button' variant='primary' to='/Products'>See Products</Button>
 
     </div>
     )

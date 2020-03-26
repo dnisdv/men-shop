@@ -8,3 +8,14 @@
     font-size: 18px;
     cursor:pointer;
 }
+
+.Button-Secondary{
+    width: 744px;
+    height: 113px;
+    font-size: 18px;
+    font-weight: 900;
+    background: none;
+    background-color: #fff;
+    display: block;
+    cursor: pointer;
+}

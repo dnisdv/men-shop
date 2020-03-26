@@ -1,6 +1,3 @@
-.BannerData{
-
-}
 .BannerData_Title{
     margin:0;
     position: absolute;
@@ -78,7 +75,6 @@
         bottom:-60px;
     }
     .BannerData_Addition_Data{
-        
         -moz-user-select: none; 
         -ms-user-select: none; 
         -khtml-user-select: none; 
