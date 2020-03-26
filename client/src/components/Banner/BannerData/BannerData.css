@@ -39,6 +39,11 @@
         font-size: 14px;
         width: 118px;
     }
+    .BannerData_Button{
+        list-style: none;
+        text-decoration: none;
+        color:inherit;
+    }
 
 
 @media (min-width: 950px) { 

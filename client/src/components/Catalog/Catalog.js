@@ -5,6 +5,7 @@ import Button from '../Button/Button'
 
 const Catalog = () => {
     return(
+        <React.Fragment>
         <div className='Catalog'>
 
             <div className='Catalog_Addition'>
@@ -14,9 +15,10 @@ const Catalog = () => {
 
 
             <Features />
-
-            <Button classN='Catalog_Button' variant='secondary' to='/Products' >Show Products</Button>
         </div>
+        
+        <Button classN='Catalog_Button' variant='secondary' to='/Products' >Show Products</Button>
+        </React.Fragment>
     )
 }
 

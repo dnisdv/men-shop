@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header'
 import MainPage from './Pages/MainPage/MainPage'
+import Footer from './components/Footer/Footer'
 
 import {
   BrowserRouter as Router,
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route path="/" component={MainPage}  />
           </Switch>
+          <Footer />
       </div>
     </Router>
   );

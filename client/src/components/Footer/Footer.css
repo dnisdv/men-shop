@@ -1,0 +1,57 @@
+.Footer{
+    color:white;
+    background-color: #1B1B1B;
+    padding-top: 57px;
+    padding-bottom: 64px;
+    margin-top:80px;
+}
+
+.Footer_Moto{
+    display: none;
+}
+
+
+.Footer_Data{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 120px;
+    width: 306px;
+    margin:0 auto;
+}
+.Footer_Data_Logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Footer_Data_Logo_Logo{
+    font-size: 30px;
+    text-align: center;
+}
+.Footer_Data_Logo_Data{
+    margin-top:10px;
+}
+
+@media (min-width: 950px) { 
+    .Footer{
+        margin-top:82px;
+        padding-bottom: 0px;
+    }
+    .Footer_Data{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 120px;
+        width: 1604px;
+        margin:0 auto;
+        flex-direction: row;
+    }
+    .Footer_Data_Logo_Logo{
+        font-size: 30px;
+    }
+    .Footer_Data_Logo_Data{
+        margin-top:10px;
+    }    
+
+}

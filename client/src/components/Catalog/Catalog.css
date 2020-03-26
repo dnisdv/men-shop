@@ -9,6 +9,20 @@
     font-size: 20px;
     text-align: center;
 }
+.Catalog_Button{
+    display: block;
+    margin-top:75px;
+    text-decoration: none;
+    color:inherit
+}
+.Catalog_Addition_Title{
+    font-size: 20px;
+    text-align: center;
+    color:white;
+}
+.Catalog_Addition_Data{
+    display: none;
+}
 
 @media (min-width: 950px) { 
     .Catalog{
