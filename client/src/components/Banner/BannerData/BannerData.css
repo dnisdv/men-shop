@@ -43,6 +43,7 @@
         list-style: none;
         text-decoration: none;
         color:inherit;
+        cursor: none;
     }
 
 
@@ -55,10 +56,11 @@
     .BannerData_Button{
         margin:0;
         display: block;
+        cursor: none;
     }
     .BannerData_Title_Shadow{
         opacity: 0.08;
-        cursor: default;
+        cursor: none;
     }
     .BannerData_Addition{
         display: none;
@@ -78,6 +80,7 @@
         background-color: #fff;
         position: absolute;
         bottom:-60px;
+        cursor:none
     }
     .BannerData_Addition_Data{
         -moz-user-select: none; 

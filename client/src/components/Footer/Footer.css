@@ -37,6 +37,7 @@
     .Footer{
         margin-top:82px;
         padding-bottom: 0px;
+        padding: 0;
     }
     .Footer_Data{
         display: flex;

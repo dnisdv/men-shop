@@ -20,6 +20,8 @@
     overflow-wrap: break-word;
     bottom: -10%;
     font-size: 18px;
+    color:white;
+    text-transform: none;
     
 }
 .Features_Item{
@@ -57,9 +59,7 @@
         width: 100%;
         height: 100%;
     }
-    .Features_Item{
-        cursor: pointer;
-    }
+   
 
     .Features_Item-Wallets{
         margin-right: 64px;

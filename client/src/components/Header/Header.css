@@ -12,9 +12,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.Header_Logo{
-    cursor: pointer;
-}
+
 .Header_Logo_Link{
     color: inherit;
     text-decoration: none;

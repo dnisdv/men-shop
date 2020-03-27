@@ -7,19 +7,19 @@
         background-color: black;
         color:white;
         width: 100%;
-        box-sizing: content-box;
         overflow: hidden;
         display: block;
+        
     }
     .Ticker_Title{
         margin:0;
         padding: 0;
         padding-left:100%;
         white-space: nowrap;
-        padding-right: 100%; 
+        padding-right: 150%; 
         width: 100%;
         overflow: hidden;
-        animation: ticker 35s linear infinite;
+        animation: ticker 5s linear infinite;
     }
     
       @keyframes ticker {

@@ -19,6 +19,7 @@
     font-size: 20px;
     text-align: center;
     color:white;
+    text-align: left;
 }
 .Catalog_Addition_Data{
     display: none;
@@ -28,6 +29,10 @@
     .Catalog{
         width: 1604px;
     }
+    .Catalog_Addition_Data{
+        display: block;
+    }
+    
     .Catalog_Button{
         display: flex;
         justify-content: center;

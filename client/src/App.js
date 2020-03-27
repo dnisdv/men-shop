@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header/Header'
 import MainPage from './Pages/MainPage/MainPage'
 import Footer from './components/Footer/Footer'
+import CustomMouse from './HOC/customMouse/customMouse'
 
 import {
   BrowserRouter as Router,
@@ -11,17 +12,21 @@ import {
 } from "react-router-dom";
 
 function App() {
+
+
   return (
+    
     <Router>
-      <div className="App">
-          <Header />
-          <Switch>
-            <Route path="/" component={MainPage}  />
-          </Switch>
-          <Footer />
-      </div>
+        <div className="App">
+            <Header />
+            <Switch>
+              <Route path="/" component={MainPage}  />
+            </Switch>
+            <Footer />
+        </div>
     </Router>
+
   );
 }
 
-export default App;
+export default CustomMouse(App)
