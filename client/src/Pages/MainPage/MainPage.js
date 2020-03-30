@@ -1,10 +1,10 @@
-import React,{useContext, useEffect} from 'react'
+import React,{useEffect} from 'react'
 import './MainPage.css'
 
 import Banner from '../../components/Banner/Banner'
 import Catalog from '../../components/Catalog/Catalog'
 
-import {themes, ThemeContext} from '../../Context/theme-context'
+import {themes} from '../../Context/theme-context'
 
 
 const MainPage = ({changeTheme}) => {
@@ -14,7 +14,7 @@ const MainPage = ({changeTheme}) => {
         return( ()=> {
             changeTheme(themes.light)
         })
-    }, [])
+    }, [changeTheme])
 
     return(
         <div className='MainPage'>

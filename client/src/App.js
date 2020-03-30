@@ -1,4 +1,4 @@
-import React,{ useState, useContext } from 'react';
+import React,{ useState } from 'react';
 import './App.css';
 import Header from './components/Header/Header'
 import MainPage from './Pages/MainPage/MainPage'
@@ -24,8 +24,6 @@ function App() {
     if(!theme) return setthemeHandler( theme.light === theme ? theme.dark : theme.light)
     setthemeHandler(theme)
   }
-  const theme = useContext(ThemeContext)
-
   return (
     
     <Router>
@@ -33,7 +31,7 @@ function App() {
         <div style={{ backgroundColor: themeHandler.background }} className="App">
             <Header />
             <Switch>
-              <Route path="/Products" componetn={ProductsPage} />
+              <Route path="/Products" component={ProductsPage} />
               <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />
             </Switch>
             <Footer />

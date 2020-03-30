@@ -10,19 +10,23 @@ const Menu = () => {
 
     const ModalStateHandler = (e) =>{
         setModalState(!ModalState)
+        return document.body.classList.toggle('hideOverflow')
     }
     const theme = useContext(ThemeContext)
 
     return(
         <div style={{ color:theme.foreground }} className="Menu">
+
+            <div className={`Menu_Wrapper ${ModalState ? 'MenuActive' :''}`}>
+
             <div onClick={ModalStateHandler} className='Menu_Icon'>
-                <div className="Menu_Icon_Item"></div>
-                <div className="Menu_Icon_Item"></div>
-                <div className="Menu_Icon_Item"></div>
+                <div style={{ backgroundColor : theme.foreground }} className="Menu_Icon_Item"></div>
+                <div style={{ backgroundColor : theme.foreground }} className="Menu_Icon_Item"></div>
+                <div style={{ backgroundColor : theme.foreground }} className="Menu_Icon_Item"></div>
             </div>
 
-                <div className={`Menu_Wrapper ${ModalState ? 'MenuActive' :''}`}>
-                    <ul className="Menu_List">
+                <div className='Menu_List_Wrapper'>
+                    <ul style={{ color : theme.foreground }} className="Menu_List">
                         <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/'>Home</Link></li>
                         <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/Products'>Products</Link></li>
                         <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/Auth'>Sign In/Sign up</Link></li>
@@ -30,6 +34,7 @@ const Menu = () => {
                         <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/Auth'>Account</Link></li>
                     </ul>
                 </div>  
+                </div>
         </div>
     )
 }

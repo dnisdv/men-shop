@@ -7,3 +7,7 @@ body{
     font-family: 'Roboto', sans-serif;  
     cursor: none;
 }
+.hideOverflow{
+        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
+}
