@@ -6,9 +6,9 @@
     font-size: 69px;
     width:340px;
     z-index: -1;
-}
-.BannerData_Title{
+    color:white;
     position: absolute;
+
 }
 .BannerData_Title_Shadow{
     margin:0;
@@ -71,6 +71,7 @@
         margin:0;
         margin-bottom: 149px;
         position: relative;
+        z-index: 3
     }
     .BannerData_Title::after{
         content: "";

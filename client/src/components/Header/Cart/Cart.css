@@ -1,5 +1,4 @@
 .Cart{
-    color:black;
 }
 .Cart_Title{display: none;}
 
@@ -21,7 +20,7 @@
 @media (min-width: 950px) { 
     .Cart_Title{
         display: block;
-        color:white;
+        color:inherit;
     }
     .Cart{
         color:black;

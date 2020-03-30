@@ -1,3 +1,6 @@
+.MainPage{
+    color:white;
+}
 .MainPage::after{
     content: "";
     display: block;

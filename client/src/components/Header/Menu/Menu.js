@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import './Menu.css'
 
 import { Link } from "react-router-dom";
+import { ThemeContext } from '../../../Context/theme-context'
 
 const Menu = () => {
 
@@ -10,9 +11,10 @@ const Menu = () => {
     const ModalStateHandler = (e) =>{
         setModalState(!ModalState)
     }
+    const theme = useContext(ThemeContext)
 
     return(
-        <div className="Menu">
+        <div style={{ color:theme.foreground }} className="Menu">
             <div onClick={ModalStateHandler} className='Menu_Icon'>
                 <div className="Menu_Icon_Item"></div>
                 <div className="Menu_Icon_Item"></div>

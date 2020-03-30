@@ -3,7 +3,7 @@
     background-color: #1B1B1B;
     padding-top: 57px;
     padding-bottom: 64px;
-    margin-top:80px;
+    margin-top: 82px;
 }
 
 .Footer_Moto{
@@ -35,7 +35,7 @@
 
 @media (min-width: 950px) { 
     .Footer{
-        margin-top:82px;
+        margin-top:0px;
         padding-bottom: 0px;
         padding: 0;
     }
