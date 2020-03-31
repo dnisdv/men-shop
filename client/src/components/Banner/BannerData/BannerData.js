@@ -14,7 +14,7 @@ const BannerData = () => {
             <p className="BannerData_Addition_Data">Good organized inside antiprotect +  on water</p>
         </div>
 
-            <Button classN='BannerData_Button' variant='primary' to='/Products'>See Products</Button>
+            <Button classN='BannerData_Button' variant='primary' to='/products'>See Products</Button>
 
     </div>
     )

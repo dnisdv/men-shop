@@ -28,7 +28,7 @@ const Menu = () => {
                 <div className='Menu_List_Wrapper'>
                     <ul style={{ color : theme.foreground }} className="Menu_List">
                         <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/'>Home</Link></li>
-                        <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/Products'>Products</Link></li>
+                        <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/products'>Products</Link></li>
                         <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/Auth'>Sign In/Sign up</Link></li>
                         <li className="Menu_List_Item Menu_List_Item-Mobile">Search</li>
                         <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/Auth'>Account</Link></li>

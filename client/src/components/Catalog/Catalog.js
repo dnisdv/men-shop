@@ -17,7 +17,7 @@ const Catalog = () => {
             <Features />
         </div>
         
-        <Button classN='Catalog_Button' variant='secondary' to='/Products' >Show Products</Button>
+        <Button classN='Catalog_Button' variant='secondary' to='/products' >Show Products</Button>
         </React.Fragment>
     )
 }

@@ -1,6 +1,7 @@
 .ProductsPage{
         width: 306px;
         margin: 0 auto;
+        margin-top:0px;
 }
 
 
@@ -8,5 +9,10 @@
         .ProductsPage{
             width: 1604px;
             margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            margin-top:28px;
+
     }
+        
 }

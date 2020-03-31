@@ -31,7 +31,7 @@ function App() {
         <div style={{ backgroundColor: themeHandler.background }} className="App">
             <Header />
             <Switch>
-              <Route path="/Products" component={ProductsPage} />
+              <Route path="/products" component={ProductsPage} />
               <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />
             </Switch>
             <Footer />
