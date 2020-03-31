@@ -16,7 +16,7 @@ const Products = () => {
                     <span className='Products_Item_Data_Category'>Wallet</span>
                     <h3 className='Products_Item_Data_Title'>Apple iPhone 11 Pro Max 512 ГБ Золото</h3>
                     <p className='Products_Item_Data_Description'>A  brand new inovations in the story of phones and even of dogital</p>
-                    <Link to='/products' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
+                    <Link to='/product' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
                     <p className='Products_Item_Data_Price'>1500$</p>
                 </div>
             </li>
@@ -30,7 +30,7 @@ const Products = () => {
                     <span className='Products_Item_Data_Category'>Wallet</span>
                     <h3 className='Products_Item_Data_Title'>Apple iPhone 11 Pro Max 512 ГБ Золото</h3>
                     <p className='Products_Item_Data_Description'>A  brand new inovations in the story of phones and even of dogital</p>
-                    <Link to='/products' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
+                    <Link to='/product' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
                     <p className='Products_Item_Data_Price'>1500$</p>
                 </div>
             </li>
@@ -44,7 +44,7 @@ const Products = () => {
                     <span className='Products_Item_Data_Category'>Wallet</span>
                     <h3 className='Products_Item_Data_Title'>Apple iPhone 11 Pro Max 512 ГБ Золото</h3>
                     <p className='Products_Item_Data_Description'>A  brand new inovations in the story of phones and even of dogital</p>
-                    <Link to='/products' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
+                    <Link to='/product' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
                     <p className='Products_Item_Data_Price'>1500$</p>
                 </div>
             </li>
@@ -58,7 +58,7 @@ const Products = () => {
                     <span className='Products_Item_Data_Category'>Wallet</span>
                     <h3 className='Products_Item_Data_Title'>Apple iPhone 11 Pro Max 512 ГБ Золото</h3>
                     <p className='Products_Item_Data_Description'>A  brand new inovations in the story of phones and even of dogital</p>
-                    <Link to='/products' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
+                    <Link to='/product' className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
                     <p className='Products_Item_Data_Price'>1500$</p>
                 </div>
             </li>

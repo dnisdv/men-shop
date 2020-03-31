@@ -98,6 +98,7 @@
     .Products_Item_Data_Description{
         margin-top:26px;
         font-size: 14px;
+        display: block;
     }
     .Products_Item_Data_Link{
         margin-top:53px;

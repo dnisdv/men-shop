@@ -1,0 +1,35 @@
+.BannerSku{
+    display: flex;
+    justify-content: center;
+    margin-top:51px;
+}
+.BannerSku_Item_Select{
+    width: 80%;
+    cursor: none;
+}
+.BannerSku_Item{
+    width: 100%;
+}
+
+.BannerSku{
+    margin:0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    margin-top:50px;
+}
+
+
+@media (min-width: 950px) { 
+.BannerSku{
+    margin-top:10px;
+    flex-direction: column;
+}
+.BannerSku_Item{
+    margin-top:20px;
+}
+.BannerSku_Item_Select{
+    width: 100%;
+    cursor: none;
+}
+}

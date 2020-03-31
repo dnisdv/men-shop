@@ -1,0 +1,49 @@
+.ProductBanner{
+    width: 306px;
+    margin:0 auto;
+}
+.ProductBanner_IMG{
+    width: 100%;
+    height: 300px;
+    display: block;
+    margin:0 auto;
+    object-fit: cover;
+}
+
+.BannerData_Button-Mobile{
+    display: block;
+    margin-top:26px;
+}
+
+
+@media (min-width: 950px) { 
+    .ProductBanner_IMG{
+        width: 617px;
+        height: 517px;
+        z-index: 9;
+    }    
+    .ProductBanner_IMG{
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+    }
+  
+
+    .ProductBanner_WrapperIMG{
+        width: 888px;
+        height: 705px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .ProductBanner{
+        width: 1604px;
+        margin:0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .BannerData_Button-Mobile{
+        display: none;
+    }
+}
