@@ -1,0 +1,19 @@
+.ProductData{
+    width: 306px;
+    margin: 0 auto;
+}
+.ProductData_Title{
+    margin:0;
+    padding: 0;
+    font-size: 24px;
+    width: 100%;
+    margin:0 auto;
+    text-align: center;
+}
+
+@media (min-width: 950px) { 
+    .ProductData{
+        width: 1604px;
+        margin: 0 auto;
+    }
+}
