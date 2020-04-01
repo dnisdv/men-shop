@@ -1,3 +1,6 @@
+.DataCharcs{
+    margin-top:73px
+}
 .DataCharcs_Title{
     margin:0;
     padding:0;
@@ -34,6 +37,11 @@
 }
 
 @media (min-width: 950px) { 
+    .DataCharcs{
+        width: 1370px;
+        margin:0 auto;
+        margin-top:100px;
+    }
     .DataCharcs_List_Item_Index{
         display: none;
     }
@@ -60,9 +68,5 @@
     .DataCharcs_List_Item{
         padding-top:20px;
         padding-bottom: 20px;
-    }
-    .DataCharcs{
-        width: 1370px;
-        margin:0 auto;
     }
 }
