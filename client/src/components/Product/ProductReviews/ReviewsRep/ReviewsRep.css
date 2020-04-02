@@ -1,0 +1,24 @@
+.ReviewsRep{
+    display: flex;
+}
+.ReviewsRep_Like{
+    display: flex;
+    align-items: center;
+}
+.ReviewsRep_Dislike{
+    display: flex;
+    align-items: center;
+    margin-left:24px;
+}
+.ReviewsRep_Like_IMG{
+    width: 24px;
+    height: 24px;
+}
+.ReviewsRep_Dislike_Count,
+.ReviewsRep_Like_Count{
+    margin-left: 7px;
+}
+.ReviewsRep_Dislike_IMG{
+    width: 24px;
+    height: 24px;
+}

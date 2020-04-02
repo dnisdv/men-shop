@@ -36,6 +36,25 @@
     font-size: 14px;
     font-weight: 100;
 }
+.BannerData_Primary_Wrapper_Rating{
+    display: flex;
+    list-style: none;
+    margin:0;
+    padding: 0;
+    margin-top:9px;
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star > div > .rc-rate-star-second{
+    display: none;
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star > div > .rc-rate-star-first > .fas.fa-star{
+    font-size: 18px;
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star-zero > div > .rc-rate-star-first > .fas.fa-star{
+    color:#CCCCCC
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star-full > div > .rc-rate-star-first > .fas.fa-star{
+    color:#0A0A0A
+}
 
 @media (min-width: 950px) { 
     .BannerData_Button-Desktop{

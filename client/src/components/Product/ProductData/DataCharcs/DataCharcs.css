@@ -35,8 +35,14 @@
     padding-bottom: 30px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.246);
 }
+.DataCharcs_List_Item:last-child{
+    border:none
+}
 
 @media (min-width: 950px) { 
+    .DataCharcs_List_Item:last-child{
+        border-bottom: 2px solid rgba(0, 0, 0, 0.246);
+    }
     .DataCharcs{
         width: 1370px;
         margin:0 auto;

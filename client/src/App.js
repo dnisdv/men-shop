@@ -9,11 +9,14 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import {themes, ThemeContext} from './Context/theme-context'
 
 
+
+
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+
 
 function App() {
 
@@ -24,6 +27,7 @@ function App() {
     if(!theme) return setthemeHandler( theme.light === theme ? theme.dark : theme.light)
     setthemeHandler(theme)
   }
+
   return (
     
     <Router>

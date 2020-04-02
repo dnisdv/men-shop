@@ -19,7 +19,7 @@ const ProductData = () => {
                                                 in a full-grain leatherwallet with vibrant stitch detailing</h2>
             </div>
 
-                <img src='https://cutt.ly/ItYAf4v' className='ProductData_MainImage' />
+                <img src='https://cutt.ly/ItYAf4v' alt='decorate' className='ProductData_MainImage' />
 
             <div className='ProductData ProductData-Second'>
                 <DataDetails />
