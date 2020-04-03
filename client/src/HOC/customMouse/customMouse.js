@@ -122,6 +122,10 @@ const customMouse = (WrappedComponent) => {
 
             cursor.init();
         }
+        componentDidUpdate(prevProps, prevState) {
+            console.log('update')
+        }
+        
         
 
         render(){

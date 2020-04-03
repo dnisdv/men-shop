@@ -9,7 +9,7 @@ const Products = ({productsProp}) => {
         <ul className='Products'>
             {productsProp.map( (item) => {
                 return(
-                <li className='Products_Item'>
+                <li key={item.id} className='Products_Item'>
                     <div className='Products_Item_IMGWrapper'>
                         <img src='https://cutt.ly/7tTtrOu' alt='Product' className='Products_Item_IMG' />
                     </div>

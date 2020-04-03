@@ -1,0 +1,29 @@
+.AuthPage{
+    width: 306px;
+    margin:0 auto;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.AuthPage_IMG{
+    display: none;
+}
+@media (min-width: 950px) { 
+    .AuthPage{
+        width: 1604px;
+        display: flex;
+        justify-content: space-between;
+        height: 80vh;
+        align-items: center;
+    }
+    .AuthPage_IMG{
+        width: 763px;
+        height: 739px;
+        object-fit: cover;
+    }
+    .AuthPage_IMG{
+        display: block;
+    }
+}

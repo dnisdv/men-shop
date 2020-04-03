@@ -1,7 +1,8 @@
 import React from 'react'
 import './Catalog.css'
 import Features from './Features/Features'
-import Button from '../Button/Button'
+
+import { Link } from 'react-router-dom'
 
 const Catalog = () => {
     return(
@@ -17,7 +18,8 @@ const Catalog = () => {
             <Features />
         </div>
         
-        <Button className='Catalog_Button' variant='secondary' to='/products' >Show Products</Button>
+        <Link className='Catalog_Button' to='/products'>Show Products</Link>
+        
         </React.Fragment>
     )
 }

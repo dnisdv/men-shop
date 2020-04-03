@@ -10,7 +10,7 @@ const SimilarProducts = ({productsProp}) => {
         <ul className='SimilarProducts'>
             {productsProp.map( (item) => { 
                 return(
-                    <li className='SimilarProducts_Item'>
+                    <li key={item.id} className='SimilarProducts_Item'>
                         <div className='SimilarProducts_Item_IMGWrapper'>
                             <Link to='/product'><img src='https://cutt.ly/7tTtrOu' alt='Product' className='SimilarProducts_Item_IMG' /></Link>
                         </div>

@@ -1,0 +1,34 @@
+.RegisterForm{
+    margin-top:10px;
+}
+.RegisterForm_Form{
+    display: flex;
+    flex-direction: column;
+}
+.RegisterForm_Input{
+    padding: 18px 0px 18px 13px;
+    margin-top:15px;
+    border:1px solid black
+}
+.RegisterForm_Button{
+    margin-top:13px;
+    cursor: none;
+}
+
+.RegisterForm_Button{
+    width: 100%;
+    height: 57px;
+    border:none;
+    background:none;
+    border:1px solid black;
+}
+@media (min-width: 950px) { 
+    .RegisterForm_Input{
+        margin-top:20px;
+        padding: 24px 0px 24px 20px;
+        font-size: 14px;
+    }
+    .RegisterForm_Button{
+        margin-top:40px;
+    }
+}

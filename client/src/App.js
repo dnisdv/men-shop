@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer'
 import CustomMouse from './HOC/customMouse/customMouse'
 import ProductsPage from './Pages/ProductsPage/ProductsPage';
 import ProductPage from './Pages/ProductPage/ProductPage'
+import AuthPage from './Pages/AuthPage/AuthPage';
 import {themes, ThemeContext} from './Context/theme-context'
 
 
@@ -35,6 +36,7 @@ function App() {
         <div style={{ backgroundColor: themeHandler.background }} className="App">
             <Header />
             <Switch>
+              <Route path='/auth' component={AuthPage} />
               <Route path="/product" component={ProductPage} />
               <Route path="/products" component={ProductsPage} />
               <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />

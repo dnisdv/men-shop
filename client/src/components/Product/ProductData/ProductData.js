@@ -4,11 +4,11 @@ import DataCharcs from './DataCharcs/DataCharcs'
 import DataDetails from './DataDetails/DataDetails'
 
 const CharcsData = [
-    {title:'Item Weight', description:'0.1kg'},
-    {title:'Interior', description:'Interior Slot Pocket'},
-    {title:'Main Material', description:'Genuine Leather'},
-    {title:'Lining Material', description:'Genuine Leather'},
-    {title:'Closure Type', description:'No Zipper'},
+    {id:1, title:'Item Weight', description:'0.1kg'},
+    {id:2, title:'Interior', description:'Interior Slot Pocket'},
+    {id:3, title:'Main Material', description:'Genuine Leather'},
+    {id:4, title:'Lining Material', description:'Genuine Leather'},
+    {id:5, title:'Closure Type', description:'No Zipper'},
 ]
 
 const ProductData = () => {

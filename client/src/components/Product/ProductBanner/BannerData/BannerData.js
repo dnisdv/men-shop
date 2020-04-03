@@ -1,9 +1,9 @@
 import React from 'react'
 import './BannerData.css'
-import Button from '../../../Button/Button'
 import BannerSku from '../BannerSku/BannerSku'
 
 import Rate from 'rc-rate'  
+import { Link } from 'react-router-dom'
 
 
 const BannerData = () => {
@@ -16,7 +16,7 @@ const BannerData = () => {
                     <Rate className='BannerData_Primary_Wrapper_Rating'
                      disabled
                      defaultValue={3}
-                     character={<i class="fas fa-star"></i>}
+                     character={<i className="fas fa-star"></i>}
                     />
 
                     <h2 className='BannerData_Primary_Title'>Modern understatement and handcrafted</h2>
@@ -25,7 +25,8 @@ const BannerData = () => {
             </div>
             
             <BannerSku />
-            <Button className='BannerData_Button-Desktop' variant='third'>Buy</Button>
+
+            <Link to='/cart' className='ProductBannerData_Button ProductBannerData_Button-Desktop' >Add to cart</Link>
         </div>
         
     )

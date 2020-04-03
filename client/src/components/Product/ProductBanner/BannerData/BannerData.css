@@ -3,9 +3,24 @@
     display: flex;  
     align-items: center;
 }
+.ProductBannerData_Button{
+    background-color: black;
+    margin:0;
+    padding:0;
+    border:none;
+    width: 100%;
+    height: 66px;
+    font-size: 14px;
+    font-weight: 900;
+    color:white;
+    text-transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.BannerData_Button-Desktop{
-    display: none;
+.ProductBannerData_Button-Mobile{
+    margin-top:50px;
 }
 .BannerData_Primary_Title{
     padding: 0;
@@ -55,11 +70,20 @@
 .BannerData_Primary_Wrapper_Rating > .rc-rate-star-full > div > .rc-rate-star-first > .fas.fa-star{
     color:#0A0A0A
 }
+.ProductBannerData_Button-Desktop{
+    display: none;
+}
+.ProductBannerData_Button-Mobile{
+    display: flex;
+}
 
 @media (min-width: 950px) { 
-    .BannerData_Button-Desktop{
-        display: block;
+    .ProductBannerData_Button-Desktop{
         margin-top:37px;
+        display: flex;
+    }
+    .ProductBannerData_Button-Mobile{
+        display: none;
     }
     .BannerData_Primary{
         display: flex;

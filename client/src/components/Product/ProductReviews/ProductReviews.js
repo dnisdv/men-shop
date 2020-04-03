@@ -17,7 +17,7 @@ const ProductReviews = () => {
                         <h2 className='ProductReviews_Rate_Data_Rating'>3</h2>
                             <div className='ProductReviews_Rate_Data_Wrapper'>
                                 <Rate className='ProductReviews_Rate' 
-                                    character={<i class="fas fa-star"></i>}
+                                    character={<i className="fas fa-star"></i>}
                                     disabled
                                     defaultValue={3}
                                 />

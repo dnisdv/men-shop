@@ -20,7 +20,7 @@ const Reviews = () => {
                                             <Rate className='Reviews_List_Item_Data_Rating'
                                                 disabled
                                                 defaultValue={3}
-                                                character={<i class="fas fa-star"></i>}
+                                                character={<i className="fas fa-star"></i>}
                                             />
                                     <span className='Reviews_List_Item_Description-Mobile'>Ignorant branched humanity led now marianne too strongly entrance. Rose to shew bore no ye of paid rent form. Old design are dinner better </span>
                                 </div>
@@ -47,7 +47,7 @@ const Reviews = () => {
                                             <Rate className='Reviews_List_Item_Data_Rating'
                                                 disabled
                                                 defaultValue={3}
-                                                character={<i class="fas fa-star"></i>}
+                                                character={<i className="fas fa-star"></i>}
                                             />
                                     <span className='Reviews_List_Item_Description-Mobile'>Ignorant branched humanity led now marianne too strongly entrance. Rose to shew bore no ye of paid rent form. Old design are dinner better </span>
                                 </div>
@@ -74,7 +74,7 @@ const Reviews = () => {
                                             <Rate className='Reviews_List_Item_Data_Rating'
                                                 disabled
                                                 defaultValue={3}
-                                                character={<i class="fas fa-star"></i>}
+                                                character={<i className="fas fa-star"></i>}
                                             />
                                     <span className='Reviews_List_Item_Description-Mobile'>Ignorant branched humanity led now marianne too strongly entrance. Rose to shew bore no ye of paid rent form. Old design are dinner better </span>
                                 </div>

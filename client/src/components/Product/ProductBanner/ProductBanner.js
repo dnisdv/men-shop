@@ -1,7 +1,8 @@
 import React from 'react'
 import './ProductBanner.css'
 import BannerData from './BannerData/BannerData'
-import Button from '../../Button/Button'
+
+import { Link } from 'react-router-dom'
 
 const ProductBanner = () => {
     return(
@@ -16,7 +17,8 @@ const ProductBanner = () => {
                 <BannerData />
             </div>
 
-            <Button className='BannerData_Button-Mobile' variant='third'>Buy</Button>
+            <Link to='/cart' className='ProductBannerData_Button ProductBannerData_Button-Mobile'>Add to bag</Link>
+
         </React.Fragment>
     )
 }
