@@ -1,0 +1,107 @@
+.SimilarProducts{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    margin-right: 175px;
+    margin-top:50px;
+    width: 100%;
+}
+.SimilarProducts_Item{
+    margin-top:50px
+}
+.SimilarProducts_Item:first-child{
+    margin:0;
+}
+.SimilarProducts_Item{
+    display: flex;
+}
+.SimilarProducts_Item_Data{
+    margin-left:16px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: none;
+    align-items: flex-start;
+    width: auto;
+}
+.SimilarProducts_Item_Data_Category{
+    margin-top:2px;
+    font-weight: 400;
+    font-size: 11px;
+}
+.SimilarProducts_Item_Data_Title{
+    margin:0;
+    margin-top:15px;
+}
+.SimilarProducts_Item_Data_Description{
+    margin:0;
+    padding: 0;
+    display: none;
+}
+.SimilarProducts_Item_Data_Link{
+    display: block;
+    margin-top:13px;
+    text-decoration: none;
+    color:inherit;
+    position: relative;
+    z-index: 5;
+    font-size: 18px;
+    width: auto;
+}
+.SimilarProducts_Item_Data_Link::after{
+    content: "";
+    display: block;
+    width: 63px;
+    height: 10px;
+    background-color: #D7D7D7;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    left: 0;
+}
+.SimilarProducts_Item_Data_Price{
+    margin:0;
+    margin-top:auto;
+    margin-bottom: 15px;
+}
+.SimilarProducts_Item_IMG{
+    width:144px; 
+    height:180px;
+    object-fit: cover;
+}
+
+
+@media (min-width: 950px) {
+    .SimilarProducts{
+        width: auto;
+        display: flex;
+        margin:0;
+        justify-content: space-between;
+        margin-left:150px;
+        margin-right: 50px;
+        width: 100%;
+    }
+    .SimilarProducts_Item{
+        margin:0;
+    }
+    .SimilarProducts_Item_Data_Category{
+        display: none;
+    }
+    .SimilarProducts_Item_Data_Description{
+        display: none;
+    }
+    .SimilarProducts_Item_Data_Link{
+        display: none;
+    }
+    .SimilarProducts_Item{
+        display: flex;
+        flex-direction: column;
+    }
+    .SimilarProducts_Item_Data{
+        margin:0;
+    }
+    .SimilarProducts_Item_IMG{
+        width: 341px;
+        height: 383px;
+    }
+
+}
