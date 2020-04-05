@@ -6,12 +6,12 @@
     margin:0;
     background: none;
     border:none;
-    cursor: none;
+    ;
     margin-left:9px;
     color:rgb(58, 58, 58);
     font-size: 15px;
     text-decoration: solid 1px black;
-    cursor: none;
+    ;
 }
 .Auth_Socials{
     width: 100%;
@@ -24,7 +24,7 @@
     border-radius: 0%;
     border:none;
     border:1px solid black;
-    cursor: none;
+    ;
     font-weight: 700;
 }
 .Auth_Socials_Item_Gmail:hover{
@@ -68,7 +68,7 @@
         border-radius: 0%;
         border:none;
         border:1px solid black;
-        cursor: none;
+        ;
         font-weight: 700;
     }
 

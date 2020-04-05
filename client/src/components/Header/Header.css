@@ -6,6 +6,8 @@
     color:#fff;
     padding-top:40px;
     padding-bottom: 40px;
+    z-index: 999999;
+    align-items: center;
 }
 .Header_wrapper{
     display: flex;
@@ -26,6 +28,9 @@
         flex-direction: row-reverse;
         justify-content: space-between;
         width: 100%;
+    }
+    .Header_Logo{
+        fill:white;
     }
     .Header{
         width: 1604px;

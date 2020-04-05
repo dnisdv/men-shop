@@ -5,7 +5,7 @@
 }
 .BannerSku_Item_Select{
     width: 80%;
-    cursor: none;
+    ;
 }
 .BannerSku_Item{
     width: 100%;
@@ -30,6 +30,6 @@
 }
 .BannerSku_Item_Select{
     width: 100%;
-    cursor: none;
+    ;
 }
 }

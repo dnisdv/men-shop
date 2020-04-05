@@ -3,10 +3,10 @@ import './App.css';
 import Header from './components/Header/Header'
 import MainPage from './Pages/MainPage/MainPage'
 import Footer from './components/Footer/Footer'
-import CustomMouse from './HOC/customMouse/customMouse'
 import ProductsPage from './Pages/ProductsPage/ProductsPage';
 import ProductPage from './Pages/ProductPage/ProductPage'
 import AuthPage from './Pages/AuthPage/AuthPage';
+import CartPage from './Pages/CartPage/CartPage'
 import {themes, ThemeContext} from './Context/theme-context'
 
 
@@ -27,7 +27,7 @@ function App() {
   const toggleTheme = (theme) => {
     if(!theme) return setthemeHandler( theme.light === theme ? theme.dark : theme.light)
     setthemeHandler(theme)
-  }
+  } 
 
   return (
     
@@ -36,6 +36,7 @@ function App() {
         <div style={{ backgroundColor: themeHandler.background }} className="App">
             <Header />
             <Switch>
+              <Route path='/cart' component={CartPage} />
               <Route path='/auth' component={AuthPage} />
               <Route path="/product" component={ProductPage} />
               <Route path="/products" component={ProductsPage} />
@@ -49,4 +50,4 @@ function App() {
   );
 }
 
-export default CustomMouse(App)
+export default App

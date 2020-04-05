@@ -5,11 +5,9 @@ import Select from 'react-select'
 const customStyles = {
   option: (styles, state) => ({
     ...styles,
-    cursor: 'none',
   }),
   control: (styles) => ({
     ...styles,
-    cursor: 'none',
     border: 'none',
     borderBottom: '1px solid black',
     focus:'none'

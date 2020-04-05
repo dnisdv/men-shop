@@ -20,7 +20,7 @@
     border:none;
     background:none;
     border:1px solid black;
-    cursor: none;
+    ;
 }
 
 @media (min-width: 950px) { 
