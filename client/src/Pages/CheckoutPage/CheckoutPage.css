@@ -1,0 +1,12 @@
+.CheckoutPage{
+    width: 306px;
+    margin:0 auto;
+}
+
+
+@media (min-width: 950px) { 
+    .CheckoutPage{
+        width: 1604px;
+        margin:0 auto;
+    }
+}

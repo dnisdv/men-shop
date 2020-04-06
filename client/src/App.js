@@ -7,6 +7,7 @@ import ProductsPage from './Pages/ProductsPage/ProductsPage';
 import ProductPage from './Pages/ProductPage/ProductPage'
 import AuthPage from './Pages/AuthPage/AuthPage';
 import CartPage from './Pages/CartPage/CartPage'
+import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
 import {themes, ThemeContext} from './Context/theme-context'
 
 
@@ -36,6 +37,7 @@ function App() {
         <div style={{ backgroundColor: themeHandler.background }} className="App">
             <Header />
             <Switch>
+              <Route path='/checkout' component={CheckoutPage} />
               <Route path='/cart' component={CartPage} />
               <Route path='/auth' component={AuthPage} />
               <Route path="/product" component={ProductPage} />

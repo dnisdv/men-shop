@@ -1,0 +1,82 @@
+.CheckoutDetails{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+.CheckoutDetails_Input{
+    padding: 38px 30px 12px;
+    border:none;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    border: 1px solid #aeb3b6;
+    box-sizing: border-box;
+}
+.CheckoutDetails_Input_Wrapp{
+    position: relative;
+    margin-top:25px
+}
+.CheckoutDetails_Input_LabeL{
+    position: absolute;
+    top:0;
+    left:30px;
+    cursor: text;
+    top: 45%;
+    transform: translateY(-45%);
+    transition: 0.2s ease;
+    font-size: 14px;  
+    font-weight: 600;
+}
+
+.CheckoutDetails_Input:focus ~  .CheckoutDetails_Input_LabeL{
+    top: 25%;
+    transform: translateY(-25%)
+}
+.CheckoutDetails_Title{
+    font-size: 50px;
+    margin:0;
+    padding: 0;
+}
+
+.CheckoutDetails_Button{
+    width: 300px;
+    height: 54px;
+    background: none;
+    border:none;
+    background-color: #000000;
+    color:white;
+    font-weight: 700;
+    display: block;
+    margin-left:auto;
+    margin-top:30px;
+    cursor:pointer;
+}
+
+@media (min-width: 950px) { 
+    .CheckoutDetails{
+        display: block;
+        width: 820px;
+        margin-top:50px;
+
+    }
+    .CheckoutDetails_Input_Wrapp{
+        width: 400px;
+    }
+    .CheckoutDetails_Input_LabeL{
+        font-size: 16px;
+    }
+    .CheckoutDetails_Wrapper{
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .CheckoutDetails_Zipcode{
+        width: 27.5%;
+    }
+    .CheckoutDetails_State{
+        flex-basis: 70%;
+    }
+
+}

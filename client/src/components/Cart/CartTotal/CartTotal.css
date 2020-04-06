@@ -92,4 +92,8 @@
     .CartTotal{
         margin-top:70px
     }
+    .CartTotal_Link_Buy{
+        display: block;
+        text-decoration: none;
+    }
 }

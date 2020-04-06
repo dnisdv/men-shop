@@ -1,5 +1,6 @@
 import React from 'react'
 import './CartTotal.css'
+import { Link } from 'react-router-dom'
 
 const CartTotal = () => {
     return(
@@ -11,7 +12,7 @@ const CartTotal = () => {
             </div>
             <p className='CartTotal_Data'>Shipping costs will be specified in Checkout.</p>
 
-            <button className='CartTotal_Button_Buy'>Checkout</button>
+            <Link className='CartTotal_Link_Buy' to='/checkout'><button className='CartTotal_Button_Buy'>Checkout</button></Link>
         </div>
     )
 }
