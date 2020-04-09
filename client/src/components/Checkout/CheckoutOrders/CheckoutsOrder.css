@@ -1,73 +1,78 @@
-.CheckoutOrders_List{
-    margin:0;
-    padding: 0;
-    list-style: none;
-    width: 80%;
-    margin:0 auto;
-    margin-top:20px;
-    padding-top:30px ;
-    padding-bottom: 30px;
-    border-top:2px solid #000000;
-    border-bottom: 2px solid black;
-    margin-top:40px;
-}
-.CheckoutOrders_Title{
-    width: 80%;
-    margin:0 auto;
-    font-size: 32px;
-}
-.CheckoutOrders_List_Item_IMG{
-    width: 60px;
-    height: 80px;
-    object-fit: cover;
-}
-.CheckoutOrders_List_Item:first-child{
-    margin-top:0;
-}
-.CheckoutOrders_List_Item{
-    display: flex;
-    margin-top:20px;
-}
-.CheckoutOrders_List_Item_Data{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex:1
-}
-.CheckoutOrders_List_Item_DataFirst{
-    display: flex;
-    flex-direction: column;
-    margin-left:30px;
-}
-.CheckoutOrders_List_Item_DataFirst_Title{
-    margin:0;
-    padding: 0;
-    font-weight: 400;
-    font-size: 18px;
-}
-.CheckoutOrders_List_Item_Units{
-    font-weight: 100;
-    margin-left:10px;
-    font-size: 18px;
-}
-.CheckoutOrders_List_Item_DataFirst_ShipDate{
-    margin:0;
-    padding: 0;
-    margin-top:8px;
-    font-size: 12px;
-}
-.CheckoutOrders_List_Item_Data_Price{
-    margin:0;
-    padding: 0;
-    font-size: 18px;
-    font-weight: 500;
-}
 .CheckoutOrders{
-    width: 530px;
-    background-color: rgb(250, 248, 251);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 99999;
+    display: none;
+}
+@media (min-width: 950px) { 
+    .CheckoutOrders_List{
+        margin:0;
+        padding: 0;
+        list-style: none;
+        width: 80%;
+        margin:0 auto;
+        margin-top:20px;
+        padding-top:30px ;
+        padding-bottom: 30px;
+        border-top:2px solid #000000;
+        border-bottom: 2px solid black;
+        margin-top:40px;
+    }
+    .CheckoutOrders_Title{
+        width: 80%;
+        margin:0 auto;
+        font-size: 32px;
+    }
+    .CheckoutOrders_List_Item_IMG{
+        width: 60px;
+        height: 80px;
+        object-fit: cover;
+    }
+    .CheckoutOrders_List_Item:first-child{
+        margin-top:0;
+    }
+    .CheckoutOrders_List_Item{
+        display: flex;
+        margin-top:20px;
+    }
+    .CheckoutOrders_List_Item_Data{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex:1
+    }
+    .CheckoutOrders_List_Item_DataFirst{
+        display: flex;
+        flex-direction: column;
+        margin-left:30px;
+    }
+    .CheckoutOrders_List_Item_DataFirst_Title{
+        margin:0;
+        padding: 0;
+        font-weight: 400;
+        font-size: 18px;
+    }
+    .CheckoutOrders_List_Item_Units{
+        font-weight: 100;
+        margin-left:10px;
+        font-size: 18px;
+    }
+    .CheckoutOrders_List_Item_DataFirst_ShipDate{
+        margin:0;
+        padding: 0;
+        margin-top:8px;
+        font-size: 12px;
+    }
+    .CheckoutOrders_List_Item_Data_Price{
+        margin:0;
+        padding: 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .CheckoutOrders{
+        width: 530px;
+        background-color: rgb(250, 248, 251);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 99999;
+    }
 }

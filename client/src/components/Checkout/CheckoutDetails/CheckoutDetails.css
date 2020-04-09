@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-
+    padding:40px 0px;
 }
 .CheckoutDetails_Input{
     padding: 38px 30px 12px;
@@ -42,7 +42,7 @@
 .CheckoutDetails_Actions{
     display: flex;
     align-items: center;
-    margin-top:30px;
+    margin-top:30px;    
 }
 .CheckoutDetails_Actions_Button{
     width: 300px;
@@ -69,7 +69,7 @@
     }
     .CheckoutDetails{
         display: block;
-        width: 820px;
+
         margin-top:50px;
         display: flex;
         justify-content: center;

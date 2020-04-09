@@ -3,6 +3,7 @@
     margin:0 auto;
     position: relative;
     display: flex;
+    flex-direction: column;
 }
 
 
@@ -11,5 +12,6 @@
         width: 1604px;
         margin:0 auto;
         justify-content: space-between;
+        flex-direction: row;
     }
 }

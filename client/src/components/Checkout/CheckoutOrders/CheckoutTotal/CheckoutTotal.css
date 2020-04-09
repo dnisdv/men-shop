@@ -1,7 +1,4 @@
-.CheckoutTotal{
-    width: 80%;
-    margin:0 auto;
-}
+
 .CheckoutTotal_List{
     list-style: none;
     margin:0;
@@ -50,4 +47,12 @@
 }
 .CheckoutTotal_List_Item-Total{
     border-top:5px solid black
+}
+
+@media (min-width: 950px) { 
+    .CheckoutTotal{
+        width: 80%;
+        margin:0 auto;
+    }
+
 }
