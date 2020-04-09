@@ -1,6 +1,8 @@
 import React from 'react'
 import './CheckoutDetails.css'
 
+import { Link } from 'react-router-dom'
+
 const CheckoutDetails = () => {
     return(
         <div className='CheckoutDetails'>
@@ -10,59 +12,60 @@ const CheckoutDetails = () => {
         <div className='CheckoutDetails_Wrapper'>
             <div className='CheckoutDetails_Input_Wrapp'>
                 <input type='text' className='CheckoutDetails_Input' id='fname' />
-                <label for='fname' className='CheckoutDetails_Input_LabeL'>First Name</label>
+                <label htmlFor='fname' className='CheckoutDetails_Input_LabeL'>First Name</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp'>
                 <input type='text' className='CheckoutDetails_Input' id='lname' />
-                <label for='lname' className='CheckoutDetails_Input_LabeL'>Last Name</label>
+                <label htmlFor='lname' className='CheckoutDetails_Input_LabeL'>Last Name</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp'>
                 <input type='text' className='CheckoutDetails_Input' id='company' />
-                <label for='company' className='CheckoutDetails_Input_LabeL'>Company</label>
+                <label htmlFor='company' className='CheckoutDetails_Input_LabeL'>Company</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp'>
                 <input type='text' className='CheckoutDetails_Input' id='email' />
-                <label for='email' className='CheckoutDetails_Input_LabeL'>Email</label>
+                <label htmlFor='email' className='CheckoutDetails_Input_LabeL'>Email</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp'>
                 <input type='text' className='CheckoutDetails_Input' id='phone' />
-                <label for='phone' className='CheckoutDetails_Input_LabeL'>Phone</label>
+                <label htmlFor='phone' className='CheckoutDetails_Input_LabeL'>Phone</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp '>
                 <input type='text' className='CheckoutDetails_Input' id='country' />
-                <label for='country' className='CheckoutDetails_Input_LabeL'>Country</label>
+                <label htmlFor='country' className='CheckoutDetails_Input_LabeL'>Country</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp CheckoutDetails_Zipcode'>
                 <input type='text' className='CheckoutDetails_Input' id='zipcode' />
-                <label for='zipcode' className='CheckoutDetails_Input_LabeL'>Zip Code</label>
+                <label htmlFor='zipcode' className='CheckoutDetails_Input_LabeL'>Zip Code</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp CheckoutDetails_State'>
                 <input type='text' className='CheckoutDetails_Input' id='state' />
-                <label for='state' className='CheckoutDetails_Input_LabeL'>State</label>
+                <label htmlFor='state' className='CheckoutDetails_Input_LabeL'>State</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp'>
                 <input type='text' className='CheckoutDetails_Input' id='address' />
-                <label for='address' className='CheckoutDetails_Input_LabeL'>Address</label>
+                <label htmlFor='address' className='CheckoutDetails_Input_LabeL'>Address</label>
             </div>
 
             <div className='CheckoutDetails_Input_Wrapp'>
                 <input type='text' className='CheckoutDetails_Input' id='city' />
-                <label for='city' className='CheckoutDetails_Input_LabeL'>City</label>
+                <label htmlFor='city' className='CheckoutDetails_Input_LabeL'>City</label>
             </div>
 
 
         </div>
-
-        <button className='CheckoutDetails_Button'>Next</button>
-
+            <div className='CheckoutDetails_Actions'>
+                <Link className='CheckoutDetails_Actions_Back' to='/cart'>Back to cart</Link>
+                <button className='CheckoutDetails_Actions_Button'>Next</button>
+            </div>
         </div>
     )
 }

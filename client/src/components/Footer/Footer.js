@@ -3,9 +3,9 @@ import './Footer.css'
 import FooterMenu from './FooterMenu/FooterMenu'
 import Ticker from '../Ticker/Ticker'
 
-const Footer = () => {
+const Footer = ({footerRef}) => {
     return(
-        <div className='Footer'>
+        <div ref={footerRef} className='Footer'>
             <Ticker />
             <div className='Footer_Data'>
                 <div className='Footer_Data_Logo'>

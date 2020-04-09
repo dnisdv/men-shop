@@ -1,6 +1,8 @@
 .CheckoutPage{
     width: 306px;
     margin:0 auto;
+    position: relative;
+    display: flex;
 }
 
 
@@ -8,5 +10,6 @@
     .CheckoutPage{
         width: 1604px;
         margin:0 auto;
+        justify-content: space-between;
     }
 }

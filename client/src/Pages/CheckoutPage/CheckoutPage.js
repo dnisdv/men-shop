@@ -1,11 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './CheckoutPage.css'
-import CheckoutDetails from '../../components/Checkout/CheckoutDetails/CheckoutDetails'
+import Checkout from '../../components/Checkout/Checkout'
+import CheckoutOrders from '../../components/Checkout/CheckoutOrders/CheckoutsOrder'
 
-const CheckoutPage = () => {
+const CheckoutPage = ({headerRef, footerRef}) => {
+    useEffect( ()=> {
+        headerRef.current.style.display = 'none'
+        footerRef.current.style.display = 'none'
+    }, [footerRef, headerRef])
     return(
         <div className='CheckoutPage'>
-            <CheckoutDetails />
+            <Checkout />
+            <CheckoutOrders />
         </div>
     )
 }

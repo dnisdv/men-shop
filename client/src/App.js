@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useRef } from 'react';
 import './App.css';
 import Header from './components/Header/Header'
 import MainPage from './Pages/MainPage/MainPage'
@@ -30,21 +30,24 @@ function App() {
     setthemeHandler(theme)
   } 
 
+  const headerRef = useRef()
+  const footerRef = useRef()
+
   return (
     
     <Router>
       <ThemeContext.Provider value={themeHandler}>
         <div style={{ backgroundColor: themeHandler.background }} className="App">
-            <Header />
+            <Header headerRef={headerRef} />
             <Switch>
-              <Route path='/checkout' component={CheckoutPage} />
+              <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
               <Route path='/cart' component={CartPage} />
               <Route path='/auth' component={AuthPage} />
               <Route path="/product" component={ProductPage} />
               <Route path="/products" component={ProductsPage} />
               <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />
             </Switch>
-            <Footer />
+            <Footer footerRef={footerRef} />
         </div>
       </ThemeContext.Provider>
     </Router>
