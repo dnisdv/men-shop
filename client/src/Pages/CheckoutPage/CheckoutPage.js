@@ -5,8 +5,14 @@ import CheckoutOrders from '../../components/Checkout/CheckoutOrders/CheckoutsOr
 
 const CheckoutPage = ({headerRef, footerRef}) => {
     useEffect( ()=> {
-        headerRef.current.style.display = 'none'
-        footerRef.current.style.display = 'none'
+        const header = headerRef.current
+        const footer = footerRef.current
+        header.style.display = 'none'
+        footer.style.display = 'none'
+        return( () => {
+            header.style.display = 'flex'
+            footer.style.display = 'flex'
+        })
     }, [footerRef, headerRef])
     return(
         <div className='CheckoutPage'>

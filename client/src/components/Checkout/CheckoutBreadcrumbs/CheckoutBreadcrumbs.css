@@ -1,0 +1,25 @@
+.CheckoutBreadcrumbs{
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.CheckoutBreadcrumbs_Item{
+    display: flex;
+}
+
+.CheckoutBreadcrumbs_Item::after{
+    content:">";
+    display: block;
+    margin-left:10px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+.CheckoutBreadcrumbs_Item:last-child::after{
+    content:'';
+    margin:0;
+}
+.BreadCart{
+    font-weight: 700;
+    color:black;
+    text-decoration: none;
+}

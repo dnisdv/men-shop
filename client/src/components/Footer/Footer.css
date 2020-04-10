@@ -4,6 +4,7 @@
     padding-top: 57px;
     padding-bottom: 64px;
     margin-top: 82px;
+    flex-direction: column;
 }
 
 .Footer_Moto{

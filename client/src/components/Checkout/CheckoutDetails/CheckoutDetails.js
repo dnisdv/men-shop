@@ -3,9 +3,25 @@ import './CheckoutDetails.css'
 
 import { Link } from 'react-router-dom'
 
-const CheckoutDetails = () => {
+const CheckoutDetails = ({bread, setbread}) => {
+
+    const nextBread = () => {
+        setbread({
+            ...bread,
+            Details: {
+                ...bread.Details,
+                 active:false,
+                 finished:true,
+            },
+            Shipping: {
+                ...bread.Shipping,
+                active:true,
+            }
+        })
+    }
+
     return(
-        <div className='CheckoutDetails'>
+        <div style={{display : bread['Details'].active ? 'flex' : 'none'}} className='CheckoutDetails'>
 
             <h2 className='CheckoutDetails_Title'>Details</h2>
 
@@ -64,7 +80,7 @@ const CheckoutDetails = () => {
         </div>
             <div className='CheckoutDetails_Actions'>
                 <Link className='CheckoutDetails_Actions_Back' to='/cart'>Back to cart</Link>
-                <button className='CheckoutDetails_Actions_Button'>Next</button>
+                <button onClick={nextBread} className='CheckoutDetails_Actions_Button'>Next</button>
             </div>
         </div>
     )

@@ -6,12 +6,11 @@
     margin:0;
     background: none;
     border:none;
-    ;
     margin-left:9px;
     color:rgb(58, 58, 58);
     font-size: 15px;
     text-decoration: solid 1px black;
-    ;
+    cursor: pointer;
 }
 .Auth_Socials{
     width: 100%;
@@ -24,8 +23,8 @@
     border-radius: 0%;
     border:none;
     border:1px solid black;
-    ;
     font-weight: 700;
+    cursor: pointer;
 }
 .Auth_Socials_Item_Gmail:hover{
     background-color: #FF6A6A;

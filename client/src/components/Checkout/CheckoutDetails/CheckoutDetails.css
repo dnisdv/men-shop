@@ -69,10 +69,10 @@
     }
     .CheckoutDetails{
         display: block;
-
-        margin-top:50px;
+        margin:0;
+        padding:0;
         display: flex;
-        justify-content: center;
+
     }
     .CheckoutDetails_Input_Wrapp{
         width: 400px;

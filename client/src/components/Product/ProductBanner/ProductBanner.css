@@ -9,6 +9,9 @@
     margin:0 auto;
     object-fit: cover;
 }
+.ProductBannerData_Button{
+    text-decoration: none;
+}
 
 .BannerData_Button-Mobile{
     display: block;

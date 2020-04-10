@@ -1,6 +1,9 @@
 @media (min-width: 950px) { 
     .Checkout{
         width: 820px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
 }
