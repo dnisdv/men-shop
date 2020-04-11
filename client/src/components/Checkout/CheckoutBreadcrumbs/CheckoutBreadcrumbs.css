@@ -5,6 +5,7 @@
 
 .CheckoutBreadcrumbs_Item{
     display: flex;
+    color:rgba(0, 0, 0, 0.555);
 }
 
 .CheckoutBreadcrumbs_Item::after{
@@ -13,10 +14,15 @@
     margin-left:10px;
     margin-right: 10px;
     text-decoration: none;
+    color:black;
 }
 .CheckoutBreadcrumbs_Item:last-child::after{
     content:'';
     margin:0;
+}
+.CheckoutBreadcrumbs_Item_Finished{
+    cursor: pointer;
+    color:black;
 }
 .BreadCart{
     font-weight: 700;

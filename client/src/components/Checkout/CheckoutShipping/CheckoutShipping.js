@@ -1,7 +1,6 @@
 import React from 'react'
 import DetailsPreview from '../CheckoutDetails/DetailsPreview/DetailsPreview'
 import './CheckoutShipping.css'
-import { Link } from 'react-router-dom'
 
 const CheckoutShipping = ({bread, setbread}) => {
 
@@ -20,6 +19,14 @@ const CheckoutShipping = ({bread, setbread}) => {
         })
     }
 
+    const prevBread = () => {
+        setbread({
+            ...bread,
+            Details: {...bread.Details , active:true},
+            Shipping: {...bread.Shipping, active:false},
+        })
+    }
+ 
     return(
         <div style={{display : bread['Shipping'].active ? 'flex' : 'none'}} className='CheckoutShipping'>
 
@@ -45,7 +52,7 @@ const CheckoutShipping = ({bread, setbread}) => {
 
             </ul>
             <div className='CheckoutShipping_Actions'>
-                <Link className='CheckoutShipping_Actions_Back' to='/cart'>Back to cart</Link>
+                <button onClick={prevBread} className='CheckoutShipping_Actions_Back'>Back to Details</button>
                 <button onClick={nextBread} className='CheckoutShipping_Actions_Button'>Next</button>
             </div>
         </div>

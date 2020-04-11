@@ -57,8 +57,7 @@
     .CheckoutOrders_List_Item_DataFirst_ShipDate{
         margin:0;
         padding: 0;
-        margin-top:8px;
-        font-size: 12px;
+        font-size: 10px;
     }
     .CheckoutOrders_List_Item_Data_Price{
         margin:0;
@@ -74,5 +73,18 @@
         flex-direction: column;
         justify-content: center;
         z-index: 99999;
+    }
+    .CheckoutOrders_List_Item_DataFirst_Addition{
+        display: flex;
+        padding: 10px 0px;
+        font-size: 12px;
+    }
+    .CheckoutOrders_List_Item_DataFirst_Addition_Size{
+        margin:0;
+        padding: 0;
+    }
+    .CheckoutOrders_List_Item_DataFirst_Addition_Color{
+        margin:0;
+        padding: 0;
     }
 }

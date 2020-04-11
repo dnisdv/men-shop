@@ -14,8 +14,14 @@ const CheckoutOrders = () => {
                             <h2 className='CheckoutOrders_List_Item_DataFirst_Title'>Some book 
                                 <span className='CheckoutOrders_List_Item_Units'>x7</span>
                             </h2>
+                            <div className='CheckoutOrders_List_Item_DataFirst_Addition'>
+                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Size'>XS</p>
+                                <span className='CheckoutOrders_List_Item_DataFirst_Addition_delimiter'>/</span>
+                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Color'>RED</p>
+                            </div>
                             <p className='CheckoutOrders_List_Item_DataFirst_ShipDate'>Ships today</p>
                         </div>
+
                         <p className='CheckoutOrders_List_Item_Data_Price'>50$</p>
                     </div>
                 </li>
@@ -27,8 +33,14 @@ const CheckoutOrders = () => {
                             <h2 className='CheckoutOrders_List_Item_DataFirst_Title'>Some book 
                                 <span className='CheckoutOrders_List_Item_Units'>x7</span>
                             </h2>
+                            <div className='CheckoutOrders_List_Item_DataFirst_Addition'>
+                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Size'>XS</p>
+                                <span className='CheckoutOrders_List_Item_DataFirst_Addition_delimiter'>/</span>
+                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Color'>RED</p>
+                            </div>
                             <p className='CheckoutOrders_List_Item_DataFirst_ShipDate'>Ships today</p>
                         </div>
+
                         <p className='CheckoutOrders_List_Item_Data_Price'>50$</p>
                     </div>
                 </li>
@@ -40,11 +52,18 @@ const CheckoutOrders = () => {
                             <h2 className='CheckoutOrders_List_Item_DataFirst_Title'>Some book 
                                 <span className='CheckoutOrders_List_Item_Units'>x7</span>
                             </h2>
+                            <div className='CheckoutOrders_List_Item_DataFirst_Addition'>
+                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Size'>XS</p>
+                                <span className='CheckoutOrders_List_Item_DataFirst_Addition_delimiter'>/</span>
+                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Color'>RED</p>
+                            </div>
                             <p className='CheckoutOrders_List_Item_DataFirst_ShipDate'>Ships today</p>
                         </div>
+
                         <p className='CheckoutOrders_List_Item_Data_Price'>50$</p>
                     </div>
                 </li>
+
             </ul>
             <CheckoutTotal />
         </div>
