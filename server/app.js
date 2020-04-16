@@ -1,15 +1,15 @@
 const express = require('express')
 require('dotenv').config({ path: './config/.env' })
 const userRouter = require('./router/user')
+const productRouter = require('./router/product')
 const session = require('express-session')
-const bodyParser = require('body-parser')
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose')
+const reviewRouter = require('./router/review')
 
 const PORT = process.env.PORT || 5000
 
 require('./db/db.js')
-
 
 const app = express()
 
@@ -35,6 +35,8 @@ app.use(session({
     }
   }));
 
-app.use('/api/user/',userRouter);
+app.use('/api/user/', userRouter);
+app.use('/api/product/', productRouter);
+app.use('/api/review/', reviewRouter)
 
 app.listen(PORT, () => console.log(`Server Started on port ${PORT}`))

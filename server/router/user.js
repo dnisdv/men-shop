@@ -1,5 +1,6 @@
 const express = require('express')
 const userModel = require('../models/user')
+const reviewModel = require('../models/review')
 const router = express.Router()
 const signupValidator = require('../validation/validators')
 
@@ -10,7 +11,6 @@ router.post('/register', signupValidator, async (req, res) => {
         await newUser.save();
         res.send(newUser);
     } catch (e) {
-        console.log(e)
         res.send(e)
     }
 })
@@ -39,6 +39,19 @@ router.post('/logout', async (req, res) => {
         res.send('hell')
     } catch (e) {
         res.status(500).send()
+    }
+})
+
+router.delete('/remove/:id', async (req, res) => {
+    try{
+        await reviewModel.deleteMany({user: '5e9854057176db24db2ed4e5'})
+        const user = await userModel.findOneAndDelete(req.params.id)
+        if(!user){
+           return res.status(404).send('User not found')
+        }
+        res.send(user)
+    }catch(e){
+        res.status(400).send(e)
     }
 })
 
