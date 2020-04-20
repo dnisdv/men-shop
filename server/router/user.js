@@ -2,9 +2,9 @@ const express = require('express')
 const userModel = require('../models/user')
 const reviewModel = require('../models/review')
 const router = express.Router()
-const signupValidator = require('../validation/validators')
+const validator = require('../validation/validators')
 
-router.post('/register', signupValidator, async (req, res) => {
+router.post('/register', validator.signupValidator, async (req, res) => {
     const { username, email, password } = req.body;
     try {
         const newUser = new userModel({ username, email, password });

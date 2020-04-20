@@ -1,12 +1,13 @@
 const express = require('express')
 const productModel = require('../models/product')
 const reviewModel = require('../models/review')
+const validator = require('../validation/validators')
 const router = express.Router()
 
-router.post('/new', async (req, res) => {
+router.post('/new', validator.productValidator, async (req, res) => {
     try {
         const product = await productModel(req.body)
-        product.save()
+        // product.save()
 
         res.send(product)
     } catch (e) {
