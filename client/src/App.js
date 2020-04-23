@@ -18,6 +18,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import AdminPanel from './Pages/AdminPanel/AdminPanel';
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
   return (
     
     <Router>
-      <ThemeContext.Provider value={themeHandler}>
+      {/* <ThemeContext.Provider value={themeHandler}>
         <div style={{ backgroundColor: themeHandler.background }} className="App">
             <Header headerRef={headerRef} />
             <Switch>
@@ -49,7 +50,9 @@ function App() {
             </Switch>
             <Footer footerRef={footerRef} />
         </div>
-      </ThemeContext.Provider>
+      </ThemeContext.Provider> */}
+
+      <AdminPanel />
     </Router>
 
   );

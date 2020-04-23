@@ -4,10 +4,12 @@ const reviewModel = require("../models/review");
 const validator = require("../validation/validators");
 const router = express.Router();
 
-router.post("/new", validator.productValidator, async (req, res) => {
+//Creat product
+router.post("/products", async (req, res) => {
   try {
+    console.log(req.body);
     const product = await productModel(req.body);
-    // product.save()
+    product.save();
 
     res.send(product);
   } catch (e) {
@@ -15,7 +17,8 @@ router.post("/new", validator.productValidator, async (req, res) => {
   }
 });
 
-router.get("/find/:id", async (req, res) => {
+//Find prouduct
+router.get("/products/:id", async (req, res) => {
   try {
     const product = await productModel.findById(req.params.id);
     res.send(product);
@@ -24,7 +27,8 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-router.delete("/removebyid/:id", async (req, res) => {
+//Remove one product
+router.delete("/products/:id", async (req, res) => {
   try {
     const product = await productModel.findOneAndDelete(req.params.id);
     await reviewModel.deleteMany({ product: req.params.id });
@@ -37,36 +41,39 @@ router.delete("/removebyid/:id", async (req, res) => {
   }
 });
 
-router.delete("/remove/all", async (req, res) => {
+//get many products && get products by filter
+router.get("/products", async (req, res) => {
   try {
-    await reviewModel.deleteMany({});
-    await productModel.deleteMany({});
-    res.send("removed");
+    if (req.query.filter) {
+      const filter = JSON.parse(req.query.filter);
+      const records = await productModel
+        .find()
+        .where("_id")
+        .in(filter.id)
+        .exec();
+      if (!records) return res.status(404).send("Nothing found");
+      return res.send(records);
+    }
+    const products = await productModel.find({});
+    const productsLenght = products.length;
+    // console.log(products.length);
+    res.set("Content-Range", `products 0-24/${productsLenght}`).send(products);
   } catch (e) {
     res.status(400).send(e);
   }
 });
 
-router.get("/all", async (req, res) => {
+router.put("/products/:id", async (req, res) => {
   try {
-    const products = await productModel.find({});
-    res.send(products);
-  } catch (e) {
-    res.status(400).send();
-  }
-});
+    const update = await productModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    update.save();
 
-router.get("/category/:value", async (req, res) => {
-  try {
-    const product = await productModel.find({
-      category: req.params.value,
-    });
-    if (!product) {
-      res.status(404).send("not found");
-    }
-    res.send(product);
+    res.send(update);
   } catch (e) {
-    res.status(400).send();
+    res.send(e);
   }
 });
 

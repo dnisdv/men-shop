@@ -6,13 +6,20 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
 const reviewRouter = require("./router/review");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
 
 require("./db/db.js");
 
-const app = express();
+const corsOptions = {
+  origin: "http://localhost:3000",
+  allowedHeaders: ["Content-Range", "content-type"],
+  exposedHeaders: ["Content-Range", "content-type"],
+};
 
+const app = express();
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -36,7 +43,7 @@ app.use(
 );
 
 app.use("/api/user/", userRouter);
-app.use("/api/product/", productRouter);
+app.use("/api", productRouter);
 app.use("/api/review/", reviewRouter);
 
 app.listen(PORT, () => console.log(`Server Started on port ${PORT}`));

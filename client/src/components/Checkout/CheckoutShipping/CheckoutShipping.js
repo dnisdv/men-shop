@@ -1,5 +1,4 @@
 import React from 'react'
-import DetailsPreview from '../CheckoutDetails/DetailsPreview/DetailsPreview'
 import './CheckoutShipping.css'
 
 const CheckoutShipping = ({bread, setbread}) => {
@@ -30,7 +29,6 @@ const CheckoutShipping = ({bread, setbread}) => {
     return(
         <div style={{display : bread['Shipping'].active ? 'flex' : 'none'}} className='CheckoutShipping'>
 
-            <DetailsPreview />
 
             <h1 className='CheckoutShipping_Title'>Shipping method</h1>
             <ul className='CheckoutShipping_List'>

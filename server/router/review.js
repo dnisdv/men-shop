@@ -1,8 +1,8 @@
 const express = require("express");
 const userModel = require("../models/user");
 const reviewModel = require("../models//review");
-const router = express.Router();
 const validator = require("../validation/validators");
+const router = express.Router();
 
 router.post("/add/:productId", validator.reviewValidator, async (req, res) => {
   const exampleUser = await userModel.findById("5e986e3e223b223f25bd5ac0");
