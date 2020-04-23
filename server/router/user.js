@@ -4,7 +4,7 @@ const reviewModel = require("../models/review");
 const router = express.Router();
 const validator = require("../validation/validators");
 
-router.post("/register", validator.signupValidator, async (req, res) => {
+router.post("/users/register", validator.signupValidator, async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const newUser = new userModel({ username, email, password });
@@ -15,7 +15,7 @@ router.post("/register", validator.signupValidator, async (req, res) => {
   }
 });
 
-router.post("/login", (req, res) => {
+router.post("/users/login", (req, res) => {
   const { email, password } = req.body;
   try {
     userModel.findByCredentials(email, password, (err, user) => {
@@ -30,7 +30,7 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.post("/logout", async (req, res) => {
+router.post("/users/logout", async (req, res) => {
   try {
     res.send("hell");
   } catch (e) {
@@ -38,7 +38,7 @@ router.post("/logout", async (req, res) => {
   }
 });
 
-router.delete("/remove/:id", async (req, res) => {
+router.delete("/users/:id", async (req, res) => {
   try {
     await reviewModel.deleteMany({ user: "5e9854057176db24db2ed4e5" });
     const user = await userModel.findOneAndDelete(req.params.id);
@@ -48,6 +48,51 @@ router.delete("/remove/:id", async (req, res) => {
     res.send(user);
   } catch (e) {
     res.status(400).send(e);
+  }
+});
+
+router.post("/users", async (req, res) => {
+  try {
+    const user = await new userModel(req.body);
+    user.save();
+    res.send(user);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+router.get("/users", async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    if (!users) return res.send("no users found");
+    const usersLength = users.length;
+    res.set("Content-Range", `products 0-24/${usersLength}`).send(users);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+router.get("/users/:id", async (req, res) => {
+  try {
+    const user = await userModel.findById({ _id: req.params.id });
+    if (!user) return res.send("User not found");
+    res.send(user);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+router.put("/users/:id", async (req, res) => {
+  try {
+    const update = await userModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+    update.save();
+
+    res.send(update);
+  } catch (e) {
+    res.send(e);
   }
 });
 

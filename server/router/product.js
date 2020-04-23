@@ -1,10 +1,10 @@
 const express = require("express");
 const productModel = require("../models/product");
 const reviewModel = require("../models/review");
-const validator = require("../validation/validators");
+// const validator = require("../validation/validators");
 const router = express.Router();
 
-//Creat product
+//Create product
 router.post("/products", async (req, res) => {
   try {
     console.log(req.body);
@@ -56,7 +56,6 @@ router.get("/products", async (req, res) => {
     }
     const products = await productModel.find({});
     const productsLenght = products.length;
-    // console.log(products.length);
     res.set("Content-Range", `products 0-24/${productsLenght}`).send(products);
   } catch (e) {
     res.status(400).send(e);

@@ -18,7 +18,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import AdminPanel from './Pages/AdminPanel/AdminPanel';
+import AdminPage from './Pages/AdminPage/AdminPage';
 
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
         </div>
       </ThemeContext.Provider> */}
 
-      <AdminPanel />
+      <AdminPage />
     </Router>
 
   );

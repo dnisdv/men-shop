@@ -14,8 +14,8 @@ require("./db/db.js");
 
 const corsOptions = {
   origin: "http://localhost:3000",
-  allowedHeaders: ["Content-Range", "content-type"],
-  exposedHeaders: ["Content-Range", "content-type"],
+  allowedHeaders: ["content-range", "content-type"],
+  exposedHeaders: ["content-range", "content-type"],
 };
 
 const app = express();
@@ -42,8 +42,8 @@ app.use(
   })
 );
 
-app.use("/api/user/", userRouter);
+app.use("/api", userRouter);
 app.use("/api", productRouter);
-app.use("/api/review/", reviewRouter);
+app.use("/api", reviewRouter);
 
 app.listen(PORT, () => console.log(`Server Started on port ${PORT}`));
