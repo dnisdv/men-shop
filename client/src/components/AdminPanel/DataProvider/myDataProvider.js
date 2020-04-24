@@ -2,6 +2,7 @@ import { fetchUtils}  from 'ra-core';
 import axios from 'axios'
 
 export default (apiUrl, httpClient = fetchUtils.fetchJson) => ({
+    
     getList: (resource, params) => {
         // const { page, perPage } = params.pagination;
         // const { field, order } = params.sort;
@@ -11,9 +12,8 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => ({
         //     filter: JSON.stringify(params.filter),
         // };
         const url = `${apiUrl}/${resource}`;
-
+        console.log(url)
         return axios.get(url).then(({data, headers}) => {
-            console.log(data)
             console.log(headers)
             if (!headers.hasOwnProperty('content-range')) {
                 throw new Error(

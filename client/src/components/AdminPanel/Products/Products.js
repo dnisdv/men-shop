@@ -1,6 +1,8 @@
 import React from 'react';
 // import { List, Datagrid, DateField, TextField, EditButton} from 'react-admin';
-import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, TextInput, DateInput } from 'react-admin';
+import { List, Datagrid, Edit, Create, SimpleForm, DateField, TextField, EditButton, TextInput, DateInput,
+    SelectInput,ReferenceInput,
+    ReferenceField } from 'react-admin';
 
 export const ProductsList = (props) => {
     console.log(props)
@@ -8,7 +10,6 @@ export const ProductsList = (props) => {
     <List {...props}>
         <Datagrid>
             <TextField source="id" />
-            <TextField source="category" />
             <TextField source="title" />
             <DateField source="created_at" />
             <TextField source="rate" />
@@ -24,9 +25,8 @@ const ProductsTitle = ({ record }) => {
 };
 
 export const ProductsEdit = (props) => (
-    <Edit title={<ProductsTitle />} {...props}>
+    <Edit {...props}>
         <SimpleForm>
-            <TextInput disabled source="id" />
             <TextInput source="title" />
         </SimpleForm>
     </Edit>
@@ -36,6 +36,9 @@ export const ProductsCreate = (props) => (
     <Create title="Create a Product" {...props}>
         <SimpleForm>
             <TextInput source="title" />
+            <ReferenceInput source="ProductTitle" reference="api/category">
+                <SelectInput optionText="title" />
+            </ReferenceInput>
         </SimpleForm>
     </Create>
 );

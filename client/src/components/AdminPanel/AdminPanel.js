@@ -11,9 +11,12 @@ const AdminPanel = () => {
 
     return(
         <Admin dataProvider={myDataProvider('http://localhost:5000')}>
-            <Resource name="api/products" options={{ label: 'Products' }} edit={ProductsList} create={ProductsCreate} list={ProductsEdit} />
+            <Resource name="api/products" options={{ label: 'Products' }} edit={ProductsEdit} create={ProductsCreate} list={ProductsList} />
             <Resource name="api/reviews" options={{ label: 'Reviews' }} edit={ReviewEdit} create={ReviewCreate} list={ReviewList} />
             <Resource name="api/users" options={{ label: 'Users' }} edit={ReviewEdit} create={ReviewCreate} list={ReviewList} />
+            <Resource name="api/category" options={{ label: 'Category' }} edit={ReviewEdit} create={ReviewCreate} list={ReviewList} />      
+            <Resource name="api/order" options={{ label: 'Order' }} edit={ReviewEdit} create={ReviewCreate} list={ReviewList} /> 
+
         </Admin>
     )
 }

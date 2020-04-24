@@ -2,10 +2,12 @@ const express = require("express");
 require("dotenv").config({ path: "./config/.env" });
 const userRouter = require("./router/user");
 const productRouter = require("./router/product");
+const reviewRouter = require("./router/review");
+const categoryRouter = require("./router/category");
+const orderRouter = require("./router/order");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
-const reviewRouter = require("./router/review");
 const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
@@ -45,5 +47,7 @@ app.use(
 app.use("/api", userRouter);
 app.use("/api", productRouter);
 app.use("/api", reviewRouter);
+app.use("/api", categoryRouter);
+app.use("/api", orderRouter);
 
 app.listen(PORT, () => console.log(`Server Started on port ${PORT}`));

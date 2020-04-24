@@ -4,11 +4,11 @@ const reviewModel = require("../models/review");
 // const validator = require("../validation/validators");
 const router = express.Router();
 
-//Create product
+//Create product3
 router.post("/products", async (req, res) => {
   try {
     console.log(req.body);
-    const product = await productModel(req.body);
+    const product = await new productModel(req.body);
     product.save();
 
     res.send(product);
