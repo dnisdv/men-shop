@@ -1,32 +1,47 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    trim: true,
-  },
-  email: {
-    type: String,
-    unique: true,
-    trim: true,
-    lowercase: true,
-  },
-  password: {
-    type: String,
-    trim: true,
-  },
-  age: {
-    type: Number,
-    default: 0,
-  },
-  orders: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      trim: true,
+      required: true,
+      unique: true,
     },
-  ],
-});
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+    password: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    age: {
+      type: Number,
+      default: 0,
+    },
+    orders: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "order",
+      },
+    ],
+    created_at: {
+      type: Date,
+    },
+    updated_at: {
+      type: Date,
+    },
+  },
+  {
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
+  }
+);
 
 userSchema.statics.findByCredentials = async (email, password, cb) => {
   const user = await User.findOne({

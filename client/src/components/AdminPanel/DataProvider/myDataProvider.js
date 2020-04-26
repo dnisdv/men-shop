@@ -1,5 +1,6 @@
 import { fetchUtils}  from 'ra-core';
 import axios from 'axios'
+import convertFileToBase64 from '../../../utils/converFIleToBase64'
 
 export default (apiUrl, httpClient = fetchUtils.fetchJson) => ({
     
@@ -47,16 +48,6 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => ({
     },
 
     getManyReference: (resource, params) => {
-        // const { page, perPage } = params.pagination;
-        // const { field, order } = params.sort;
-        // const query = {
-        //     sort: JSON.stringify([field, order]),
-        //     range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-        //     filter: JSON.stringify({
-        //         ...params.filter,
-        //         [params.target]: params.id,
-        //     }),
-        // };
         const url = `${apiUrl}/${resource}`;
 
         return axios.get(url).then(({ data, headers }) => {
@@ -91,13 +82,42 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => ({
             )
         ).then(responses => ({ data: responses.map(({ json }) => json._id) })),
 
-    create: (resource, params) =>
-        axios.post(`${apiUrl}/${resource}`, 
-            params.data
-        ).then(({ data }) => ({
-            data: { ...params.data, id: data._id },
+
+    create: (resource, params) =>{
+
+        const createFunction = (apiUrl, resource, images = null ) => {
+            return axios.post(`${apiUrl}/${resource}`, {
+                ...params.data,
+                images : images
+            })
+            .then(({ data }) => ({
+                data: { ...params.data, 
+                        id: data._id,
+                      },
+            }))
         }
-        )),
+
+        if(params.data.images){
+            const newPictures = params.data.images.filter(
+                p => p.rawFile instanceof File
+            );
+
+            return Promise.all(newPictures.map(convertFileToBase64))
+            .then(base64Pictures =>
+                base64Pictures.map(picture64 => ({
+                    src: picture64,
+                }))
+            ).then( (res) => {
+                return createFunction(apiUrl, resource, res)
+            })
+        }
+
+        return createFunction(apiUrl, resource)
+
+    },
+
+
+
 
     delete: (resource, params) =>
         axios.delete(`${apiUrl}/${resource}/${params.id}`)

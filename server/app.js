@@ -9,7 +9,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000;
 
 require("./db/db.js");
@@ -22,6 +22,10 @@ const corsOptions = {
 
 const app = express();
 app.use(cors(corsOptions));
+
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

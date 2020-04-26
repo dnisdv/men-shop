@@ -1,72 +1,80 @@
 const mongoose = require("mongoose");
 
-const productSchema = new mongoose.Schema({
-  category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
-    // required: true,
-  },
-  title: {
-    type: String,
-    // required: true,
-  },
-  quick_description: {
-    type: String,
-    // required: true,
-  },
-  description: {
-    type: String,
-    // required: true,
-    lowercase: true,
-  },
-  characteristics: [
-    {
-      title: {
-        type: String,
-      },
-      value: {
-        type: String,
-      },
+const productSchema = new mongoose.Schema(
+  {
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
     },
-  ],
-  rate: {
-    type: Number,
-    // required: true,
-  },
-  stock: [
-    {
-      title: {
-        type: String,
-      },
-      qnt: {
-        type: Number,
-        // required: true,
-      },
+    title: {
+      type: String,
+      required: true,
     },
-  ],
-  price: {
-    type: Number,
-    // required: true,
-  },
-  shipping_price: {
-    type: Number,
-    // required: true,
-  },
-  images: [
-    {
-      url: {
-        type: String,
-      },
+    quick_description: {
+      type: String,
+      required: true,
     },
-  ],
-  created_at: {
-    type: Date,
+    description: {
+      type: String,
+      required: true,
+    },
+    characteristics: [
+      {
+        title: {
+          type: String,
+        },
+        value: {
+          type: String,
+        },
+      },
+    ],
+    rate: {
+      type: Number,
+      required: true,
+    },
+    stock: [
+      {
+        title: {
+          type: String,
+        },
+        qnt: {
+          type: Number,
+          required: true,
+        },
+      },
+    ],
+    price: {
+      type: Number,
+      required: true,
+    },
+    shipping_price: {
+      type: Number,
+      required: true,
+    },
+    images: [
+      {
+        src: {
+          type: String,
+        },
+        rawFile: {
+          type: Object,
+        },
+        title: {
+          type: String,
+        },
+      },
+    ],
+    created_at: {
+      type: Date,
+    },
+    updated_at: {
+      type: Date,
+    },
   },
-  updated_at: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  {
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
+  }
+);
 
 const Product = mongoose.model("Product", productSchema);
 

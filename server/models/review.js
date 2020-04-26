@@ -1,35 +1,46 @@
 const mongoose = require("mongoose");
 
-const reviewSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+const reviewSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    title: {
+      type: String,
+      require: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    rate: {
+      type: Number,
+      default: 0,
+    },
+    likes: {
+      type: Number,
+      default: 0,
+    },
+    dislikes: {
+      type: Number,
+      default: 0,
+    },
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+    created_at: {
+      type: Date,
+    },
+    updated_at: {
+      type: Date,
+    },
   },
-  title: {
-    type: String,
-    // require: true,
-  },
-  description: {
-    type: String,
-    // required: true,
-  },
-  rate: {
-    type: Number,
-    default: 0,
-  },
-  likes: {
-    type: Number,
-    default: 0,
-  },
-  dislikes: {
-    type: Number,
-    default: 0,
-  },
-  product: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
-  },
-});
+  {
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
+  }
+);
 
 const Review = mongoose.model("Review", reviewSchema);
 
