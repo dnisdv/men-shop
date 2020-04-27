@@ -88,7 +88,7 @@ router.put("/users/:id", async (req, res) => {
       { _id: req.params.id },
       req.body
     );
-    update.save();
+    await update.save();
 
     res.send(update);
   } catch (e) {

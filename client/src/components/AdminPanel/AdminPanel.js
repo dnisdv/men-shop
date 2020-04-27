@@ -5,7 +5,10 @@ import { Admin, Resource } from 'react-admin';
 import { cartIcon, categoryIcon, productsIcon, reviewsIcon, usersIcons } from './assests/icons'
 
 import {ProductList, ProductEdit, ProductCreate} from './Products'
-import {ReviewList, ReviewEdit, ReviewCreate} from './Reviews/Reviews'
+import {ReviewList, ReviewEdit, ReviewCreate} from './Reviews'
+import {UserList, UserEdit, UserCreate} from './Users'
+import {CategoryList, CategoryEdit, CategoryCreate} from './Category'
+import {OrderList, OrderEdit, OrderCreate} from './Order'
 import myDataProvider from './DataProvider/myDataProvider' 
 
 import Dashboard from './Dashboard/Dashboard'
@@ -26,19 +29,19 @@ const AdminPanel = () => {
                 list={ReviewList} 
                 icon={ () =><img src={reviewsIcon} alt='reviewsIcon' width='20px' height='20px' />} />
             <Resource name="api/users" options={{ label: 'Users' }} 
-                edit={ReviewEdit} 
-                create={ReviewCreate} 
-                list={ReviewList} 
+                edit={UserEdit} 
+                create={UserCreate} 
+                list={UserList} 
                 icon={ () =><img src={usersIcons} alt='usersIcon' width='20px' height='20px' />} />
             <Resource name="api/category" options={{ label: 'Category' }} 
-                edit={ReviewEdit} 
-                create={ReviewCreate} 
-                list={ReviewList} 
+                edit={CategoryEdit} 
+                create={CategoryCreate} 
+                list={CategoryList} 
                 icon={ () =><img src={categoryIcon} alt='categoryIcon' width='20px' height='20px' />} />      
-            <Resource name="api/order" options={{ label: 'Order' }} 
-                edit={ReviewEdit} 
-                create={ReviewCreate} 
-                list={ReviewList} 
+            <Resource name="api/orders" options={{ label: 'Orders' }} 
+                edit={OrderEdit} 
+                create={OrderCreate} 
+                list={OrderList} 
                 icon={ () =><img src={cartIcon} alt='cartIcon' width='20px' height='20px' />} /> 
         </Admin>
     )

@@ -4,7 +4,7 @@ import { List, Datagrid, DateField, TextField,
 
 export default (props) => {
     return(
-    <List {...props}>
+    <List title="Product List" {...props}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="title" />

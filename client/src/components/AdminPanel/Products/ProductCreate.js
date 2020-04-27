@@ -2,7 +2,7 @@ import React from 'react';
 import {  Create, 
     TextInput, SelectInput,ReferenceInput,
     ArrayInput , SimpleFormIterator , NumberInput, TabbedForm, FormTab, ImageInput, ImageField, required } from 'react-admin';
-    import RichTextInput from 'ra-input-rich-text';
+import RichTextInput from 'ra-input-rich-text';
 
 
 export default(props) => (
@@ -41,8 +41,9 @@ export default(props) => (
             </ArrayInput>
             <NumberInput className='PriceNumber' source='price' validate={required()} />
             <NumberInput source='shipping_price' validate={required()} />
+
         </FormTab>
-        <FormTab label="Descriptions" validate={required()} >
+        <FormTab label="Descriptions" >
             <RichTextInput multiline toolbar={[ ['bold', 'italic', 'underline', 'link'] ]} source="description" />
         </FormTab>
         </TabbedForm>

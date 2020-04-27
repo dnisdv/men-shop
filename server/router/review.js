@@ -1,19 +1,16 @@
 const express = require("express");
 // const userModel = require("../models/user");
 const reviewModel = require("../models//review");
-const validator = require("../validation/validators");
 const router = express.Router();
 
-router.post("/reviews/:id", validator.reviewValidator, async (req, res) => {
-  // const exampleUser = await userModel.findById("5e986e3e223b223f25bd5ac0");
+router.post("/reviews", async (req, res) => {
   try {
     const review = await new reviewModel({
       ...req.body,
-      // user: exampleUser._id,
-      product: req.params.id,
     });
     if (!review) return res.status(400).send();
-    if (!req.params.id) return res.status(404).send("target not found");
+    if (!req.body.user || !req.body.product)
+      return res.status(404).send("target not found");
     await review.save();
     res.send(review);
   } catch (e) {
@@ -39,6 +36,20 @@ router.get("/reviews/:id", async (req, res) => {
       res.send("not reviews yet");
     }
     res.send(reviews);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+router.put("/reviews/:id", async (req, res) => {
+  try {
+    const update = await reviewModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body
+    );
+
+    update.save();
+    res.send(update);
   } catch (e) {
     res.send(e);
   }

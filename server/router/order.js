@@ -2,7 +2,7 @@ const express = require("express");
 const orderModel = require("../models/order");
 const router = express.Router();
 
-router.post("/order", async (req, res) => {
+router.post("/orders", async (req, res) => {
   try {
     const order = await new orderModel(req.body);
     order.save();
@@ -12,7 +12,7 @@ router.post("/order", async (req, res) => {
   }
 });
 
-router.get("/order", async (req, res) => {
+router.get("/orders", async (req, res) => {
   try {
     const orders = await orderModel.find({});
     const ordersLength = orders.length;
@@ -22,7 +22,7 @@ router.get("/order", async (req, res) => {
   }
 });
 
-router.get("/order/:id", async (req, res) => {
+router.get("/orders/:id", async (req, res) => {
   try {
     const order = await orderModel.find({ _id: req.params.id });
     res.send(order);
@@ -31,7 +31,7 @@ router.get("/order/:id", async (req, res) => {
   }
 });
 
-router.put("/order/:id", async (req, res) => {
+router.put("/orders/:id", async (req, res) => {
   try {
     const update = await orderModel.findOneAndUpdate(
       { _id: req.params.id },
@@ -45,9 +45,10 @@ router.put("/order/:id", async (req, res) => {
   }
 });
 
-router.delete("/order/:id", async (req, res) => {
+router.delete("/orders/:id", async (req, res) => {
   try {
-    const order = await orderModel.find({ _id: req.params.id });
+    const order = await orderModel.findByIdAndRemove({ _id: req.params.id });
+    order.save();
     res.send(order);
   } catch (e) {
     res.status(404).send("Not found");

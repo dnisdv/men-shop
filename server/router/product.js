@@ -3,10 +3,9 @@ const productModel = require("../models/product");
 const reviewModel = require("../models/review");
 // const validator = require("../validation/validators");
 const router = express.Router();
-const validator = require("../validation/validators");
 
 //Create product3
-router.post("/products", validator.productValidator, async (req, res) => {
+router.post("/products", async (req, res) => {
   try {
     const product = await new productModel(req.body);
     product.save();

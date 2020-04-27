@@ -25,7 +25,6 @@ router.get("/category", async (req, res) => {
 router.get("/category/:id", async (req, res) => {
   try {
     const category = await categoryModel.find({ _id: req.params.id });
-    console.log(category);
     res.send(category);
   } catch (e) {
     res.status(404).send("Not found");
@@ -48,8 +47,10 @@ router.put("/category/:id", async (req, res) => {
 
 router.delete("/category/:id", async (req, res) => {
   try {
-    const category = await categoryModel.find({ _id: req.params.id });
-    console.log(category);
+    const category = await categoryModel.findByIdAndRemove({
+      _id: req.params.id,
+    });
+    category.save();
     res.send(category);
   } catch (e) {
     res.status(404).send("Not found");
