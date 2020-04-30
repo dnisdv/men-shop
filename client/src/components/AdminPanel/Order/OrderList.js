@@ -2,7 +2,6 @@ import React from 'react';
 import {List, Datagrid, TextField, DateField, EditButton, ReferenceField} from 'react-admin'
 
 export default (props) => {
-    console.log(props)
     return(
     <List title="User List" {...props}>
         <Datagrid>

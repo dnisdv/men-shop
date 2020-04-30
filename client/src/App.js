@@ -10,7 +10,8 @@ import CartPage from './Pages/CartPage/CartPage'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
 import {themes, ThemeContext} from './Context/theme-context'
 
-
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 
 import {
@@ -35,26 +36,26 @@ function App() {
   const footerRef = useRef()
 
   return (
-    
-    <Router>
-      {/* <ThemeContext.Provider value={themeHandler}>
-        <div style={{ backgroundColor: themeHandler.background }} className="App">
-            <Header headerRef={headerRef} />
-            <Switch>
-              <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
-              <Route path='/cart' component={CartPage} />
-              <Route path='/auth' component={AuthPage} />
-              <Route path="/product" component={ProductPage} />
-              <Route path="/products" component={ProductsPage} />
-              <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />
-            </Switch>
-            <Footer footerRef={footerRef} />
-        </div>
-      </ThemeContext.Provider> */}
+    <Provider store={store}>
+      <Router>
+        <ThemeContext.Provider value={themeHandler}>
+          <div style={{ backgroundColor: themeHandler.background }} className="App">
+              <Header headerRef={headerRef} />
+              <Switch>
+                <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
+                <Route path='/cart' component={CartPage} />
+                <Route path='/auth' component={AuthPage} />
+                <Route path="/product" component={ProductPage} />
+                <Route path="/products" component={ProductsPage} />
+                <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />
+              </Switch>
+              <Footer footerRef={footerRef} />
+          </div>
+        </ThemeContext.Provider>
 
-      <AdminPage />
-    </Router>
-
+        {/* <Route path="/admin" component={ProductPage} /><AdminPage /> */}
+      </Router>
+    </Provider>
   );
 }
 

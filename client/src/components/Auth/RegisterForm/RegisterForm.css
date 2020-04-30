@@ -24,6 +24,20 @@
     color:white;
     cursor: pointer;
 }
+.RegisterForm_Input_Error{
+    border :1px solid red;
+}
+.RegisterForm_Input_Feedback::before{
+    content:"*"
+}
+.RegisterForm_Input_Feedback{
+    color:red;
+    font-size: 14px;
+    margin-top:3px;
+}
+.RegisterForm_Button:disabled{
+    opacity: .5;
+}
 @media (min-width: 950px) { 
     .RegisterForm_Input{
         margin-top:20px;

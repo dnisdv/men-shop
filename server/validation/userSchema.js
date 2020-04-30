@@ -16,11 +16,9 @@ module.exports = Joi.object({
   password: Joi.string()
     .pattern(new RegExp("^[a-zа-яA-ZА-Я0-9!@#$%&*]{3,16}$"))
     .min(3)
-    .max(16)
     .required()
     .messages({
-      "string.pattern.base":
-        "Password must have min 3 character and 16 character max",
+      "string.pattern.base": "Password must have min 3 character",
       "string.empy": "Please enter password",
     }),
 

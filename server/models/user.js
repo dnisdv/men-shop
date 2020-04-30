@@ -55,7 +55,7 @@ userSchema.statics.findByCredentials = async (email, password, cb) => {
   if (!user) {
     return cb(
       {
-        msg: "User not found",
+        error: "User not found",
       },
       null
     );
@@ -66,7 +66,7 @@ userSchema.statics.findByCredentials = async (email, password, cb) => {
   if (!isMatch) {
     return cb(
       {
-        msg: "Password is not correct",
+        error: "Password is not correct",
       },
       null
     );

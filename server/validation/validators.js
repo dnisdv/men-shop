@@ -2,8 +2,9 @@ const userSchema = require("./userSchema");
 const reviewSchema = require("./reviewSchema");
 
 const signupValidator = (req, res, next) => {
+  console.log(req.body);
   const { error } = userSchema.validate(req.body);
-  if (error) return res.status(400).json({ error: error.details[0].message });
+  if (error) return res.status(400).send({ error: error.details[0].message });
   next();
 };
 
