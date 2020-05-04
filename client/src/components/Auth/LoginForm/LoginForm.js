@@ -1,32 +1,89 @@
-import React,{useState} from 'react'
+import React from 'react'
 import './LoginForm.css'
 import {connect} from 'react-redux'
 import{ loginUser } from '../../../actions/userActions'
+import { Formik } from 'formik';
+import * as Yup from 'yup'
+import { withRouter } from 'react-router';
 
-const LoginForm = ({loginUser}, props) => {
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const LoginHandler = () => {
-        loginUser({email, password}, props.history)
+const LoginForm = ({loginUser, history, user:{loading, error}}) => {
+    
+    const formValidation = () => {
+        return Yup.object().shape({
+            email: Yup.string()
+                .email("This must be an email")
+                .required("Required"),
+            password : Yup.string()
+                .required("Required")
+        })
     }
+    
 
     return(
         <div className='LoginForm'>
-            <form onSubmit={LoginHandler} className='LoginForm_Form'>
-                <input onChange={(e) => setEmail(e.target.value)} className='LoginForm_Input' placeholder='Email' type='text'name='email' />
-                <input onChange={(e) => setPassword(e.target.value)} className='LoginForm_Input' placeholder='Password' type='password' name='password' />
-            </form>
+            {error.login ? <span className='Auth_Error'>{error.login}</span> : null}
 
-            <button onClick={LoginHandler} className='LoginForm_Button'>Log In</button>
+<Formik
+            initialValues={{email: '', password: '' }}
+            validationSchema={formValidation}
+            onSubmit={(values) => {
+                loginUser(values, history)
+            }}
+            >
+            {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting,   
+            }) => (
+                <form className='LoginForm_Form' onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    placeholder="Email"
+                    className={
+                        errors.email && touched.email
+                          ? "LoginForm_Input LoginForm_Input_Error"
+                          : "LoginForm_Input"
+                      }
+                />
+                {errors.email && touched.email && (<div className='LoginForm_Input_Feedback'>{errors.email}</div>)}
+                <input
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.password}
+                    placeholder="Password"
+                    className={
+                        errors.password && touched.password
+                          ? "LoginForm_Input LoginForm_Input_Error"
+                          : "LoginForm_Input"
+                      }
+                />
+                {errors.password && touched.password && (<div className='LoginForm_Input_Feedback'>{errors.password}</div>)}
+                <button className='LoginForm_Button' type="submit" disabled={loading}>
+                    Submit
+                </button>
+                </form>
+            )}
+            </Formik>
+
         </div>
     )
 } 
+
 
 const mapStateToProps = (state) => ({
     user : state.user
   });
 
 
-export default connect(mapStateToProps,{loginUser})(LoginForm)
+export default withRouter(connect(mapStateToProps,{loginUser})(LoginForm));

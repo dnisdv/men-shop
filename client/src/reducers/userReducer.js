@@ -3,13 +3,19 @@ import {
     LOGIN_USER_ERROR,
     REGISTER_USER,
     REGISTER_USER_ERROR,
-    LOADING_UI
+    LOADING_USER,
+    CLEAR_USER_ERROR,
+    CHECK_USERNAME_EXIST,
   } from '../types'
   
   const initialState = {
     authenticated: false,
     loading: false,
-    error:{}
+    error:{
+      login:null,
+      register: null
+    },
+    usernameExist: false
   }
   
   export default function (state = initialState, action) {
@@ -24,7 +30,10 @@ import {
         return{
           ...state,
           loading:false,
-          error:action.payload,
+          error:{
+            ...state.error,
+            login: action.payload
+          }
         }
         case REGISTER_USER :
           return {
@@ -34,12 +43,29 @@ import {
         case REGISTER_USER_ERROR :
           return {
             ...state,
-            loading:false
+            loading:false,
+            error:{
+              ...state.error,
+              register: action.payload
+            }
           }
-        case LOADING_UI : 
+        case LOADING_USER : 
           return{
             ...state,
             loading:true
+          }
+        case CLEAR_USER_ERROR : 
+          return{
+            ...state,
+            error: {
+              user: null,
+              register: null
+            }
+          }
+        case CHECK_USERNAME_EXIST :
+          return{
+            ...state,
+            usernameExist: action.payload
           }
       default:
         return state

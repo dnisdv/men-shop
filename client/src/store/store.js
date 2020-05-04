@@ -11,8 +11,7 @@ const middleware = [thunk]
 
 const reducers = combineReducers({
   user: userReducer,
-//   data: dataReducer,
-//   UI: uiReducer,
+
 })
 
 const store = createStore(

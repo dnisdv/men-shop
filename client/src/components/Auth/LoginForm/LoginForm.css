@@ -25,6 +25,21 @@
     cursor: pointer;
 }
 
+.LoginForm_Input_Error{
+    border :1px solid red;
+}
+.LoginForm_Input_Feedback::before{
+    content:"*"
+}
+.LoginForm_Input_Feedback{
+    color:red;
+    font-size: 14px;
+    margin-top:3px;
+}
+.LoginForm_Button:disabled{
+    opacity: .5;
+}
+
 @media (min-width: 950px) { 
     .LoginForm_Input{
         margin-top:20px;

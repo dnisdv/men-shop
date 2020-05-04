@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import './RegisterForm.css'
 import {connect} from 'react-redux'
 // import validator from 'validator';
@@ -6,9 +6,10 @@ import { Formik } from 'formik';
 import { withRouter } from 'react-router';
 import * as Yup from 'yup'
 
-import {registerUser} from '../../../actions/userActions'
+import {registerUser, checkUsernameExist} from '../../../actions/userActions'
+import axios from 'axios';
 
-const RegisterForm = ({registerUser, user:{loading}, history}) => {
+const RegisterForm = ({registerUser,checkUsernameExist, user:{loading, usernameExist ,error}, history}) => {
 
 
     const formValidation = () => {
@@ -29,6 +30,8 @@ const RegisterForm = ({registerUser, user:{loading}, history}) => {
     return(
         <div className='RegisterForm'>
 
+            {error.register ? <span className='Auth_Error'>{error.register}</span> : null}
+
             <Formik
             initialValues={{username: '', email: '', password: '' }}
             validationSchema={formValidation}
@@ -46,10 +49,13 @@ const RegisterForm = ({registerUser, user:{loading}, history}) => {
                 isSubmitting,   
             }) => (
                 <form className='RegisterForm_Form' onSubmit={handleSubmit}>
-                <input
+                <input style={{ border: usernameExist === true ? '1px solid red' : "1px solid black"}}
                     type="text"
                     name="username"
-                    onChange={handleChange}
+                    onChange={(e) => {
+                        handleChange(e)
+                        checkUsernameExist(e.target.value)
+                    }}
                     onBlur={handleBlur}
                     value={values.username}
                     placeholder="Username"
@@ -59,6 +65,7 @@ const RegisterForm = ({registerUser, user:{loading}, history}) => {
                           : "RegisterForm_Input"
                       }
                 />
+                {usernameExist === true ? <div className='RegisterForm_Input_Feedback'>Username already exist</div> : null}
                 {errors.username && touched.username && (<div className='RegisterForm_Input_Feedback'>{errors.username}</div>)}
                 <input
                     type="email"
@@ -104,4 +111,4 @@ const mapStateToProps = (state) => ({
   });
 
 
-export default withRouter(connect(mapStateToProps,{registerUser})(RegisterForm))
+export default withRouter(connect(mapStateToProps,{checkUsernameExist,registerUser})(RegisterForm))

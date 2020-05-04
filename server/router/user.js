@@ -5,7 +5,6 @@ const router = express.Router();
 // const validator = require("../validation/validators");
 
 router.post("/users/register", async (req, res) => {
-  console.log(req.body);
   const { username, email, password } = req.body;
 
   try {
@@ -21,27 +20,24 @@ router.post("/users/register", async (req, res) => {
     await newUser.save();
     res.send(newUser);
   } catch (e) {
-    res.send(e);
+    res.status(500).send(e);
   }
 });
 
 router.post("/users/login", (req, res) => {
   const { email, password } = req.body;
-  console.log(req.session);
-  req.session.hell = "HELL";
   try {
     const UserData = userModel.findByCredentials(email, password, (err) => {
       if (err) {
-        return res.send(err);
+        return res.status(404).send(err);
       }
 
       req.session.id = UserData._id;
-      console.log("HEELLL");
 
       res.send(UserData._id);
     });
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).send(error);
   }
 });
 
@@ -72,7 +68,7 @@ router.post("/users", async (req, res) => {
     user.save();
     res.send(user);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(500).send(e);
   }
 });
 
@@ -83,7 +79,7 @@ router.get("/users", async (req, res) => {
     const usersLength = users.length;
     res.set("Content-Range", `products 0-24/${usersLength}`).send(users);
   } catch (e) {
-    res.send(e);
+    res.status(500).send(e);
   }
 });
 
@@ -93,7 +89,7 @@ router.get("/users/:id", async (req, res) => {
     if (!user) return res.send("User not found");
     res.send(user);
   } catch (e) {
-    res.send(e);
+    res.status(500).send(e);
   }
 });
 
@@ -107,7 +103,19 @@ router.put("/users/:id", async (req, res) => {
 
     res.send(update);
   } catch (e) {
-    res.send(e);
+    res.status(500).send(e);
+  }
+});
+
+router.post("/users/checkusername", async (req, res) => {
+  console.log(req.body);
+  try {
+    const existUsername = await userModel.exists({
+      username: req.body.username,
+    });
+    res.send(existUsername);
+  } catch (e) {
+    res.status(500).send(e);
   }
 });
 

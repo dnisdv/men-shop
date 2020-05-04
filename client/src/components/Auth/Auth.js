@@ -2,9 +2,12 @@ import React,{useState} from 'react'
 import './Auth.css'
 import LoginForm from './LoginForm/LoginForm'
 import RegisterForm from './RegisterForm/RegisterForm'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router';
 
 
-const Auth = () => {
+
+const Auth = ({ user : {error}}) => {
 
     const [ActiveForm, setActiveForm] = useState('login')
 
@@ -36,5 +39,9 @@ const Auth = () => {
         </div>
     )
 }
+const mapStateToProps = (state) => ({
+    user : state.user
+  });
 
-export default Auth
+
+export default withRouter(connect(mapStateToProps)(Auth))

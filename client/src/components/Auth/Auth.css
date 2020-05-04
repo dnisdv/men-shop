@@ -52,6 +52,11 @@
 .Auth_Socials{
     margin-top:50px;
 }
+.Auth_Error{
+    display: block;
+    margin-top:20px;
+    color:red
+}
 
 @media (min-width: 950px) { 
     .Auth{
