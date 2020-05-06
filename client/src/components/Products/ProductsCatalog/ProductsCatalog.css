@@ -11,11 +11,13 @@
     font-size: 14px;
     margin-bottom: 11px;
     display: none;
+    cursor: pointer;
 }
 .ProductsCatalog_List_Item{
     font-size: 18px;
     margin-top:22px;
     color:#929292;
+    cursor: pointer;
 }
 .ProductsCatalog_List_Item_Link{
     color:inherit;
@@ -64,7 +66,14 @@
 .ProductsCatalog.CatalogOpen > .ProductsCatalog_Modal_BG{
     display: block;
 }
-
+.ProductsCatalog_List_Item_ACTIVE{
+    color:black;
+}
+.ProductsCatalog_List_Item_ACTIVE::before{
+    content:"";
+    margin-right: 5px;
+    border:2px solid black;
+}
 
 @media (min-width: 950px) { 
     .ProductsCatalog{
@@ -97,5 +106,8 @@
         background: none;
         top:0;
         left:0;
+    }
+    .ProductsCatalog_List_Item_ACTIVE{
+        color:black;
     }
 }

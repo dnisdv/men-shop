@@ -53,9 +53,10 @@ function App() {
           </div>
         </ThemeContext.Provider>
 
-        {/* <Route path="/admin" component={ProductPage} /><AdminPage /> */}
       </Router>
     </Provider>
+            // <AdminPage />
+
   );
 }
 

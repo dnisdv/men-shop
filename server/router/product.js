@@ -43,6 +43,33 @@ router.delete("/products/:id", async (req, res) => {
 //get many products && get products by filter
 router.get("/products", async (req, res) => {
   try {
+    if (req.query.category) {
+      return await productModel
+        .find({}, "title category quick_description price images")
+        .populate({
+          path: "category",
+          select: "title",
+        })
+        .exec((err, preview) => {
+          preview = preview.filter((item) => {
+            return item.category.title === req.query.category;
+          });
+          if (err) return res.status(500).send(err);
+
+          return res.send(preview);
+        });
+    }
+    if (req.query.preview) {
+      return await productModel
+        .find({}, "title category quick_description price images")
+        .populate({ path: "category", select: "title" })
+        .exec((err, preview) => {
+          if (err) res.status(500).send(err);
+          res.send(preview);
+        });
+
+      // res.send(preview);
+    }
     if (req.query.filter) {
       const filter = JSON.parse(req.query.filter);
       const records = await productModel
@@ -53,6 +80,7 @@ router.get("/products", async (req, res) => {
       if (!records) return res.status(404).send("Nothing found");
       return res.send(records);
     }
+
     const products = await productModel.find({});
     const productsLenght = products.length;
     res.set("Content-Range", `products 0-24/${productsLenght}`).send(products);

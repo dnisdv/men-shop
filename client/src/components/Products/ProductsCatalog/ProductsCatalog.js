@@ -1,36 +1,61 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import './ProductsCatalog.css'
+import {connect} from 'react-redux'
+import {get_category, get_productsByCategory, get_products} from '../../../actions/productsActions'
 
 import { Link } from 'react-router-dom'
 
-const ProductsCatalog = () => {
+const ProductsCatalog = ({get_category, get_productsByCategory, get_products, products: {activeCategory,category}}) => {
 
     const [catalogOpen, setcatalogOpen] = useState(false)
 
     const mobileCatalogHandler = (e) => {
         setcatalogOpen(!catalogOpen)
     }
+    
+    const [Active, setActive] = useState()
 
+    useEffect(() => {
+        get_category()
+    }, [activeCategory, get_category])
+
+    const selectCategory = (e, id) => {
+        get_productsByCategory(e.target.dataset.name)
+        setActive(id)
+        
+    }
+    const selectAllCategory = (e) => {
+        get_products()
+        setActive(null)
+    }
 
     return(
+        
             <div className={`ProductsCatalog ${catalogOpen ? 'CatalogOpen' : ''}`}>
-                <h2 className='ProductsCatalog_Title'>Products</h2>
+                <h2 onClick={selectAllCategory} className='ProductsCatalog_Title'>Products</h2>
                 <button onClick={mobileCatalogHandler} className='ProductsCatalog_Title-Mobile'>Products</button>
 
             <div className='ProductsCatalog_Modal_BG'></div>
             <div className='ProductsCatalog_Modal'>
                 <ul className='ProductsCatalog_List'>
-                    <li className='ProductsCatalog_List_Item'><Link to='#' className='ProductsCatalog_List_Item_Link'>Watches</Link></li>
-                    <li className='ProductsCatalog_List_Item'><Link to='#' className='ProductsCatalog_List_Item_Link'>Sunglasses</Link></li>
-                    <li className='ProductsCatalog_List_Item'><Link to='#' className='ProductsCatalog_List_Item_Link'>Wallets</Link></li>
-                    <li className='ProductsCatalog_List_Item'><Link to='#' className='ProductsCatalog_List_Item_Link'>Backpacks</Link></li>
-                    <li className='ProductsCatalog_List_Item'><Link to='#' className='ProductsCatalog_List_Item_Link'>For Womens</Link></li>
-                    <li className='ProductsCatalog_List_Item'><Link to='#' className='ProductsCatalog_List_Item_Link'>For Mens</Link></li>
-                    <li className='ProductsCatalog_List_Item'><Link to='#' className='ProductsCatalog_List_Item_Link'>Accesories</Link></li>
+                    {category ? category.map( (i) => 
+                        <li 
+                            key={i._id} 
+                            onClick={(e) => selectCategory(e, i._id)}
+                            data-name={i.title}
+                            className={`ProductsCatalog_List_Item ${Active === i._id ? 'ProductsCatalog_List_Item_ACTIVE': '' }`}>
+                            {i.title}</li>)
+                    : null }
                 </ul>
             </div>
             </div>
+        
     )
 }
 
-export default ProductsCatalog
+const mapStateToProps = (state) => ({
+    products : state.products
+  });
+
+
+export default connect(mapStateToProps, {get_category,get_products, get_productsByCategory})(ProductsCatalog)

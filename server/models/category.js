@@ -7,6 +7,10 @@ const categorySchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    label: {
+      type: String,
+      require: true,
+    },
     created_at: {
       type: Date,
     },
