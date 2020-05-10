@@ -5,7 +5,11 @@ import {  Create,
 import RichTextInput from 'ra-input-rich-text';
 
 
-export default(props) => (
+export default(props) => {
+
+    const isRequired = false
+    return(
+    
     <Create title="Create a Product" {...props}>
         <TabbedForm>
         <FormTab label="Images">
@@ -14,11 +18,11 @@ export default(props) => (
             </ImageInput>
         </FormTab>
         <FormTab label="Details">
-            <ReferenceInput source="category" reference="api/category" validate={required()}>
+            <ReferenceInput source="category" reference="api/category" validate={isRequired}>
                 <SelectInput optionText="title" />
             </ReferenceInput>
-            <TextInput fullWidth multiline source="title" validate={required()} />
-            <TextInput fullWidth multiline source="quick_description" validate={required()} />
+            <TextInput fullWidth multiline source="title" validate={isRequired} />
+            <TextInput fullWidth multiline source="quick_description" validate={isRequired} />
             <ArrayInput source="characteristics">
                 <SimpleFormIterator >
                     <TextInput fullWidth multiline label="Title" source="title" />
@@ -36,11 +40,16 @@ export default(props) => (
             <ArrayInput source="stock">
                 <SimpleFormIterator>
                     <TextInput label="Title" source="title" />
-                    <NumberInput label="Quantity" source="qnt" />
+                    <ArrayInput source="data">
+                    <SimpleFormIterator>
+                        <TextInput label="Value" source="value" />
+                        <NumberInput label="Quantity" source="qnt" />
+                    </SimpleFormIterator>
+                    </ArrayInput>
                 </SimpleFormIterator>
             </ArrayInput>
-            <NumberInput className='PriceNumber' source='price' validate={required()} />
-            <NumberInput source='shipping_price' validate={required()} />
+            <NumberInput className='PriceNumber' source='price' validate={isRequired} />
+            <NumberInput source='shipping_price' validate={isRequired} />
 
         </FormTab>
         <FormTab label="Descriptions" >
@@ -48,4 +57,5 @@ export default(props) => (
         </FormTab>
         </TabbedForm>
     </Create>
-);
+)
+            }

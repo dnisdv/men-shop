@@ -64,4 +64,31 @@ router.delete("/reviews/:id", async (req, res) => {
   }
 });
 
+router.get("/reviews/product/:id", async (req, res) => {
+  const { page = 1, limit = 3 } = req.query;
+
+  try {
+    const reviews = await reviewModel
+      .find({ product: req.params.id })
+      .populate({ path: "user", select: "username" })
+      .limit(limit * 1)
+      .skip(page * limit);
+
+    const count = await reviewModel
+      .find({ product: req.params.id })
+      .countDocuments();
+
+    if (!reviews) res.send("no reviews");
+
+    res.send({
+      reviews,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+      totalReviews: count,
+    });
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
 module.exports = router;

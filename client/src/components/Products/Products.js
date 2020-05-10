@@ -17,7 +17,7 @@ const Products = ({get_products, productsState:{products, loading}}) => {
             <div className="cssload-speeding-wheel"></div>
         </div>
     )
-    if(loading) return preloader
+    if(loading.product) return preloader
 
     return(
         <ul className='Products'>

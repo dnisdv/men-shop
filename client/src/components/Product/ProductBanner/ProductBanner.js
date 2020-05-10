@@ -3,16 +3,38 @@ import './ProductBanner.css'
 import BannerData from './BannerData/BannerData'
 
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-const ProductBanner = () => {
+import Arrow from './Assests/arrows.svg'
+
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, ImageWithZoom } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+
+
+const ProductBanner = ({product :{images}}) => {
     return(
         <React.Fragment>
 
             <div className='ProductBanner'>
                 <div className='ProductBanner_WrapperIMG'>
-                    
-                    <img className='ProductBanner_IMG' alt='ProductImage' src='https://cutt.ly/ltT1kit'></img>
-                </div>
+                <CarouselProvider
+                    className='carouselProvider'
+                    naturalSlideWidth={100}
+                    naturalSlideHeight={125}
+                    totalSlides={3}
+                >
+                    <Slider>
+                        {images.map( (i) => <Slide key={i._id} index={i._id}><img className='ProductBanner_IMG' alt='ProductImage' src={i.src}></img></Slide>)}
+                    </Slider>
+                    <ButtonBack className="carouselProvider_Button carouselProvider_Button-Prev">
+                        <img alt='prevIcon' className="carouselProvider_Button_IMG carouselProvider_Button_IMG-Prev" src={Arrow} />
+                    </ButtonBack>
+
+                    <ButtonNext className="carouselProvider_Button carouselProvider_Button-Next">
+                        <img alt='nextIcon' className="carouselProvider_Button_IMG carouselProvider_Button_IMG-Next" src={Arrow} />
+                    </ButtonNext>
+                </CarouselProvider>
+                                    </div>
 
                 <BannerData />
             </div>
@@ -23,4 +45,8 @@ const ProductBanner = () => {
     )
 }
 
-export default ProductBanner
+const mapStateToProps = (state) => ({
+    product : state.products.product
+  });
+
+export default connect(mapStateToProps)(ProductBanner)

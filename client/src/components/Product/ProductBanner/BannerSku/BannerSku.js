@@ -1,6 +1,7 @@
 import React from 'react'
 import './BannerSku.css'
 import Select from 'react-select'
+import {connect} from 'react-redux'
 
 const customStyles = {
   option: (styles, state) => ({
@@ -14,33 +15,23 @@ const customStyles = {
   }),
 }
 
-const optionsSize = [
-    { value: 'L', label: 'L' },
-    { value: 'XL', label: 'XL' },
-    { value: 'XXL', label: 'XXL' }
-  ]
-
-  const optionsColor = [
-    { value: 'Red', label: 'Red' },
-    { value: 'Green', label: 'Green' },
-    { value: 'Blue', label: 'Blue' }
-  ]
-
-const BannerSku = () => {
+const BannerSku = ({ product : {stock}}) => {
+  console.log(stock)
+  if(!stock) return null
         return(
         <ul className='BannerSku'>
-            <li className='BannerSku_Item'>
-                <Select placeholder='Size' styles={customStyles} className='BannerSku_Item_Select' options={optionsSize} />
-            </li>
-            
-            <li className='BannerSku_Item'>
-                <Select  placeholder='Color' styles={customStyles} className='BannerSku_Item_Select' options={optionsColor} />
-            </li>
+          {stock.map( i => (<li key={i._id} className='BannerSku_Item'>
+                <Select placeholder={i.title} styles={customStyles} className='BannerSku_Item_Select' options={i.data.map(item => {return { value:item.value, label:item.value} })} />
+            </li>))}                                                                                  
         </ul>
         )
 }
 
-export default BannerSku
+const mapStateToProps = (state) => ({
+  product : state.products.product
+});
+
+export default connect(mapStateToProps)(BannerSku)
 
 
 

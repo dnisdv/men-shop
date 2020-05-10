@@ -37,10 +37,17 @@ const productSchema = new mongoose.Schema(
         title: {
           type: String,
         },
-        qnt: {
-          type: Number,
-          required: true,
-        },
+        data: [
+          {
+            value: {
+              type: String,
+            },
+            qnt: {
+              type: Number,
+              required: true,
+            },
+          },
+        ],
       },
     ],
     price: {
@@ -64,6 +71,7 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
+
     created_at: {
       type: Date,
     },

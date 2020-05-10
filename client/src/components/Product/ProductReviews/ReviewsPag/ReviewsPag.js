@@ -3,22 +3,38 @@ import './ReviewsPag.css'
 import ArrowLeft from '../../../../Assests/icons/arrow-left.svg'
 import ArrowRight from '../../../../Assests/icons/arrow-right-pag.svg'
 
+import {connect} from 'react-redux'
+import { get_reviewsByProduct } from '../../../../actions/productsActions'
 
-const ReviewsPag = () => {
+import {withRouter} from 'react-router'
+
+import ReactPaginate from 'react-paginate';
+
+const ReviewsPag = ({get_reviewsByProduct, reviews : {totalPages}, history}) => {
+
+
     return(
         <div className='ReviewsPag'>
-            <div className='ReviewsPag_Action ReviewsPag-Prev'><img alt='ArrowLeft' src={ArrowLeft} /></div>
-            <ul className='ReviewsPag_List'>
-                <li className='ReviewsPag_List_Item'>1</li>
-                <li className='ReviewsPag_List_Item'>2</li>
-                <li className='ReviewsPag_List_Item'>3</li>
-                <li className='ReviewsPag_List_Item'>4</li>
-                <li className='ReviewsPag_List_Item'>5</li>
-                <li className='ReviewsPag_List_Item'>6</li>
-            </ul>
-            <div className='ReviewsPag_Action ReviewsPag-Prev'><img alt='ArrowRight' src={ArrowRight} /></div>
+            <ReactPaginate
+                containerClassName={'ReviewsPag_List'}
+                pageCount={totalPages}
+                pageRangeDisplayed={5}
+                marginPagesDisplayed={3}
+                onPageChange={(e) => get_reviewsByProduct(history.location.pathname.split('/')[2], e.selected)}
+                activeClassName='ReviewsPag_Item_active'
+                activeLinkClassName='ReviewsPag_Item_Link_active'
+                pageClassName='ReviewsPag_Item'
+                nextLinkClassName="ReviewsPag_List_Next"
+                previousLinkClassName="ReviewsPag_List_Prev"
+                pageLinkClassName='ReviewsPag_Item_Link'
+                disabledClassName="ReviewsPag_List_Disabled"
+             />
         </div>
     )
 }
 
-export default ReviewsPag
+const mapStateToProps = (state) => ({
+    reviews : state.products.reviews,
+  });
+
+export default withRouter(connect(mapStateToProps, {get_reviewsByProduct})(ReviewsPag))

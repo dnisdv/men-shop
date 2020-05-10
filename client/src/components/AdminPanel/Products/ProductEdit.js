@@ -10,6 +10,7 @@ export default(props) => (
         <TabbedForm>
         <FormTab label="Images">
             <ImageField source="images" src="src" />
+            <ImageField multiple source="walpaper" src="src" />
         </FormTab>
         <FormTab label="Details">
             <TextInput disabled source="id" />
@@ -35,7 +36,12 @@ export default(props) => (
             <ArrayInput source="stock">
                 <SimpleFormIterator>
                     <TextInput label="Title" source="title" />
-                    <NumberInput label="Quantity" source="qnt" />
+                    <ArrayInput source="data">
+                    <SimpleFormIterator>
+                        <TextInput label="Value" source="value" />
+                        <NumberInput label="Quantity" source="qnt" />
+                    </SimpleFormIterator>
+                    </ArrayInput>
                 </SimpleFormIterator>
             </ArrayInput>
             <NumberInput className='PriceNumber' source='price' validate={required()}/>

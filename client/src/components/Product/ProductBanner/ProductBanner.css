@@ -3,11 +3,15 @@
     margin:0 auto;
 }
 .ProductBanner_IMG{
-    width: 100%;
-    height: 300px;
+    width: 300px ;
+    height: 300px ;
     display: block;
     margin:0 auto;
     object-fit: cover;
+}
+.carouselProvider{
+    width: 300px ;
+    height: 300px ;
 }
 .ProductBannerData_Button{
     text-decoration: none;
@@ -16,6 +20,9 @@
 .BannerData_Button-Mobile{
     display: block;
     margin-top:26px;
+}
+.carouselProvider_Button{
+    display: none;
 }
 
 
@@ -28,8 +35,8 @@
         height: 80vh;
     }
     .ProductBanner_IMG{
-        width: 100%;
-        height: 100%;
+        width: 888px;
+        height: 705px;
         z-index: 9;
     }
     .ProductBanner_WrapperIMG{
@@ -42,5 +49,42 @@
     }
     .BannerData_Button-Mobile{
         display: none;
+    }
+    .carouselProvider{
+        width: 888px;
+        height: 705px;
+    }
+    .carouselProvider_Button{
+        display: block;
+        border:none ;
+        background: none ;
+        position: absolute;
+        opacity: 0.7;
+        top:50%;
+        transform: translateY(-50%);
+    }
+    .carouselProvider_Button:disabled{
+        opacity: 0.3;
+        cursor: auto;
+    }
+    .carouselProvider_Button-Prev{
+        left:-10%;
+    }
+    .carouselProvider_Button-Next{
+        right:-10%;
+    }
+
+    .carouselProvider_Button_IMG{
+        width: 50px;
+        height: auto;
+    }
+    .carouselProvider_Button_IMG-Next{
+        transform: rotate(180deg);
+    }
+    .carouselProvider:hover > .carouselProvider_Button {
+        opacity: 1 !important;
+    }
+    .carouselProvider:hover > .carouselProvider_Button:disabled {
+        opacity: 0.3 !important;
     }
 }

@@ -2,6 +2,13 @@
     list-style: none;
     margin:0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-height: 600px;
+    height: 500px;
+    justify-content: center;
 }
 .Reviews_List_Item_Title{
     margin:0;
@@ -17,7 +24,6 @@
     display: flex;
     margin-top:42px;
     flex-direction: column;
-    margin-left: auto;
     align-items: flex-end;
 }
 

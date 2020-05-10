@@ -71,26 +71,7 @@
 
 
 /* PRELOADEDR ANIMATION */
-.cssload-container {
-	width: 100%;
-    text-align: center;
-    transform: translateY(50%);
-}
 
-.cssload-speeding-wheel {
-	width: 49px;
-	height: 49px;
-	margin: 0 auto;
-	border: 3px solid rgb(0,0,0);
-	border-radius: 50%;
-	border-left-color: transparent;
-	border-right-color: transparent;
-	animation: cssload-spin 575ms infinite linear;
-}
-
-@keyframes cssload-spin {
-	100%{ transform: rotate(360deg); transform: rotate(360deg); }
-}
 
 .Products_Feedback{
     font-size: 24px;

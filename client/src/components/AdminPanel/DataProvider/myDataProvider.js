@@ -84,12 +84,12 @@ export default (apiUrl) => ({
         ).then(responses => ({ data: responses.map(({ json }) => json._id) })),
 
 
-    create: (resource, params) =>{
+    create: async (resource, params) =>{
 
         const createFunction = (apiUrl, resource, images = null ) => {
             return axios.post(`${apiUrl}/${resource}`, {
                 ...params.data,
-                images : images
+                images : images,
             })
             .then(({ data }) => ({
                 data: { ...params.data, 
@@ -102,7 +102,6 @@ export default (apiUrl) => ({
             const newPictures = params.data.images.filter(
                 p => p.rawFile instanceof File
             );
-
             return Promise.all(newPictures.map(convertFileToBase64))
             .then(base64Pictures =>
                 base64Pictures.map(picture64 => ({
@@ -112,9 +111,7 @@ export default (apiUrl) => ({
                 return createFunction(apiUrl, resource, res)
             })
         }
-
         return createFunction(apiUrl, resource)
-
     },
 
 
