@@ -4,8 +4,10 @@ import './Menu.css'
 import { Link } from "react-router-dom";
 import { ThemeContext } from '../../../Context/theme-context'
 
+import {connect} from 'react-redux'
+import {set_activeCategory} from '../../../actions/productsActions'
 
-const Menu = () => {
+const Menu = ({set_activeCategory}) => {
 
     const [ModalState, setModalState] = useState(false)
 
@@ -29,7 +31,7 @@ const Menu = () => {
                 <div className='Menu_List_Wrapper'>
                     <ul style={{ color : theme.foreground }} className="Menu_List">
                         <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/'>Home</Link></li>
-                        <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/products'>Products</Link></li>
+                        <li onClick={set_activeCategory} className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/products'>Products</Link></li>
                         <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/Auth'>Sign In/Sign up</Link></li>
                         <li className="Menu_List_Item Menu_List_Item-Mobile">Search</li>
                         <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/Auth'>Account</Link></li>
@@ -43,4 +45,4 @@ const Menu = () => {
 
 
 
-export default Menu
+export default connect(null, {set_activeCategory})(Menu)

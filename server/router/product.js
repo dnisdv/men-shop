@@ -42,8 +42,6 @@ router.delete("/products/:id", async (req, res) => {
 
 //get many products && get products by filter
 router.get("/products", async (req, res) => {
-  console.log(req.query);
-  console.log(req.body);
   try {
     if (req.query.category) {
       return await productModel

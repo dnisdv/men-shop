@@ -35,10 +35,7 @@ export const get_category = (history) => (dispatch) => {
 }
 
 export const get_products = () => (dispatch) => {
-    dispatch({
-        type : SET_ACTIVECATEGORY,
-        payload:null
-    })
+
     dispatch({type: LOADING_PRODUCTS})
     axios.get('http://localhost:5000/api/products?preview=true')
     .then( (res) => {

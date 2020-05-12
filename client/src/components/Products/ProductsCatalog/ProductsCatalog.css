@@ -12,6 +12,9 @@
     margin-bottom: 11px;
     display: none;
     cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    color:black;
 }
 .ProductsCatalog_List_Item{
     font-size: 18px;
@@ -73,6 +76,12 @@
     content:"";
     margin-right: 5px;
     border:2px solid black;
+}
+.ProductsCatalog_List_Item_Disabled{
+    opacity: 0.5;
+}
+.ProductsCatalog_List_Item_ACTIVE.ProductsCatalog_List_Item_Disabled{
+    opacity: 1 !important;
 }
 
 @media (min-width: 950px) { 

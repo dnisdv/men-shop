@@ -5,13 +5,17 @@ import {get_category, get_productsByCategory, get_products, set_activeCategory} 
 
 import { Link } from 'react-router-dom'
 
+import {withRouter} from 'react-router'
+
+
 const ProductsCatalog 
     = ({
         get_category, 
         set_activeCategory, 
         get_productsByCategory, 
         get_products, 
-        products: {activeCategory,category }
+        history,
+        products: {activeCategory, loading,category }
     }) => {
 
     const [catalogOpen, setcatalogOpen] = useState(false)
@@ -20,26 +24,24 @@ const ProductsCatalog
         setcatalogOpen(!catalogOpen)
     }
     
-    const [Active, setActive] = useState()
-
     useEffect(() => {
         get_category()
-    }, [activeCategory, get_category])
+    }, [get_category])
 
-    const selectCategory = (e, id) => {
-        get_productsByCategory(e.target.dataset.name)
-        setActive(id)
+    const selectCategory = (e, id, title) => {
+        // get_productsByCategory(e.target.dataset.name)
         set_activeCategory(id)
+        history.push(`?category=${title}`)
     }
     const selectAllCategory = (e) => {
         get_products()
-        setActive(null)
+        set_activeCategory(null)
     }
 
     return(
         
             <div className={`ProductsCatalog ${catalogOpen ? 'CatalogOpen' : ''}`}>
-                <h2 onClick={selectAllCategory} className='ProductsCatalog_Title'>Products</h2>
+                <Link onClick={selectAllCategory} className='ProductsCatalog_Title' to="/Products">Products</Link>
                 <button onClick={mobileCatalogHandler} className='ProductsCatalog_Title-Mobile'>Products</button>
 
             <div className='ProductsCatalog_Modal_BG'></div>
@@ -48,9 +50,14 @@ const ProductsCatalog
                     {category ? category.map( (i) => 
                         <li 
                             key={i._id} 
-                            onClick={(e) => selectCategory(e, i._id)}
+                            onClick={(e) => selectCategory(e, i._id, i.title)}
                             data-name={i.title}
-                            className={`ProductsCatalog_List_Item ${activeCategory === i._id ? 'ProductsCatalog_List_Item_ACTIVE': '' }`}>
+                            className={`ProductsCatalog_List_Item 
+                            ${activeCategory === i._id ? 'ProductsCatalog_List_Item_ACTIVE': '' }
+                            ${loading.product ? 'ProductsCatalog_List_Item_Disabled': '' }
+                            `}
+                            
+                            >
                             {i.label}</li>)
                     : null }
                 </ul>
@@ -65,4 +72,4 @@ const mapStateToProps = (state) => ({
   });
 
 
-export default connect(mapStateToProps, {get_category,get_products, get_productsByCategory, set_activeCategory})(ProductsCatalog)
+export default withRouter(connect(mapStateToProps, {get_category,get_products, get_productsByCategory, set_activeCategory})(ProductsCatalog))

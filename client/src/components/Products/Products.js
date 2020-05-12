@@ -13,23 +13,20 @@ const Products =
         set_activeCategory, 
         get_productsByCategory, 
         history, 
-        productsState:{products, category, loading}
+        productsState:{products, activeCategory, category, loading}
     }) => {
 
     useEffect(() => {
         const categoryPath = history.location.search.split('=')[1]
-        if(category){
+        if(categoryPath && category){
             if(category.find(i => i.title === categoryPath)){
-                return get_productsByCategory(categoryPath)
-
+                get_productsByCategory(categoryPath)
             }
+        }else{
+            get_products()
         }
-        get_products()
-        return ( () => {
-            set_activeCategory(null)
 
-        })
-    }, [category, get_products, get_productsByCategory, history.location, history.location.pathname, set_activeCategory])
+    }, [category, get_products, get_productsByCategory, history.location.search])
 
     const preloader = (
         <div className="cssload-container">
