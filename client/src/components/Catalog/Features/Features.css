@@ -50,7 +50,7 @@
         object-fit: cover;
     }
 
-    .Features_Item-Backpacks{
+    .Features_Item-0{
         margin-top:188px;
         width: 430px;
         height: 573px;
@@ -61,23 +61,23 @@
     }
    
 
-    .Features_Item-Wallets{
+    .Features_Item-1{
         margin-right: 64px;
         width: 631px;
         height: 382px;
     }
-    .Features_Item-Watches{
+    .Features_Item-2{
         margin-top:207px;
         width: 635px;
         height: 388px;
     }
 
-    .Features_Item-Sunglasses{
+    .Features_Item-3{
         margin-right: 117px;
         width: 455px;
         height: 338px;
     }
-    .Features_Item-Sunglasses::after{
+    .Features_Item-3::after{
         content:'So, the first question on your mind… what is it we do?';
         display: block;
         position: absolute;

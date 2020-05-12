@@ -1,11 +1,18 @@
 import React,{ useState, useEffect } from 'react'
 import './ProductsCatalog.css'
 import {connect} from 'react-redux'
-import {get_category, get_productsByCategory, get_products} from '../../../actions/productsActions'
+import {get_category, get_productsByCategory, get_products, set_activeCategory} from '../../../actions/productsActions'
 
 import { Link } from 'react-router-dom'
 
-const ProductsCatalog = ({get_category, get_productsByCategory, get_products, products: {activeCategory,category}}) => {
+const ProductsCatalog 
+    = ({
+        get_category, 
+        set_activeCategory, 
+        get_productsByCategory, 
+        get_products, 
+        products: {activeCategory,category }
+    }) => {
 
     const [catalogOpen, setcatalogOpen] = useState(false)
 
@@ -22,7 +29,7 @@ const ProductsCatalog = ({get_category, get_productsByCategory, get_products, pr
     const selectCategory = (e, id) => {
         get_productsByCategory(e.target.dataset.name)
         setActive(id)
-        
+        set_activeCategory(id)
     }
     const selectAllCategory = (e) => {
         get_products()
@@ -43,8 +50,8 @@ const ProductsCatalog = ({get_category, get_productsByCategory, get_products, pr
                             key={i._id} 
                             onClick={(e) => selectCategory(e, i._id)}
                             data-name={i.title}
-                            className={`ProductsCatalog_List_Item ${Active === i._id ? 'ProductsCatalog_List_Item_ACTIVE': '' }`}>
-                            {i.title}</li>)
+                            className={`ProductsCatalog_List_Item ${activeCategory === i._id ? 'ProductsCatalog_List_Item_ACTIVE': '' }`}>
+                            {i.label}</li>)
                     : null }
                 </ul>
             </div>
@@ -58,4 +65,4 @@ const mapStateToProps = (state) => ({
   });
 
 
-export default connect(mapStateToProps, {get_category,get_products, get_productsByCategory})(ProductsCatalog)
+export default connect(mapStateToProps, {get_category,get_products, get_productsByCategory, set_activeCategory})(ProductsCatalog)

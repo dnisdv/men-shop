@@ -12,7 +12,8 @@ import {
     GET_REVIEWSBYPRODUCT,
     GET_REVIEWSBYPRODUCT_ERROR,
     LOADING_CATEGORY,
-    LOADING_REVIEWS
+    LOADING_REVIEWS,
+    
 } from '../types'
 import axios from 'axios'
 
@@ -34,6 +35,10 @@ export const get_category = (history) => (dispatch) => {
 }
 
 export const get_products = () => (dispatch) => {
+    dispatch({
+        type : SET_ACTIVECATEGORY,
+        payload:null
+    })
     dispatch({type: LOADING_PRODUCTS})
     axios.get('http://localhost:5000/api/products?preview=true')
     .then( (res) => {
@@ -54,10 +59,6 @@ export const get_productsByCategory = (category) => (dispatch) => {
 
     axios.get(`http://localhost:5000/api/products?preview=true&category=${category}`)
     .then( (res) => {
-        dispatch({
-            type:SET_ACTIVECATEGORY,
-            payload: category
-        })
         dispatch({
             type: GET_PRODUCTSBYCATEGORY,
             payload:res.data
@@ -108,3 +109,15 @@ export const get_productsByCategory = (category) => (dispatch) => {
         })
     })
  }
+
+
+export const set_activeCategory = (id) => (dispatch) => {
+    try{
+        dispatch({
+            type: SET_ACTIVECATEGORY,
+            payload:id
+        })
+    }catch(e){
+        console.log(e)
+    }
+}

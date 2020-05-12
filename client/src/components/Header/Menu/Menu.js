@@ -4,6 +4,7 @@ import './Menu.css'
 import { Link } from "react-router-dom";
 import { ThemeContext } from '../../../Context/theme-context'
 
+
 const Menu = () => {
 
     const [ModalState, setModalState] = useState(false)
@@ -38,5 +39,8 @@ const Menu = () => {
         </div>
     )
 }
+
+
+
 
 export default Menu

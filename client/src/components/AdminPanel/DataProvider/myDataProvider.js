@@ -85,7 +85,7 @@ export default (apiUrl) => ({
 
 
     create: async (resource, params) =>{
-
+        
         const createFunction = (apiUrl, resource, images = null ) => {
             return axios.post(`${apiUrl}/${resource}`, {
                 ...params.data,

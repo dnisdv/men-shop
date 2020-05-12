@@ -6,7 +6,8 @@ import RichTextInput from 'ra-input-rich-text';
 export default(props) => (
     <Create title="Create a Category" {...props}>
         <SimpleForm>
-            <TextInput source="title" />
+            <TextInput source="title" validate={required()} />
+            <TextInput source="label" validate={required()} />
         </SimpleForm>
     </Create>
 );

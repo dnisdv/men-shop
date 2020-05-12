@@ -16,10 +16,13 @@ const Reviews = ({reviews, loading}) => {
             </ul>
         )
     }
+    console.log(reviews)
 
     return(
+        <React.Fragment>
+        {reviews.reviews.length !== 0 ? 
         <ul className='Reviews_List'>
-            { reviews.reviews ? reviews.reviews.map(i => (
+            {reviews.reviews.map(i => (
                 <li className='Reviews_List_Item'>
                 <div className='Reviews_List_Item_Container'>
                     <div className='Reviews_List_Item_Wrapper'>
@@ -46,9 +49,11 @@ const Reviews = ({reviews, loading}) => {
                         <ReviewsRep likes={i.likes} dislikes={i.dislikes} />
                 </div>
             </li>
-            )) : null}
+            ))}
 
     </ul>
+     : <span className='Reviews_NoReviews_Feedback'>No reviews yet</span> }
+    </React.Fragment>
     )
 }
 

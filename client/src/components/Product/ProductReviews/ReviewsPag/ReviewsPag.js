@@ -10,25 +10,29 @@ import {withRouter} from 'react-router'
 
 import ReactPaginate from 'react-paginate';
 
-const ReviewsPag = ({get_reviewsByProduct, reviews : {totalPages}, history}) => {
-
+const ReviewsPag = ({get_reviewsByProduct, reviews : {reviews, totalPages}, history}) => {
+    console.log(reviews)
 
     return(
-        <div className='ReviewsPag'>
-            <ReactPaginate
-                containerClassName={'ReviewsPag_List'}
-                pageCount={totalPages}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={3}
-                onPageChange={(e) => get_reviewsByProduct(history.location.pathname.split('/')[2], e.selected)}
-                activeClassName='ReviewsPag_Item_active'
-                activeLinkClassName='ReviewsPag_Item_Link_active'
-                pageClassName='ReviewsPag_Item'
-                nextLinkClassName="ReviewsPag_List_Next"
-                previousLinkClassName="ReviewsPag_List_Prev"
-                pageLinkClassName='ReviewsPag_Item_Link'
-                disabledClassName="ReviewsPag_List_Disabled"
-             />
+        <div className='ReviewsPag_Wrapper'>
+            {reviews.length !== 0 ?
+            <div className='ReviewsPag'>
+                <ReactPaginate
+                    containerClassName={'ReviewsPag_List'}
+                    pageCount={totalPages}
+                    pageRangeDisplayed={5}
+                    marginPagesDisplayed={3}
+                    onPageChange={(e) => get_reviewsByProduct(history.location.pathname.split('/')[2], e.selected)}
+                    activeClassName='ReviewsPag_Item_active'
+                    activeLinkClassName='ReviewsPag_Item_Link_active'
+                    pageClassName='ReviewsPag_Item'
+                    nextLinkClassName="ReviewsPag_List_Next"
+                    previousLinkClassName="ReviewsPag_List_Prev"
+                    pageLinkClassName='ReviewsPag_Item_Link'
+                    disabledClassName="ReviewsPag_List_Disabled"
+                />
+            </div>
+            : null}
         </div>
     )
 }

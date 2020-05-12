@@ -7,6 +7,7 @@ export default(props) => (
         <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="title" validate={required()} />
+            <TextInput source="label" validate={required()}/>
         </SimpleForm>
     </Edit>
 );

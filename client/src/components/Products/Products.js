@@ -4,13 +4,32 @@ import arrowRight from '../../Assests/icons/arrow-right.svg'
 
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { get_products } from '../../actions/productsActions'
+import { get_products, get_productsByCategory, set_activeCategory } from '../../actions/productsActions'
+import {withRouter} from 'react-router'
 
-const Products = ({get_products, productsState:{products, loading}}) => {
+const Products = 
+    ({
+        get_products,
+        set_activeCategory, 
+        get_productsByCategory, 
+        history, 
+        productsState:{products, category, loading}
+    }) => {
 
     useEffect(() => {
+        const categoryPath = history.location.search.split('=')[1]
+        if(category){
+            if(category.find(i => i.title === categoryPath)){
+                return get_productsByCategory(categoryPath)
+
+            }
+        }
         get_products()
-    }, [get_products])
+        return ( () => {
+            set_activeCategory(null)
+
+        })
+    }, [category, get_products, get_productsByCategory, history.location, history.location.pathname, set_activeCategory])
 
     const preloader = (
         <div className="cssload-container">
@@ -29,7 +48,6 @@ const Products = ({get_products, productsState:{products, loading}}) => {
                      </div>
 
                      <div className='Products_Item_Data'>
-                         <span className='Products_Item_Data_Category'>{item.category.title}</span>
                          <h3 className='Products_Item_Data_Title'>{item.title}</h3>
                          <p className='Products_Item_Data_Description'>{item.quick_description}</p>
                          <Link to={`/product/${item._id}`} className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
@@ -48,5 +66,5 @@ const mapStateToProps = (state) => ({
   });
 
 
-export default connect(mapStateToProps,{get_products})(Products)
+export default withRouter(connect(mapStateToProps,{set_activeCategory, get_productsByCategory, get_products})(Products))
 

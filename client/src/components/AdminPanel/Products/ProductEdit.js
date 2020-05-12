@@ -1,7 +1,7 @@
 import React from 'react';
 import {Edit, 
      TextInput, SimpleFormIterator, ArrayInput, SelectInput,ReferenceInput, TabbedForm,
-     FormTab, ImageField, NumberInput, required } from 'react-admin';
+     FormTab, ImageField, NumberInput, ImageInput, required } from 'react-admin';
 
      import RichTextInput from 'ra-input-rich-text';
 
@@ -9,8 +9,9 @@ export default(props) => (
     <Edit title="Product Edit" {...props}>
         <TabbedForm>
         <FormTab label="Images">
-            <ImageField source="images" src="src" />
-            <ImageField multiple source="walpaper" src="src" />
+        <ImageInput multiple source="images" label="Related pictures" accept="image/*">
+                <ImageField source="url" title="title" />
+            </ImageInput>
         </FormTab>
         <FormTab label="Details">
             <TextInput disabled source="id" />
