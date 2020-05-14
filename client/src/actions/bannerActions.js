@@ -7,7 +7,7 @@ import {
   
 export const get_banners = () => (dispatch) => {
     dispatch({ type:LOADING_BANNERS })
-    axios.get('http://localhost:5000/api/banner')
+    return axios.get('http://localhost:5000/api/banner')
     .then( (res) => {
         dispatch({
             type:GET_BANNERS,

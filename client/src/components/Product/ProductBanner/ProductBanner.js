@@ -21,7 +21,7 @@ const ProductBanner = ({product :{images}}) => {
                     className='carouselProvider'
                     naturalSlideWidth={100}
                     naturalSlideHeight={125}
-                    totalSlides={3}
+                    totalSlides={images.length}
                 >
                     <Slider>
                         {images.map( (i) => <Slide key={i._id} index={i._id}><img className='ProductBanner_IMG' alt='ProductImage' src={i.src}></img></Slide>)}
@@ -39,7 +39,7 @@ const ProductBanner = ({product :{images}}) => {
                 <BannerData />
             </div>
 
-            <Link to='/cart' className='ProductBannerData_Button ProductBannerData_Button-Mobile'>Add to bag</Link>
+            <Link to='/cart' className='ProductBannerData_Button ProductBannerData_Button-Mobile'>Add to cart</Link>
 
         </React.Fragment>
     )

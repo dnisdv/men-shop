@@ -23,7 +23,7 @@ const Reviews = ({reviews, loading}) => {
         {reviews.reviews.length !== 0 ? 
         <ul className='Reviews_List'>
             {reviews.reviews.map(i => (
-                <li className='Reviews_List_Item'>
+                <li key={i._id} className='Reviews_List_Item'>
                 <div className='Reviews_List_Item_Container'>
                     <div className='Reviews_List_Item_Wrapper'>
                         <div className='Reviews_List_Item_Avatar'>
