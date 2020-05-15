@@ -5,7 +5,6 @@ import DataDetails from './DataDetails/DataDetails'
 import {connect} from 'react-redux'
 
 const ProductData = ({product :{ images, quick_description}}) => {
-    console.log(images)
     return(
         <React.Fragment>
             <div className='ProductData'>

@@ -73,14 +73,12 @@ export const get_productsByCategory = (category) => (dispatch) => {
     dispatch({type:LOADING_PRODUCTS})
     axios.get(`http://localhost:5000/api/products/${id}`)
     .then( (res) => {
-        console.log(res)
         dispatch({
             type: GET_PRODUCT,
             payload: res.data
         })
     })
     .catch( (err) => {
-        console.log(err)
         dispatch({
             type:GET_PRODUCT_ERROR,
             payload: err.response
@@ -92,14 +90,12 @@ export const get_productsByCategory = (category) => (dispatch) => {
     dispatch({type:LOADING_REVIEWS})
     axios.get(`http://localhost:5000/api/reviews/product/${id}?page=${page}`)
     .then( (res) => {
-        console.log(res)
         dispatch({
             type: GET_REVIEWSBYPRODUCT,
             payload: res.data
         })
     })
     .catch( (err) => {
-        console.log(err.response)
         dispatch({
             type:GET_REVIEWSBYPRODUCT_ERROR,
             payload: err.response

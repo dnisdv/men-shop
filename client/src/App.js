@@ -46,11 +46,11 @@ function App() {
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
-                <Route exact path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
-                <Route exact path='/cart' component={CartPage} />
-                <Route exact path='/auth' component={AuthPage} />
-                <Route exact path="/product" component={ProductPage} />
-                <Route exact path="/products" component={ProductsPage} />
+                <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
+                <Route path='/cart' component={CartPage} />
+                <Route path='/auth' component={AuthPage} />
+                <Route path="/product/:id" component={ProductPage} />
+                <Route path="/products" component={ProductsPage} />
                 <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />  
                </Switch>
 

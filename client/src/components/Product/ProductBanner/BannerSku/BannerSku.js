@@ -16,7 +16,6 @@ const customStyles = {
 }
 
 const BannerSku = ({ product : {stock}}) => {
-  console.log(stock)
   if(!stock) return null
         return(
         <ul className='BannerSku'>

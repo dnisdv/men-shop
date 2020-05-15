@@ -11,7 +11,6 @@ import {withRouter} from 'react-router'
 import ReactPaginate from 'react-paginate';
 
 const ReviewsPag = ({get_reviewsByProduct, reviews : {reviews, totalPages}, history}) => {
-    console.log(reviews)
 
     return(
         <div className='ReviewsPag_Wrapper'>

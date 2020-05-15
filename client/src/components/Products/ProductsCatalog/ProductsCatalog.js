@@ -29,7 +29,6 @@ const ProductsCatalog
     }, [get_category])
 
     const selectCategory = (e, id, title) => {
-        // get_productsByCategory(e.target.dataset.name)
         set_activeCategory(id)
         history.push(`?category=${title}`)
     }

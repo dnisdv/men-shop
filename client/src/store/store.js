@@ -16,8 +16,6 @@ import productsReducer from '../reducers/productsReducer'
 import bannerReducer from '../reducers/bannerReducer'
 
 export default ({
-    authProvider,
-    dataProvider,
     history,
 }) => {
     const reducer = combineReducers({
@@ -39,7 +37,7 @@ export default ({
     const saga = function* rootSaga() {
         yield all(
             [
-                adminSaga(authProvider, dataProvider),
+                adminSaga(),
                 // add your own sagas here
             ].map(fork)
         );
@@ -54,8 +52,9 @@ export default ({
             applyMiddleware(
                 sagaMiddleware,
                 routerMiddleware(history),
-                ...middleware
+                ...middleware,
             ),
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
         ),        
     );
     sagaMiddleware.run(saga);

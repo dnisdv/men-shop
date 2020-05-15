@@ -32,7 +32,7 @@ router.post("/users/login", (req, res) => {
         return res.status(404).send(err);
       }
 
-      req.session.id = UserData._id;
+      req.session.userId = UserData._id;
 
       res.send(UserData._id);
     });

@@ -10,10 +10,11 @@ import {withRouter} from 'react-router'
 const Products = 
     ({
         get_products,
-        set_activeCategory, 
         get_productsByCategory, 
         history, 
-        productsState:{products, activeCategory, category, loading}
+        match,
+        location,
+        productsState:{products,  category, loading}
     }) => {
 
     useEffect(() => {
@@ -26,7 +27,7 @@ const Products =
             get_products()
         }
 
-    }, [category, get_products, get_productsByCategory, history.location.search])
+    }, [category, get_products, get_productsByCategory, history.location.search, location, match])
 
     const preloader = (
         <div className="cssload-container">

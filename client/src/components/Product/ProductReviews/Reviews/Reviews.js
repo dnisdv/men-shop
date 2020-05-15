@@ -16,7 +16,6 @@ const Reviews = ({reviews, loading}) => {
             </ul>
         )
     }
-    console.log(reviews)
 
     return(
         <React.Fragment>

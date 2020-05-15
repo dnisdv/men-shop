@@ -1,0 +1,5 @@
+.ProductPage-Preloader{
+    height: calc(100vh - 468px);
+    display: flex;
+    justify-content: center;
+}

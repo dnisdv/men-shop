@@ -30,7 +30,7 @@ const AdminPanel = (props) => {
     return(
         <Admin 
             dashboard={Dashboard} 
-            // authProvider={AuthProvider} 
+            authProvider={AuthProvider} 
             title='Admin Panel'
             dataProvider={myDataProvider('http://localhost:5000')}
             {...props}>
