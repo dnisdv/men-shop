@@ -2,13 +2,12 @@ const express = require("express");
 const userModel = require("../models/user");
 const reviewModel = require("../models/review");
 const router = express.Router();
-// const validator = require("../validation/validators");
+const { SESS_NAME } = require("../config");
 
 router.post("/users/register", async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Check if user already exist
     const existEmail = await userModel.exists({ email: email });
     const existUsername = await userModel.exists({ username: username });
     if (existEmail)
@@ -27,25 +26,34 @@ router.post("/users/register", async (req, res) => {
 router.post("/users/login", (req, res) => {
   const { email, password } = req.body;
   try {
-    const UserData = userModel.findByCredentials(email, password, (err) => {
+    userModel.findByCredentials(email, password, (err, data) => {
       if (err) {
         return res.status(404).send(err);
       }
 
-      req.session.userId = UserData._id;
+      req.session.userId = data._id;
 
-      res.send(UserData._id);
+      res.send(data._id);
     });
   } catch (error) {
     res.status(500).send(error);
   }
 });
 
-router.post("/users/logout", async (req, res) => {
+router.delete("/users/logout", async (req, res) => {
   try {
-    res.send("hell");
-  } catch (e) {
-    res.status(500).send();
+    const user = req.session.userId;
+    if (user) {
+      return req.session.destroy((err) => {
+        if (err) res.status(500).send();
+        res.clearCookie(SESS_NAME);
+        res.send(user);
+      });
+    } else {
+      return res.status(400).send();
+    }
+  } catch (err) {
+    res.status(500).send(err);
   }
 });
 
@@ -108,12 +116,23 @@ router.put("/users/:id", async (req, res) => {
 });
 
 router.post("/users/checkusername", async (req, res) => {
-  console.log(req.body);
   try {
     const existUsername = await userModel.exists({
       username: req.body.username,
     });
     res.send(existUsername);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+router.get("/checkuserauth", async (req, res) => {
+  try {
+    if (req.session && req.session.userId) {
+      return res.send(req.session.userId);
+    } else {
+      return res.status(401).send();
+    }
   } catch (e) {
     res.status(500).send(e);
   }

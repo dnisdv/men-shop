@@ -10,6 +10,7 @@ import {themes} from '../../Context/theme-context'
 const MainPage = ({changeTheme}) => {
     
     useEffect(() => {
+        window.scrollTo(0, 0)
         changeTheme(themes.dark)
         return( ()=> {
             changeTheme(themes.light)

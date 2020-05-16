@@ -1,4 +1,4 @@
-import React,{ useState, useRef } from 'react';
+import React,{ useState, useRef, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header/Header'
 import MainPage from './Pages/MainPage/MainPage'
@@ -9,9 +9,6 @@ import AuthPage from './Pages/AuthPage/AuthPage';
 import CartPage from './Pages/CartPage/CartPage'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
 import {themes, ThemeContext} from './Context/theme-context'
-import { Provider } from 'react-redux'
-import createAdminStore from './store/store'
-import { createHashHistory } from 'history';
 import AdminPanel from './components/AdminPanel/AdminPanel';
 
 import {
@@ -20,9 +17,17 @@ import {
   Route
 } from "react-router-dom";
 
-const history = createHashHistory();
+import AuthRoute from './Routes/AuthRoute'
 
-function App() {
+import {connect} from 'react-redux'
+
+import {checkLogin} from './actions/userActions'
+import PrivateRoute from './Routes/PrivateRoute'
+
+function App({preloader, authenticated, checkLogin, history}) {
+  useEffect(() => {
+    checkLogin()
+  }, [checkLogin])
 
   const [themeHandler, setthemeHandler] = useState(themes.light)
   const toggleTheme = (theme) => {
@@ -31,38 +36,33 @@ function App() {
   } 
   const headerRef = useRef()
   const footerRef = useRef()
+  if(preloader) return <span className='Main_Preloader'></span>
   return (
-  <Provider store={createAdminStore({history})}>
-
        <Router>
-
        <Route exact path='/admin' render={ () => <AdminPanel 
             history={history} 
             headerRef={headerRef}
             footerRef={footerRef}
             />} />
-
          <ThemeContext.Provider value={themeHandler}>
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
                 <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
-                <Route path='/cart' component={CartPage} />
-                <Route path='/auth' component={AuthPage} />
+                <PrivateRoute path='/cart' component={CartPage} />
+                <AuthRoute path='/auth' component={AuthPage} />
                 <Route path="/product/:id" component={ProductPage} />
                 <Route path="/products" component={ProductsPage} />
                 <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />  
                </Switch>
-
               <Footer footerRef={footerRef} />
           </div>
         </ThemeContext.Provider> 
       </Router>
-
-    </Provider>
-    
-
   );
 }
 
-export default App
+const mapStateToProps = (state) => ({
+  preloader : state.user.preloader,
+});
+export default connect(mapStateToProps,{checkLogin})(App)

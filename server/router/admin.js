@@ -36,9 +36,8 @@ router.get("/admin", (req, res) => {
     ) {
       return res.send("success");
     } else {
-      res.status(500).send();
+      return res.status(401).send();
     }
-    res.status(500).send();
   } catch (e) {
     res.status(500).send(e);
   }
@@ -54,7 +53,7 @@ router.delete("/admin", (req, res) => {
         res.send(admin);
       });
     } else {
-      return res.status(500).send();
+      return res.status(400).send();
     }
   } catch (err) {
     res.status(500).send(err);

@@ -6,14 +6,19 @@ import {
     LOADING_USER,
     CLEAR_USER_ERROR,
     CHECK_USERNAME_EXIST,
+    SET_USER,
+    SET_LOGOUT,
+    SET_LOGOUT_ERROR
   } from '../types'
   
   const initialState = {
     authenticated: false,
     loading: false,
+    preloader : true,
     error:{
       login:null,
-      register: null
+      register: null,
+      logout: null
     },
     usernameExist: false
   }
@@ -53,6 +58,28 @@ import {
           return{
             ...state,
             loading:true
+          }
+        case SET_USER : 
+          return{
+            ...state,
+            authenticated:action.payload,
+            loading:false,
+            preloader:false
+          }
+        case SET_LOGOUT :
+          return{
+            ...state,
+            authenticated:false,
+            preloader:false
+          }
+        case SET_LOGOUT_ERROR : 
+          return{
+            ...state,
+            error:{
+              ...state.error,
+              logout: action.payload,
+              preloader:false
+            }
           }
         case CLEAR_USER_ERROR : 
           return{

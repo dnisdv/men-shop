@@ -6,6 +6,9 @@ import {
     CLEAR_USER_ERROR,
     LOADING_USER,
     CHECK_USERNAME_EXIST,
+    SET_USER,
+    SET_LOGOUT,
+    SET_LOGOUT_ERROR
   } from '../types'
   import axios from 'axios'
   
@@ -14,11 +17,14 @@ import {
       .post('http://localhost:5000/api/users/login', userData, { withCredentials: true },
       )
       .then((res) => {
+        console.log(res)
+        // dispatch({ type : SET_USER })
         dispatch({ type: LOGIN_USER})
         dispatch({ type: CLEAR_USER_ERROR})
         history.push('/')
       })
       .catch((err) => {
+        console.log(err.response)
         dispatch({
           type: LOGIN_USER_ERROR,
           payload: err.response.data.error,
@@ -59,22 +65,48 @@ import {
       console.log(err)
     })
   }
+
+  export const setAuthenticated = () => (dispatch) => {
+    dispatch({
+      type: SET_USER
+    })
+  }
+  export const setLogOut = () => (dispatch) => {
+    dispatch({
+      type: SET_LOGOUT
+    })
+  }
+
   
-//   export const logoutUser = () => (dispatch) => {
-//     localStorage.removeItem('FBIdToken')
-//     delete axios.defaults.headers.common['Authorization']
-//     dispatch({ type: SET_UNAUTHENTICATED })
-//   }
-  
-//   export const getUserData = () => (dispatch) => {
-//     dispatch({ type: LOADING_USER })
-//     axios
-//       .get('/user')
-//       .then((res) => {
-//         dispatch({
-//           type: SET_USER,
-//           payload: res.data,
-//         })
-//       })
-//       .catch((err) => console.log(err))
-//   }
+ export const checkLogin = () => (dispatch) => {
+    dispatch({ type: LOADING_USER })
+    return axios.get('http://localhost:5000/api/checkuserauth', {withCredentials : true})
+     .then( (res)=>{
+         dispatch({
+           type:SET_USER,
+           payload:res.data
+          })
+     })
+     .catch( (err)=> {
+         dispatch({
+           type:SET_LOGOUT
+         })
+     })
+}
+
+
+export const logoutUser = () => (dispatch) => {
+    return axios.delete('http://localhost:5000/api/users/logout', {withCredentials : true})
+    .then( (res) => {
+        dispatch({
+          type:SET_LOGOUT
+        })
+    })
+    .catch( (err) => {
+        dispatch({
+          type:SET_LOGOUT_ERROR,
+          payload:err.response
+        })
+    })
+}
+

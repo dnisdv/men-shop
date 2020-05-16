@@ -5,6 +5,7 @@ import CheckoutOrders from '../../components/Checkout/CheckoutOrders/CheckoutsOr
 
 const CheckoutPage = ({headerRef, footerRef}) => {
     useEffect( ()=> {
+        window.scrollTo(0, 0)
         const header = headerRef.current
         const footer = footerRef.current
         header.style.display = 'none'

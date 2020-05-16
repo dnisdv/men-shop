@@ -6,8 +6,9 @@ import { ThemeContext } from '../../../Context/theme-context'
 
 import {connect} from 'react-redux'
 import {set_activeCategory} from '../../../actions/productsActions'
+import {logoutUser} from '../../../actions/userActions'
 
-const Menu = ({set_activeCategory}) => {
+const Menu = ({logoutUser, authenticated}) => {
 
     const [ModalState, setModalState] = useState(false)
 
@@ -15,8 +16,15 @@ const Menu = ({set_activeCategory}) => {
         setModalState(!ModalState)
         return document.body.classList.toggle('hideOverflow')
     }
-    const theme = useContext(ThemeContext)
+    const closeModalHandler = () =>{
+        setModalState(false)
+    }
+    const LogOutHandler = () => {
+        console.log('HELL')
+        return logoutUser()
+    }
 
+    const theme = useContext(ThemeContext)
     return(
         <div style={{ color:theme.foreground }} className="Menu">
 
@@ -30,11 +38,15 @@ const Menu = ({set_activeCategory}) => {
 
                 <div className='Menu_List_Wrapper'>
                     <ul style={{ color : theme.foreground }} className="Menu_List">
-                        <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/'>Home</Link></li>
-                        <li onClick={set_activeCategory} className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/products'>Products</Link></li>
-                        <li className="Menu_List_Item Menu_List_Item-Mobile"><Link to='/Auth'>Sign In/Sign up</Link></li>
-                        <li className="Menu_List_Item Menu_List_Item-Mobile">Search</li>
-                        <li className="Menu_List_Item Menu_List_Item-Desktop"><Link to='/Auth'>Account</Link></li>
+                        <li onClick={closeModalHandler} className="Menu_List_Item Menu_List_Item-onlymobile"><Link to='/'>Home</Link></li>
+                        <li onClick={closeModalHandler} className="Menu_List_Item "><Link to='/products'>Products</Link></li>
+                        
+                        {authenticated ? 
+                        <li onClick={ () => {closeModalHandler(); LogOutHandler()}} className="Menu_List_Item "><Link to='/'>Log out</Link></li>
+                        : <li onClick={closeModalHandler} className="Menu_List_Item "><Link to='/Auth'>Sign In/Sign up</Link></li>
+                        }
+
+                        
                     </ul>
                 </div>  
                 </div>
@@ -43,6 +55,11 @@ const Menu = ({set_activeCategory}) => {
 }
 
 
+const mapStateToProps = (state) => ({
+    authenticated : state.user.authenticated,
+  });
 
 
-export default connect(null, {set_activeCategory})(Menu)
+
+
+export default connect(mapStateToProps, {set_activeCategory, logoutUser})(Menu)

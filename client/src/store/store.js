@@ -5,7 +5,6 @@ import { all, fork } from 'redux-saga/effects';
 import {
     adminReducer,
     adminSaga,
-    USER_LOGOUT,
 } from 'react-admin';
 
 import thunk from 'redux-thunk'
@@ -15,9 +14,11 @@ import userReducer from '../reducers/userReducer'
 import productsReducer from '../reducers/productsReducer'
 import bannerReducer from '../reducers/bannerReducer'
 
+
+
 export default ({
-    history,
-}) => {
+    history
+},preloadedState) => {
     const reducer = combineReducers({
         admin: adminReducer,
         router: connectRouter(history),
@@ -27,12 +28,8 @@ export default ({
         banner : bannerReducer,
     });
     
-    const resettableAppReducer = (state, action) =>
-    reducer(action.type !== USER_LOGOUT ? state : undefined, action);
-
 
     const middleware = [thunk]
-
 
     const saga = function* rootSaga() {
         yield all(
@@ -46,8 +43,8 @@ export default ({
 
 
     const store = createStore(
-        resettableAppReducer,
-        { /* set your initial state here */ },
+        reducer,
+        {},
         compose(
             applyMiddleware(
                 sagaMiddleware,
@@ -57,6 +54,8 @@ export default ({
             window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
         ),        
     );
+
+
     sagaMiddleware.run(saga);
     return store;
 };

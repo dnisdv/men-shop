@@ -41,7 +41,8 @@
     margin:0;
 }
 .Menu_List_Item{
-    margin-top:27px;
+    
+    margin-top:47px;
     color:inherit;
 }
 .Menu_Icon{
@@ -53,6 +54,7 @@
 .Menu_List_Item > a {
     text-decoration: none;
     color:inherit;
+    font-size: 44px;
 }
 .MenuActive > .Menu_Icon > .Menu_Icon_Item {
     background-color:white !important;
@@ -82,6 +84,7 @@
         display: none;
     }
     .Menu_List_Item{
+        margin-top:0px;
         margin-right: 125px;
     }
     .Menu_Icon{
@@ -93,8 +96,11 @@
         order:2;
         margin-left:auto
     }
-    .Menu_List_Item{
-        margin-top:0px;
+
+    .Menu_List_Item > a {
+        font-size: 16px;
     }
-    
+    .Menu_List_Item-onlymobile{
+        display: none;
+    }
 }
