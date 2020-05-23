@@ -19,7 +19,7 @@ const ProductPage = ({history, get_product, match, location, get_reviewsByProduc
             get_product(match.params.id)
             get_reviewsByProduct(match.params.id)
         }
-    }, [get_product, get_reviewsByProduct, history, location, match])
+    }, [get_product, get_reviewsByProduct, match.params.id])
     
     if(!product) return <div className='ProductPage ProductPage-Preloader'><Preloader /></div>
 

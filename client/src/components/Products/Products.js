@@ -26,8 +26,7 @@ const Products =
         }else{
             get_products()
         }
-
-    }, [category, get_products, get_productsByCategory, history.location.search, location, match])
+    }, [category, get_products, get_productsByCategory, history.location.search])
 
     const preloader = (
         <div className="cssload-container">

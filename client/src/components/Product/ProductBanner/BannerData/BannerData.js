@@ -1,16 +1,13 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './BannerData.css'
 import BannerSku from '../BannerSku/BannerSku'
 
 import Rate from 'rc-rate'  
-import { Link } from 'react-router-dom'
 
 import {connect} from 'react-redux'
 
-const BannerData = ({product : {rate, shipping_price ,title, price}}) => {
-    useEffect(() => {
 
-    }, [])
+const BannerData = ({product : {rate, shipping_price ,title, price, _id}}) => {
 
     return(
         <div className='BannerData'>
@@ -30,8 +27,6 @@ const BannerData = ({product : {rate, shipping_price ,title, price}}) => {
             </div>
             
             <BannerSku  />
-
-            <Link to='/cart' className='ProductBannerData_Button ProductBannerData_Button-Desktop' >Add to cart</Link>
         </div>
         
     )

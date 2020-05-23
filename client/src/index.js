@@ -11,10 +11,10 @@ import createAdminStore from './store/store'
 const history = createHashHistory();
 
 
-const renderApp = (preloadedState) => {
+const renderApp = () => {
   ReactDOM.render(
-    <Provider history={history} store={createAdminStore({history}, preloadedState)}>
-        <App preloadedState={preloadedState} />
+    <Provider store={createAdminStore({history})}>
+        <App myHistory={history}/>
     </Provider>
         ,
     document.getElementById("root")

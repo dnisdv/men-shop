@@ -5,6 +5,7 @@ const productRouter = require("./router/product");
 const reviewRouter = require("./router/review");
 const adminRoute = require("./router/admin");
 const categoryRouter = require("./router/category");
+const cartRoute = require("./router/cart");
 const orderRouter = require("./router/order");
 const bannerRoute = require("./router/banner");
 const session = require("express-session");
@@ -70,5 +71,6 @@ app.use("/api", categoryRouter);
 app.use("/api", orderRouter);
 app.use("/api", bannerRoute);
 app.use("/api", adminRoute);
+app.use("/api", cartRoute);
 
 app.listen(PORT, () => console.log(`Server Started on port ${PORT}`));

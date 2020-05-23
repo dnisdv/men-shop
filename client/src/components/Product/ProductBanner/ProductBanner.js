@@ -2,16 +2,17 @@ import React from 'react'
 import './ProductBanner.css'
 import BannerData from './BannerData/BannerData'
 
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Arrow from './Assests/arrows.svg'
 
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, ImageWithZoom } from 'pure-react-carousel';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 
-const ProductBanner = ({product :{images}}) => {
+
+const ProductBanner = ({product: {images}}) => {
+
     return(
         <React.Fragment>
 
@@ -39,7 +40,6 @@ const ProductBanner = ({product :{images}}) => {
                 <BannerData />
             </div>
 
-            <Link to='/cart' className='ProductBannerData_Button ProductBannerData_Button-Mobile'>Add to cart</Link>
 
         </React.Fragment>
     )

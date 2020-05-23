@@ -15,6 +15,7 @@
 }
 .ProductBannerData_Button{
     text-decoration: none;
+    cursor: pointer;
 }
 
 .BannerData_Button-Mobile{

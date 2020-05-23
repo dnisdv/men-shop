@@ -10,24 +10,22 @@ import CartPage from './Pages/CartPage/CartPage'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
 import {themes, ThemeContext} from './Context/theme-context'
 import AdminPanel from './components/AdminPanel/AdminPanel';
-
+import AuthRoute from './Routes/AuthRoute'
+import {connect} from 'react-redux'
+import {checkLogin} from './actions/userActions'
+import {getCartProducts, addToCart, getCartLength} from './actions/cartActions'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 
-import AuthRoute from './Routes/AuthRoute'
-
-import {connect} from 'react-redux'
-
-import {checkLogin} from './actions/userActions'
-import PrivateRoute from './Routes/PrivateRoute'
-
-function App({preloader, authenticated, checkLogin, history}) {
+function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLogin, myHistory}) {
   useEffect(() => {
     checkLogin()
-  }, [checkLogin])
+    getCartLength()
+    getCartProducts()
+  }, [checkLogin, getCartLength, getCartProducts])
 
   const [themeHandler, setthemeHandler] = useState(themes.light)
   const toggleTheme = (theme) => {
@@ -40,7 +38,7 @@ function App({preloader, authenticated, checkLogin, history}) {
   return (
        <Router>
        <Route exact path='/admin' render={ () => <AdminPanel 
-            history={history} 
+            history={myHistory} 
             headerRef={headerRef}
             footerRef={footerRef}
             />} />
@@ -49,7 +47,7 @@ function App({preloader, authenticated, checkLogin, history}) {
               <Header headerRef={headerRef} />
               <Switch>
                 <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
-                <PrivateRoute path='/cart' component={CartPage} />
+                <Route path='/cart' component={CartPage} />
                 <AuthRoute path='/auth' component={AuthPage} />
                 <Route path="/product/:id" component={ProductPage} />
                 <Route path="/products" component={ProductsPage} />
@@ -64,5 +62,6 @@ function App({preloader, authenticated, checkLogin, history}) {
 
 const mapStateToProps = (state) => ({
   preloader : state.user.preloader,
+  cart: state.cart.items
 });
-export default connect(mapStateToProps,{checkLogin})(App)
+export default connect(mapStateToProps,{getCartProducts, getCartLength,addToCart, checkLogin})(App)

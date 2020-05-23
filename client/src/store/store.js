@@ -13,12 +13,13 @@ import thunk from 'redux-thunk'
 import userReducer from '../reducers/userReducer'
 import productsReducer from '../reducers/productsReducer'
 import bannerReducer from '../reducers/bannerReducer'
+import cartReducer from '../reducers/cartReducer'
 
 
 
 export default ({
     history
-},preloadedState) => {
+}) => {
     const reducer = combineReducers({
         admin: adminReducer,
         router: connectRouter(history),
@@ -26,6 +27,8 @@ export default ({
         user: userReducer,
         products : productsReducer,
         banner : bannerReducer,
+        cart : cartReducer
+        
     });
     
 

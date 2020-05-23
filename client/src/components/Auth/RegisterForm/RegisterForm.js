@@ -35,6 +35,7 @@ const RegisterForm = ({registerUser,checkUsernameExist, user:{loading, usernameE
             <Formik
             initialValues={{username: '', email: '', password: '' }}
             validationSchema={formValidation}
+            
             onSubmit={(values) => {
                 registerUser(values, history)
             }}

@@ -13,6 +13,7 @@ import {
     GET_REVIEWSBYPRODUCT_ERROR,
     LOADING_CATEGORY,
     LOADING_REVIEWS,
+    SET_PRODUCTINITIALSTATE
     
 } from '../types'
 import axios from 'axios'
@@ -61,7 +62,6 @@ export const get_productsByCategory = (category) => (dispatch) => {
             payload:res.data
         })
     }).catch( (err) => {
-        console.log(err.response)
         dispatch({
             type: GET_PRODUCTSBYCATEGORY_ERROR,
             payload:err.response
@@ -72,11 +72,20 @@ export const get_productsByCategory = (category) => (dispatch) => {
  export const get_product = (id) => (dispatch) => {
     dispatch({type:LOADING_PRODUCTS})
     axios.get(`http://localhost:5000/api/products/${id}`)
-    .then( (res) => {
+    .then( async (res) => {
         dispatch({
             type: GET_PRODUCT,
             payload: res.data
         })
+
+        const State ={}
+       
+        const StateValid = await res.data.stock.map( (i) => {return State[i.title] = ''})
+        dispatch({
+            type: SET_PRODUCTINITIALSTATE,
+            payload:State
+        })
+        
     })
     .catch( (err) => {
         dispatch({

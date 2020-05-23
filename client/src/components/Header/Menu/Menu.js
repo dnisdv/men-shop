@@ -20,7 +20,6 @@ const Menu = ({logoutUser, authenticated}) => {
         setModalState(false)
     }
     const LogOutHandler = () => {
-        console.log('HELL')
         return logoutUser()
     }
 

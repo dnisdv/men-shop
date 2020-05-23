@@ -70,21 +70,12 @@
 .BannerData_Primary_Wrapper_Rating > .rc-rate-star-full > div > .rc-rate-star-first > .fas.fa-star{
     color:#0A0A0A
 }
-.ProductBannerData_Button-Desktop{
-    display: none;
-}
-.ProductBannerData_Button-Mobile{
-    display: flex;
+
+.ProductBannerData_Button{
+    margin-top:40px;
 }
 
 @media (min-width: 950px) { 
-    .ProductBannerData_Button-Desktop{
-        margin-top:37px;
-        display: flex;
-    }
-    .ProductBannerData_Button-Mobile{
-        display: none;
-    }
     .BannerData_Primary{
         display: flex;
         flex-direction: column;

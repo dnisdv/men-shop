@@ -13,7 +13,8 @@ import {
     CLEAR_ACTIVECATEGORY,
     GET_REVIEWSBYPRODUCT, 
     GET_REVIEWSBYPRODUCT_ERROR,
-    LOADING_REVIEWS
+    LOADING_REVIEWS,
+    SET_PRODUCTINITIALSTATE         
 } from '../types'
   
   const initialState = {
@@ -30,6 +31,7 @@ import {
     error:{
       category:null,
     },
+    productInitialState : null
   }
   
   export default function (state = initialState, action) {
@@ -117,6 +119,11 @@ import {
           ...state.loading,
           reviews: true
         }
+      }
+    case SET_PRODUCTINITIALSTATE :
+      return{
+        ...state,
+        productInitialState:action.payload
       }
 
       default:

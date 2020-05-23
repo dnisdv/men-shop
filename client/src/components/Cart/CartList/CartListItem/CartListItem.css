@@ -1,0 +1,22 @@
+.CartList_Item_DataSecond_Actions_Count > input{
+    text-align: center;
+}
+.CartList_Item_DataFirst_Price{
+    text-align: right;
+    margin-top:10px
+}
+.CartList_Item_Data_Wrapp_Delete{
+    width: 10px;
+    height: 10px;
+    text-align: right;
+}
+.CartList_Item_Data_Wrapp_Button{
+    width: auto;
+    padding: 0;
+    border:none;
+    background: none;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 5px;
+}

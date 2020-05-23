@@ -1,35 +1,42 @@
 .BannerSku{
-    display: flex;
-    justify-content: center;
-    margin-top:51px;
+    width: 100%;
 }
 .BannerSku_Item_Select{
-    width: 80%;
-    ;
+    width: 100%;
+    margin-top:20px;
+    margin:0 auto;
+    margin-top:20px;
 }
 .BannerSku_Item{
     width: 100%;
 }
 
-.BannerSku{
-    margin:0;
-    padding: 0;
-    display: flex;
-    list-style: none;
-    margin-top:50px;
+.BannerSku_Input_Feedback{
+    font-size: 12px;
+    color:red
 }
-
+.SelectClassname{
+    border:1px solid black;
+}
+.SelectDropdownClassname{
+    border:1px solid black  
+}
+.ProductBannerData_Button{
+    text-transform: uppercase;
+}
+.ProductBannerData_Button_Cart_Finished{
+    background-color: rgb(241, 239, 239);
+    color:black;
+    border:1px solid rgb(248, 248, 248);
+    text-transform: uppercase;
+}
 
 @media (min-width: 950px) { 
-.BannerSku{
-    margin-top:10px;
-    flex-direction: column;
-}
+
 .BannerSku_Item{
     margin-top:20px;
 }
 .BannerSku_Item_Select{
     width: 100%;
-    ;
 }
 }

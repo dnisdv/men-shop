@@ -1,25 +1,79 @@
 import {
-    ADD_TOCART,
+    GET_CART,
     DELETE_FROMCART,
-    LOADING_CART
+    LOADING_CART,
+    LOADING_CART_ACTIONS,
+    GET_CART_ERROR,
+    GET_CART_LENGTH,
+    DELETE_ONEPRODUCT,
+    ADD_TOCART
   } from '../types'
   
   const initialState = {
-    loading:false,
+    items:null,
+    error:null,
+    cartLength: null,
+    loading:{
+      cart:false,
+      cartActions: false
+    },
   }
   
   export default function (state = initialState, action) {
     switch (action.type) {
-      case ADD_TOCART :
+      case GET_CART :
         return {
           ...state,
-          loading:false,
+          items:action.payload,
+          loading:{
+            ...state.loading,
+            cart:false,
+            cartActions:false
+          },
+        }
+      case GET_CART_ERROR :
+        return{
+          ...state,
+          error:action.payload,
+          loading: {
+            ...state.loading,
+            cart:false
+          }
         }
     case LOADING_CART :
         return{
             ...state,
-            loading:true
+            loading:{
+              ...state.loading,
+              cart:true
+            },
         }
+    case LOADING_CART_ACTIONS :
+      return{
+        ...state,
+        loading:{
+          ...state.loading,
+          cartActions:true
+        }
+      }
+    case GET_CART_LENGTH :
+      return{
+        ...state,
+        cartLength: action.payload
+      }
+    case DELETE_FROMCART : 
+        return{
+          ...state,
+        }
+    case DELETE_ONEPRODUCT :
+      return{
+        ...state
+      }
+    case ADD_TOCART :{
+      return {
+        ...state
+      }
+    }
       default:
         return state
     }

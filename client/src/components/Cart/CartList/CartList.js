@@ -1,46 +1,41 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import './CartList.css'
 
-const CartList = () => {
+import CartListItem from './CartListItem/CartListItem'
+import Preloader from '../../preloader/preloader'
+import {connect} from 'react-redux'
+import {getCartProducts, addToCart} from '../../../actions/cartActions'
+
+const CartList = ({getCartProducts, error, cart : {cartLength, items}, loading}) => {
+    useEffect(() => {
+        getCartProducts()
+    }, [getCartProducts, cartLength])
+
+    
+    if(loading.cart) return <span className='CartList_Preloader'><Preloader /></span>
+    if(error) return <span className='CartList_NoItems_FeedBack'>{error.data.msg}</span>
     return(
         <div className='CartList_Wrapper'>
             <h2 className='CartList_Wrapper_Title'>Your Items</h2>
         <ul className='CartList'>
-            <li className='CartList_Item'>
-
-                <div className='CartList_Item_IMG_Wrapper'>
-                    <img src='https://cutt.ly/itSBMl3' alt='CartIMG' className='CartList_Item_IMG' />
-                </div>
-
-                <div className='CartList_Item_Data'>
-                    <div className='CartList_Item_DataFirst'>
-                        <h2 className='CartList_Item_DataFirst_Title'>Apple iPhone 11 Pro Max 512 ГБ Золото</h2>
-                        <p className='CartList_Item_DataFirst_Price'>55$</p>
-                    </div>
-
-                    <div className='CartList_Item_Data_Addition'>
-                        <p className='CartList_Item_Data_Addition_Size'>XS</p>
-                        <span className='CartList_Item_Data_Addition_delimiter'>/</span>
-                        <p className='CartList_Item_Data_Addition_Color'>RED</p>
-                    </div>
-                    
-                    <div className='CartList_Item_DataSecond'>
-
-                        <div className='CartList_Item_DataSecond_Actions'>
-                            <button className='CartList_Item_DataSecond_Actions_Increase'>+</button>
-                            <p className='CartList_Item_DataSecond_Actions_Count'>0</p>
-                            <button className='CartList_Item_DataSecond_Actions_Decrease'>-</button>
-                        </div>
-
-                        <p className='CartList_Item_DataSecond_Shipp'>Ships within a day</p>
-                    </div>
-                    
-                </div>
-            </li>
+            {items && items !== [] && items.length !== 0 ? items.map( (item, index) => {
+                return(
+                <CartListItem key={item.productID + index} i={item} />
+                )
+            }) : <span className='CartList_NoItems_FeedBack'>no cart items found</span>}
+            
 
         </ul>
         </div>
     )
 }
 
-export default CartList
+
+const mapStateToProps = (state) => ({
+    cart : state.cart,
+    error: state.cart.error,
+    loading: state.cart.loading
+  });
+
+
+export default connect(mapStateToProps, {getCartProducts, addToCart})(CartList)
