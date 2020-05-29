@@ -8,9 +8,6 @@ router.post("/reviews", async (req, res) => {
     const review = await new reviewModel({
       ...req.body,
     });
-    if (!review) return res.status(400).send();
-    if (!req.body.user || !req.body.product)
-      return res.status(404).send("target not found");
     await review.save();
     res.send(review);
   } catch (e) {
@@ -20,6 +17,15 @@ router.post("/reviews", async (req, res) => {
 
 router.get("/reviews", async (req, res) => {
   try {
+    if (req.query.filter) {
+      const fil = JSON.parse(req.query.filter);
+
+      const ids = await fil["id"].map((i) => i._id);
+      const result = await reviewModel.find({
+        _id: { $in: ids },
+      });
+      return res.send(result);
+    }
     const reviews = await reviewModel.find({});
     const reviewsLenght = reviews.length;
     res.set("Content-Range", `reviews 0-24/${reviewsLenght}`).send(reviews);
@@ -30,11 +36,11 @@ router.get("/reviews", async (req, res) => {
 
 router.get("/reviews/:id", async (req, res) => {
   try {
-    const reviews = await reviewModel.find({ product: req.params.id });
-
+    const reviews = await reviewModel.findById(req.params.id);
     if (!reviews) {
       res.send("not reviews yet");
     }
+
     res.send(reviews);
   } catch (e) {
     res.send(e);

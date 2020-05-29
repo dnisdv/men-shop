@@ -4,9 +4,9 @@ const reviewModel = require("../models/review");
 // const validator = require("../validation/validators");
 const router = express.Router();
 
-//Create product3
 router.post("/products", async (req, res) => {
   try {
+    console.log(req.body);
     const product = await new productModel(req.body);
     product.save();
 
@@ -68,18 +68,15 @@ router.get("/products", async (req, res) => {
           if (err) res.status(500).send(err);
           res.send(preview);
         });
-
-      // res.send(preview);
     }
     if (req.query.filter) {
-      const filter = JSON.parse(req.query.filter);
-      const records = await productModel
-        .find()
-        .where("_id")
-        .in(filter.id)
-        .exec();
-      if (!records) return res.status(404).send("Nothing found");
-      return res.send(records);
+      const fil = JSON.parse(req.query.filter);
+
+      // const ids = await fil["id"].map((i) => i._id);
+      const result = await productModel.find({
+        _id: { $in: fil["id"] },
+      });
+      return res.send(result);
     }
 
     const products = await productModel.find({});

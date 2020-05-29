@@ -32,9 +32,6 @@ router.get("/cart/getProducts", async (req, res) => {
     if (!req.session.product) {
       return res.status(404).send({ msg: "no cart items found" });
     }
-    // const fullPrice = req.session.product.reduce((i, s) => {
-    //   return i.price * i.count + s.count * s.price;
-    // });
     res.send(req.session.product);
   } catch (e) {
     res.status(500).send(e);
@@ -109,7 +106,7 @@ router.get("/cart/getcartlength", (req, res) => {
     const cartLength = req.session.product.length;
     res.send({ value: cartLength });
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).send();
   }
 });
 

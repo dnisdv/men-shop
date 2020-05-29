@@ -14,7 +14,16 @@ router.post("/banner", async (req, res) => {
 
 router.get("/banner", async (req, res) => {
   try {
-    const banner = await bannerModel.find({}).populate("category");
+    if (req.query.filter) {
+      const fil = JSON.parse(req.query.filter);
+
+      const ids = await fil["id"].map((i) => i._id);
+      const result = await bannerModel.find({
+        _id: { $in: ids },
+      });
+      return res.send(result);
+    }
+    let banner = await bannerModel.find({});
     const bannerLength = banner.length;
     res.set("Content-Range", `banner 0-24/${bannerLength}`).send(banner);
   } catch (e) {
@@ -24,7 +33,7 @@ router.get("/banner", async (req, res) => {
 
 router.get("/banner/:id", async (req, res) => {
   try {
-    const banner = await bannerModel.find({ _id: req.params.id });
+    const banner = await bannerModel.findById(req.params.id);
     res.send(banner);
   } catch (e) {
     res.status(500).send("Not found");

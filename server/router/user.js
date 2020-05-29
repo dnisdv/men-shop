@@ -82,6 +82,14 @@ router.post("/users", async (req, res) => {
 
 router.get("/users", async (req, res) => {
   try {
+    if (req.query.filter) {
+      const fil = JSON.parse(req.query.filter);
+
+      const result = await userModel.find({
+        _id: { $in: fil["id"] },
+      });
+      return res.send(result);
+    }
     const users = await userModel.find({});
     if (!users) return res.send("no users found");
     const usersLength = users.length;
@@ -93,7 +101,7 @@ router.get("/users", async (req, res) => {
 
 router.get("/users/:id", async (req, res) => {
   try {
-    const user = await userModel.findById({ _id: req.params.id });
+    const user = await userModel.findById(req.params.id);
     if (!user) return res.send("User not found");
     res.send(user);
   } catch (e) {

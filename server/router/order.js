@@ -14,6 +14,15 @@ router.post("/orders", async (req, res) => {
 
 router.get("/orders", async (req, res) => {
   try {
+    if (req.query.filter) {
+      const fil = JSON.parse(req.query.filter);
+
+      const ids = await fil["id"].map((i) => i._id);
+      const result = await orderModel.find({
+        _id: { $in: ids },
+      });
+      return res.send(result);
+    }
     const orders = await orderModel.find({});
     const ordersLength = orders.length;
     res.set("Content-Range", `orders 0-24/${ordersLength}`).send(orders);
@@ -24,7 +33,7 @@ router.get("/orders", async (req, res) => {
 
 router.get("/orders/:id", async (req, res) => {
   try {
-    const order = await orderModel.find({ _id: req.params.id });
+    const order = await orderModel.findById(req.params.id);
     res.send(order);
   } catch (e) {
     res.status(404).send("Not found");

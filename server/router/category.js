@@ -14,6 +14,14 @@ router.post("/category", async (req, res) => {
 
 router.get("/category", async (req, res) => {
   try {
+    if (req.query.filter) {
+      const fil = JSON.parse(req.query.filter);
+      const result = await categoryModel.find({
+        _id: { $in: fil["id"] },
+      });
+      return res.send(result);
+    }
+
     const category = await categoryModel.find({});
     const categoryLength = category.length;
     res.set("Content-Range", `category 0-24/${categoryLength}`).send(category);
@@ -24,7 +32,8 @@ router.get("/category", async (req, res) => {
 
 router.get("/category/:id", async (req, res) => {
   try {
-    const category = await categoryModel.find({ _id: req.params.id });
+    const category = await categoryModel.findById(req.params.id);
+    console.log(category);
     res.send(category);
   } catch (e) {
     res.status(404).send("Not found");
