@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.post("/products", async (req, res) => {
   try {
-    console.log(req.body);
     const product = await new productModel(req.body);
     product.save();
 
