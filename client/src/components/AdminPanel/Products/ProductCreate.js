@@ -16,13 +16,14 @@ export default(props) => {
             <ImageInput multiple source="images" label="Related pictures" accept="image/*">
                 <ImageField source="url" title="title" />
             </ImageInput>
-        </FormTab>
+
+        </FormTab>   
         <FormTab label="Details">
-            <ReferenceInput source="category" reference="api/category" validate={isRequired}>
+        <ReferenceInput allowEmpty source="category" reference="api/category" >
                 <SelectInput optionText="title" />
             </ReferenceInput>
-            <TextInput fullWidth multiline source="title" validate={isRequired} />
-            <TextInput fullWidth multiline source="quick_description" validate={isRequired} />
+            <TextInput fullWidth multiline source="title"  />
+            <TextInput fullWidth multiline source="quick_description"  />
             <ArrayInput source="characteristics">
                 <SimpleFormIterator >
                     <TextInput fullWidth multiline label="Title" source="title" />
@@ -48,8 +49,8 @@ export default(props) => {
                     </ArrayInput>
                 </SimpleFormIterator>
             </ArrayInput>
-            <NumberInput className='PriceNumber' source='price' validate={isRequired} />
-            <NumberInput source='shipping_price' validate={isRequired} />
+            <NumberInput className='PriceNumber' source='price'  />
+            <NumberInput source='shipping_price'  />
 
         </FormTab>
         <FormTab label="Descriptions" >

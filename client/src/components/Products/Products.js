@@ -41,7 +41,7 @@ const Products =
                 return(
                 <li key={item._id} className='Products_Item'>
                      <div className='Products_Item_IMGWrapper'>
-                         <img src={item.images[0].src} alt='Product' className='Products_Item_IMG' />
+                         <img src={`http://localhost:5000/${item.images[0].path}`} alt='Product' className='Products_Item_IMG' />
                      </div>
 
                      <div className='Products_Item_Data'>

@@ -3,7 +3,7 @@ import {Create, SimpleForm, TextInput, ReferenceInput, SelectInput, required} fr
 
 import RichTextInput from 'ra-input-rich-text';
 
-export default(props) => (
+const CategoryCreate = (props) => (
     <Create title="Create a Category" {...props}>
         <SimpleForm>
             <TextInput source="title" validate={required()} />
@@ -11,3 +11,5 @@ export default(props) => (
         </SimpleForm>
     </Create>
 );
+
+export default CategoryCreate

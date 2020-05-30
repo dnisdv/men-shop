@@ -1,9 +1,9 @@
 import React from 'react';
 import {List, Datagrid, TextField, DateField, EditButton} from 'react-admin'
 
-export default(props) => {
+const CategoryList = (props) => {
     return(
-    <List title="Review List" {...props}>
+    <List title="Category List" {...props}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="title" />
@@ -14,3 +14,5 @@ export default(props) => {
     </List>
     )
 }
+
+export default CategoryList

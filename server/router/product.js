@@ -3,12 +3,31 @@ const productModel = require("../models/product");
 const reviewModel = require("../models/review");
 // const validator = require("../validation/validators");
 const router = express.Router();
+var multer = require("multer");
 
-router.post("/products", async (req, res) => {
+var storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, "./uploads");
+  },
+  filename: function (req, file, callback) {
+    if (file.mimetype === "image/jpeg") {
+      var name = Date.now() + "." + "jpg";
+    } else if (file.mimetype === "image/png") {
+      name = Date.now() + "." + "png";
+    }
+    callback(null, name);
+  },
+});
+
+var upload = multer({ dest: "uploads/", storage: storage }).array("imgs", 8);
+
+router.post("/products", upload, async (req, res) => {
   try {
-    const product = await new productModel(req.body);
+    const product = await new productModel({
+      ...JSON.parse(req.body.data),
+      images: req.files ? req.files : null,
+    });
     product.save();
-
     res.send(product);
   } catch (e) {
     res.send(e);

@@ -6,7 +6,7 @@ import RichTextInput from 'ra-input-rich-text';
 
 
 export default(props) => (
-    <Edit title="Post Edit" {...props}>
+    <Edit title="Review Edit" {...props}>
         <SimpleForm>
             <TextInput disabled source="id" />
             <ReferenceInput source="user" reference="api/users" validate={required()}>
@@ -23,7 +23,7 @@ export default(props) => (
                     { id: '5', name: '5', rate: 5 },
             ]} optionValue="rate" />
 
-            <ReferenceInput source="product" reference="api/products" validate={required()}>
+            <ReferenceInput source="product" reference="api/products" >
                 <SelectInput optionText="title" />
             </ReferenceInput>
         </SimpleForm>

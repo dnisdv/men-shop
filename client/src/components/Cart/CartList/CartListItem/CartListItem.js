@@ -50,7 +50,7 @@ const CartListItem = ({
         <li className='CartList_Item'>
 
         <div className='CartList_Item_IMG_Wrapper'>
-            <img src={i.image} alt='CartIMG' className='CartList_Item_IMG' />
+            <img src={`http://localhost:5000/${i.image}`} alt='CartIMG' className='CartList_Item_IMG' />
         </div>
 
         <div className='CartList_Item_Data'>

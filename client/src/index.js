@@ -5,18 +5,27 @@ import App from './App';
 
 
 import { Provider } from 'react-redux'
-import { createHashHistory } from 'history';
 import createAdminStore from './store/store'
+import myDataProvider from './components/AdminPanel/Providers/myDataProvider'
+import authProvider from './components/AdminPanel/Providers/authProvider'
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+import { createHashHistory } from 'history';
 
+const dataProvider = myDataProvider('http://localhost:5000')
 const history = createHashHistory();
+
 
 
 const renderApp = () => {
   ReactDOM.render(
-    <Provider store={createAdminStore({history})}>
+    <Router history={history}>
+    <Provider store={createAdminStore({history, authProvider, dataProvider})}>
         <App myHistory={history}/>
     </Provider>
-        ,
+    </Router>,
+
     document.getElementById("root")
   );
 }

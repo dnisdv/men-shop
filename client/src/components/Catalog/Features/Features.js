@@ -15,12 +15,12 @@ const Features = ({get_banners, set_activeCategory, banner :{ banners }}) => {
 
     const selectCategory = (id) => {
         set_activeCategory(id)
-    }
+    }   
 
     if(!banners) return <Preloader />
     return(
         <ul className='Features'>
-            {banners.map( (i, index) => {
+            { banners.length > 0 ? banners.map( (i, index) => {
                 return (
                     <li
                     key={i._id}
@@ -32,7 +32,7 @@ const Features = ({get_banners, set_activeCategory, banner :{ banners }}) => {
                     </Link>
                 </li>
                 )
-            })}
+            }) : null}
 
         </ul>
     )

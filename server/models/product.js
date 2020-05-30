@@ -60,13 +60,7 @@ const productSchema = new mongoose.Schema(
     },
     images: [
       {
-        src: {
-          type: String,
-        },
-        rawFile: {
-          type: Object,
-        },
-        title: {
+        path: {
           type: String,
         },
       },

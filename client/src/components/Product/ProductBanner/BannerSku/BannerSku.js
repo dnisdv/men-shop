@@ -39,7 +39,7 @@ const BannerSku = ({
             }}
             onSubmit={async (values) => {
               addToCart({productID: product._id, count:1, sku:values, 
-                        title: product.title, price: product.price, image : product.images[0].src, shipping_price: product.shipping_price})
+                        title: product.title, price: product.price, image : product.images[0].path, shipping_price: product.shipping_price})
             }}
             >
             {({

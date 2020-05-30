@@ -7,7 +7,9 @@ import Rate from 'rc-rate'
 import {connect} from 'react-redux'
 
 
-const ProductReviews = ({product: {rate}, reviews :{totalReviews}}) => {
+const ProductReviews = ({product: {rate}, reviews}) => {
+
+    if(!reviews) return (<div className='Loadin'>LOADING...</div>)
     return(
         <div className='ProductReviews'>
             <div className='ProductReviews_Container'>
@@ -23,7 +25,7 @@ const ProductReviews = ({product: {rate}, reviews :{totalReviews}}) => {
                                     disabled
                                     defaultValue={rate}
                                 />
-                                <span className='ProductReviews_Rate_Wrapper_Total'>{totalReviews} REVIEWS</span>
+                                <span className='ProductReviews_Rate_Wrapper_Total'>{reviews.totalReviews} REVIEWS</span>
                             </div>
                     </div>
 

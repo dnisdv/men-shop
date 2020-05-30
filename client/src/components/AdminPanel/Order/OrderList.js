@@ -3,7 +3,7 @@ import {List, Datagrid, TextField, DateField, EditButton, ReferenceField} from '
 
 export default (props) => {
     return(
-    <List title="User List" {...props}>
+    <List title="Order List" {...props}>
         <Datagrid>
             <TextField source="id" />
             <ReferenceField allowEmpty source="user" reference="api/users">

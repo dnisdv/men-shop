@@ -20,6 +20,7 @@ import {
   Route
 } from "react-router-dom";
 
+
 function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLogin, myHistory}) {
   useEffect(() => {
     checkLogin()
@@ -36,13 +37,13 @@ function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLo
   const footerRef = useRef()
   if(preloader) return <span className='Main_Preloader'></span>
   return (
-       <Router>
-       <Route exact path='/admin' render={ () => <AdminPanel 
-            history={myHistory} 
-            headerRef={headerRef}
-            footerRef={footerRef}
-            />} />
-         <ThemeContext.Provider value={themeHandler}>
+    <React.Fragment>
+        <Route exact path='/admin' render={ () => <AdminPanel 
+          headerRef={headerRef}
+          footerRef={footerRef}
+          myHistory={myHistory}
+        />} />
+        <ThemeContext.Provider value={themeHandler}>
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
@@ -56,7 +57,7 @@ function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLo
               <Footer footerRef={footerRef} />
           </div>
         </ThemeContext.Provider> 
-      </Router>
+    </React.Fragment>
   );
 }
 

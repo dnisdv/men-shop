@@ -14,6 +14,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 const {
   _PORT,
@@ -35,6 +36,7 @@ const corsOptions = {
 };
 
 const app = express();
+console.log(path.join(__dirname, "uploads"));
 
 app.use(
   session({
@@ -72,5 +74,7 @@ app.use("/api", orderRouter);
 app.use("/api", bannerRoute);
 app.use("/api", adminRoute);
 app.use("/api", cartRoute);
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.listen(PORT, () => console.log(`Server Started on port ${PORT}`));

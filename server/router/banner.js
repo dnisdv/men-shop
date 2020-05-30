@@ -23,6 +23,15 @@ router.get("/banner", async (req, res) => {
       });
       return res.send(result);
     }
+    if (req.query.preview) {
+      return await bannerModel
+        .find({}, "image")
+        .populate({ path: "category", select: "title label" })
+        .exec((err, preview) => {
+          if (err) res.status(500).send(err);
+          res.send(preview);
+        });
+    }
     let banner = await bannerModel.find({});
     const bannerLength = banner.length;
     res.set("Content-Range", `banner 0-24/${bannerLength}`).send(banner);

@@ -13,7 +13,9 @@ import Dashboard from './Dashboard/Dashboard'
 import myDataProvider from './Providers/myDataProvider' 
 import AuthProvider from './Providers/authProvider'
 
+
 const AdminPanel = (props) => {
+    
 
     useEffect( ()=> {
         const header = props.headerRef.current
@@ -26,44 +28,45 @@ const AdminPanel = (props) => {
         })
     }, [props.footerRef, props.headerRef])
 
-
     return(
         <Admin 
             dashboard={Dashboard} 
             authProvider={AuthProvider} 
-            title='Admin Panel'
             dataProvider={myDataProvider('http://localhost:5000')}
-            {...props}>
-            <Resource name="api/products" options={{ label: 'Products' }} 
+            title='Admin Panel'
+            history={props.myHistory}
+            >
+            <Resource name="api/products" 
                 edit={ProductEdit} 
                 create={ProductCreate} 
                 list={ProductList} 
-                icon={ () =><img src={productsIcon} alt='productIcon' width='20px' height='20px' />} />
-            <Resource name="api/reviews" options={{ label: 'Reviews' }} 
+                 />
+            <Resource name="api/reviews" 
                 edit={ReviewEdit} 
                 create={ReviewCreate} 
                 list={ReviewList} 
-                icon={ () =><img src={reviewsIcon} alt='reviewsIcon' width='20px' height='20px' />} />
-            <Resource name="api/users" options={{ label: 'Users' }} 
+                 />
+            <Resource name="api/users" 
                 edit={UserEdit} 
                 create={UserCreate} 
                 list={UserList} 
-                icon={ () =><img src={usersIcon} alt='usersIcon' width='20px' height='20px' />} />
-            <Resource name="api/category" options={{ label: 'Category' }} 
+                 />
+            <Resource name="api/category" 
                 edit={CategoryEdit} 
                 create={CategoryCreate} 
                 list={CategoryList} 
-                icon={ () =><img src={categoryIcon} alt='categoryIcon' width='20px' height='20px' />} />      
-            <Resource name="api/orders" options={{ label: 'Orders' }} 
+                />      
+            <Resource name="api/orders" 
                 edit={OrderEdit} 
                 create={OrderCreate} 
                 list={OrderList} 
-                icon={ () =><img src={cartIcon} alt='cartIcon' width='20px' height='20px' />} /> 
-            <Resource name="api/banner" options={{ label: 'Banners' }} 
+                 /> 
+            <Resource name="api/banner" 
                 edit={BannerEdit} 
                 create={BannerCreate} 
                 list={BannerList} 
-                icon={ () =><img src={bannerIcon} alt='cartIcon' width='20px' height='20px' />} /> 
+                 /> 
+
         </Admin>
     )
 }

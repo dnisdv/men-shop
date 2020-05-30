@@ -11,7 +11,7 @@ export default(props) => {
             <TextInput disabled source="id" />
             <TextInput label={'Image Url'} fullWidth source="image" />
             <ImageField source="image" title="title" />
-            <ReferenceInput source="category" reference="api/category" validate={isRequired}>
+            <ReferenceInput source="category" allowEmpty reference="api/category" >
                 <SelectInput optionText="title" />
             </ReferenceInput>
             <TextInput source="title" />

@@ -7,26 +7,29 @@ import {Edit,
 
 export default(props) => (
     <Edit title="Product Edit" {...props}>
-        <TabbedForm>
+
+<TabbedForm>
         <FormTab label="Images">
-        <ImageInput multiple source="images" label="Related pictures" accept="image/*">
+
+            <ImageInput multiple source="images" label="Related pictures" accept="image/*">
                 <ImageField source="url" title="title" />
             </ImageInput>
-        </FormTab>
+
+        </FormTab>   
         <FormTab label="Details">
-            <TextInput disabled source="id" />
-            <ReferenceInput source="category" reference="api/category" validate={required()}>
+        <TextInput disabled source="id" />
+        <ReferenceInput allowEmpty source="category" reference="api/category" >
                 <SelectInput optionText="title" />
             </ReferenceInput>
-            <TextInput fullWidth multiline source="title" validate={required()} />
-            <TextInput fullWidth multiline source="quick_description" validate={required()} />
+            <TextInput fullWidth multiline source="title"  />
+            <TextInput fullWidth multiline source="quick_description"  />
             <ArrayInput source="characteristics">
-                <SimpleFormIterator>
+                <SimpleFormIterator >
                     <TextInput fullWidth multiline label="Title" source="title" />
                     <TextInput fullWidth multiline label="Value" source="value" />
                 </SimpleFormIterator>
             </ArrayInput>
-            <SelectInput label='Rate' emptyValue={0} source="rate" choices={[
+            <SelectInput label='Rate' emptyValue={0} defaultValue={0} source="rate" choices={[
                     { id: "0", name: "0", rate: 0 },
                     { id: "1", name: "1", rate: 1 },
                     { id: '2', name: '2', rate: 2 },
@@ -45,8 +48,9 @@ export default(props) => (
                     </ArrayInput>
                 </SimpleFormIterator>
             </ArrayInput>
-            <NumberInput className='PriceNumber' source='price' validate={required()}/>
-            <NumberInput source='shipping_price' validate={required()} />
+            <NumberInput className='PriceNumber' source='price'  />
+            <NumberInput source='shipping_price'  />
+
         </FormTab>
         <FormTab label="Descriptions" >
             <RichTextInput multiline toolbar={[ ['bold', 'italic', 'underline', 'link'] ]} source="description" />

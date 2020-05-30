@@ -7,9 +7,9 @@ export default(props) => {
         <Datagrid>
             <TextField source="id" />
             <TextField source="title" />
-            <ReferenceField allowEmpty source="category" reference="api/category">
+            <ReferenceField source="category" reference="api/category">
                 <TextField source="title" />
-            </ReferenceField>    
+            </ReferenceField>   
             <DateField source="created_at" />
             <DateField source="updated_at" />
             <EditButton basePath="banner" />

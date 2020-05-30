@@ -9,7 +9,7 @@ export default(props) => {
         <Create title="Create a Banner" {...props}>
         <SimpleForm>
             <TextInput label={'Image Url'} fullWidth source="image" />
-            <ReferenceInput source="category" reference="api/category" validate={isRequired}>
+            <ReferenceInput source="category" reference="api/category" >
                 <SelectInput optionText="title" />
             </ReferenceInput>
             <TextInput source="title" />

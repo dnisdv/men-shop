@@ -20,7 +20,7 @@ export default(props) => (
                     { id: '5', name: '5', rate: 5 },
             ]} optionValue="rate" />
 
-            <ReferenceInput source="product" reference="api/products" validate={required()}>
+            <ReferenceInput source="product" reference="api/products" >
                 <SelectInput optionText="title" />
             </ReferenceInput>
         </SimpleForm>
