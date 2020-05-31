@@ -5,7 +5,8 @@ import CheckoutBreadcrumbs from './CheckoutBreadcrumbs/CheckoutBreadcrumbs'
 import CheckoutShipping from './CheckoutShipping/CheckoutShipping'
 import CheckoutPayment from './CheckoutPayment/CheckoutPayment'
 
-const Checkout = () => {
+
+const Checkout = ({cart}) => {
 
     const [bread, setbread] = useState({
         Details: {

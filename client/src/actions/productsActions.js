@@ -13,7 +13,8 @@ import {
     GET_REVIEWSBYPRODUCT_ERROR,
     LOADING_CATEGORY,
     LOADING_REVIEWS,
-    SET_PRODUCTINITIALSTATE
+    SET_PRODUCTINITIALSTATE,
+    CLEAR_PRODUCT
     
 } from '../types'
 import axios from 'axios'
@@ -78,9 +79,13 @@ export const get_productsByCategory = (category) => (dispatch) => {
             payload: res.data
         })
 
-        const State ={}
-       
-        const StateValid = await res.data.stock.map( (i) => {return State[i.title] = ''})
+        let State ={}
+        console.log(res)
+
+        if(res.data.stock) {
+            await res.data.stock.map( (i) => {return State[i.title] = ''})
+        }
+
         dispatch({
             type: SET_PRODUCTINITIALSTATE,
             payload:State
@@ -93,6 +98,10 @@ export const get_productsByCategory = (category) => (dispatch) => {
             payload: err.response
         })
     })
+ }
+
+ export const clear_product = () => dispatch => {
+         dispatch({type:CLEAR_PRODUCT})
  }
 
  export const get_reviewsByProduct = (id, page = 1) => (dispatch) => {
@@ -121,5 +130,25 @@ export const set_activeCategory = (id) => (dispatch) => {
         })
     }catch(e){
         console.log(e)
+    }
+}
+
+export const get_productInitialState = (id) => (dispatch) => {
+    try{
+        axios.get(`http://localhost:5000/api/products/${id}`)
+        .then( async ({data}) => {    
+            let State ={}
+            if(data.stock) {
+                await data.stock.map( (i) => {return State[i.title] = ''})
+            }
+            dispatch({
+                type: SET_PRODUCTINITIALSTATE,
+                payload:State
+            })
+            
+        })
+
+    }catch(e){
+
     }
 }

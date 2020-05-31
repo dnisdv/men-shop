@@ -5,39 +5,47 @@ import {connect} from 'react-redux'
 import { Formik } from 'formik'
 
 import {addToCart} from '../../../../actions/cartActions'
+import { get_productInitialState } from '../../../../actions/productsActions'
 
 
 const BannerSku = ({
   addToCart,
   cart,
   productInitialState,
-  product
+  product,
+  get_productInitialState
 }) => {
   
   const [CartActive, setCartActive] = useState(false)
-  const buttonRef = useRef()
 
   useEffect(() => {
     if(cart){
       cart.map( (i) => {
-        return product._id === i.productID ? setCartActive(true) : setCartActive(false)
-      })
+        return product._id === i.productID
+      }).includes(true) ? setCartActive(true) : setCartActive(false) 
     }
-  }, [cart, product._id])
+    get_productInitialState(product._id)
+  }, [cart, get_productInitialState, product._id])
 
   if(!(product.stock && productInitialState)) return null
         return(
           <div className='BannerSku'>
       <Formik
+            enableReinitialize
             initialValues={productInitialState}
             validate={(val) => {
               const errors = {}
-              Object.keys(productInitialState).map( (i) => {
-                 if(val[i] === '') return errors[i]='Required'
-              })
+                Object.keys(productInitialState).map( (i) => {
+                  if(val[i] === '') return errors[i] = 'Required'
+               })
+              console.log("initialState", productInitialState)
+              console.log("values", val)
+              console.log("errors", errors)
               return errors
             }}
             onSubmit={async (values) => {
+              console.log(productInitialState)
+              console.log(values)
               addToCart({productID: product._id, count:1, sku:values, 
                         title: product.title, price: product.price, image : product.images[0].path, shipping_price: product.shipping_price})
             }}
@@ -51,9 +59,10 @@ const BannerSku = ({
                 handleSubmit,
                 isSubmitting,
                 setValues,
-                enableReinitialize
+                enableReinitialize,
+                resetForm
             }) => (
-                <form className='RegisterForm_Form' onSubmit={handleSubmit}>
+                <form enableReinitialize className='RegisterForm_Form' onSubmit={handleSubmit}>
                   {product.stock.map( i => ( 
                     <div key={i._id}>
                     <Select 
@@ -70,7 +79,7 @@ const BannerSku = ({
                         {errors[i.title] && touched[i.title] && (<div className='RegisterForm_Input_Feedback'>{errors[i.title]}</div>)}
                     </div>
                   ))}
-                    <input ref={buttonRef} type='submit' 
+                    <input type='submit' 
                     value={CartActive ? `Added To Cart` :'Add To Cart'} 
                     className={`ProductBannerData_Button ${CartActive ? 'ProductBannerData_Button_Cart_Finished' : ''}`}></input>
                 </form>
@@ -87,7 +96,7 @@ const mapStateToProps = (state) => ({
   cart : state.cart.items,
 });
 
-export default connect(mapStateToProps, {addToCart})(BannerSku)
+export default connect(mapStateToProps, {addToCart, get_productInitialState})(BannerSku)
 
 
 const customStyles = {

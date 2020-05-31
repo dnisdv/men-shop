@@ -14,7 +14,8 @@ import {
     GET_REVIEWSBYPRODUCT, 
     GET_REVIEWSBYPRODUCT_ERROR,
     LOADING_REVIEWS,
-    SET_PRODUCTINITIALSTATE         
+    SET_PRODUCTINITIALSTATE,
+    CLEAR_PRODUCT    
 } from '../types'
   
   const initialState = {
@@ -124,6 +125,11 @@ import {
       return{
         ...state,
         productInitialState:action.payload
+      }
+    case CLEAR_PRODUCT :
+      return{
+        ...state,
+        product:null
       }
 
       default:

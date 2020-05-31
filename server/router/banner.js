@@ -25,7 +25,7 @@ router.get("/banner", async (req, res) => {
     }
     if (req.query.preview) {
       return await bannerModel
-        .find({}, "image")
+        .find({}, "image title")
         .populate({ path: "category", select: "title label" })
         .exec((err, preview) => {
           if (err) res.status(500).send(err);

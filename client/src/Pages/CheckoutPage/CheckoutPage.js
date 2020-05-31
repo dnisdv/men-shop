@@ -2,8 +2,10 @@ import React,{useEffect} from 'react'
 import './CheckoutPage.css'
 import Checkout from '../../components/Checkout/Checkout'
 import CheckoutOrders from '../../components/Checkout/CheckoutOrders/CheckoutsOrder'
+import {connect} from 'react-redux'
 
-const CheckoutPage = ({headerRef, footerRef}) => {
+const CheckoutPage = ({headerRef, footerRef, cart}) => {
+
     useEffect( ()=> {
         window.scrollTo(0, 0)
         const header = headerRef.current
@@ -15,12 +17,24 @@ const CheckoutPage = ({headerRef, footerRef}) => {
             footer.style.display = 'flex'
         })
     }, [footerRef, headerRef])
+
+
+    // if (cart.length === 0 || cart === null) {
+    //     return <div className=''>LOADING</div>
+    // }
     return(
         <div className='CheckoutPage'>
             <Checkout />
-            <CheckoutOrders />
+            { cart ? <CheckoutOrders /> : null }
+            
         </div>
     )
 }
 
-export default CheckoutPage
+const mapStateToProps = (state) => ({
+    cart : state.cart.items,
+    loading: state.cart.loading
+});
+
+
+export default connect(mapStateToProps)(CheckoutPage)

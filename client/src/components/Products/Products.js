@@ -11,6 +11,7 @@ const Products =
     ({
         get_products,
         get_productsByCategory, 
+        set_activeCategory,
         history, 
         match,
         location,
@@ -25,6 +26,7 @@ const Products =
             }
         }else{
             get_products()
+            set_activeCategory()
         }
     }, [category, get_products, get_productsByCategory, history.location.search])
 

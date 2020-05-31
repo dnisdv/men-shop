@@ -1,73 +1,46 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './CheckoutsOrder.css'
 import CheckoutTotal from './CheckoutTotal/CheckoutTotal'
+import {connect} from 'react-redux'
 
-const CheckoutOrders = () => {
+
+const CheckoutOrders = ({cart}) => {
+    console.log(cart)
+
+
     return(
         <div className='CheckoutOrders'>
             <h2 className='CheckoutOrders_Title'>Your order</h2>
             <ul className='CheckoutOrders_List'>
-                <li className='CheckoutOrders_List_Item'>
-                    <img src='https://cutt.ly/9tGp035' alt='productIMG' className='CheckoutOrders_List_Item_IMG' />
+                {cart ? cart.map( (i) => (
+                    <li className='CheckoutOrders_List_Item'>
+                    <img src={`http://localhost:5000/${i.image}`} alt='productIMG' className='CheckoutOrders_List_Item_IMG' />
                     <div className='CheckoutOrders_List_Item_Data'>
                         <div className='CheckoutOrders_List_Item_DataFirst'>
-                            <h2 className='CheckoutOrders_List_Item_DataFirst_Title'>Some book 
-                                <span className='CheckoutOrders_List_Item_Units'>x7</span>
+                            <h2 className='CheckoutOrders_List_Item_DataFirst_Title'>{i.title}
+                            <span className='CheckoutOrders_List_Item_Units'>x{i.count}</span>
                             </h2>
                             <div className='CheckoutOrders_List_Item_DataFirst_Addition'>
-                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Size'>XS</p>
-                                <span className='CheckoutOrders_List_Item_DataFirst_Addition_delimiter'>/</span>
-                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Color'>RED</p>
+                                {Object.values(i.sku).join('/')}
                             </div>
-                            <p className='CheckoutOrders_List_Item_DataFirst_ShipDate'>Ships today</p>
+                                {i.shipping_price > 0 ? 
+                                <p className='CheckoutOrders_List_Item_DataFirst_ShipPrice'>{i.shipping_price}<span className='Currency'>$</span>
+                                </p>  : 'Ships today'}
                         </div>
 
-                        <p className='CheckoutOrders_List_Item_Data_Price'>50$</p>
+                        <p className='CheckoutOrders_List_Item_Data_Price'>{i.price}<span className='Currency'>$</span></p>
                     </div>
                 </li>
-
-                <li className='CheckoutOrders_List_Item'>
-                    <img src='https://cutt.ly/9tGp035' alt='productIMG' className='CheckoutOrders_List_Item_IMG' />
-                    <div className='CheckoutOrders_List_Item_Data'>
-                        <div className='CheckoutOrders_List_Item_DataFirst'>
-                            <h2 className='CheckoutOrders_List_Item_DataFirst_Title'>Some book 
-                                <span className='CheckoutOrders_List_Item_Units'>x7</span>
-                            </h2>
-                            <div className='CheckoutOrders_List_Item_DataFirst_Addition'>
-                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Size'>XS</p>
-                                <span className='CheckoutOrders_List_Item_DataFirst_Addition_delimiter'>/</span>
-                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Color'>RED</p>
-                            </div>
-                            <p className='CheckoutOrders_List_Item_DataFirst_ShipDate'>Ships today</p>
-                        </div>
-
-                        <p className='CheckoutOrders_List_Item_Data_Price'>50$</p>
-                    </div>
-                </li>
-
-                <li className='CheckoutOrders_List_Item'>
-                    <img src='https://cutt.ly/9tGp035' alt='productIMG' className='CheckoutOrders_List_Item_IMG' />
-                    <div className='CheckoutOrders_List_Item_Data'>
-                        <div className='CheckoutOrders_List_Item_DataFirst'>
-                            <h2 className='CheckoutOrders_List_Item_DataFirst_Title'>Some book 
-                                <span className='CheckoutOrders_List_Item_Units'>x7</span>
-                            </h2>
-                            <div className='CheckoutOrders_List_Item_DataFirst_Addition'>
-                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Size'>XS</p>
-                                <span className='CheckoutOrders_List_Item_DataFirst_Addition_delimiter'>/</span>
-                                <p className='CheckoutOrders_List_Item_DataFirst_Addition_Color'>RED</p>
-                            </div>
-                            <p className='CheckoutOrders_List_Item_DataFirst_ShipDate'>Ships today</p>
-                        </div>
-
-                        <p className='CheckoutOrders_List_Item_Data_Price'>50$</p>
-                    </div>
-                </li>
-
+                )) : null}
             </ul>
             <CheckoutTotal />
         </div>
     )
 }
 
-export default CheckoutOrders
+const mapStateToProps = (state) => ({
+    cart : state.cart.items,
+    loading: state.cart.loading
+});
+
+export default connect(mapStateToProps)(CheckoutOrders)

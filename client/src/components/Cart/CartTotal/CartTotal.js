@@ -3,8 +3,7 @@ import './CartTotal.css'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 
-const CartTotal = ({cart, loading}) => {
-
+const CartTotal = ({cart :{TotalPrice, items}, loading}) => {
 
 
     return(
@@ -12,18 +11,21 @@ const CartTotal = ({cart, loading}) => {
 
             <div className='CartTotal_Total'>
                 <h5 className='CartTotal_Total_Title'>Total</h5>
-                    <p className='CartTotal_Total_Value'>{cart ?  cart.length >= 2  ? cart.reduce( (i, s) => {
-                    return (i.price * i.count) + (s.count * s.price) }) : cart.length !== 0 ? cart.map( (i) => i.price * i.count) : "0" : "0"}$</p>
+                    <p className='CartTotal_Total_Value'>{TotalPrice}<span className='Currency'>$</span></p>
 
             </div>
             <p className='CartTotal_Data'>Shipping costs will be specified in Checkout.</p>
-
-            <Link className='CartTotal_Link_Buy' to='/checkout'><button className='CartTotal_Button_Buy'>Checkout</button></Link>
+            
+            {
+               items ? items.length !== 0 ?
+                <Link className='CartTotal_Link_Buy' to='/checkout'><button className='CartTotal_Button_Buy'>Checkout</button></Link>
+                : <button disabled className='CartTotal_Button_Buy'>Checkout</button> : <button disabled className='CartTotal_Button_Buy'>Checkout</button>
+            }
         </div>
     )
 }
 const mapStateToProps = (state) => ({
-    cart : state.cart.items,
+    cart : state.cart,
     loading: state.cart.loading
 });
 

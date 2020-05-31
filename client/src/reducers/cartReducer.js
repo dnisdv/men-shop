@@ -17,6 +17,9 @@ import {
       cart:false,
       cartActions: false
     },
+    TotalPrice :null,
+    ShippPrice: null,
+    Total: null
   }
   
   export default function (state = initialState, action) {
@@ -24,7 +27,10 @@ import {
       case GET_CART :
         return {
           ...state,
-          items:action.payload,
+          items:action.items,
+          TotalPrice: action.TotalPrice,
+          ShippPrice: action.ShippPrice,
+          Total: action.Total,
           loading:{
             ...state.loading,
             cart:false,
@@ -35,6 +41,8 @@ import {
         return{
           ...state,
           error:action.payload,
+          items: null,
+          TotalPrice :null,
           loading: {
             ...state.loading,
             cart:false

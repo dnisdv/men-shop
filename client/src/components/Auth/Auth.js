@@ -5,7 +5,12 @@ import RegisterForm from './RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router';
 
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const Auth = ({ user : {error}}) => {
 

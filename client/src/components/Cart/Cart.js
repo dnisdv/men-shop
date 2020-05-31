@@ -2,8 +2,10 @@ import React from 'react'
 import './Cart.css'
 import CartList from './CartList/CartList'
 import CartTotal from './CartTotal/CartTotal'
+import {connect} from 'react-redux'
 
-const Cart = () => {
+const Cart = ({cart, loading}) => {
+
     return( 
         <div className='Cart'>
 
@@ -20,4 +22,9 @@ const Cart = () => {
     )
 }
 
-export default Cart
+const mapStateToProps = (state) => ({
+    cart : state.cart.items,
+    loading: state.cart.loading
+});
+
+export default connect(mapStateToProps)(Cart)

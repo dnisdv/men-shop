@@ -71,6 +71,11 @@
     margin-left:auto;
 }
 
+.CartTotal_Button_Buy:disabled,
+.CartTotal_Button_Buy[disabled]{
+    opacity:0.8
+}
+
 @media (min-width: 950px) { 
     .CartTotal_Total_Title{
         font-size: 24px;

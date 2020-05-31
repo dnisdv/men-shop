@@ -14,16 +14,20 @@ import {
 export const addToCart = (data) => (dispatch) => {
         axios.post('http://localhost:5000/api/cart/addProduct', data, {withCredentials : true})
         .then( (res) => {
+            console.log(res)
             dispatch({
                 type: GET_CART_LENGTH,
-                payload: {value : res.data.length}
+                payload: {value : res.data.items.length}
             })
             dispatch({
                 type: ADD_TOCART
             })
             dispatch({
                 type:GET_CART,
-                payload: res.data
+                items: res.data.items,
+                TotalPrice: res.data.TotalPrice,
+                ShippPrice: res.data.ShippPrice,
+                Total: res.data.Total
             })
 
         })
@@ -34,12 +38,15 @@ export const addToCart = (data) => (dispatch) => {
 }
 
     export const getCartProducts = () => (dispatch) => {
-    dispatch({type: LOADING_CART})
+    // dispatch({type: LOADING_CART})
         axios.get('http://localhost:5000/api/cart/getProducts', {withCredentials : true})
         .then((res)=> {
             dispatch({
                 type:GET_CART,
-                payload: res.data
+                items: res.data.items,
+                TotalPrice: res.data.TotalPrice,
+                ShippPrice: res.data.ShippPrice,
+                Total: res.data.Total
             })
         })
         .catch( (err) => {
@@ -61,7 +68,10 @@ export const increaseProduct = (data) => (dispatch) => {
             console.log(res)
             dispatch({
                 type:GET_CART,
-                payload: res.data
+                items: res.data.items,
+                TotalPrice: res.data.TotalPrice,
+                ShippPrice: res.data.ShippPrice,
+                Total: res.data.Total
             })
         })
         .catch( (err) => console.log(err.response))
@@ -78,7 +88,10 @@ export const decreaseProduct = (data) => (dispatch) => {
             console.log(res)
             dispatch({
                 type:GET_CART,
-                payload: res.data
+                items: res.data.items,
+                TotalPrice: res.data.TotalPrice,
+                ShippPrice: res.data.ShippPrice,
+                Total: res.data.Total
             })
         })
         .catch( (err) => console.log(err.response))
@@ -93,7 +106,10 @@ export const setCount = (count) => dispatch => {
     console.log(res)
         dispatch({
             type:GET_CART,
-            payload: res.data
+            items: res.data.items,
+            TotalPrice: res.data.TotalPrice,
+            ShippPrice: res.data.ShippPrice,
+            Total: res.data.Total
         })
     }
     )
@@ -117,18 +133,20 @@ export const deleteOne = (id, sku) => dispatch => {
 
     axios.post(`http://localhost:5000/api/cart/deleteOne`, {id, sku}, {withCredentials : true})
     .then((res)=> {
-    console.log(res)
         dispatch({
             type:DELETE_ONEPRODUCT,
             payload: res.data
         })
         dispatch({
             type: GET_CART_LENGTH,
-            payload: {value: res.data.length}
+            payload: {value: res.data.items.length}
         })
         dispatch({
             type:GET_CART,
-            payload: res.data
+            items: res.data.items,
+            TotalPrice: res.data.TotalPrice,
+            ShippPrice: res.data.ShippPrice,
+            Total: res.data.Total
         })
     })
     .catch( (err) => console.log(err.response))
