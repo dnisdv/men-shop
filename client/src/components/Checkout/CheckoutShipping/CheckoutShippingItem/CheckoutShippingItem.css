@@ -1,0 +1,13 @@
+.CheckoutShipping_List_Item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.CheckoutShipping_Input_Feedback{
+    color:red;
+    display: flex;
+}
+.CheckoutShipping_Input_Feedback::before{
+    content:"*";
+    display: block;
+}

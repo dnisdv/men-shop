@@ -15,7 +15,6 @@ import {connect} from 'react-redux'
 import {checkLogin} from './actions/userActions'
 import {getCartProducts, addToCart, getCartLength} from './actions/cartActions'
 import {
-  BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";

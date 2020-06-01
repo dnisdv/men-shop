@@ -11,16 +11,17 @@ import authProvider from './components/AdminPanel/Providers/authProvider'
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
-import { createHashHistory } from 'history';
+import { createHashHistory, createBrowserHistory } from 'history';
 
 const dataProvider = myDataProvider('http://localhost:5000')
 const history = createHashHistory();
+const browserH = createBrowserHistory()
 
 
 
 const renderApp = () => {
   ReactDOM.render(
-    <Router history={history}>
+    <Router history={browserH}>
     <Provider store={createAdminStore({history, authProvider, dataProvider})}>
         <App myHistory={history}/>
     </Provider>

@@ -5,9 +5,6 @@ import {connect} from 'react-redux'
 
 const CheckoutTotal = ({cart : {TotalPrice, ShippPrice, Total}}) => {
 
-    // <p className='CartTotal_Total_Value'>{cart ?  cart.length >= 2  ? cart.reduce( (i, s) => {
-    //     return (i.price * i.count) + (s.count * s.price) }) : cart.length !== 0 ? cart.map( (i) => i.price * i.count) : "0" : "0"}<span className='Currency'>$</span>
-    // </p>
     return(
         <div className='CheckoutTotal'>
             <ul className='CheckoutTotal_List'>

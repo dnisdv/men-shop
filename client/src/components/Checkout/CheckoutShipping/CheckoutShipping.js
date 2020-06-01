@@ -1,60 +1,74 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './CheckoutShipping.css'
+import * as Yup from 'yup'
+import { Formik } from 'formik';
+import {withRouter} from 'react-router-dom'
+import { set_shippMethod } from '../../../actions/orderActions'
+import { connect } from 'react-redux';
+import CheckoutShippingItem from './CheckoutShippingItem/CheckoutShippingItem'
 
-const CheckoutShipping = ({bread, setbread}) => {
+import { createBrowserHistory } from 'history'
 
-    const nextBread = () => {
-        setbread({
-            ...bread,
-            Shipping: {
-                ...bread.Shipping,
-                 active:false,
-                 finished:true,
-            },
-            Payment: {
-                ...bread.Payment,
-                active:true,
-            }
+const CheckoutShipping = ({history, loading_shipp ,order : {dataFinished}, set_shippMethod}) => {
+    useEffect(() => {
+        if(!dataFinished) {
+            history.push('/checkout')
+        }
+    }, [dataFinished, history, loading_shipp])
+
+
+    const formValidation = () => {
+        return Yup.object().shape({
+            Shipping : Yup.string()
+                .required("Required"),
         })
+    }    
+    const goBack = () => {
+        createBrowserHistory().goBack()
     }
+    if(!dataFinished) return (<span></span>)
 
-    const prevBread = () => {
-        setbread({
-            ...bread,
-            Details: {...bread.Details , active:true},
-            Shipping: {...bread.Shipping, active:false},
-        })
-    }
- 
+
     return(
-        <div style={{display : bread['Shipping'].active ? 'flex' : 'none'}} className='CheckoutShipping'>
-
-
+        <div className='CheckoutShipping'>
             <h1 className='CheckoutShipping_Title'>Shipping method</h1>
-            <ul className='CheckoutShipping_List'>
-                <li className='CheckoutShipping_List_Item'>
-                    <div className='CheckoutShipping_List_Item_Data'>
-                        <input className='Checkput' type="radio" id='Shipping1' name="Shipping" />
-                        <label htmlFor='Shipping1' className='CheckoutShipping_List_Item_Title'>Standart Shipping</label>
-                    </div>
-                    <p className='CheckoutShipping_List_Item_Price'>Free</p>
-                </li>
 
-                <li className='CheckoutShipping_List_Item'>
-                    <div className='CheckoutShipping_List_Item_Data'>
-                        <input type="radio" id='Shipping2' name="Shipping" />
-                        <label htmlFor='Shipping2' className='CheckoutShipping_List_Item_Title'>2 - 3 Bussines day shipping</label>
-                    </div>
-                    <p className='CheckoutShipping_List_Item_Price'>5.00</p>
-                </li>
+            <Formik
+                initialValues={{Shipping : ""}}
+                validationSchema={formValidation}
+                onSubmit={(values) => {
+                    set_shippMethod(values.Shipping)
+                    history.push('/checkout/payment')
+                }}>
+            {(props) => (
+                <form className='CheckoutShipping_List' onSubmit={props.handleSubmit}>
+                    <CheckoutShippingItem {...props} 
+                        price='free' 
+                        name='Shipping' 
+                        id={1} >10 - 20 Standart Shipping
+                    </CheckoutShippingItem>
 
-            </ul>
-            <div className='CheckoutShipping_Actions'>
-                <button onClick={prevBread} className='CheckoutShipping_Actions_Back'>Back to Details</button>
-                <button onClick={nextBread} className='CheckoutShipping_Actions_Button'>Next</button>
-            </div>
+                    <CheckoutShippingItem {...props} 
+                        price='5.00' 
+                        name='Shipping' 
+                        id={2} >2 - 3 Bussines day shipping
+                    </CheckoutShippingItem>
+                    {props.errors.Shipping && props.touched.Shipping && (<div className='CheckoutShipping_Input_Feedback'>{props.errors.Shipping}</div>)}
+
+                    <div className='CheckoutShipping_Actions'>
+                        <span onClick={goBack} className='CheckoutShipping_Actions_Back'>Back to Details</span>
+                        <button type='submit' className='CheckoutShipping_Actions_Button'>Next</button>
+                    </div>
+                </form>
+            )}
+            </Formik>
         </div>
     )
 }
 
-export default CheckoutShipping
+const mapStateToProps = (state) => ({
+    order: state.order
+})
+
+
+export default withRouter(connect(mapStateToProps, {set_shippMethod})(CheckoutShipping))

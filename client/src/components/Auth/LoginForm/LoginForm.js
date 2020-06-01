@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import{ loginUser } from '../../../actions/userActions'
 import { Formik } from 'formik';
 import * as Yup from 'yup'
-import { withRouter } from 'react-router';
 
 
 const LoginForm = ({loginUser, history, user:{loading, error}}) => {
@@ -86,4 +85,4 @@ const mapStateToProps = (state) => ({
   });
 
 
-export default withRouter(connect(mapStateToProps,{loginUser})(LoginForm));
+export default connect(mapStateToProps,{loginUser})(LoginForm)

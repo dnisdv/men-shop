@@ -1,89 +1,82 @@
 import React from 'react'
 import './CheckoutDetails.css'
-
+import { Formik } from 'formik';
 import { Link } from 'react-router-dom'
+import * as Yup from 'yup'
+import {withRouter} from 'react-router-dom'
 
-const CheckoutDetails = ({bread, setbread}) => {
+import { set_orderData } from '../../../actions/orderActions'
+import { connect } from 'react-redux';
 
-    const nextBread = () => {
-        setbread({
-            ...bread,
-            Details: {
-                ...bread.Details,
-                 active:false,
-                 finished:true,
-            },
-            Shipping: {
-                ...bread.Shipping,
-                active:true,
-            }
+import CheckoutDetailsItem from './CheckoutDetailsItem/CheckoutDetailsItem'
+
+const CheckoutDetails = ({history, orderState, set_orderData}) => {
+
+
+    const formValidation = () => {
+        return Yup.object().shape({
+            firstName : Yup.string()
+                .required("Required"),
+            lastName : Yup.string()
+                .required("Required"),
+            company : Yup.string()
+                .required("Required"),
+            email : Yup.string()
+                .email("This must be an email")
+                .required("Required"),
+            phone : Yup.number()
+                .required("Required"),
+            country : Yup.string()
+                .required("Required"),
+            zip : Yup.string()
+                .required("Required"),
+            state: Yup.string()
+                .required("Required"),
+            address : Yup.string()
+                .required("Required"),
+            city : Yup.string()
+                .required("Required")
         })
     }
 
     return(
-        <div style={{display : bread['Details'].active ? 'flex' : 'none'}} className='CheckoutDetails'>
-
+        <div className='CheckoutDetails'>
             <h2 className='CheckoutDetails_Title'>Details</h2>
+            <Formik
+            initialValues={orderState}
+            validationSchema={formValidation}
+            onSubmit={(values) => {
+                set_orderData(values)
+                history.push('/checkout/shipping')
+            }}
+            >
+            {(props) => (
+                <form className='CheckoutDetails_Wrapper' onSubmit={props.handleSubmit}>
+                    <CheckoutDetailsItem {...props} name='firstName'>First Name</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='lastName'>Last Name</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='company'>Company</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='email'>Email</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='phone'>Phone</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='country'>Country</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='zip'>Zip</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='state'>State</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='address'>Address</CheckoutDetailsItem>
+                    <CheckoutDetailsItem {...props} name='city'>City</CheckoutDetailsItem>
 
-        <div className='CheckoutDetails_Wrapper'>
-            <div className='CheckoutDetails_Input_Wrapp'>
-                <input type='text' className='CheckoutDetails_Input' id='fname' />
-                <label htmlFor='fname' className='CheckoutDetails_Input_LabeL'>First Name</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp'>
-                <input type='text' className='CheckoutDetails_Input' id='lname' />
-                <label htmlFor='lname' className='CheckoutDetails_Input_LabeL'>Last Name</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp'>
-                <input type='text' className='CheckoutDetails_Input' id='company' />
-                <label htmlFor='company' className='CheckoutDetails_Input_LabeL'>Company</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp'>
-                <input type='text' className='CheckoutDetails_Input' id='email' />
-                <label htmlFor='email' className='CheckoutDetails_Input_LabeL'>Email</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp'>
-                <input type='text' className='CheckoutDetails_Input' id='phone' />
-                <label htmlFor='phone' className='CheckoutDetails_Input_LabeL'>Phone</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp '>
-                <input type='text' className='CheckoutDetails_Input' id='country' />
-                <label htmlFor='country' className='CheckoutDetails_Input_LabeL'>Country</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp CheckoutDetails_Zipcode'>
-                <input type='text' className='CheckoutDetails_Input' id='zipcode' />
-                <label htmlFor='zipcode' className='CheckoutDetails_Input_LabeL'>Zip Code</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp CheckoutDetails_State'>
-                <input type='text' className='CheckoutDetails_Input' id='state' />
-                <label htmlFor='state' className='CheckoutDetails_Input_LabeL'>State</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp'>
-                <input type='text' className='CheckoutDetails_Input' id='address' />
-                <label htmlFor='address' className='CheckoutDetails_Input_LabeL'>Address</label>
-            </div>
-
-            <div className='CheckoutDetails_Input_Wrapp'>
-                <input type='text' className='CheckoutDetails_Input' id='city' />
-                <label htmlFor='city' className='CheckoutDetails_Input_LabeL'>City</label>
-            </div>
-
-
-        </div>
-            <div className='CheckoutDetails_Actions'>
-                <Link className='CheckoutDetails_Actions_Back' to='/cart'>Back to cart</Link>
-                <button onClick={nextBread} className='CheckoutDetails_Actions_Button'>Next</button>
-            </div>
+                    <div className='CheckoutDetails_Actions'>
+                        <Link className='CheckoutDetails_Actions_Back' to='/cart'>Back to cart</Link>
+                        <button type='submit' className='CheckoutDetails_Actions_Button'>Next</button>
+                    </div>
+                </form>
+            )}
+            </Formik>
         </div>
     )
 }
 
-export default CheckoutDetails
+
+const mapStateToProps = (state) => ({
+    orderState : state.order.data
+  });
+
+export default withRouter(connect(mapStateToProps, {set_orderData})(CheckoutDetails))

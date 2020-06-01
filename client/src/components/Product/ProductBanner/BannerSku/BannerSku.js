@@ -38,9 +38,6 @@ const BannerSku = ({
                 Object.keys(productInitialState).map( (i) => {
                   if(val[i] === '') return errors[i] = 'Required'
                })
-              console.log("initialState", productInitialState)
-              console.log("values", val)
-              console.log("errors", errors)
               return errors
             }}
             onSubmit={async (values) => {

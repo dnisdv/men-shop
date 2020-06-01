@@ -1,11 +1,10 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import './CheckoutsOrder.css'
 import CheckoutTotal from './CheckoutTotal/CheckoutTotal'
 import {connect} from 'react-redux'
 
 
 const CheckoutOrders = ({cart}) => {
-    console.log(cart)
 
 
     return(

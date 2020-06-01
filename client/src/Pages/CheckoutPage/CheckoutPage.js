@@ -4,8 +4,17 @@ import Checkout from '../../components/Checkout/Checkout'
 import CheckoutOrders from '../../components/Checkout/CheckoutOrders/CheckoutsOrder'
 import {connect} from 'react-redux'
 
-const CheckoutPage = ({headerRef, footerRef, cart}) => {
+import {
+    Switch,
+    Route,
+    withRouter
+} from "react-router-dom";
 
+
+const CheckoutPage = ({headerRef, footerRef, cart, match}) => {
+
+
+    console.log(match)
     useEffect( ()=> {
         window.scrollTo(0, 0)
         const header = headerRef.current
@@ -37,4 +46,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps)(CheckoutPage)
+export default withRouter(connect(mapStateToProps)(CheckoutPage))

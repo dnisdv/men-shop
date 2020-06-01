@@ -1,37 +1,30 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './Checkout.css'
 import CheckoutDetails from './CheckoutDetails/CheckoutDetails'
 import CheckoutBreadcrumbs from './CheckoutBreadcrumbs/CheckoutBreadcrumbs'
 import CheckoutShipping from './CheckoutShipping/CheckoutShipping'
 import CheckoutPayment from './CheckoutPayment/CheckoutPayment'
 
+import {
+    Switch,
+    Route,
+    withRouter
+  } from "react-router-dom";
 
-const Checkout = ({cart}) => {
 
-    const [bread, setbread] = useState({
-        Details: {
-            active:true,
-            finished:false
-        },
-        Shipping: {
-            active:false,
-            finished:false,
-        },
-        Payment: {
-            active:false,
-            finished:false
-        }
-    })
+const Checkout = ({cart, match}) => {
 
     return(
         <div className='Checkout'>
-            <CheckoutBreadcrumbs bread={bread} setbread={setbread} />
-
-            <CheckoutDetails bread={bread} setbread={setbread}/>
-            <CheckoutShipping bread={bread} setbread={setbread}/>
-            <CheckoutPayment bread={bread} setbread={setbread}/>
+            <CheckoutBreadcrumbs />
+            <Switch>
+                <Route exact path={`${match.url}/details`} render={ () => <CheckoutDetails /> } />
+                <Route exact path={`${match.url}/shipping`} render={ () => <CheckoutShipping/> } />
+                <Route exact path={`${match.url}/payment`} render={ () => <CheckoutPayment /> } />
+                <CheckoutDetails />
+            </Switch>
         </div>
     )
 }
 
-export default Checkout
+export default withRouter(Checkout)

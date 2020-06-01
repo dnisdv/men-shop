@@ -15,7 +15,7 @@ import userReducer from '../reducers/userReducer'
 import productsReducer from '../reducers/productsReducer'
 import bannerReducer from '../reducers/bannerReducer'
 import cartReducer from '../reducers/cartReducer'
-
+import orderReducer from '../reducers/orderReducer'
 
 
 export default ({
@@ -30,7 +30,8 @@ export default ({
         user: userReducer,
         products : productsReducer,
         banner : bannerReducer,
-        cart : cartReducer
+        cart : cartReducer,
+        order : orderReducer
     });
     const resettableAppReducer = (state, action) =>
     reducer(action.type !== USER_LOGOUT ? state : undefined, action);
