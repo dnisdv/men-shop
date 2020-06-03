@@ -9,7 +9,7 @@ const sendCart = async (session, cb) => {
   const TotalPrice = await session.reduce((a, i) => a + i.count * i.price, 0);
   const ShippPrice = await session.reduce((a, i) => a + i.shipping_price, 0);
   const Total = TotalPrice + ShippPrice;
-  cb(null, { items: session, TotalPrice, ShippPrice, Total });
+  return cb(null, { items: session, TotalPrice, ShippPrice, Total });
 };
 
 router.post("/cart/addProduct", async (req, res) => {
@@ -34,8 +34,8 @@ router.post("/cart/addProduct", async (req, res) => {
     }
     cart.push({ ...req.body, id: shortid.generate() });
     req.session.product = cart;
-    sendCart(req.session.product, (err, data) => {
-      if (err) res.status(404).send(err);
+    return sendCart(req.session.product, (err, data) => {
+      if (err) return res.status(404).send(err);
       return res.send(data);
     });
   } catch (e) {

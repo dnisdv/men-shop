@@ -26,9 +26,23 @@ router.get("/reviews", async (req, res) => {
       });
       return res.send(result);
     }
+    if (req.query.range) {
+      const [from = 0, to = 4] = JSON.parse(req.query.range);
+
+      const reviews = await reviewModel
+        .find({})
+        .limit(from - to - 1)
+        .skip(from);
+
+      const productsLenght = await reviewModel.find({});
+      const length = productsLenght.length;
+
+      return res
+        .set("Content-Range", `products ${+from}-${+to}/${length}`)
+        .send(reviews);
+    }
     const reviews = await reviewModel.find({});
-    const reviewsLenght = reviews.length;
-    res.set("Content-Range", `reviews 0-24/${reviewsLenght}`).send(reviews);
+    res.send({ reviews });
   } catch (e) {
     res.status(404).send();
   }

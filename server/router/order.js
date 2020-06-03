@@ -23,9 +23,24 @@ router.get("/orders", async (req, res) => {
       });
       return res.send(result);
     }
+    if (req.query.range) {
+      const [from = 0, to = 4] = JSON.parse(req.query.range);
+
+      const orders = await orderModel
+        .find({})
+        .limit(from - to - 1)
+        .skip(from);
+
+      const ordersLenght = await orderModel.find({});
+      const length = ordersLenght.length;
+
+      return res
+        .set("Content-Range", `products ${+from}-${+to}/${length}`)
+        .send(orders);
+    }
+
     const orders = await orderModel.find({});
-    const ordersLength = orders.length;
-    res.set("Content-Range", `orders 0-24/${ordersLength}`).send(orders);
+    res.send(orders);
   } catch (e) {
     res.status(404).send("Not found");
   }

@@ -46,10 +46,7 @@ export const get_products = (page = 0) => (dispatch) => {
         console.log(res)
         dispatch({
             type:GET_PRODUCTS,
-            payload:res.data.product,
-            totalPages: res.data.totalPages,
-            currentPage: res.data.currentPage,
-            totalProducts: res.data.totalProducts
+            payload:res.data,
         })
     }).catch((err) => {
         dispatch({
@@ -72,10 +69,7 @@ export const get_productsByCategory = (category, page = 0) => (dispatch) => {
 
         dispatch({
             type: GET_PRODUCTSBYCATEGORY,
-            payload:res.data.products,
-            totalPages: res.data.totalPages,
-            currentPage: res.data.currentPage,
-            totalProducts: res.data.totalProducts
+            payload:res.data,
         })
     }).catch( (err) => {
         dispatch({

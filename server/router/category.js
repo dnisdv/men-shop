@@ -22,9 +22,24 @@ router.get("/category", async (req, res) => {
       return res.send(result);
     }
 
+    if (req.query.range) {
+      const [from = 0, to = 4] = JSON.parse(req.query.range);
+
+      const category = await categoryModel
+        .find({})
+        .limit(from - to - 1)
+        .skip(from);
+
+      const categoryLenght = await categoryModel.find({});
+      const length = categoryLenght.length;
+
+      return res
+        .set("Content-Range", `products ${+from}-${+to}/${length}`)
+        .send(category);
+    }
+
     const category = await categoryModel.find({});
-    const categoryLength = category.length;
-    res.set("Content-Range", `category 0-24/${categoryLength}`).send(category);
+    res.send(category);
   } catch (e) {
     res.status(404).send("Not found");
   }

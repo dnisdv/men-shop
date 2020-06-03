@@ -22,7 +22,6 @@ var storage = multer.diskStorage({
 var upload = multer({ dest: "uploads/", storage: storage }).array("imgs", 8);
 
 router.post("/products", upload, async (req, res) => {
-  console.log(JSON.parse(req.body.data));
   try {
     const product = await new productModel({
       ...JSON.parse(req.body.data),
@@ -63,8 +62,6 @@ router.delete("/products/:id", async (req, res) => {
 router.get("/products", async (req, res) => {
   try {
     if (req.query.category) {
-      // const { page = 0, limit = 2 } = req.query;
-
       const products = await productModel
         .find(
           { category: req.query.category },
@@ -74,60 +71,32 @@ router.get("/products", async (req, res) => {
           path: "category",
           select: "title",
         });
-      // .limit(limit * 1)
-      // .skip(page * limit);
 
-      // const count = await productModel
-      //   .find({ category: req.query.category }, "title")
-      //   .countDocuments();
-
-      return res.send({
-        products,
-        // totalPages: Math.ceil(count / limit),
-        // currentPage: +page,
-        // totalProducts: count,
-      });
+      return res.send(products);
     }
     if (req.query.preview) {
-      // const { page = 0, limit = 2 } = req.query;
-
-      // const count = await productModel.find({}).countDocuments();
-
-      const product = await productModel
+      const products = await productModel
         .find({}, "title category quick_description price images")
         .populate({ path: "category", select: "title" });
-      // .limit(limit * 1)
-      // .skip(page * limit);
-
-      return res.send({
-        product,
-        // totalPages: Math.ceil(count / limit),
-        // currentPage: +page,
-        // totalProducts: count,
-      });
+      return res.send(products);
     }
 
-    // if (req.query.filter) {
-    //   const fil = JSON.parse(req.query.filter);
+    if (req.query.range) {
+      const [from = 0, to = 4] = JSON.parse(req.query.range);
 
-    //   const result = await productModel.find({
-    //     _id: { $in: fil["id"] },
-    //   });
-    //   return res.send(result);
-    // }
+      const products = await productModel
+        .find({})
+        .limit(from - to - 1)
+        .skip(from);
 
-    const [from = 0, to = 4] = JSON.parse(req.query.range);
-
-    const products = await productModel
-      .find({})
-      .limit(from - to)
-      .skip(from);
-
-    const productsLenght = await productModel.find({});
-    const length = productsLenght.length;
-    res
-      .set("Content-Range", `products ${+from}-${+to}/${length}`)
-      .send(products);
+      const productsLenght = await productModel.find({});
+      const length = productsLenght.length;
+      return res
+        .set("Content-Range", `products ${+from}-${+to}/${length}`)
+        .send(products);
+    }
+    const products = await productModel.find({});
+    res.send(products);
   } catch (e) {
     res.status(400).send(e);
   }

@@ -32,9 +32,23 @@ router.get("/banner", async (req, res) => {
           res.send(preview);
         });
     }
+    if (req.query.range) {
+      const [from = 0, to = 4] = JSON.parse(req.query.range);
+
+      const banners = await bannerModel
+        .find({})
+        .limit(from - to - 1)
+        .skip(from);
+
+      const bannersLenght = await bannerModel.find({});
+      const length = bannersLenght.length;
+
+      return res
+        .set("Content-Range", `products ${+from}-${+to}/${length}`)
+        .send(banners);
+    }
     let banner = await bannerModel.find({});
-    const bannerLength = banner.length;
-    res.set("Content-Range", `banner 0-24/${bannerLength}`).send(banner);
+    res.send(banner);
   } catch (e) {
     res.status(500).send("Not found");
   }

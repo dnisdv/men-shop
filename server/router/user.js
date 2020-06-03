@@ -90,10 +90,26 @@ router.get("/users", async (req, res) => {
       });
       return res.send(result);
     }
+
+    if (req.query.range) {
+      const [from = 0, to = 4] = JSON.parse(req.query.range);
+
+      const users = await userModel
+        .find({})
+        .limit(from - to - 1)
+        .skip(from);
+
+      const userLenght = await userModel.find({});
+      const length = userLenght.length;
+
+      return res
+        .set("Content-Range", `products ${+from}-${+to}/${length}`)
+        .send(users);
+    }
+
     const users = await userModel.find({});
     if (!users) return res.send("no users found");
-    const usersLength = users.length;
-    res.set("Content-Range", `products 0-24/${usersLength}`).send(users);
+    res.send(users);
   } catch (e) {
     res.status(500).send(e);
   }
