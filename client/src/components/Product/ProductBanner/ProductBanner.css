@@ -9,6 +9,7 @@
     margin:0 auto;
     object-fit: cover;
 }
+
 .carouselProvider{
     width: 300px ;
     height: 300px ;
@@ -53,6 +54,13 @@
     }
     .carouselProvider{
         width: 888px;
+        height: 705px;
+    }
+    .ProductBanner_IMG-Slide{
+        width: 888px !important;
+        height: 705px !important;
+    }
+    .carouselProvider > div{
         height: 705px;
     }
     .carouselProvider_Button{

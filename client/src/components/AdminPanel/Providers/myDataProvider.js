@@ -8,10 +8,22 @@ import { cacheDataProviderProxy } from 'react-admin';
 const dataProvider = (apiUrl) => ({
     
     getList: (resource, params) => {
-        const url = `${apiUrl}/${resource}`;
+
+        const { page, perPage } = params.pagination;
+        // const { field, order } = params.sort;
+        // const query = {
+        //     sort: JSON.stringify([field, order]),
+        //     range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
+        //     filter: JSON.stringify(params.filter),
+        // };
+
+        const query = {
+            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
+        };
+
+        const url = `${apiUrl}/${resource}?${stringify(query)}`;
         return axios.get(url)
         .then(({data, headers}) => {
-
             if (!headers.hasOwnProperty('content-range')) {
                 throw new Error(
                     'The Content-Range header is missing in the HTTP Response. The simple REST data provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare Content-Range in the Access-Control-Expose-Headers header?'
@@ -28,16 +40,12 @@ const dataProvider = (apiUrl) => ({
                 ),
             };
         })
-        .catch( (e) => console.log(e.response))
     },
 
 
     getOne: (resource, params) =>{
         return axios.get(`${apiUrl}/${resource}/${params.id}`)
         .then(({data} ) => ({data : {id:data._id, ...data}}))
-        .catch( (err) => {
-            console.log(err.response)
-        })
     },
 
     getMany: (resource, params) => {
@@ -47,7 +55,6 @@ const dataProvider = (apiUrl) => ({
         .then(({ data }) => {
             return {data : data.map( (i) => ({...i, id:i._id}))}
         })
-        .catch( (err) => console.log(err))
     },
 
     getManyReference: (resource, params) => {

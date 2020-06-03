@@ -4,7 +4,7 @@ import CartList from './CartList/CartList'
 import CartTotal from './CartTotal/CartTotal'
 import {connect} from 'react-redux'
 
-const Cart = ({cart, loading}) => {
+const Cart = () => {
 
     return( 
         <div className='Cart'>

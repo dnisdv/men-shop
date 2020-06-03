@@ -25,7 +25,17 @@ const ProductBanner = ({product: {images}}) => {
                     totalSlides={images.length}
                 >
                     <Slider>
-                        {images.map( (i) => <Slide key={i._id} index={i._id}><img className='ProductBanner_IMG' alt='ProductImage' src={`http://localhost:5000/${i.path}`}></img></Slide>)}
+                        
+                        {images.map( (i) => <Slide 
+                        innerClassName="ProductBanner_IMG-Slide"
+                        key={i._id} index={i._id}>
+                        <img 
+                        className='ProductBanner_IMG' alt='ProductImage' 
+                        src={`http://localhost:5000/${i.path}`}
+                        width='888px'
+                        height='705px'
+                        >
+                        </img></Slide>)}
                     </Slider>
                     <ButtonBack className="carouselProvider_Button carouselProvider_Button-Prev">
                         <img alt='prevIcon' className="carouselProvider_Button_IMG carouselProvider_Button_IMG-Prev" src={Arrow} />

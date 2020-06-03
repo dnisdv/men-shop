@@ -29,8 +29,11 @@ const ProductsCatalog
     }, [get_category])
 
     const selectCategory = (e, id, title) => {
-        set_activeCategory(id)
+        // set_activeCategory(id)
         history.push(`?category=${title}`)
+        setTimeout(() => {
+            setcatalogOpen(false)
+        }, 200);
     }
     const selectAllCategory = (e) => {
         get_products()

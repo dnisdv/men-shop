@@ -4,7 +4,10 @@
     padding: 0;
     margin-right: 175px;
     margin-top:50px;
-    width: 100%;
+    width: 100%;   
+}
+.Products.mobile-noItems{
+    height: calc(100vh - 380px);
 }
 .Products_Item{
     margin-top:50px
@@ -81,10 +84,14 @@
     align-items: center;
     height: 100%;
 }
-
+.cssload-containerProducts-noItems{
+    height: calc(100vh - 380px);
+}
 
 @media (min-width: 950px) {
-
+    .Products.mobile-noItems{
+        height: auto;
+    }
     .Products_Item{
         margin-top:73px;
     } 

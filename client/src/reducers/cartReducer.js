@@ -27,6 +27,7 @@ import {
       case GET_CART :
         return {
           ...state,
+          error:null,
           items:action.items,
           TotalPrice: action.TotalPrice,
           ShippPrice: action.ShippPrice,

@@ -11,6 +11,7 @@ import {logoutUser} from '../../../actions/userActions'
 const Menu = ({logoutUser, authenticated}) => {
 
     const [ModalState, setModalState] = useState(false)
+    const [OverFlow, setOverFlow] = useState(false)
 
     const ModalStateHandler = (e) =>{
         setModalState(!ModalState)
@@ -18,6 +19,8 @@ const Menu = ({logoutUser, authenticated}) => {
     }
     const closeModalHandler = () =>{
         setModalState(false)
+        return document.body.classList.remove('hideOverflow')
+
     }
     const LogOutHandler = () => {
         return logoutUser()

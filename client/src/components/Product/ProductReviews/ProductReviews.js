@@ -1,13 +1,14 @@
 import React from 'react'
 import './ProductReviews.css'
-import ProductPag from './ReviewsPag/ReviewsPag'
 import Reviews from './Reviews/Reviews.js'
 import Rate from 'rc-rate'
+import Pagination from '../../Pagination/Pagination'
 
 import {connect} from 'react-redux'
 
+import {get_reviewsByProduct} from '../../../actions/productsActions'
 
-const ProductReviews = ({product: {rate}, reviews}) => {
+const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) => {
 
     if(!reviews) return (<div className='Loadin'>LOADING...</div>)
     return(
@@ -32,7 +33,11 @@ const ProductReviews = ({product: {rate}, reviews}) => {
 
                 </div>
                     <Reviews />
-                <ProductPag />
+                    <Pagination 
+                        items={reviews.reviews} 
+                        totalPages={reviews.totalPages}
+                        onChange={(e) => get_reviewsByProduct(_id, e.selected)}
+                    />
 
                 </div>
         </div>
@@ -44,4 +49,4 @@ const mapStateToProps = (state) => ({
     reviews: state.products.reviews
   });
 
-export default connect(mapStateToProps)(ProductReviews)
+export default connect(mapStateToProps, {get_reviewsByProduct})(ProductReviews)

@@ -20,8 +20,10 @@ import {
 import axios from 'axios'
 
 export const get_category = (history) => (dispatch) => {
+    
     dispatch({type : LOADING_CATEGORY})
     axios.get('http://localhost:5000/api/category')
+    
     .then( (res) => {
         dispatch({
             type:GET_CATEGORY,
@@ -36,14 +38,18 @@ export const get_category = (history) => (dispatch) => {
     })
 }
 
-export const get_products = () => (dispatch) => {
-
+export const get_products = (page = 0) => (dispatch) => {
+    console.log("PAGECHENGE")
     dispatch({type: LOADING_PRODUCTS})
-    axios.get('http://localhost:5000/api/products?preview=true')
+    axios.get(`http://localhost:5000/api/products?preview=true&page=${page}`)
     .then( (res) => {
+        console.log(res)
         dispatch({
             type:GET_PRODUCTS,
-            payload:res.data
+            payload:res.data.product,
+            totalPages: res.data.totalPages,
+            currentPage: res.data.currentPage,
+            totalProducts: res.data.totalProducts
         })
     }).catch((err) => {
         dispatch({
@@ -53,14 +59,23 @@ export const get_products = () => (dispatch) => {
     })
 }
 
-export const get_productsByCategory = (category) => (dispatch) => {
-    dispatch({type:LOADING_PRODUCTS})
+export const get_productsByCategory = (category, page = 0) => (dispatch) => {
+    dispatch({
+        type: SET_ACTIVECATEGORY,
+        payload: category
+    })
+    dispatch({type: LOADING_PRODUCTS})
 
-    axios.get(`http://localhost:5000/api/products?preview=true&category=${category}`)
+
+    axios.get(`http://localhost:5000/api/products?preview=true&category=${category}&page=${page}`)
     .then( (res) => {
+
         dispatch({
             type: GET_PRODUCTSBYCATEGORY,
-            payload:res.data
+            payload:res.data.products,
+            totalPages: res.data.totalPages,
+            currentPage: res.data.currentPage,
+            totalProducts: res.data.totalProducts
         })
     }).catch( (err) => {
         dispatch({
@@ -78,10 +93,7 @@ export const get_productsByCategory = (category) => (dispatch) => {
             type: GET_PRODUCT,
             payload: res.data
         })
-
         let State ={}
-        console.log(res)
-
         if(res.data.stock) {
             await res.data.stock.map( (i) => {return State[i.title] = ''})
         }
@@ -104,8 +116,9 @@ export const get_productsByCategory = (category) => (dispatch) => {
          dispatch({type:CLEAR_PRODUCT})
  }
 
- export const get_reviewsByProduct = (id, page = 1) => (dispatch) => {
+ export const get_reviewsByProduct = (id, page = 0) => (dispatch) => {
     dispatch({type:LOADING_REVIEWS})
+
     axios.get(`http://localhost:5000/api/reviews/product/${id}?page=${page}`)
     .then( (res) => {
         dispatch({

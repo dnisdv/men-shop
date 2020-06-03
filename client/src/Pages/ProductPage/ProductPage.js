@@ -32,7 +32,6 @@ const ProductPage = ({get_product, match,clear_product, get_reviewsByProduct, pr
             <ProductBanner />
             <ProductData />
             <ProductReviews />
-            {/* <ProductSimilar /> */}
         </div>
     )
 }

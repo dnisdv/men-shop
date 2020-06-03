@@ -14,7 +14,6 @@ import {
 export const addToCart = (data) => (dispatch) => {
         axios.post('http://localhost:5000/api/cart/addProduct', data, {withCredentials : true})
         .then( (res) => {
-            console.log(res)
             dispatch({
                 type: GET_CART_LENGTH,
                 payload: {value : res.data.items.length}
@@ -61,11 +60,8 @@ export const addToCart = (data) => (dispatch) => {
 
 export const increaseProduct = (data) => (dispatch) => {
     dispatch({type: LOADING_CART_ACTIONS})
-
-    console.log(data)
        axios.post('http://localhost:5000/api/cart/increaseProduct',data, {withCredentials : true})
         .then( (res) => {
-            console.log(res)
             dispatch({
                 type:GET_CART,
                 items: res.data.items,
@@ -81,11 +77,8 @@ export const increaseProduct = (data) => (dispatch) => {
 export const decreaseProduct = (data) => (dispatch) => {
     dispatch({type: LOADING_CART_ACTIONS})
 
-    console.log(data)
        axios.post('http://localhost:5000/api/cart/decreaseProduct',data, {withCredentials : true})
         .then( (res) => {
-            
-            console.log(res)
             dispatch({
                 type:GET_CART,
                 items: res.data.items,
@@ -103,7 +96,6 @@ export const setCount = (count) => dispatch => {
 
     axios.post('http://localhost:5000/api/cart/setCount',count, {withCredentials : true})
     .then((res)=> {
-    console.log(res)
         dispatch({
             type:GET_CART,
             items: res.data.items,
@@ -113,20 +105,18 @@ export const setCount = (count) => dispatch => {
         })
     }
     )
-    .catch( (err) => console.log(err.response))
+    .catch( (e) => console.log(e.response))
 }
 
 export const getCartLength = () => dispatch => {
-    console.log("Cart")
     axios.get('http://localhost:5000/api/cart/getcartlength', {withCredentials : true})
     .then((res)=> {
-    console.log(res)
         dispatch({
             type:GET_CART_LENGTH,
             payload: res.data
         })
     })
-    .catch( (err) => console.log(err.response))
+    .catch( (e) => console.log(e.response))
 }
 
 export const deleteOne = (id, sku) => dispatch => {

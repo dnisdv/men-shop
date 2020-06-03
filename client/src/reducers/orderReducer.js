@@ -1,9 +1,6 @@
 import {
     SET_ORDERDATA,
     SET_SHIPPMETHOD,
-    LOADING_DATA,
-    LOADING_SHIPP,
-    LOADING_PAYMENT
 } from '../types'
   
   const initialState = {

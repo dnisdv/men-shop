@@ -17,14 +17,12 @@ import {
       .post('http://localhost:5000/api/users/login', userData, { withCredentials: true },
       )
       .then((res) => {
-        console.log(res)
-        // dispatch({ type : SET_USER })
         dispatch({ type: LOGIN_USER})
         dispatch({ type: CLEAR_USER_ERROR})
         history.push('/')
       })
       .catch((err) => {
-        console.log(err.response)
+        console.log(err)
         dispatch({
           type: LOGIN_USER_ERROR,
           payload: err.response.data.error,
@@ -43,8 +41,6 @@ import {
         history.push('/')
       })
       .catch((err) => {
-        console.log(err)
-        console.log(err.response)
         dispatch({
           type: REGISTER_USER_ERROR,
           payload: err.response.data.error,
@@ -55,14 +51,13 @@ import {
   export const checkUsernameExist = (username, history) => (dispatch) => {
     axios.post('http://localhost:5000/api/users/checkusername', {username})
     .then((res) => {
-      console.log(res)
       dispatch({
         type : CHECK_USERNAME_EXIST,
         payload: res.data
       })
     })
-    .catch((err) => {
-      console.log(err)
+    .catch((e) => {
+      console.log(e)
     })
   }
 

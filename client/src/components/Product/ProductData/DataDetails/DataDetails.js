@@ -12,12 +12,6 @@ const DataDetails = ({product : {description}}) => {
                 <p className='DataDetails_Data_Main'dangerouslySetInnerHTML={{
                     __html: description
                 }} ></p>
-                {/* <ol className='DataDetails_Data_List'>
-                    <li className='DataDetails_Data_List_Item'>100% Guarantee</li>
-                    <li className='DataDetails_Data_List_Item'>Fast Shipping</li>
-                    <li className='DataDetails_Data_List_Item'>Money Return</li>
-                    <li className='DataDetails_Data_List_Item'>Free Delivery</li>
-                </ol> */}
             </div>
         </div>
     )

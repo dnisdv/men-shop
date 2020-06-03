@@ -13,19 +13,18 @@ const CartList = ({getCartProducts, error, cart : {cartLength, items}, loading})
 
     
     if(loading.cart) return <span className='CartList_Preloader'><Preloader /></span>
-    if(error) return <span className='CartList_NoItems_FeedBack'>{error.data.msg}</span>
     return(
         <div className='CartList_Wrapper'>
             <h2 className='CartList_Wrapper_Title'>Your Items</h2>
-        <ul className='CartList'>
-            {items && items !== [] && items.length !== 0 ? items.map( (item, index) => {
-                return(
-                <CartListItem key={item.productID + index} i={item} />
-                )
-            }) : <span className='CartList_NoItems_FeedBack'>no cart items found</span>}
-            
+       
+        {error ? <span className='CartList_NoItems_FeedBack'>{error.data.msg}</span> : <ul className='CartList'>
+                {items && items !== [] && items.length !== 0 ? items.map( (item, index) => {
+                    return(
+                    <CartListItem key={item.productID + index} i={item} />
+                    )
+                }) : <span className='CartList_NoItems_FeedBack'>no cart items found</span>} 
+        </ul>}
 
-        </ul>
         </div>
     )
 }

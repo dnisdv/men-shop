@@ -13,8 +13,6 @@ import {
 
 const CheckoutPage = ({headerRef, footerRef, cart, match}) => {
 
-
-    console.log(match)
     useEffect( ()=> {
         window.scrollTo(0, 0)
         const header = headerRef.current

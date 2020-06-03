@@ -27,6 +27,11 @@ import {
     category: null,
     products: null,
     product: null,
+    pagination : {
+      totalPages:null,
+      currentPage: null,
+      totalProducts: null
+    },
     reviews: null,
     activeCategory: null,
     error:{
@@ -50,6 +55,12 @@ import {
         return{
             ...state,
             products:action.payload,
+            pagination: {
+              ...state.pagination,
+              totalPages:action.totalPages,
+              currentPage:action.currentPage,
+              totalProducts: action.totalProducts
+            },
             loading: {
               ...state.loading,
               product :false
@@ -61,7 +72,7 @@ import {
             product:action.payload,
             loading: {
               ...state.loading,
-              product :true
+              product :false
             }
           }
     case LOADING_PRODUCTS :
@@ -85,6 +96,12 @@ import {
         return{
             ...state,
             products:action.payload,
+            pagination: {
+              ...state.pagination,
+              totalPages:action.totalPages,
+              currentPage:action.currentPage,
+              totalProducts: action.totalProducts
+            },
             loading: {
               ...state.loading,
               product :false
@@ -102,7 +119,6 @@ import {
       return{
         ...state,
         activeCategory:action.payload,
-
       }
     case GET_REVIEWSBYPRODUCT :
       return{

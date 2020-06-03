@@ -17,7 +17,7 @@ router.post("/cart/addProduct", async (req, res) => {
     if (!req.body) return;
     let cart = req.session.product || [];
     if (req.session.product) {
-      await req.session.product.map((i) => {
+      const product = await req.session.product.map((i) => {
         return !!(
           i.productID === req.body.productID &&
           Object.entries(req.body.sku).toString() ===
@@ -25,13 +25,18 @@ router.post("/cart/addProduct", async (req, res) => {
           i.count++
         );
       });
+      if (product.includes(true)) {
+        return sendCart(req.session.product, (err, data) => {
+          if (err) res.status(404).send(err);
+          res.send(data);
+        });
+      }
     }
     cart.push({ ...req.body, id: shortid.generate() });
     req.session.product = cart;
-
     sendCart(req.session.product, (err, data) => {
       if (err) res.status(404).send(err);
-      res.send(data);
+      return res.send(data);
     });
   } catch (e) {
     res.status(500).send(e);
@@ -40,9 +45,9 @@ router.post("/cart/addProduct", async (req, res) => {
 
 router.get("/cart/getProducts", async (req, res) => {
   try {
-    return sendCart(req.session.product, (err, data) => {
+    sendCart(req.session.product, (err, data) => {
       if (err) res.status(404).send(err);
-      res.send(data);
+      return res.send(data);
     });
   } catch (e) {
     res.status(500).send(e);
@@ -126,7 +131,6 @@ router.get("/cart/getcartlength", (req, res) => {
 router.post("/cart/deleteOne", async (req, res) => {
   try {
     if (!req.session.product) return res.sendStatus(400);
-    console.log(req.session.product);
     req.session.product = await req.session.product.filter((i) => {
       return i.id !== req.body.id;
     });

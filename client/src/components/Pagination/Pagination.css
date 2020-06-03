@@ -1,4 +1,4 @@
-.ReviewsPag_List{
+.Pagination_List{
     list-style: none;
     margin:0;
     padding:0;
@@ -8,12 +8,12 @@
     margin-left:20px;
     margin-right:20px;
 }
-.ReviewsPag{
+.Pagination{
     display: flex;
     justify-content: space-between;
     margin-top:82px;
 }
-.ReviewsPag_List{
+.Pagination_List{
     display: flex;
     list-style: none;
     margin:0;
@@ -22,8 +22,8 @@
     width: auto;
 
 }
-.ReviewsPag_Item,
-.ReviewsPag_Item_Link{
+.Pagination_Item,
+.Pagination_Item_Link{
     padding: 5px 12px;
     color:black;
     margin-left: -1px;
@@ -34,25 +34,25 @@
 
 
 
-.ReviewsPag_List_Next,
-.ReviewsPag_List_Prev{
+.Pagination_List_Next,
+.Pagination_List_Prev{
     width: 25px;
     height: 25px;
     padding: 5px;
     cursor:pointer
 }
-.ReviewsPag_List_Disabled > a{
+.Pagination_List_Disabled > a{
     opacity: 0.5;
     cursor: default;
 }
-.ReviewsPag_Item_Link_active,
-.ReviewsPag_Item_active{
+.Pagination_Item_Link_active,
+.Pagination_Item_active{
     cursor: default;
     opacity: 0.5;
 }
 
 @media (min-width: 950px) { 
-    .ReviewsPag{
+    .Pagination{
         width: 407px;
         justify-content: center;
         margin:0 auto;

@@ -90,6 +90,8 @@
     }
     .ProductsCatalog_List{
         margin:0;
+        width: 70%;
+
     }
     .ProductsCatalog_List_Item{
         font-size: 18px;

@@ -41,8 +41,6 @@ const BannerSku = ({
               return errors
             }}
             onSubmit={async (values) => {
-              console.log(productInitialState)
-              console.log(values)
               addToCart({productID: product._id, count:1, sku:values, 
                         title: product.title, price: product.price, image : product.images[0].path, shipping_price: product.shipping_price})
             }}
@@ -51,13 +49,8 @@ const BannerSku = ({
                 values,
                 errors,
                 touched,
-                handleChange,
-                handleBlur,
                 handleSubmit,
-                isSubmitting,
                 setValues,
-                enableReinitialize,
-                resetForm
             }) => (
                 <form enableReinitialize className='RegisterForm_Form' onSubmit={handleSubmit}>
                   {product.stock.map( i => ( 
@@ -66,7 +59,6 @@ const BannerSku = ({
                         key={i._id}
                         name={i.title} 
                         onChange={ (e) => {
-                          console.log(i.title)
                           setValues({...values, [i.title] : e.value})
                         }} 
                         placeholder={i.title} 

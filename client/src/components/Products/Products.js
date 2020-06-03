@@ -13,32 +13,31 @@ const Products =
         get_productsByCategory, 
         set_activeCategory,
         history, 
-        match,
-        location,
         productsState:{products,  category, loading}
     }) => {
 
     useEffect(() => {
         const categoryPath = history.location.search.split('=')[1]
         if(categoryPath && category){
-            if(category.find(i => i.title === categoryPath)){
-                get_productsByCategory(categoryPath)
-            }
+                const productId = category.find( (i) => i.title === categoryPath)._id
+                get_productsByCategory(productId)
         }else{
             get_products()
-            set_activeCategory()
+            set_activeCategory(null)
         }
-    }, [category, get_products, get_productsByCategory, history.location.search])
+    }, [category, get_products, get_productsByCategory, history.location.search, set_activeCategory])
+
+
 
     const preloader = (
-        <div className="cssload-container">
+        <div className={`cssload-container ${true || (products && products.length) <= 0 ? "cssload-containerProducts-noItems" : ""}`}>
             <div className="cssload-speeding-wheel"></div>
         </div>
     )
     if(loading.product) return preloader
 
     return(
-        <ul className='Products'>
+        <ul className={`Products ${products && products.length <= 0 ? "mobile-noItems" : ""}`}>
             {products && products.length !== 0 ? products.map( (item) => {
                 return(
                 <li key={item._id} className='Products_Item'>
@@ -55,13 +54,13 @@ const Products =
                  </li>
                 )
             }) : <span className="Products_Feedback">sorry, no products yet</span>}
-           
         </ul>
     )
 }
 
 const mapStateToProps = (state) => ({
-    productsState : state.products
+    productsState : state.products,
+    activeCategory : state.products.activeCategory
   });
 
 

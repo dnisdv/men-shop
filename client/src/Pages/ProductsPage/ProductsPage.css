@@ -3,7 +3,9 @@
         margin: 0 auto;
         margin-top:0px;
 }
-
+.Products_Wrapper{
+        width: 100%;
+}
 
 @media (min-width: 950px) { 
         .ProductsPage{

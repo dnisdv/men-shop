@@ -71,7 +71,7 @@ router.delete("/reviews/:id", async (req, res) => {
 });
 
 router.get("/reviews/product/:id", async (req, res) => {
-  const { page = 1, limit = 3 } = req.query;
+  const { page = 0, limit = 3 } = req.query;
 
   try {
     const reviews = await reviewModel

@@ -37,7 +37,6 @@ const CartListItem = ({
     }
 
     const changeInputHandle = (e) => {
-        console.log(e.target)
         e.target.style.width = (state.length === 0 ? 10 : state.length) + "ch";
         setstate(e.target.value)
     }
@@ -54,7 +53,9 @@ const CartListItem = ({
         </div>
 
         <div className='CartList_Item_Data'>
-            <div className='CartList_Item_DataFirst'>
+            <div 
+            style={{marginBottom : Object.values(i.sku).length > 0 ? '' : '25px'}}
+            className={`CartList_Item_DataFirst`}>
                 <h2 className='CartList_Item_DataFirst_Title'>{i.title}</h2>
                 <div className='CartList_Item_Data_Wrapp'>
                     <button onClick={() => deleteOne(i.id, i.sku)} className='CartList_Item_Data_Wrapp_Button' >
@@ -65,10 +66,11 @@ const CartListItem = ({
             </div>
         
 
-
-            <div className='CartList_Item_Data_Addition'>
-            {Object.values(i.sku).join('/')}
-            </div>
+            {Object.values(i.sku).length > 0 ?
+                <div className='CartList_Item_Data_Addition'>
+                    {Object.values(i.sku).join('/')}
+                </div> : null  
+            }
             
             <div className='CartList_Item_DataSecond'>
             
