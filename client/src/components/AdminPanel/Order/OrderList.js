@@ -9,14 +9,17 @@ export default (props) => {
             <ReferenceField allowEmpty source="user" reference="api/users">
                 <TextField source="username" />
             </ReferenceField>            
-            <ReferenceField allowEmpty source="product" reference="api/products">
-                <TextField source="title" />
-            </ReferenceField>    
-            <ReferenceField allowEmpty source="price" reference="api/products">
-                <TextField source="price" />
-            </ReferenceField>    
+            <TextField label="First Name" source="firstName" />
+            <TextField label="Last Name" source="lastName" />
+            <TextField label="Email" source="email" />
+            <TextField source="phone" />
+
+            <ReferenceField label="Status" source="status" reference="api/status">
+                <TextField source="label" />
+            </ReferenceField>
+
             <DateField source="created_at" />
-            <DateField source="updated_at" />
+            
             <EditButton />
         </Datagrid>
     </List>

@@ -45,11 +45,13 @@ const CheckoutShipping = ({history, loading_shipp ,order : {dataFinished}, set_s
                     <CheckoutShippingItem {...props} 
                         price='free' 
                         name='Shipping' 
+                        value="Standart"
                         id={1} >10 - 20 Standart Shipping
                     </CheckoutShippingItem>
 
                     <CheckoutShippingItem {...props} 
                         price='5.00' 
+                        value="Bussines"
                         name='Shipping' 
                         id={2} >2 - 3 Bussines day shipping
                     </CheckoutShippingItem>

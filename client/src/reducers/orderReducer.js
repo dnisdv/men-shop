@@ -1,6 +1,7 @@
 import {
     SET_ORDERDATA,
     SET_SHIPPMETHOD,
+    PAY_ORDER
 } from '../types'
   
   const initialState = {

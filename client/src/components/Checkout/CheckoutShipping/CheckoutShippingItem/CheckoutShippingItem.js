@@ -3,11 +3,11 @@ import './CheckoutShippingItem.css'
 import {connect} from 'react-redux'
 
 
-const CheckoutShippingItem = ({handleBlur,handleChange, name, children, price , id, shippMethod}) => {
+const CheckoutShippingItem = ({handleBlur,handleChange, name, children, price , id, value, shippMethod}) => {
     return(
         <div className='CheckoutShipping_List_Item'>
         <div className='CheckoutShipping_List_Item_Data'>
-            <input value="Standart" 
+            <input value={value} 
                 onBlur={handleBlur} 
                 onChange={handleChange} 
                 className='Checkput'

@@ -4,36 +4,52 @@ import './CheckoutPayment.css'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
-const CheckoutPayment = ({history, order : { shippFinished}}) => {
+import {pay_order} from '../../../actions/orderActions'
+
+const CheckoutPayment = ({
+     history,
+     pay_order,
+     order : {data, shippMethod, shippFinished, dataFinished},
+     cart : {items}
+}) => {
 
     useEffect(() => {
-        if(!shippFinished) {
+        if(!shippFinished || !dataFinished) {
             history.push('/checkout')
         }
-    }, [history, shippFinished])
+    }, [dataFinished, history, shippFinished])
     
     const goBack = () => {
         createBrowserHistory().goBack()
     }
-    if(!shippFinished) return (<span></span>)
+    if(!shippFinished || !dataFinished) return (<span></span>)
 
+    const payHandle = ( ) => {
+        if(!shippFinished || !dataFinished ) {
+            return history.push('/')
+        }
+        pay_order({...data, shippMethod}, items, history)
+    }
 
     return(
-        
         <div  className='CheckoutPayment'>
             <h2 className='CheckoutPayment_Title'>There will be payment</h2>
+            
+            <button disabled={!shippFinished || !dataFinished ? true : false } 
+                    onClick={payHandle} 
+                    className='CheckoutPayment_PayButton'>PAY</button>
 
             <div className='CheckoutDetails_Actions'>
             <span onClick={goBack} className='CheckoutPayment_Actions_Back'>Back to shipping</span>
-            {/* <button type='submit' className='CheckoutDetails_Actions_Button'>Next</button> */}
         </div>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    order: state.order
+    order: state.order,
+    cart: state.cart
 })
 
 
-export default withRouter(connect(mapStateToProps, {})(CheckoutPayment))
+export default withRouter(connect(mapStateToProps, {pay_order})(CheckoutPayment))

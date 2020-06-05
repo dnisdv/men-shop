@@ -28,7 +28,7 @@ const CheckoutDetails = ({history, orderState, set_orderData}) => {
                 .required("Required"),
             country : Yup.string()
                 .required("Required"),
-            zip : Yup.string()
+            zip : Yup.number()
                 .required("Required"),
             state: Yup.string()
                 .required("Required"),

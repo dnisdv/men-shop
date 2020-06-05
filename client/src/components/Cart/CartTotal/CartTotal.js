@@ -11,7 +11,7 @@ const CartTotal = ({cart :{TotalPrice, items}, loading}) => {
 
             <div className='CartTotal_Total'>
                 <h5 className='CartTotal_Total_Title'>Total</h5>
-                    <p className='CartTotal_Total_Value'>{TotalPrice}<span className='Currency'>$</span></p>
+                    <p className='CartTotal_Total_Value'>{TotalPrice || 0}<span className='Currency'>$</span></p>
 
             </div>
             <p className='CartTotal_Data'>Shipping costs will be specified in Checkout.</p>

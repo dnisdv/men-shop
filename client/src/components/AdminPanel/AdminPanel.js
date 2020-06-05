@@ -1,14 +1,15 @@
 import React,{useEffect} from 'react';
 import { Admin, Resource } from 'react-admin';
 
-import { cartIcon, categoryIcon, productsIcon, reviewsIcon, usersIcon, bannerIcon } from './assests/icons'
 import {ProductList, ProductEdit, ProductCreate} from './Products'
 import {ReviewList, ReviewEdit, ReviewCreate} from './Reviews'
 import {UserList, UserEdit, UserCreate} from './Users'
 import {CategoryList, CategoryEdit, CategoryCreate} from './Category'
-import {OrderList, OrderEdit, OrderCreate} from './Order'
+import {OrderList, OrderEdit, OrderShow} from './Order'
 import {BannerList, BannerEdit, BannerCreate} from './Banner'
 import Dashboard from './Dashboard/Dashboard'
+import {orderStatusCreate, orderStatusEdit, orderStatusList} from './OrderStatus'
+
  
 import myDataProvider from './Providers/myDataProvider' 
 import AuthProvider from './Providers/authProvider'
@@ -58,13 +59,19 @@ const AdminPanel = (props) => {
                 />      
             <Resource name="api/orders" 
                 edit={OrderEdit} 
-                create={OrderCreate} 
+                // create={OrderCreate} 
                 list={OrderList} 
+                show={OrderShow}
                  /> 
             <Resource name="api/banner" 
                 edit={BannerEdit} 
                 create={BannerCreate} 
                 list={BannerList} 
+                 /> 
+            <Resource name="api/status" 
+                edit={orderStatusEdit} 
+                create={orderStatusCreate} 
+                list={orderStatusList} 
                  /> 
 
         </Admin>

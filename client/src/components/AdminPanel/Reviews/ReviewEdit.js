@@ -1,5 +1,5 @@
 import React from 'react';
-import {Edit, SimpleForm, TextInput, ReferenceInput, SelectInput, TextField, required} from 'react-admin'
+import {Edit, SimpleForm, TextInput, ReferenceInput, SelectInput, required} from 'react-admin'
 
 import RichTextInput from 'ra-input-rich-text';
 

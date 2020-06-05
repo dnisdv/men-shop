@@ -23,26 +23,34 @@ const CartListItem = ({
     deleteOne,
     i
 }) => {
-    const [state, setstate] = useState(i.count)
+    const [count, setcount] = useState(+i.count || 1)
 
     const increaseHandle = () => {
         increaseProduct({productID: i.productID, sku:i.sku});
-        setstate(+state + +1)
+        setcount(+count + +1)
         
     }
     const decreaseHandle = () => {
-        if(state === 1) return
+        if(count === 1) return
         decreaseProduct({productID: i.productID, sku:i.sku});
-        setstate(+state - 1)
+        setcount(+count - 1)
+        
     }
 
     const changeInputHandle = (e) => {
-        e.target.style.width = (state.length === 0 ? 10 : state.length) + "ch";
-        setstate(e.target.value)
+        e.target.style.width = (count.length === 0 ? 10 : count.length) + "ch";
+        setcount(+e.target.value.replace(/[^\d.]/g, ''))
+      
+    }
+    const keyPressInputHandle = (e) => {
+        const keys = ['0','1','2','3','4','5','6','7','8','9','.']
+        return keys.indexOf(e.key) > -1
     }
 
     const blurInputHandle = (e) => {
-        setCount({productID : i.productID, count: state})
+        if(e.target.value < 1) return setcount(1)
+
+        setCount({productID : i.productID, count: count})
     }
 
     return(
@@ -77,12 +85,15 @@ const CartListItem = ({
                 <div className='CartList_Item_DataSecond_Actions'>
                 <button disabled={loading.cartActions ? true : false} onClick={decreaseHandle} className='CartList_Item_DataSecond_Actions_Decrease'>-</button>
                     <AutosizeInput
+                            // type='number'
                             name="form-field-name"
-                            value={state}
+                            value={count}
+                            onKeyPress={keyPressInputHandle}
                             onChange={changeInputHandle}
                             onBlur={blurInputHandle}
                             disabled={loading.cartActions ? true : false}
                             className='CartList_Item_DataSecond_Actions_Count'
+                            min="1" max="100"
                         />
                     <button disabled={loading.cartActions ? true : false} onClick={increaseHandle}
                         className='CartList_Item_DataSecond_Actions_Increase'>+</button>
