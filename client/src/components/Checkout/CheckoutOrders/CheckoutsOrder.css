@@ -1,6 +1,7 @@
 .CheckoutOrders{
     display: none;
 }
+
 @media (min-width: 950px) { 
     .CheckoutOrders_List{
         margin:0;
@@ -66,7 +67,7 @@
         font-weight: 500;
     }
     .CheckoutOrders{
-        width: 530px;
+        width: 27.604166666666668vw;
         background-color: rgb(250, 248, 251);
         height: 100vh;
         display: flex;
@@ -87,4 +88,36 @@
         margin:0;
         padding: 0;
     }
+}
+
+@media (max-width: 1508px) { 
+    .CheckoutOrders{
+        display: none;
+        width: 250px;
+    }
+    .CheckoutOrders{
+        width: auto;
+        background:none;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 99999;
+        width: 603px;
+        display: none;
+    }
+    .CheckoutOrders_Title{
+        margin-left:0px;
+        margin-right: 0px;
+    }
+    .CheckoutOrders_List{
+        margin-left:0px;
+        margin-right: 0px;
+        margin-top:5px
+    }
+    .CheckoutTotal{
+        margin-left:0px;
+        margin-right: 0px;
+    }
+
 }

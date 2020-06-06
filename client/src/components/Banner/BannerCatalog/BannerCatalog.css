@@ -42,7 +42,7 @@
 @media (min-width: 950px) { 
 
     .BannerCatalog{
-        width: 967px;
+        width: 50.364583333333336vw;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -52,31 +52,38 @@
     }
     .BanerCatalog_ImgWrapper{
         display: block;
-        /* flex-direction: row; */
     }
     .BannerCatalog_Img--Main{
-        width: 751px;
-        height: 600px;
+        width: 39.114583333333336vw;
+        height: 61.98347107438016vh;
         object-fit: cover;
-        margin-left:70px;
+        margin-left: 3.6458333333333335vw;
         display: block;
     }
 
     .BannerCatalog_Img--Second{
-        width: 313px;
-        height: 236px;
+        width:  16.302083333333332vw;
+        height:  24.380165289256198vh;
         object-fit: cover;
-        margin-top:41px;
+        margin-top:4.235537190082645vh;
         display: block;
     }
     
     .BannerCatalog_Img--Third{
-        width: 464px;
-        height: 351px;
+        width: 24.166666666666668vw;
+        height: 36.260330578512395vh;
         object-fit: cover;
-        margin-top:41px;    
-        margin-left:41px;
+        margin-top:4.235537190082645vh;    
+        margin-left:2.1354166666666665vw;
         display: block;
     }
 
 }
+/* 
+@media (min-width: 950px) and (max-width: 1500px) { 
+    .BannerCatalog_Img--Third{
+        height:  24.380165289256198vh;
+    }
+
+
+} */

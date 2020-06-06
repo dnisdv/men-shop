@@ -8,8 +8,8 @@
 .ProductsCatalog_Title{
     margin:0;
     padding: 0;
-    font-size: 14px;
-    margin-bottom: 11px;
+    font-size: 0.7291666666666666vw;
+    margin-bottom: 1.187904967602592vh;
     display: none;
     cursor: pointer;
     text-decoration: none;
@@ -18,7 +18,7 @@
 }
 .ProductsCatalog_List_Item{
     font-size: 18px;
-    margin-top:22px;
+    margin-top:2.375809935205184vh;
     color:#929292;
     cursor: pointer;
 }
@@ -32,9 +32,10 @@
     background-color: white;
     z-index: 1000;
     width: 266px;
-    height: 351px;
-    top:-20px;
-    left:-18px;
+    height: 176px;
+    top:-1.0416666666666667vw;
+    left:-0.9375vw;
+    width: 226px;
 }
 .ProductsCatalog_Title-Mobile{
     padding:0px;
@@ -43,7 +44,7 @@
     background: none;
     border:none;
     padding-bottom: 9px;
-    border-bottom: 2px solid black;
+    border-bottom: 0.215vh solid black;
 }
 .ProductsCatalog_Modal_BG{
     position: fixed;
@@ -57,7 +58,7 @@
 .ProductsCatalog_List{
     margin:0;
     padding: 0;
-    margin-right: 26px;
+    margin-right: 1.3541666666666667vw;
     list-style: none;
     display: block;
 }
@@ -74,8 +75,8 @@
 }
 .ProductsCatalog_List_Item_ACTIVE::before{
     content:"";
-    margin-right: 5px;
-    border:2px solid black;
+    margin-right: 0.2604166666666667vw;
+    border:0.104vw solid black;
 }
 .ProductsCatalog_List_Item_Disabled{
     opacity: 0.5;
@@ -86,16 +87,17 @@
 
 @media (min-width: 950px) { 
     .ProductsCatalog{
-        margin-top:125px;
+        margin-top:6.510416666666667vw;
+        width: 6.25vw;
     }
     .ProductsCatalog_List{
         margin:0;
-        width: 70%;
+        width: 10vw;
 
     }
     .ProductsCatalog_List_Item{
         font-size: 18px;
-        margin-top:22px;
+        margin-top:2.375809935205184vh;
         color:#929292;
     }
     .ProductsCatalog_Modal{
@@ -107,7 +109,7 @@
     .ProductsCatalog_Title{
         margin:0;
         padding: 0;
-        margin-bottom: 11px;
+        margin-bottom: 1.187904967602592vh;
         color:#585858;
         display: block;
         font-size: 24px;

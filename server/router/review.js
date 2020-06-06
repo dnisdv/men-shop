@@ -94,7 +94,7 @@ router.get("/reviews/product/:id", async (req, res) => {
       .limit(limit * 1)
       .skip(page * limit);
 
-    const count = await reviewModel
+    const counts = await reviewModel
       .find({ product: req.params.id })
       .countDocuments();
 
@@ -102,11 +102,12 @@ router.get("/reviews/product/:id", async (req, res) => {
 
     res.send({
       reviews,
-      totalPages: Math.ceil(count / limit),
+      totalPages: Math.ceil(counts / limit),
       currentPage: page,
-      totalReviews: count,
+      totalReviews: counts,
     });
   } catch (e) {
+    console.log(e);
     res.status(500).send(e);
   }
 });

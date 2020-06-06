@@ -54,11 +54,7 @@ const ProductsCatalog
                             key={i._id} 
                             onClick={(e) => selectCategory(e, i._id, i.title)}
                             data-name={i.title}
-                            className={`ProductsCatalog_List_Item 
-                            ${activeCategory === i._id ? 'ProductsCatalog_List_Item_ACTIVE': '' }
-                            ${loading.product ? 'ProductsCatalog_List_Item_Disabled': '' }
-                            `}
-                            
+                            className={`ProductsCatalog_List_Item ${activeCategory === i._id ? 'ProductsCatalog_List_Item_ACTIVE': '' } ${loading.product ? 'ProductsCatalog_List_Item_Disabled': '' }`}
                             >
                             {i.label}</li>)
                     : null }

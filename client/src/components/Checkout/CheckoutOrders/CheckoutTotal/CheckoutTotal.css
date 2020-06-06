@@ -56,3 +56,18 @@
     }
 
 }
+
+
+@media (max-width: 1508px) { 
+    .CheckoutTotal{
+        margin-left:0px;
+        margin-right: 0px;
+    }
+    .CheckoutTotal_List_Item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top:5px;
+    }
+
+}

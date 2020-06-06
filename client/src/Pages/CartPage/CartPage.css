@@ -1,7 +1,9 @@
 @media (min-width: 950px) { 
     .CartPage{
         margin:0 auto;
-        width: 1604px;
+        max-width: 1604px;
+        width: 83.54166666666667vw;
+
     }
     .CartPage::after{
         content:"";

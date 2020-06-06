@@ -9,10 +9,18 @@
 
 @media (min-width: 950px) { 
     .CheckoutPage{
-        width: 1604px;
+        width: 83.54166666666667vw;
         margin:0 auto;
         justify-content: space-between;
         flex-direction: row;
         
     }
+}
+
+@media (max-width: 1508px) { 
+    .CheckoutPage{
+        justify-content: flex-start;
+        flex-direction: column-reverse;
+    }
+
 }

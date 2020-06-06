@@ -32,8 +32,6 @@ const ProductBanner = ({product: {images}}) => {
                         <img 
                         className='ProductBanner_IMG' alt='ProductImage' 
                         src={`http://localhost:5000/${i.path}`}
-                        width='888px'
-                        height='705px'
                         >
                         </img></Slide>)}
                     </Slider>

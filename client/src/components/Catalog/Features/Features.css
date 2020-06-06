@@ -40,8 +40,12 @@
         margin:0;
     }
     .Features_Item_Title{
-        bottom:-20px;
-        left:-20px;
+        /* bottom:-20px; */
+        bottom:2.0661157024793386vh;
+
+        /* left:-20px; */
+        left:1.0416666666666667vw;
+
         font-size: 21px;
     }
     .Features_Item_Img{
@@ -51,9 +55,12 @@
     }
 
     .Features_Item-0{
-        margin-top:188px;
-        width: 430px;
-        height: 573px;
+        /* margin-top:188px; */
+        margin-top:19.421487603305785vh;
+        /* width: 430px; */
+        width: 22.395833333333332vw;
+        /* height: 573px; */
+        height: 59.19421487603306vh;
     }
     .Features_Item_Img{
         width: 100%;
@@ -62,20 +69,30 @@
    
 
     .Features_Item-1{
-        margin-right: 64px;
-        width: 631px;
-        height: 382px;
+        /* margin-right: 64px; */
+        margin-right: 3.3333333333333335vw;
+        /* width: 631px; */
+        width: 32.864583333333336vw;
+
+        /* height: 382px; */
+        height: 39.46280991735537vh;
     }
     .Features_Item-2{
-        margin-top:207px;
-        width: 635px;
-        height: 388px;
+        /* margin-top:207px; */
+        margin-top:21.384297520661157vh;
+        /* width: 635px; */
+        width: 33.072916666666664vw;
+        /* height: 388px; */
+        height:  40.082644628099175vh;
     }
 
     .Features_Item-3{
-        margin-right: 117px;
-        width: 455px;
-        height: 338px;
+        /* margin-right: 117px; */
+        margin-right: 6.09375vw;
+        /* width: 455px; */
+        width:  23.697916666666668vw;
+        /* height: 338px; */
+        height: 34.917355371900825vh;
     }
     .Features_Item-3::after{
         content:'So, the first question on your mind… what is it we do?';

@@ -85,7 +85,6 @@ const CartListItem = ({
                 <div className='CartList_Item_DataSecond_Actions'>
                 <button disabled={loading.cartActions ? true : false} onClick={decreaseHandle} className='CartList_Item_DataSecond_Actions_Decrease'>-</button>
                     <AutosizeInput
-                            // type='number'
                             name="form-field-name"
                             value={count}
                             onKeyPress={keyPressInputHandle}

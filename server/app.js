@@ -8,6 +8,7 @@ const categoryRouter = require("./router/category");
 const cartRoute = require("./router/cart");
 const orderRouter = require("./router/order");
 const bannerRoute = require("./router/banner");
+const orderStatus = require("./router/orderStatus");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
@@ -74,6 +75,7 @@ app.use("/api", orderRouter);
 app.use("/api", bannerRoute);
 app.use("/api", adminRoute);
 app.use("/api", cartRoute);
+app.use("/api", orderStatus);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

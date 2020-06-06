@@ -55,11 +55,15 @@
         text-decoration: none;
     }
 
+    
+
+
+
 
 @media (min-width: 950px) { 
     .BannerData{
-        margin-left:230px;
-        margin-top:64px;
+        margin-left:11.979166666666666vw;
+        margin-top:6.6115702479338845vh;
     }
     .BannerData_Button{
         margin-left:0px;
@@ -67,27 +71,27 @@
 
     .BannerData_Title_Shadow{
         opacity: 0.08;
-        ;
     }
     .BannerData_Addition{
         display: none;
     }
     .BannerData_Title{
-        width: 300px;
+
+
         font-size: 58px;
         margin:0;
-        margin-bottom: 149px;
+        margin-bottom: 15.49586776859504vh;
         position: relative;
         z-index: 3
     }
     .BannerData_Title::after{
         content: "";
         display: block;
-        width: 149px;
-        height: 8px;
+        width: 7.8125vw;
+        height: 0.8264462809917356vh;
         background-color: #fff;
         position: absolute;
-        bottom:-60px;
+        bottom:-6.198347107438017vh;
         cursor:none
     }
     .BannerData_Addition_Data{
@@ -98,4 +102,16 @@
         -webkit-touch-callout: none;
     }
     
+}
+
+
+@media (min-width: 950px) and (max-width: 1206px) { 
+    .BannerData{
+        margin-left: 0px;
+    }
+    .Banner{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
 }

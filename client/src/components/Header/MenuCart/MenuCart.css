@@ -2,7 +2,10 @@
 .MenuCart_Title{display: none;}
 
 .MenuCart_Wrapper{
-    width: 30px;
+    width: 1.5625vw;
+    height: 3.239740820734341vh;
+    min-width: 30px ;
+    min-height: 3px;
     height: 30px;
     background-color: #fff;
     border-radius: 50%;
@@ -20,7 +23,9 @@
     .MenuCart_Title{
         display: block;
         color:inherit;
+        font-size: 16px;
     }
+    
     .MenuCart{
         color:black;
         display: flex;
@@ -29,6 +34,11 @@
         order:3;
     }
     .MenuCart_Wrapper{
-        margin-left:9px;
+        margin-left:0.46875vw;
+        min-width: 30px ;
+        min-height: 4px;
+    }
+    .MenuCart_Wrapper_Count{
+        font-size:16px;
     }
 }

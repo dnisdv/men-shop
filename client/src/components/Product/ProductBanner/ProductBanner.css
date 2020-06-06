@@ -14,10 +14,7 @@
     width: 300px ;
     height: 300px ;
 }
-.ProductBannerData_Button{
-    text-decoration: none;
-    cursor: pointer;
-}
+
 
 .BannerData_Button-Mobile{
     display: block;
@@ -26,24 +23,26 @@
 .carouselProvider_Button{
     display: none;
 }
+.carouselProvider > div{
+    height: 300px;
+}
 
 
 @media (min-width: 950px) { 
     .ProductBanner{
-        width: 1604px;
+        width: 83.54166666666667vw;
+        max-width: 1603px;
         margin:0 auto;
         display: flex;
         justify-content: space-between;
         height: 80vh;
     }
     .ProductBanner_IMG{
-        width: 888px;
+        width: 46.25vw;
         height: 705px;
         z-index: 9;
     }
     .ProductBanner_WrapperIMG{
-        width: 888px;
-        height: 705px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -53,15 +52,11 @@
         display: none;
     }
     .carouselProvider{
-        width: 888px;
+        width: 46.25vw;
         height: 705px;
-    }
-    .ProductBanner_IMG-Slide{
-        width: 888px !important;
-        height: 705px !important;
     }
     .carouselProvider > div{
-        height: 705px;
+        height: 805px;
     }
     .carouselProvider_Button{
         display: block;

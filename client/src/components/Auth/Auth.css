@@ -60,8 +60,9 @@
 
 @media (min-width: 950px) { 
     .Auth{
-        margin-right: 250px;
-        width: 400px;
+        margin-right: 17.020833333333334vw;
+        min-width: 350px;
+        margin-left:9vw;
     }
     .Auth_Toggle{
         margin-top:20px;

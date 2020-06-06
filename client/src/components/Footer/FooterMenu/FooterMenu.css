@@ -5,20 +5,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top:50px;
+    margin-top:5.399568034557236vh;
 }
 .FooterMenu_Item:first-child{
     margin-left:0px;
 }
 .FooterMenu_Item{
-    margin-left:24px;
+    margin-left:1.25vw;
     font-size: 13px;
 }
 
 @media (min-width: 950px) { 
     .FooterMenu_Item{
-        margin-left:74px;
-        font-size: 17px;
+        margin-left:3.8541666666666665vw;
+        font-size: 17px
     }
     .FooterMenu{
         margin:0;

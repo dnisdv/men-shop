@@ -31,15 +31,17 @@
 @media (min-width: 950px) { 
     .DataDetails{
         display: flex;
-        justify-content: center;
         margin-top:120px;
+        display: flex;
+        justify-content: flex-start;
     }
     .DataDetails_Data{
         margin-left:305px;
     }
     .DataDetails_Data_Main{
         margin:0;
-        width: 820px;
+        width: auto;
+
         font-size: 24px;
     }
     .DataDetails_Title{

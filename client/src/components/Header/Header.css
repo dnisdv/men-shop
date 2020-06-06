@@ -1,11 +1,11 @@
 .Header{
-    width: 306px;
+    max-width: 306px;
     margin:0 auto;
     display: flex;
     justify-content: space-between;
     color:#fff;
-    padding-top:40px;
-    padding-bottom: 40px;
+    padding-top:4.319654427645788vh;
+    padding-bottom: 4.319654427645788vh;
     z-index: 999999;
     align-items: center;
 }
@@ -32,13 +32,20 @@
     .Header_Logo{
         fill:white;
     }
+
+.Header_Logo_Link{
+    color: inherit;
+    text-decoration: none;
+    font-size: 16px;
+}
+
     .Header{
-        width: 1604px;
+        max-width: 83.54166666666667vw;
         margin:0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 17px;
+        font-size: 0.8854166666666666vw;
         position: relative;
     }
     .Header_Logo{

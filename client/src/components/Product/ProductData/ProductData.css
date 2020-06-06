@@ -20,12 +20,13 @@
 
 @media (min-width: 950px) { 
     .ProductData{
-        width: 1604px;
+        max-width: 1604px;
+        width: 83.54166666666667vw;
         margin: 0 auto;
         margin-top:110px;
     }
     .ProductData_Title{
-        width: 1100px;
+        width: auto;
         font-size: 36px;
         margin:0 auto;
     }

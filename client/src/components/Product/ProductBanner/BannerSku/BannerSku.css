@@ -21,10 +21,43 @@
 .SelectDropdownClassname{
     border:1px solid black  
 }
-.ProductBannerData_Button{
+
+
+.ProductBannerSku_Button{
     text-transform: uppercase;
 }
-.ProductBannerData_Button_Cart_Finished{
+
+.ProductBannerSku_Button{
+    margin-top:40px;
+}
+
+.ProductBannerSku_Button{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ProductBannerSku_Button{
+    background-color: black;
+    margin:0;
+    padding:0;
+    border:none;
+    width: 100%;
+    height: 66px;
+    font-size: 14px;
+    font-weight: 900;
+    color:white;
+    text-transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:50px 
+}
+
+.ProductBannerSku_Button-Mobile{
+    margin-top:50px;
+}
+
+.ProductBannerSku_Button_Cart_Finished{
     background-color: rgb(241, 239, 239);
     color:black;
     border:1px solid rgb(248, 248, 248);

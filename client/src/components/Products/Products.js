@@ -48,7 +48,7 @@ const Products =
                      <div className='Products_Item_Data'>
                          <h3 className='Products_Item_Data_Title'>{item.title}</h3>
                          <p className='Products_Item_Data_Description'>{item.quick_description}</p>
-                         <Link to={`/product/${item._id}`} className='Products_Item_Data_Link'>Shop <img src={arrowRight} alt='arrowIcon' /></Link>
+                         <Link to={`/product/${item._id}`} className='Products_Item_Data_Link'>Shop <img className='Products_Item_Data_SVG' src={arrowRight} alt='arrowIcon' /></Link>
                          <p className='Products_Item_Data_Price'>{item.price}<span className="currency">$</span></p>
                      </div>
                  </li>

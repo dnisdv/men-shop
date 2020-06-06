@@ -2,22 +2,22 @@ const express = require("express");
 const router = express.Router();
 const shortid = require("shortid");
 
-const sendCart = async (session, cb) => {
+const sendCart = (session, cb) => {
   if (!session) {
     return cb({ msg: "no cart items found" }, null);
   }
-  const TotalPrice = await session.reduce((a, i) => a + i.count * i.price, 0);
-  const ShippPrice = await session.reduce((a, i) => a + i.shipping_price, 0);
+  const TotalPrice = session.reduce((a, i) => a + i.count * i.price, 0);
+  const ShippPrice = session.reduce((a, i) => a + i.shipping_price, 0);
   const Total = TotalPrice + ShippPrice;
   return cb(null, { items: session, TotalPrice, ShippPrice, Total });
 };
 
-router.post("/cart/addProduct", async (req, res) => {
+router.post("/cart/addProduct", (req, res) => {
   try {
     if (!req.body) return;
     let cart = req.session.product || [];
     if (req.session.product) {
-      const product = await req.session.product.map((i) => {
+      const product = req.session.product.map((i) => {
         return !!(
           i.productID === req.body.productID &&
           Object.entries(req.body.sku).toString() ===
@@ -28,7 +28,7 @@ router.post("/cart/addProduct", async (req, res) => {
       if (product.includes(true)) {
         return sendCart(req.session.product, (err, data) => {
           if (err) res.status(404).send(err);
-          res.send(data);
+          return res.send(data);
         });
       }
     }
@@ -39,18 +39,32 @@ router.post("/cart/addProduct", async (req, res) => {
       return res.send(data);
     });
   } catch (e) {
-    res.status(500).send(e);
+    return res.status(500).send(e);
   }
 });
 
-router.get("/cart/getProducts", async (req, res) => {
+router.get("/cart/getProducts", (req, res) => {
   try {
-    sendCart(req.session.product, (err, data) => {
-      if (err) res.status(404).send(err);
-      return res.send(data);
+    if (!req.session.product) {
+      return res.send({ msg: "no cart items found" });
+    }
+    const TotalPrice = req.session.product.reduce(
+      (a, i) => a + i.count * i.price,
+      0
+    );
+    const ShippPrice = req.session.product.reduce(
+      (a, i) => a + i.shipping_price,
+      0
+    );
+    const Total = TotalPrice + ShippPrice;
+    return res.send({
+      items: req.session.product,
+      TotalPrice,
+      ShippPrice,
+      Total,
     });
   } catch (e) {
-    res.status(500).send(e);
+    return res.status(500).send(e);
   }
 });
 
@@ -107,12 +121,12 @@ router.post("/cart/setCount", async (req, res) => {
       });
     }
 
-    sendCart(req.session.product, (err, data) => {
+    return sendCart(req.session.product, (err, data) => {
       if (err) res.status(404).send(err);
-      res.send(data);
+      return res.send(data);
     });
   } catch (e) {
-    res.status(500).send(e);
+    return res.status(500).send(e);
   }
 });
 
@@ -122,9 +136,9 @@ router.get("/cart/getcartlength", (req, res) => {
       return res.sendStatus(400);
     }
     const cartLength = req.session.product.length;
-    res.send({ value: cartLength });
+    return res.send({ value: cartLength });
   } catch (e) {
-    res.status(500).send();
+    return res.status(500).send();
   }
 });
 
@@ -135,12 +149,12 @@ router.post("/cart/deleteOne", async (req, res) => {
       return i.id !== req.body.id;
     });
 
-    sendCart(req.session.product, (err, data) => {
+    return sendCart(req.session.product, (err, data) => {
       if (err) res.status(404).send(err);
-      res.send(data);
+      return res.send(data);
     });
   } catch (e) {
-    res.status(500).send(e);
+    return res.status(500).send(e);
   }
 });
 

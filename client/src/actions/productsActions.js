@@ -115,12 +115,14 @@ export const get_productsByCategory = (category, page = 0) => (dispatch) => {
 
     axios.get(`http://localhost:5000/api/reviews/product/${id}?page=${page}`)
     .then( (res) => {
+        console.log(res)
         dispatch({
             type: GET_REVIEWSBYPRODUCT,
             payload: res.data
         })
     })
     .catch( (err) => {
+        console.log(err)
         dispatch({
             type:GET_REVIEWSBYPRODUCT_ERROR,
             payload: err.response

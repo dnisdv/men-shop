@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './ProductReviews.css'
 import Reviews from './Reviews/Reviews.js'
 import Rate from 'rc-rate'

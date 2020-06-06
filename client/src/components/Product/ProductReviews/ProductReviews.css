@@ -67,7 +67,8 @@
         margin-top:122px;
     }
     .ProductReviews_Container{
-        width: 1423px;
+        max-width: 1423px;
+        width: 74.11458333333333vw;
         margin: 0 auto;
     }
 

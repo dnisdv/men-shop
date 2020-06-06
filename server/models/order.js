@@ -6,10 +6,52 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    product: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+    products: [
+      {
+        productID: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+        count: {
+          type: Number,
+        },
+        sku: {
+          type: Object,
+        },
+      },
+    ],
+    firstName: {
+      type: String,
     },
+    lastName: {
+      type: String,
+    },
+    company: {
+      type: String,
+      default: "none",
+    },
+    email: {
+      type: String,
+    },
+    phone: {
+      type: Number,
+    },
+    zip: {
+      type: Number,
+    },
+    state: {
+      type: String,
+    },
+    address: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    fullPrice: {
+      type: Number,
+    },
+    shippMethod: {
+      type: String,
+    },
+    status: { type: mongoose.Schema.Types.ObjectId, ref: "OrderStatus" },
     created_at: {
       type: Date,
     },

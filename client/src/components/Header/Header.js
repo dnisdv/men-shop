@@ -15,7 +15,7 @@ const Header = ({headerRef}) => {
         
         <div ref={headerRef} className='Header'>
             <Menu  />
-            <Link style={{color:theme.foreground}} className='Header_Logo_Link' to='/'><div className="Header_Logo">Darwin</div></Link>
+                <Link style={{color:theme.foreground}} className='Header_Logo_Link' to='/'><div className="Header_Logo">Darwin</div></Link>
             <MenuCart />   
         </div>  
     )

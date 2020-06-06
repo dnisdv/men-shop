@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useRef} from 'react'
+import React,{useState, useEffect} from 'react'
 import './BannerSku.css'
 import Select from 'react-select'
 import {connect} from 'react-redux'
@@ -52,7 +52,7 @@ const BannerSku = ({
                 handleSubmit,
                 setValues,
             }) => (
-                <form enableReinitialize className='RegisterForm_Form' onSubmit={handleSubmit}>
+                <form enableReinitialize className='BannerSku_Form' onSubmit={handleSubmit}>
                   {product.stock.map( i => ( 
                     <div key={i._id}>
                     <Select 
@@ -70,7 +70,7 @@ const BannerSku = ({
                   ))}
                     <input type='submit' 
                     value={CartActive ? `Added To Cart` :'Add To Cart'} 
-                    className={`ProductBannerData_Button ${CartActive ? 'ProductBannerData_Button_Cart_Finished' : ''}`}></input>
+                    className={`ProductBannerSku_Button ${CartActive ? 'ProductBannerSku_Button_Cart_Finished' : ''}`}></input>
                 </form>
             )}
             </Formik>
