@@ -31,7 +31,7 @@ const BannerSku = ({
         return(
           <div className='BannerSku'>
       <Formik
-            enableReinitialize
+            enableReinitialize={true}
             initialValues={productInitialState}
             validate={(val) => {
               const errors = {}

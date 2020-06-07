@@ -23,24 +23,26 @@ const CartListItem = ({
     deleteOne,
     i
 }) => {
-    const [count, setcount] = useState(+i.count || 1)
+    const [stateCount, setstatecount] = useState(+i.count || 1)
 
     const increaseHandle = () => {
         increaseProduct({productID: i.productID, sku:i.sku});
-        setcount(+count + +1)
+        setstatecount(+stateCount + +1)
         
     }
     const decreaseHandle = () => {
-        if(count === 1) return
+        if(stateCount === 1) return
         decreaseProduct({productID: i.productID, sku:i.sku});
-        setcount(+count - 1)
+        setstatecount(+stateCount - 1)
         
     }
 
     const changeInputHandle = (e) => {
-        e.target.style.width = (count.length === 0 ? 10 : count.length) + "ch";
-        setcount(+e.target.value.replace(/[^\d.]/g, ''))
-      
+        e.target.style.width = (stateCount.length === 0 ? 10 : stateCount.length) + "ch";
+        setstatecount(+e.target.value.replace(/[^\d.]/g, ''))
+
+        // setCount({productID : i.productID, count: stateCount})
+
     }
     const keyPressInputHandle = (e) => {
         const keys = ['0','1','2','3','4','5','6','7','8','9','.']
@@ -48,9 +50,15 @@ const CartListItem = ({
     }
 
     const blurInputHandle = (e) => {
-        if(e.target.value < 1) return setcount(1)
+        if(e.target.value < 1) {
+            setCount({productID : i.productID, count: 1})
 
-        setCount({productID : i.productID, count: count})
+            return setstatecount(1)
+        }
+
+        setCount({productID : i.productID, count: stateCount})
+        setstatecount(+e.target.value)
+
     }
 
     return(
@@ -86,7 +94,7 @@ const CartListItem = ({
                 <button disabled={loading.cartActions ? true : false} onClick={decreaseHandle} className='CartList_Item_DataSecond_Actions_Decrease'>-</button>
                     <AutosizeInput
                             name="form-field-name"
-                            value={count}
+                            value={stateCount}
                             onKeyPress={keyPressInputHandle}
                             onChange={changeInputHandle}
                             onBlur={blurInputHandle}

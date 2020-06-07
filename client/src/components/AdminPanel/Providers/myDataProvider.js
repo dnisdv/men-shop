@@ -92,36 +92,6 @@ const dataProvider = (apiUrl) => ({
     },
 
 
-    // create: async (resource, params) =>{
-    //     const createFunction = (apiUrl, resource, images = null ) => {
-    //         return axios.post(`${apiUrl}/${resource}`, {
-    //             ...params.data,
-    //             images : images,
-    //         })
-    //         .then(({ data }) => ({
-    //             data: { ...params.data, 
-    //                     id: data._id,
-    //                   },
-    //         }))
-    //     }
-
-    //     if(params.data.images){
-    //         const newPictures = params.data.images.filter(
-    //             p => p.rawFile instanceof File
-    //         );
-    //         return Promise.all(newPictures.map(convertFileToBase64))
-    //         .then(base64Pictures =>
-    //             base64Pictures.map(picture64 => ({
-    //                 src: picture64,
-    //             }))
-    //         ).then( (res) => {
-    //             return createFunction(apiUrl, resource, res)
-    //         })
-    //     }
-    //     return createFunction(apiUrl, resource)
-    // },
-
-
     create: async (resource, params) =>{
 
         if(params.data.images){

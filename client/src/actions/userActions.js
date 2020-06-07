@@ -17,7 +17,10 @@ import {
       .post('http://localhost:5000/api/users/login', userData, { withCredentials: true },
       )
       .then((res) => {
-        dispatch({ type: LOGIN_USER})
+        dispatch({ 
+          type: LOGIN_USER,
+          payload: res.data
+        })
         dispatch({ type: CLEAR_USER_ERROR})
         history.push('/')
       })

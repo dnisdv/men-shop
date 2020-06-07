@@ -7,7 +7,6 @@
     justify-content: flex-start;
     align-items: flex-start;
     max-height: 600px;
-    height: 500px;
     justify-content: center;
 }
 .Reviews_List_Item_Title{
@@ -91,6 +90,9 @@
 
 
 @media (min-width: 950px) { 
+    .Reviews_List_Item_Container{
+        width: 650px;
+    }
 
     .Reviews_List_Item_Data{
         display: flex;
@@ -98,7 +100,6 @@
     }
     .Reviews_List_Item_Description{
         margin:0;
-        width: 681px;
     }
     .Reviews_List{
         display: flex;

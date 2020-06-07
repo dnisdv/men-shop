@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './ProductReviews.css'
 import Reviews from './Reviews/Reviews.js'
 import Rate from 'rc-rate'
 import Pagination from '../../Pagination/Pagination'
+import CreateReview from './CreateReview/CreateReview'
 
 import {connect} from 'react-redux'
 
@@ -10,6 +11,7 @@ import {get_reviewsByProduct} from '../../../actions/productsActions'
 
 const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) => {
 
+    console.log(reviews)
     if(!reviews) return (<div className='Loadin'>LOADING...</div>)
     return(
         <div className='ProductReviews'>
@@ -38,6 +40,7 @@ const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) 
                         totalPages={reviews.totalPages}
                         onChange={(e) => get_reviewsByProduct(_id, e.selected)}
                     />
+                    <CreateReview />
 
                 </div>
         </div>

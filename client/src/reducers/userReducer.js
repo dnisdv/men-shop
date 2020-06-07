@@ -15,6 +15,7 @@ import {
     authenticated: false,
     loading: false,
     preloader : true,
+    user: null,
     error:{
       login:null,
       register: null,
@@ -29,7 +30,8 @@ import {
         return {
           ...state,
           authenticated: true,
-          loading:false
+          loading:false,
+          user: action.payload
         }
       case LOGIN_USER_ERROR : 
         return{
@@ -62,7 +64,8 @@ import {
         case SET_USER : 
           return{
             ...state,
-            authenticated:action.payload,
+            authenticated:true,
+            user:action.payload,
             loading:false,
             preloader:false
           }

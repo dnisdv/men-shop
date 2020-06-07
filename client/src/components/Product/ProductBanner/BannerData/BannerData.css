@@ -3,9 +3,10 @@
     display: flex;  
     align-items: center;
     justify-content: space-between;
-
 }
-
+.BannerData_Primary_quick_description{
+    display: none;
+}
 .BannerData_Primary_Title{
     padding: 0;
     margin:0;
@@ -74,6 +75,10 @@
     }
     .BannerData{
         width: 20.833333333333332vw;
+    }
+    .BannerData_Primary_quick_description{
+        margin-top:45px;
+        display: block;
     }
 
     .BannerData::after{

@@ -130,6 +130,22 @@ export const get_productsByCategory = (category, page = 0) => (dispatch) => {
     })
  }
 
+export const add_review = (data, id) => dispatch => {
+    try{
+        axios.post(`http://localhost:5000/api/reviews`, data, {withCredentials: true}).then( (res) => {
+            axios.get(`http://localhost:5000/api/reviews/product/${id}`)
+                .then( (res) => {
+                    dispatch({
+                        type: GET_REVIEWSBYPRODUCT,
+                        payload: res.data
+                    })
+                })
+        })
+    }catch(e){
+        console.log(e)
+    }
+}
+
 
 export const set_activeCategory = (id) => (dispatch) => {
     try{

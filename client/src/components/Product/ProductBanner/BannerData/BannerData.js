@@ -7,7 +7,7 @@ import Rate from 'rc-rate'
 import {connect} from 'react-redux'
 
 
-const BannerData = ({product : {rate, shipping_price ,title, price, _id}}) => {
+const BannerData = ({product : {rate, shipping_price ,quick_description ,title, price, _id}}) => {
 
     return(
         <div className='BannerData'>
@@ -22,6 +22,8 @@ const BannerData = ({product : {rate, shipping_price ,title, price, _id}}) => {
                     />
 
                     <h2 className='BannerData_Primary_Title'>{title}</h2>
+                    <span className='BannerData_Primary_quick_description'>{quick_description}</span>
+                    
                 </div>
                 <p className='BannerData_Primary_Price'>{price}<span className='price_currency'>$</span></p>
             </div>
