@@ -6,11 +6,19 @@ const reviewSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    username: {
+      type: String,
+      required: true,
+      default: "Anonymous",
+    },
+    email: {
+      type: String,
+    },
     title: {
       type: String,
       require: true,
     },
-    description: {
+    review: {
       type: String,
       required: true,
     },

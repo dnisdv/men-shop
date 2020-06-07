@@ -1,10 +1,17 @@
 const express = require("express");
-// const userModel = require("../models/user");
 const reviewModel = require("../models//review");
 const router = express.Router();
 
 router.post("/reviews", async (req, res) => {
   try {
+    if (!req.body.user) {
+      const review = await new reviewModel({
+        ...req.body,
+        user: req.session.userId,
+      });
+      await review.save();
+      return res.send(review);
+    }
     const review = await new reviewModel({
       ...req.body,
     });
@@ -89,7 +96,7 @@ router.get("/reviews/product/:id", async (req, res) => {
 
   try {
     const reviews = await reviewModel
-      .find({ product: req.params.id })
+      .find({ product: req.params.id }, {}, { sort: { created_at: -1 } })
       .populate({ path: "user", select: "username" })
       .limit(limit * 1)
       .skip(page * limit);
@@ -103,7 +110,7 @@ router.get("/reviews/product/:id", async (req, res) => {
     res.send({
       reviews,
       totalPages: Math.ceil(counts / limit),
-      currentPage: page,
+      currentPage: +page,
       totalReviews: counts,
     });
   } catch (e) {
