@@ -8,7 +8,7 @@ import {add_review, get_reviewsByProduct} from '../../../../actions/productsActi
 
 
 
-const CreateReview = ({add_review, product, userReducer : {authenticated, user}}) => {
+const CreateReview = ({add_review, style, product, userReducer : {authenticated, user}}) => {
 
     const [isOpen, setisOpen] = useState(false)
 
@@ -29,7 +29,7 @@ const CreateReview = ({add_review, product, userReducer : {authenticated, user}}
                 .required("Required"),
         })
     }
-    const [initialState, setinitialState] = useState({
+    const [initialState] = useState({
         title: '', 
         review: '', 
         email: authenticated && user ? user.email : '', 
@@ -38,7 +38,7 @@ const CreateReview = ({add_review, product, userReducer : {authenticated, user}}
     })
 
     return(
-        <div className='CreateReview'>
+        <div style={style} className='CreateReview'>
             <button onClick={toggleReview} className='CreateReview_Button'>
                 {!isOpen ? <i className="fas fa-pen">   Write Review</i>
                  : <i className="fas fa-eye-slash">   Hide Review</i>}

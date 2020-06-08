@@ -41,15 +41,24 @@ router.get("/reviews", async (req, res) => {
         .limit(from - to - 1)
         .skip(from);
 
+      const realreviews = reviews.map((i) => {
+        return { ...i._doc, likes: i._doc.likes.length };
+      });
+
       const productsLenght = await reviewModel.find({});
       const length = productsLenght.length;
 
       return res
         .set("Content-Range", `products ${+from}-${+to}/${length}`)
-        .send(reviews);
+        .send(realreviews);
     }
+
     const reviews = await reviewModel.find({});
-    res.send({ reviews });
+    const realreviews = reviews.map((i) => {
+      return { ...i._doc, likes: i._doc.likes.length };
+    });
+
+    res.send(realreviews);
   } catch (e) {
     res.status(404).send();
   }
@@ -101,6 +110,18 @@ router.get("/reviews/product/:id", async (req, res) => {
       .limit(limit * 1)
       .skip(page * limit);
 
+    const realreviews = reviews.map((i) => {
+      return {
+        ...i._doc,
+        likes: i._doc.likes.length,
+        liked: !req.session.userId
+          ? false
+          : i._doc.likes
+              .map((i) => i.toString() === req.session.userId)
+              .includes(true),
+      };
+    });
+
     const counts = await reviewModel
       .find({ product: req.params.id })
       .countDocuments();
@@ -108,7 +129,7 @@ router.get("/reviews/product/:id", async (req, res) => {
     if (!reviews) res.send("no reviews");
 
     res.send({
-      reviews,
+      reviews: realreviews,
       totalPages: Math.ceil(counts / limit),
       currentPage: +page,
       totalReviews: counts,
@@ -116,6 +137,39 @@ router.get("/reviews/product/:id", async (req, res) => {
   } catch (e) {
     console.log(e);
     res.status(500).send(e);
+  }
+});
+
+router.post("/likereview/:reviewId", async (req, res) => {
+  try {
+    if (!req.session.userId)
+      return res.status(400).send({ msg: "authorize to like" });
+
+    const reviews = await reviewModel.findById(req.params.reviewId);
+    const isLiked = reviews.likes.includes(req.session.userId);
+
+    if (isLiked) {
+      const likes = reviews.likes.filter((i) => {
+        return i.toString() !== req.session.userId.toString();
+      });
+      const updatedReviews = await reviewModel.findOneAndUpdate(
+        { _id: req.params.reviewId },
+        { likes: likes }
+      );
+      updatedReviews.save();
+      return res.send(updatedReviews);
+    }
+    const review = await reviewModel.findOneAndUpdate(
+      {
+        _id: req.params.reviewId,
+      },
+      { $push: { likes: req.session.userId } }
+    );
+    review.save();
+
+    res.send(review);
+  } catch (e) {
+    res.send(e);
   }
 });
 

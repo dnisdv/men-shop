@@ -4,6 +4,7 @@
 }
 .ReviewsRep_Like{
     display: flex;
+    cursor: pointer;
     align-items: center;
 }
 .ReviewsRep_Like_IMG{
@@ -12,4 +13,7 @@
 }
 .ReviewsRep_Like_Count{
     margin-left: 7px;
+}
+.ReviewsRep_Like_Liked{
+    color:red
 }

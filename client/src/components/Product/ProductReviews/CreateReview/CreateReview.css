@@ -41,6 +41,7 @@
     color:white;
     border:none;
     cursor: pointer;
+
 }
 .ReviewsForm_NoAuth{
     margin-left:auto;
@@ -108,7 +109,6 @@
 .CreateReview_Button{
     display: block;
     margin-left:auto;
-    border:none;
     cursor: pointer;
     padding: 5px 5px;
 }

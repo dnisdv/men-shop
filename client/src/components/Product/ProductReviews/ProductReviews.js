@@ -11,7 +11,6 @@ import {get_reviewsByProduct} from '../../../actions/productsActions'
 
 const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) => {
 
-    console.log(reviews)
     if(!reviews) return (<div className='Loadin'>LOADING...</div>)
     return(
         <div className='ProductReviews'>
@@ -35,12 +34,15 @@ const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) 
 
                 </div>
                     <Reviews />
+                    { reviews && reviews.totalReviews > 3 ?
                     <Pagination 
                         items={reviews.reviews} 
                         totalPages={reviews.totalPages}
                         onChange={(e) => get_reviewsByProduct(_id, e.selected)}
-                    />
-                    <CreateReview />
+                    /> : null
+                    }
+
+                    <CreateReview style={{ marginTop:  reviews && reviews.totalReviews > 3 ? '0px' : '20px'}} />
 
                 </div>
         </div>

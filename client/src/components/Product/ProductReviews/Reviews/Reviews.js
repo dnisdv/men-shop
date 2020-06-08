@@ -45,7 +45,7 @@ const Reviews = ({reviews, loading}) => {
                 </div>
                 <div className='Reviews_List_Item_Actions'>
                     <span className='Reviews_List_Item_Actions_Date'>{moment(i.created_at).format("MMM Do YY")}</span>
-                        <ReviewsRep likes={i.likes} dislikes={i.dislikes} />
+                        <ReviewsRep liked={i.liked} reviewId={i._id} likes={i.likes} dislikes={i.dislikes} />
                 </div>
             </li>
             ))}

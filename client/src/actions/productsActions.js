@@ -113,16 +113,14 @@ export const get_productsByCategory = (category, page = 0) => (dispatch) => {
  export const get_reviewsByProduct = (id, page = 0) => (dispatch) => {
     dispatch({type:LOADING_REVIEWS})
 
-    axios.get(`http://localhost:5000/api/reviews/product/${id}?page=${page}`)
+    axios.get(`http://localhost:5000/api/reviews/product/${id}?page=${page}`, {withCredentials : true})
     .then( (res) => {
-        console.log(res)
         dispatch({
             type: GET_REVIEWSBYPRODUCT,
             payload: res.data
         })
     })
     .catch( (err) => {
-        console.log(err)
         dispatch({
             type:GET_REVIEWSBYPRODUCT_ERROR,
             payload: err.response
@@ -133,13 +131,27 @@ export const get_productsByCategory = (category, page = 0) => (dispatch) => {
 export const add_review = (data, id) => dispatch => {
     try{
         axios.post(`http://localhost:5000/api/reviews`, data, {withCredentials: true}).then( (res) => {
-            axios.get(`http://localhost:5000/api/reviews/product/${id}`)
+            axios.get(`http://localhost:5000/api/reviews/product/${id}`, {withCredentials : true})
                 .then( (res) => {
                     dispatch({
                         type: GET_REVIEWSBYPRODUCT,
                         payload: res.data
                     })
                 })
+        })
+    }catch(e){
+        console.log(e)
+    }
+}
+
+
+export const like_review = (reviewId) => dispatch => {
+    try{
+        axios.post(`http://localhost:5000/api/likereview/${reviewId}`,{}, {withCredentials: true})
+        .then( (res) => {
+             dispatch({
+                 type: "LIKED"
+             })
         })
     }catch(e){
         console.log(e)
