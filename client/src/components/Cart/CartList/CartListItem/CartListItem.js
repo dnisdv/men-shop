@@ -40,9 +40,6 @@ const CartListItem = ({
     const changeInputHandle = (e) => {
         e.target.style.width = (stateCount.length === 0 ? 10 : stateCount.length) + "ch";
         setstatecount(+e.target.value.replace(/[^\d.]/g, ''))
-
-        // setCount({productID : i.productID, count: stateCount})
-
     }
     const keyPressInputHandle = (e) => {
         const keys = ['0','1','2','3','4','5','6','7','8','9','.']

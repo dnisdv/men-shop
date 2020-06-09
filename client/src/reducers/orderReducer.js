@@ -1,7 +1,8 @@
 import {
     SET_ORDERDATA,
     SET_SHIPPMETHOD,
-    PAY_ORDER
+    PAY_ORDER,
+    GET_ORDERS
 } from '../types'
   
   const initialState = {
@@ -20,6 +21,7 @@ import {
     dataFinished: false,
     shippFinished:false,
     shippMethod: null,
+    orders : null,
     loading:{
         data:false,
         shipp:true,
@@ -49,6 +51,11 @@ import {
                 shipp:false
             }
         }
+        case GET_ORDERS :
+          return{
+            ...state,
+            orders:action.payload
+          }
       default:
         return state
     }

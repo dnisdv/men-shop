@@ -8,6 +8,7 @@ import ProductPage from './Pages/ProductPage/ProductPage'
 import AuthPage from './Pages/AuthPage/AuthPage';
 import CartPage from './Pages/CartPage/CartPage'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
+import AccountPage from './Pages/AccountPage/AccountPage'
 import {themes, ThemeContext} from './Context/theme-context'
 import AdminPanel from './components/AdminPanel/AdminPanel';
 import AuthRoute from './Routes/AuthRoute'
@@ -46,6 +47,7 @@ function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLo
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
+                <Route path='/account' render={ () => <AccountPage />} />
                 <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
                 <Route path='/cart' component={CartPage} />
                 <AuthRoute path='/auth' component={AuthPage} />

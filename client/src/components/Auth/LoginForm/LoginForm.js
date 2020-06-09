@@ -23,7 +23,7 @@ const LoginForm = ({loginUser, history, user:{loading, error}}) => {
         <div className='LoginForm'>
             {error.login ? <span className='Auth_Error'>{error.login}</span> : null}
 
-<Formik
+    <Formik
             initialValues={{email: '', password: '' }}
             validationSchema={formValidation}
             onSubmit={(values) => {

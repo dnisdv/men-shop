@@ -1,0 +1,62 @@
+table.Order {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table.Order tbody td {
+  font-size: 18px;
+}
+
+table.Order thead {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.267);;
+}
+table.Order thead th {
+  font-weight: bold;
+  color: #000000;
+  padding-bottom: 22px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+table.Order tfoot td {
+  font-size: 14px;
+}
+table.Order tfoot .links {
+  text-align: right;
+}
+table.Order tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.OrderList_Table_TR{
+  height: 93px;
+}
+.OrderList_Table_Image{
+    height: 93px;
+    width: 93px;
+    margin:20px 0px;
+    object-fit: cover;
+}
+.OrderTable_Name{
+  width: 270px;
+}
+.OrderList{
+    margin-top:100px
+}
+
+.OrderTable_Sku{
+  min-width: 100px;
+}
+.OrderList_NoOrders-Feedback{
+  margin:0 auto
+}
+
+.OrderList_Table_NoOrders-Feedback{
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+}

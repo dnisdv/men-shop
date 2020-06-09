@@ -39,7 +39,6 @@ export const get_category = (history) => (dispatch) => {
 }
 
 export const get_products = (page = 0) => (dispatch) => {
-    console.log("PAGECHENGE")
     dispatch({type: LOADING_PRODUCTS})
     axios.get(`http://localhost:5000/api/products?preview=true&page=${page}`)
     .then( (res) => {

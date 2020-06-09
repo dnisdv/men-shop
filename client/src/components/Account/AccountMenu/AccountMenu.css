@@ -1,0 +1,62 @@
+.AccountMenu_List{
+    margin:0;
+    padding:0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.AccountMenu_List_Item_Title{
+    font-weight: 700;
+    text-decoration: none;
+    color:black;
+    text-transform: uppercase;
+}
+.AccountMenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:100px
+}
+.AccountMenu::before{
+    content: "";
+    width: 500px;
+    position: fixed;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.027);
+    height: 100vh;
+    top:0;
+    left:0;
+}
+.AccountMenu_List_Item{
+    margin-top:50px;
+}
+.AccountMenu_List_Item:first-child{
+    margin-top:46px;
+}
+.AccountMenu_List_Item{
+    position: relative;
+}
+.AccountMenu_List_Item::after{
+    content:"";
+    position: absolute;
+    display: block;
+    width: 70%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.322);
+    bottom: -20px;
+    margin-left:50%;
+    transform: translateX(-50%);
+}
+.AccountMenu_Title{
+    margin:0;
+    padding: 0;
+    font-size: 80px;
+}
+.AccountMenu_List_Item_Title{
+    cursor: pointer;
+}

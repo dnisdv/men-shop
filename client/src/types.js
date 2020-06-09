@@ -51,6 +51,7 @@ export const ADD_TOCART = "ADD_TOCART"
 export const SET_ORDERDATA = "SET_ORDERDATA"
 export const SET_SHIPPMETHOD = "SET_SHIPPMETHOD"
 export const PAY_ORDER = "PAY_ORDER"
+export const GET_ORDERS = "GET_ORDERES"
 
 
 

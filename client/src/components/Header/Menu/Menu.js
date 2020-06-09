@@ -22,9 +22,6 @@ const Menu = ({logoutUser, authenticated}) => {
         return document.body.classList.remove('hideOverflow')
 
     }
-    const LogOutHandler = () => {
-        return logoutUser()
-    }
 
     const theme = useContext(ThemeContext)
     return(
@@ -44,11 +41,10 @@ const Menu = ({logoutUser, authenticated}) => {
                         <li onClick={closeModalHandler} className="Menu_List_Item "><Link to='/products'>Products</Link></li>
                         
                         {authenticated ? 
-                        <li onClick={ () => {closeModalHandler(); LogOutHandler()}} className="Menu_List_Item "><Link to='/'>Log out</Link></li>
+                        <li  className="Menu_List_Item "><Link to='/account'>Account</Link></li>
                         : <li onClick={closeModalHandler} className="Menu_List_Item "><Link to='/Auth'>Sign In/Sign up</Link></li>
                         }
 
-                        
                     </ul>
                 </div>  
                 </div>

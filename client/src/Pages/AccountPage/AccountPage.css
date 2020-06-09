@@ -1,0 +1,10 @@
+.AccountPage{
+    width: 1603px;
+    margin:0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top:60px
+}
+.AccountPage_Data{
+    width: 70%;
+}

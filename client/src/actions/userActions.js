@@ -93,12 +93,13 @@ import {
 }
 
 
-export const logoutUser = () => (dispatch) => {
+export const logoutUser = (history) => (dispatch) => {
     return axios.delete('http://localhost:5000/api/users/logout', {withCredentials : true})
     .then( (res) => {
         dispatch({
           type:SET_LOGOUT
         })
+        history.push('/')
     })
     .catch( (err) => {
         dispatch({
