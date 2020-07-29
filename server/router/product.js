@@ -1,7 +1,7 @@
 const express = require("express");
 const productModel = require("../models/product");
 const reviewModel = require("../models/review");
-// const validator = require("../validation/validators");
+
 const router = express.Router();
 var multer = require("multer");
 
