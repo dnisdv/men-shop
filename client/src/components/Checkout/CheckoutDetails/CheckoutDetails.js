@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
 import {withRouter} from 'react-router-dom'
 
-import { set_orderData } from '../../../actions/orderActions'
+import { set_orderData } from '../../../actions/checkoutActions'
 import { connect } from 'react-redux';
 
 import CheckoutDetailsItem from './CheckoutDetailsItem/CheckoutDetailsItem'
 
-const CheckoutDetails = ({history, orderState, set_orderData}) => {
+const CheckoutDetails = ({history, checkoutState, set_orderData}) => {
 
 
     const formValidation = () => {
@@ -43,7 +43,7 @@ const CheckoutDetails = ({history, orderState, set_orderData}) => {
         <div className='CheckoutDetails'>
             <h2 className='CheckoutDetails_Title'>Details</h2>
             <Formik
-            initialValues={orderState}
+            initialValues={checkoutState}
             validationSchema={formValidation}
             onSubmit={(values) => {
                 set_orderData(values)
@@ -76,7 +76,7 @@ const CheckoutDetails = ({history, orderState, set_orderData}) => {
 
 
 const mapStateToProps = (state) => ({
-    orderState : state.order.data
+    checkoutState : state.checkout.data
   });
 
 export default withRouter(connect(mapStateToProps, {set_orderData})(CheckoutDetails))

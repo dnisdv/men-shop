@@ -23,7 +23,7 @@ const ProductData = ({product :{ images, quick_description}}) => {
 }
 
 const mapStateToProps = (state) => ({
-product : state.products.product
+    product : state.product.product
   });
 
 

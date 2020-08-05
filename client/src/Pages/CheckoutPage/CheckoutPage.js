@@ -5,13 +5,11 @@ import CheckoutOrders from '../../components/Checkout/CheckoutOrders/CheckoutsOr
 import {connect} from 'react-redux'
 
 import {
-    Switch,
-    Route,
     withRouter
 } from "react-router-dom";
 
 
-const CheckoutPage = ({headerRef, footerRef, cart, match}) => {
+const CheckoutPage = ({headerRef, footerRef, cart}) => {
 
     useEffect( ()=> {
         window.scrollTo(0, 0)
@@ -25,10 +23,6 @@ const CheckoutPage = ({headerRef, footerRef, cart, match}) => {
         })
     }, [footerRef, headerRef])
 
-
-    // if (cart.length === 0 || cart === null) {
-    //     return <div className=''>LOADING</div>
-    // }
     return(
         <div className='CheckoutPage'>
             <Checkout />
@@ -37,6 +31,8 @@ const CheckoutPage = ({headerRef, footerRef, cart, match}) => {
         </div>
     )
 }
+
+/// TODO add breadcrumbs 
 
 const mapStateToProps = (state) => ({
     cart : state.cart.items,

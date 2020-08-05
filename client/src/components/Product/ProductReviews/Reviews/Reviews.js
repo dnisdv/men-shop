@@ -26,7 +26,7 @@ const Reviews = ({reviews, loading}) => {
                 <div className='Reviews_List_Item_Container'>
                     <div className='Reviews_List_Item_Wrapper'>
                         <div className='Reviews_List_Item_Avatar'>
-                            <img src='https://cutt.ly/vtUUUOw' alt='Avatar' className='Reviews_List_Item_AvatarIMG'></img>
+                            <div className='Reviews_List_Item_AvatarIMG-NoImage'>{i.username[0]}</div>
                         </div>
 
                         <div className='Reviews_List_Item_Data'>
@@ -38,10 +38,10 @@ const Reviews = ({reviews, loading}) => {
                                         defaultValue={i.rate}
                                         character={<i className="fas fa-star"></i>}
                                     />
-                            <span className='Reviews_List_Item_Description-Mobile'>{i.review}</span>
+                            <span className='Reviews_List_Item_Description-Mobile'>{i.review.split(" ").length > 150? i.review.split(" ").splice(0, 150).join(" ") + " ... Click to expand" : i.review.split(" ").join(" ")}</span>
                         </div>
                     </div>
-                        <span className='Reviews_List_Item_Description-Desktop'>{i.review}</span>
+                        <span className='Reviews_List_Item_Description-Desktop'>{i.review.split(" ").length > 150? i.review.split(" ").splice(0, 150).join(" ") + " ... Click to expand" : i.review.split(" ").join(" ")}</span>
                 </div>
                 <div className='Reviews_List_Item_Actions'>
                     <span className='Reviews_List_Item_Actions_Date'>{moment(i.created_at).format("MMM Do YY")}</span>
@@ -57,8 +57,8 @@ const Reviews = ({reviews, loading}) => {
 }
 
 const mapStateToProps = (state) => ({
-    reviews : state.products.reviews,
-    loading: state.products.loading.reviews
+    reviews : state.product.reviews,
+    loading: state.product.loading.reviews
   });
 
 export default connect(mapStateToProps)(Reviews)

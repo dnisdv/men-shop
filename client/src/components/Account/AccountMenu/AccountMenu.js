@@ -21,9 +21,6 @@ const AccountMenu = ({logoutUser, history, user}) => {
                 <li className="AccountMenu_List_Item">
                     <Link className='AccountMenu_List_Item_Title' to="/account/orders">Your orders</Link>
                 </li>
-                {/* <li className="AccountMenu_List_Item">
-                    <Link className='AccountMenu_List_Item_Title' to="/account/settings">Account settings</Link>
-                </li> */}
                 <li className="AccountMenu_List_Item">
                    <span onClick={LogOutHandler} className='AccountMenu_List_Item_Title'>Log Out</span>
                 </li>

@@ -1,3 +1,9 @@
+.AccountMenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:100px;   
+}
 .AccountMenu_List{
     margin:0;
     padding:0;
@@ -8,30 +14,17 @@
     justify-content: center;
     align-items: center;
     font-size: 18px;
+    z-index: 99999;
 }
 
 .AccountMenu_List_Item_Title{
-    font-weight: 700;
+    font-weight: 400;
     text-decoration: none;
     color:black;
     text-transform: uppercase;
+    z-index: 99999;
 }
-.AccountMenu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top:100px
-}
-.AccountMenu::before{
-    content: "";
-    width: 500px;
-    position: fixed;
-    display: block;
-    background-color: rgba(0, 0, 0, 0.027);
-    height: 100vh;
-    top:0;
-    left:0;
-}
+
 .AccountMenu_List_Item{
     margin-top:50px;
 }
@@ -41,22 +34,70 @@
 .AccountMenu_List_Item{
     position: relative;
 }
-.AccountMenu_List_Item::after{
-    content:"";
-    position: absolute;
-    display: block;
-    width: 70%;
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.322);
-    bottom: -20px;
-    margin-left:50%;
-    transform: translateX(-50%);
-}
 .AccountMenu_Title{
     margin:0;
     padding: 0;
     font-size: 80px;
+    white-space: nowrap;
 }
 .AccountMenu_List_Item_Title{
     cursor: pointer;
+}
+.AccountMenu::before{
+    content:"";
+    width: 26vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.021);
+    position: fixed;
+    display: block;
+    top:0;
+    left:0;
+    min-width: 450px;
+    z-index: 1;
+}
+
+@media (max-width: 1450px) { 
+    .AccountMenu{
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .AccountMenu_List{
+        align-items: flex-start;
+    }
+    .AccountMenu_Title{
+        font-size: 50px;
+    }
+    .AccountMenu::before{
+        content:"";
+        width: 26vw;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.021);
+        position: absolute;
+        display: block;
+        top:0;
+        left:0;
+        min-width: 320px;
+    }
+}
+
+@media (max-width: 950px) { 
+    .AccountMenu_Title{
+        font-size: 41px;
+    }
+    .AccountMenu{
+        align-items: center;
+    }
+    .AccountMenu_List{
+        align-items: center;
+    }
+    .AccountMenu::before{
+        content:"";
+        width: 100%;
+        height: 450px;
+        background-color: rgba(0, 0, 0, 0.021);
+        position: absolute;
+        display: block;
+        top:0;
+        left:0;
+    }
 }

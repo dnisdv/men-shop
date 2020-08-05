@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import {connect} from 'react-redux'
 import {
@@ -7,15 +7,13 @@ import {
   } from "react-router-dom";
 
 
-
-const PrivateRoute = ({authenticated, component: Component, ...rest}) => {
-
+const PrivateRoute = ({checkLogin, authenticated, component: Component, ...rest}) => {
+    useEffect(() => {
+    }, [])
     return (
         <Route {...rest} render={props => (
-            
-            authenticated ?
-                <Component {...props} />
-            : <Redirect to="/Auth" />
+            authenticated ? (<Component {...props} />)
+            : (<Redirect to="/Auth" />)
         )} />
     );
 };
@@ -24,4 +22,4 @@ const mapStateToProps = (state) => ({
     authenticated : Boolean(state.user.authenticated),
 });
 
-export default connect(mapStateToProps)(PrivateRoute)
+export default connect(mapStateToProps, {checkLogin})(PrivateRoute)

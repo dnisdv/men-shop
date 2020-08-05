@@ -3,15 +3,14 @@ import './ProductPage.css'
 import ProductBanner from '../../components/Product/ProductBanner/ProductBanner'
 import ProductData from '../../components/Product/ProductData/ProductData'
 import ProductReviews from '../../components/Product/ProductReviews/ProductReviews'
-// import ProductSimilar from '../../components/Product/ProductSimilar/ProductSimilar'
 
 import Preloader from '../../components/preloader/preloader'
 
 import { connect } from 'react-redux'
-import {get_product, get_reviewsByProduct, clear_product} from '../../actions/productsActions'
+import {get_product, get_reviewsByProduct, clear_product} from '../../actions/productActions'
 
 
-const ProductPage = ({get_product, match,clear_product, get_reviewsByProduct, products: {product}}) => {
+const ProductPage = ({get_product, match, get_reviewsByProduct, product}) => {
 
     useEffect(() => {  
         window.scrollTo(0, 0)
@@ -19,10 +18,8 @@ const ProductPage = ({get_product, match,clear_product, get_reviewsByProduct, pr
             get_product(match.params.id)
             get_reviewsByProduct(match.params.id)
         }
-        return ( () => {
-            clear_product()
-        })
-    }, [clear_product, get_product, get_reviewsByProduct, match.params.id])
+
+    }, [get_product, get_reviewsByProduct, match.params.id])
     
     if(!product) return <div className='ProductPage ProductPage-Preloader'><Preloader /></div>
 
@@ -37,8 +34,8 @@ const ProductPage = ({get_product, match,clear_product, get_reviewsByProduct, pr
 }
 
 const mapStateToProps = (state) => ({
-    products : state.products,
-    reviews : state.products.reviews
+    product : state.product.product,
+    reviews : state.product.reviews
   });
 
 export default connect(mapStateToProps,{get_product, get_reviewsByProduct, clear_product} )(ProductPage)

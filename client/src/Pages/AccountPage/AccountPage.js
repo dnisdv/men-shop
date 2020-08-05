@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react'
 import './AccountPage.css'
-import AccountSettings from '../../components/Account/AccountSettings/AccountSettings'
 import AccountMenu from '../../components/Account/AccountMenu/AccountMenu'
 import AccountOrders from '../../components/Account/AccountOrders/AccountOrders'
 import {
@@ -16,13 +15,9 @@ import {connect} from 'react-redux'
 
 const AccountPage = ({history, match, user: {authenticated}}) => {
 
-    useEffect( () => {
-        if(!authenticated){
-            history.push('/')
-        }
-    })
 
-    if(!authenticated) return <span className=''></span>
+
+if(!authenticated) return <div className='AccountPage'></div>
     
     return(
         <div className='AccountPage'>

@@ -38,37 +38,44 @@ const AdminPanel = (props) => {
             history={props.myHistory}
             >
             <Resource name="api/products" 
+                options={{ label: "Products"}}
                 edit={ProductEdit} 
                 create={ProductCreate} 
                 list={ProductList} 
                  />
             <Resource name="api/reviews" 
+                options={{ label: "Reviews"}}
                 edit={ReviewEdit} 
                 create={ReviewCreate} 
                 list={ReviewList} 
                  />
             <Resource name="api/users" 
+                options={{ label: "Users"}}
                 edit={UserEdit} 
                 create={UserCreate} 
                 list={UserList} 
                  />
             <Resource name="api/category" 
+                options={{ label: "Category"}}
                 edit={CategoryEdit} 
                 create={CategoryCreate} 
                 list={CategoryList} 
                 />      
             <Resource name="api/orders" 
+                options={{ label: "Orders"}}
                 edit={OrderEdit} 
                 // create={OrderCreate} 
                 list={OrderList} 
                 show={OrderShow}
                  /> 
             <Resource name="api/banner" 
+                options={{ label: "Banners"}}
                 edit={BannerEdit} 
                 create={BannerCreate} 
                 list={BannerList} 
                  /> 
             <Resource name="api/status" 
+                options={{ label: "Status"}}
                 edit={orderStatusEdit} 
                 create={orderStatusCreate} 
                 list={orderStatusList} 

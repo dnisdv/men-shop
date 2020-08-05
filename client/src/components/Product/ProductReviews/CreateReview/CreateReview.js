@@ -4,11 +4,11 @@ import { Formik } from 'formik';
 import Rate from 'rc-rate'
 import * as Yup from 'yup'
 import {connect} from 'react-redux'
-import {add_review, get_reviewsByProduct} from '../../../../actions/productsActions'
+import {add_review, get_reviewsByProduct} from '../../../../actions/productActions'
 
 
 
-const CreateReview = ({add_review, style, product, userReducer : {authenticated, user}}) => {
+const CreateReview = ({add_review, product, userReducer : {authenticated, user}}) => {
 
     const [isOpen, setisOpen] = useState(false)
 
@@ -38,7 +38,7 @@ const CreateReview = ({add_review, style, product, userReducer : {authenticated,
     })
 
     return(
-        <div style={style} className='CreateReview'>
+        <div className='CreateReview'>
             <button onClick={toggleReview} className='CreateReview_Button'>
                 {!isOpen ? <i className="fas fa-pen">   Write Review</i>
                  : <i className="fas fa-eye-slash">   Hide Review</i>}
@@ -48,7 +48,7 @@ const CreateReview = ({add_review, style, product, userReducer : {authenticated,
             initialValues={initialState}
 
             validationSchema={formValidation}
-            onSubmit={(values, {setSubmitting, resetForm}) => {
+            onSubmit={(values, {resetForm}) => {
                 add_review({...values, product:product._id}, product._id)
                 setisOpen(false)
                 resetForm(initialState)
@@ -157,7 +157,7 @@ const CreateReview = ({add_review, style, product, userReducer : {authenticated,
 
 const mapStateToProps = (state) => ({
     userReducer : state.user,
-    product : state.products.product
+    product : state.product.product
 })
 
 export default connect(mapStateToProps, {add_review, get_reviewsByProduct})(CreateReview)

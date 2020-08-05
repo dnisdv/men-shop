@@ -6,20 +6,16 @@ import { ThemeContext } from '../../../Context/theme-context'
 
 import {connect} from 'react-redux'
 import {set_activeCategory} from '../../../actions/productsActions'
-import {logoutUser} from '../../../actions/userActions'
 
-const Menu = ({logoutUser, authenticated}) => {
+const Menu = ({ authenticated}) => {
 
     const [ModalState, setModalState] = useState(false)
-    const [OverFlow, setOverFlow] = useState(false)
 
     const ModalStateHandler = (e) =>{
         setModalState(!ModalState)
-        return document.body.classList.toggle('hideOverflow')
     }
     const closeModalHandler = () =>{
         setModalState(false)
-        return document.body.classList.remove('hideOverflow')
 
     }
 
@@ -41,7 +37,7 @@ const Menu = ({logoutUser, authenticated}) => {
                         <li onClick={closeModalHandler} className="Menu_List_Item "><Link to='/products'>Products</Link></li>
                         
                         {authenticated ? 
-                        <li  className="Menu_List_Item "><Link to='/account'>Account</Link></li>
+                        <li onClick={closeModalHandler} className="Menu_List_Item "><Link to='/account'>Account</Link></li>
                         : <li onClick={closeModalHandler} className="Menu_List_Item "><Link to='/Auth'>Sign In/Sign up</Link></li>
                         }
 
@@ -60,4 +56,4 @@ const mapStateToProps = (state) => ({
 
 
 
-export default connect(mapStateToProps, {set_activeCategory, logoutUser})(Menu)
+export default connect(mapStateToProps, {set_activeCategory})(Menu)

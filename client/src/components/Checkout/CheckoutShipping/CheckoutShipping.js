@@ -3,13 +3,13 @@ import './CheckoutShipping.css'
 import * as Yup from 'yup'
 import { Formik } from 'formik';
 import {withRouter} from 'react-router-dom'
-import { set_shippMethod } from '../../../actions/orderActions'
+import { set_shippMethod } from '../../../actions/checkoutActions'
 import { connect } from 'react-redux';
 import CheckoutShippingItem from './CheckoutShippingItem/CheckoutShippingItem'
 
 import { createBrowserHistory } from 'history'
 
-const CheckoutShipping = ({history, loading_shipp ,order : {dataFinished}, set_shippMethod}) => {
+const CheckoutShipping = ({history, loading_shipp ,checkoutState : {dataFinished}, set_shippMethod}) => {
     useEffect(() => {
         if(!dataFinished) {
             history.push('/checkout')
@@ -69,7 +69,7 @@ const CheckoutShipping = ({history, loading_shipp ,order : {dataFinished}, set_s
 }
 
 const mapStateToProps = (state) => ({
-    order: state.order
+    checkoutState: state.checkout
 })
 
 

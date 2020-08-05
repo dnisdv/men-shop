@@ -35,7 +35,7 @@ const BannerData = ({product : {rate, shipping_price ,quick_description ,title, 
 }
 
 const mapStateToProps = (state) => ({
-    product : state.products.product
+    product : state.product.product
   });
 
 export default connect(mapStateToProps)(BannerData)

@@ -20,13 +20,20 @@
     display: block;
     margin-top:26px;
 }
-.carouselProvider_Button{
-    display: none;
-}
 .carouselProvider > div{
     height: 300px;
 }
-
+.ProductBanner_Images_All{
+    display: none;
+}
+.ProductBanner_Images_ALL_IMG{
+    max-width: 50px;
+    max-height: 80px;
+    cursor: pointer;
+}
+.carouselProvider_Button{
+    display: none;
+}
 
 @media (min-width: 950px) { 
     .ProductBanner{
@@ -35,14 +42,14 @@
         margin:0 auto;
         display: flex;
         justify-content: space-between;
-        height: 80vh;
+        min-height: 80vh;
     }
     .ProductBanner_IMG{
         width: 46.25vw;
         height: 705px;
         z-index: 9;
     }
-    .ProductBanner_WrapperIMG{
+    .ProductBanner_Images{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -58,6 +65,21 @@
     .carouselProvider > div{
         height: 805px;
     }
+    .ProductBanner_Images_All{
+        display: flex;
+        flex-direction: column;
+    }
+    .ProductBanner_Images_ALL_IMG{
+        max-width: 50px;
+        max-height: 80px;
+        cursor: pointer;
+    }
+    .ProductBanner_Images_ALL_IMG:hover{
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .ProductBanner_Images_ALL_IMG-Active{
+        background-color: rgba(0, 0, 0, 0.1);
+    }
     .carouselProvider_Button{
         display: block;
         border:none ;
@@ -67,23 +89,33 @@
         top:50%;
         transform: translateY(-50%);
     }
+    .ProductBanner_IMG{
+        position: relative;
+        margin-left:20px;
+    }
     .carouselProvider_Button:disabled{
         opacity: 0.3;
         cursor: auto;
     }
     .carouselProvider_Button-Prev{
-        left:-10%;
+        left:0px;
     }
     .carouselProvider_Button-Next{
-        right:-10%;
+        right: 0px;
     }
 
     .carouselProvider_Button_IMG{
         width: 50px;
         height: auto;
     }
+    .carouselProvider_Button_IMG-Prev{
+        width: 30px;
+        height: 30px;
+    }
     .carouselProvider_Button_IMG-Next{
         transform: rotate(180deg);
+        width: 30px;
+        height: 30px;
     }
     .carouselProvider:hover > .carouselProvider_Button {
         opacity: 1 !important;

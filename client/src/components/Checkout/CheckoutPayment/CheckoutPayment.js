@@ -4,13 +4,14 @@ import './CheckoutPayment.css'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
-import {pay_order} from '../../../actions/orderActions'
+import {pay_order} from '../../../actions/checkoutActions'
 
 const CheckoutPayment = ({
      history,
      pay_order,
-     order : {data, shippMethod, shippFinished, dataFinished},
-     cart : {items}
+     checkoutState : {data, shippMethod, shippFinished, dataFinished},
+     cartState : {items},
+     userState
 }) => {
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const CheckoutPayment = ({
         if(!shippFinished || !dataFinished ) {
             return history.push('/')
         }
-        pay_order({...data, shippMethod}, items, history)
+        pay_order({...data, shippMethod, user:userState.authenticated ? userState.user._id : null}, items, history)
     }
 
     return(
@@ -47,8 +48,9 @@ const CheckoutPayment = ({
 }
 
 const mapStateToProps = (state) => ({
-    order: state.order,
-    cart: state.cart
+    checkoutState: state.checkout,
+    cartState: state.cart,
+    userState: state.user
 })
 
 

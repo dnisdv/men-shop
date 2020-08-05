@@ -78,18 +78,24 @@ import {
   
  export const checkLogin = () => (dispatch) => {
     dispatch({ type: LOADING_USER })
-    return axios.get('http://localhost:5000/api/checkuserauth', {withCredentials : true})
-     .then( (res)=>{
-         dispatch({
-           type:SET_USER,
-           payload:res.data
+    try{
+      return axios.get('http://localhost:5000/api/checkuserauth', {withCredentials : true})
+      .then( (res)=>{
+          dispatch({
+            type:SET_USER,
+            payload:res.data
+           })
+      })
+      .catch( (err)=> {
+          dispatch({
+            type:SET_LOGOUT,
+            payload:null
           })
-     })
-     .catch( (err)=> {
-         dispatch({
-           type:SET_LOGOUT
-         })
-     })
+      })
+    }catch(e){
+      return undefined
+    }
+    
 }
 
 

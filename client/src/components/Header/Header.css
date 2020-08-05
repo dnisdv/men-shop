@@ -6,7 +6,6 @@
     color:#fff;
     padding-top:4.319654427645788vh;
     padding-bottom: 4.319654427645788vh;
-    z-index: 999999;
     align-items: center;
 }
 .Header_wrapper{
@@ -18,6 +17,7 @@
 .Header_Logo_Link{
     color: inherit;
     text-decoration: none;
+    z-index: 999999999;
 }
 
 

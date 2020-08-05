@@ -3,7 +3,7 @@
         margin:0 auto;
         max-width: 1604px;
         width: 83.54166666666667vw;
-
+        min-height: calc(100vh - 112px - 70px);
     }
     .CartPage::after{
         content:"";

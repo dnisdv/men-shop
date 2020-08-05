@@ -11,17 +11,18 @@ import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
 import AccountPage from './Pages/AccountPage/AccountPage'
 import {themes, ThemeContext} from './Context/theme-context'
 import AdminPanel from './components/AdminPanel/AdminPanel';
-import AuthRoute from './Routes/AuthRoute'
+// import PublicRoute from './Routes/PublicRoute'
+// import PrivateRoute from './Routes/PrivateRoute'
 import {connect} from 'react-redux'
-import {checkLogin} from './actions/userActions'
 import {getCartProducts, addToCart, getCartLength} from './actions/cartActions'
 import {
   Switch,
   Route
 } from "react-router-dom";
+import {checkLogin} from './actions/userActions'
 
 
-function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLogin, myHistory}) {
+function App({checkLogin, getCartProducts, getCartLength, myHistory}) {
   useEffect(() => {
     checkLogin()
     getCartLength()
@@ -35,7 +36,6 @@ function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLo
   } 
   const headerRef = useRef()
   const footerRef = useRef()
-  if(preloader) return <span className='Main_Preloader'></span>
   return (
     <React.Fragment>
         <Route exact path='/admin' render={ () => <AdminPanel 
@@ -47,10 +47,10 @@ function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLo
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
-                <Route path='/account' render={ () => <AccountPage />} />
+                <Route path='/account' component={AccountPage} />
                 <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
                 <Route path='/cart' component={CartPage} />
-                <AuthRoute path='/auth' component={AuthPage} />
+                <Route path='/auth' component={AuthPage} />
                 <Route path="/product/:id" component={ProductPage} />
                 <Route path="/products" component={ProductsPage} />
                 <Route exact path="/" render={() => <MainPage changeTheme={toggleTheme} />}  />  
@@ -63,7 +63,8 @@ function App({preloader,addToCart, cart, getCartProducts, getCartLength, checkLo
 }
 
 const mapStateToProps = (state) => ({
-  preloader : state.user.preloader,
   cart: state.cart.items
 });
 export default connect(mapStateToProps,{getCartProducts, getCartLength,addToCart, checkLogin})(App)
+
+// TODO connect stripe

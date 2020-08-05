@@ -12,7 +12,7 @@ const DataCharcs = ({product:{ characteristics}}) => {
                 {characteristics.map( (item, index) => {
                     return (
                         <li key={item._id} className='DataCharcs_List_Item'>
-                            <div className='DataCharcs_List_Item_Index'>{index.lenght > 1 ? index + 1 : '0' + (index + 1)}</div>
+                            <div className='DataCharcs_List_Item_Index'>{index + 1 < 10 ? '0' + (index + 1) : index + 1}</div>
                             <div className='DataCharcs_List_Item_Data'>
                                 <h2 className='DataCharcs_List_Item_Data_Title'>{item.title}</h2>
                                 <p className='DataCharcs_List_Item_Data_Description'>{item.value}</p>
@@ -26,7 +26,7 @@ const DataCharcs = ({product:{ characteristics}}) => {
 }
 
 const mapStateToProps = (state) => ({
-    product : state.products.product
+    product : state.product.product
   });
 
 

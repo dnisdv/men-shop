@@ -9,14 +9,14 @@ const TextField = ({label, source, record = {} }) => {
     return(
         <span>               
             <span className='MuiFormLabel-root MuiInputLabel-root RaLabeled-label-32 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-marginDense'>{label || ''}</span>
-            <table class="Stock">
+            <table className="Stock">
                 <thead>
                 <tr>
                     <th>id</th>
                     <th>Title</th>
                     <th>Rate</th>
                     <th>Stock</th>
-                    <th>Count</th>
+                    <th>Count</th>  
                     <th>Shipp_price</th>
                     <th>Price</th>
                 </tr>

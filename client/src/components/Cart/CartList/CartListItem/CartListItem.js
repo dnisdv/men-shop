@@ -53,9 +53,8 @@ const CartListItem = ({
             return setstatecount(1)
         }
 
-        setCount({productID : i.productID, count: stateCount})
+        setCount({productID : i.productID, count: stateCount, sku:i.sku})
         setstatecount(+e.target.value)
-
     }
 
     return(

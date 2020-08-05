@@ -9,6 +9,14 @@
 }
 .AuthPage_IMG{
     display: none;
+    animation: ma .4s linear;
+}
+@keyframes ma{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
 }
 @media (min-width: 950px) { 
     .AuthPage{

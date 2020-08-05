@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import './OrderList.css'
 import {connect} from 'react-redux'
 import {get_orders} from '../../../../actions/orderActions'
+import Preloader from '../../../preloader/preloader'
 
 const OrderList = ({orders, get_orders}) => {
 
@@ -10,39 +11,51 @@ const OrderList = ({orders, get_orders}) => {
     }, [get_orders])
 
     return(
-        <div className='OrderList'>
-            
-            <table class="Order">
-                <thead>
-                    <tr>
-                        <th className="OrderTable_Product">Product</th>
-                        <th className="OrderTable_Name">Name</th>
-                        <th className="OrderTable_Sku">Sku</th>
-                        <th className="OrderTable_Count">Count</th>
-                        <th className="OrderTable_Price">Price</th>
-                        <th className="OrderTable_State">State</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        orders && orders.length > 0 ? orders.map( (k) => {
-                            return k.products.map( (i) => {
-                            return(                    
-                                <tr className='OrderList_Table_TR'>
-                                    <td><img alt="OrderImage" className="OrderList_Table_Image" src={`http://localhost:5000/${i.productID.images[0].path}`} /></td>
-                                    <td>{i.productID.title}</td>
-                                    <td>{i.sku ? Object.values(i.sku).join('/') : ""}</td>
-                                    <td>{i.count}</td>
-                                    <td>{i.productID.price}$</td>
-                                    <td>{k.status ? k.status.label : "in progress"}</td>
-                                </tr>)
-                            })
-                        }) : <tr><td className='OrderList_Table_NoOrders-Feedback' colspan='6'>No orders yet</td></tr>
-                    }
-                </tbody>
-            </table>
+        <ul className='OrderList'>
+    {
+    orders && orders.length > 0 ? orders.map( (k) => {
+        return k.products.map( (i) => {
+        return(                    
+            <li key={i._id} className='OrderList_Item'>
+                <div className='OrderList_Item_Main'>
+                    <div className='OrderList_Item_IMG_Wrapper'>
+                        <img src={`http://localhost:5000/${i.productID.images[0].path}`}  className='OrderList_Item_IMG' alt='Product'/>
+                    </div>
+                    <h2 className='OrderList_Item_Main_Title-Mobile'>{i.productID.title}</h2>
+                </div>
 
-        </div>
+
+                <div className='OrderList_Item_Data'>
+                        <h3 className='OrderList_Item_Data_Title'>{i.productID.title}</h3>
+                        <div className='OrderList_Item_Data_Char'>
+                            <ul className='OrderList_Item_Data_Char_List'>
+                                <li className='OrderList_Item_Data_Char_List_Item'>
+                                    <span className='OrderList_Item_Data_Char_List_Item_Title'>Count :</span>
+                                    <span className='OrderList_Item_Data_Char_List_Item_Value'>{i.count}</span>
+                                </li>
+                                {Object.keys(i.sku).map((key, index) => {
+                                    return (
+                                    <li key={index} className='OrderList_Item_Data_Char_List_Item'>
+                                        <span className='OrderList_Item_Data_Char_List_Item_Title'>{key} :</span>
+                                        <span className='OrderList_Item_Data_Char_List_Item_Value'>{i.sku[key]}</span>
+                                    </li>
+                                    )
+                                })}
+                            </ul>
+                            <span className='OrderList_Item_Data_FullPrice'>Fullprice: {k.fullPrice}<span className='currency'>$</span></span>
+                        </div>
+                </div>
+                <div className="OrderList_Item_Status">
+                    <span className='OrderList_Item_Status_Preholder'>Status:</span>
+                    <span className='OrderList_Item_Status_Title'>In process</span>
+                </div>
+            </li>)
+        })
+    }) : <Preloader />
+}
+            
+            
+        </ul>
     )
 }
 
@@ -51,3 +64,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps,{get_orders})(OrderList)
+
+

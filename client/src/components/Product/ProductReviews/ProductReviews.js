@@ -7,7 +7,7 @@ import CreateReview from './CreateReview/CreateReview'
 
 import {connect} from 'react-redux'
 
-import {get_reviewsByProduct} from '../../../actions/productsActions'
+import {get_reviewsByProduct} from '../../../actions/productActions'
 
 const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) => {
 
@@ -42,7 +42,7 @@ const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) 
                     /> : null
                     }
 
-                    <CreateReview style={{ marginTop:  reviews && reviews.totalReviews > 3 ? '0px' : '20px'}} />
+                    <CreateReview />
 
                 </div>
         </div>
@@ -50,8 +50,8 @@ const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) 
 }
 
 const mapStateToProps = (state) => ({
-    product : state.products.product,
-    reviews: state.products.reviews
+    product : state.product.product,
+    reviews: state.product.reviews
   });
 
 export default connect(mapStateToProps, {get_reviewsByProduct})(ProductReviews)

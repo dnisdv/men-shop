@@ -1,10 +1,29 @@
 .AccountPage{
-    width: 1603px;
+    width: 83.541666666667vw;
     margin:0 auto;
     display: flex;
     justify-content: space-between;
-    margin-top:60px
+    margin-top:60px;
+    min-height: calc(100vh - 60px - 112px);
+    
 }
 .AccountPage_Data{
     width: 70%;
+    margin-left:10vw;
+}
+
+@media (max-width: 950px) { 
+    .AccountPage{
+        display: block;
+        width: 306px;
+    }
+    .AccountPage_Data{
+        margin:0;
+        width: 100%;
+        margin-top:95px;
+    }
+    .AccountOrders_Title{
+        width: 120px;
+
+    }
 }

@@ -5,14 +5,12 @@ import {connect} from 'react-redux'
 
 
 const CheckoutOrders = ({cart}) => {
-
-
     return(
         <div className='CheckoutOrders'>
             <h2 className='CheckoutOrders_Title'>Your order</h2>
             <ul className='CheckoutOrders_List'>
                 {cart ? cart.map( (i) => (
-                    <li className='CheckoutOrders_List_Item'>
+                    <li key={i.id} className='CheckoutOrders_List_Item'>
                     <img src={`http://localhost:5000/${i.image}`} alt='productIMG' className='CheckoutOrders_List_Item_IMG' />
                     <div className='CheckoutOrders_List_Item_Data'>
                         <div className='CheckoutOrders_List_Item_DataFirst'>

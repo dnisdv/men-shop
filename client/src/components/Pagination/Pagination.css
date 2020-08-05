@@ -10,7 +10,7 @@
 }
 .Pagination{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top:82px;
 }
 .Pagination_List{

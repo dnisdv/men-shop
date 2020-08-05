@@ -8,8 +8,8 @@
 .ProductsCatalog_Title{
     margin:0;
     padding: 0;
-    font-size: 0.7291666666666666vw;
-    margin-bottom: 1.187904967602592vh;
+    font-size: 14px;
+    margin-bottom: 11px;
     display: none;
     cursor: pointer;
     text-decoration: none;
@@ -18,9 +18,12 @@
 }
 .ProductsCatalog_List_Item{
     font-size: 18px;
-    margin-top:2.375809935205184vh;
+    margin-top:22px;
     color:#929292;
     cursor: pointer;
+}
+.ProductsCatalog_List_Item:last-child{
+    margin-bottom: 22px;
 }
 .ProductsCatalog_List_Item_Link{
     color:inherit;
@@ -32,19 +35,18 @@
     background-color: white;
     z-index: 1000;
     width: 266px;
-    height: 176px;
-    top:-1.0416666666666667vw;
-    left:-0.9375vw;
+    top:-20px;
+    left:-18px;
     width: 226px;
 }
 .ProductsCatalog_Title-Mobile{
     padding:0px;
-    ;
     z-index: 999999;
     background: none;
     border:none;
     padding-bottom: 9px;
-    border-bottom: 0.215vh solid black;
+    border-bottom: 2px solid black;
+    cursor: pointer;
 }
 .ProductsCatalog_Modal_BG{
     position: fixed;
@@ -58,7 +60,7 @@
 .ProductsCatalog_List{
     margin:0;
     padding: 0;
-    margin-right: 1.3541666666666667vw;
+    margin-right: 26px;
     list-style: none;
     display: block;
 }
@@ -76,7 +78,7 @@
 .ProductsCatalog_List_Item_ACTIVE::before{
     content:"";
     margin-right: 0.2604166666666667vw;
-    border:0.104vw solid black;
+    border:2px solid black;
 }
 .ProductsCatalog_List_Item_Disabled{
     opacity: 0.5;
@@ -87,7 +89,7 @@
 
 @media (min-width: 950px) { 
     .ProductsCatalog{
-        margin-top:6.510416666666667vw;
+        margin-top:125px;
         width: 6.25vw;
     }
     .ProductsCatalog_List{
@@ -97,7 +99,7 @@
     }
     .ProductsCatalog_List_Item{
         font-size: 18px;
-        margin-top:2.375809935205184vh;
+        margin-top:22px;
         color:#929292;
     }
     .ProductsCatalog_Modal{
@@ -122,5 +124,10 @@
     }
     .ProductsCatalog_List_Item_ACTIVE{
         color:black;
+    }
+    .ProductsCatalog {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
     }
 }

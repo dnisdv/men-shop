@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import { Formik } from 'formik'
 
 import {addToCart} from '../../../../actions/cartActions'
-import { get_productInitialState } from '../../../../actions/productsActions'
+import { get_productInitialState } from '../../../../actions/productActions'
 
 
 const BannerSku = ({
@@ -52,7 +52,7 @@ const BannerSku = ({
                 handleSubmit,
                 setValues,
             }) => (
-                <form enableReinitialize className='BannerSku_Form' onSubmit={handleSubmit}>
+                <form className='BannerSku_Form' onSubmit={handleSubmit}>
                   {product.stock.map( i => ( 
                     <div key={i._id}>
                     <Select 
@@ -80,8 +80,8 @@ const BannerSku = ({
 
 
 const mapStateToProps = (state) => ({
-  product : state.products.product,
-  productInitialState : state.products.productInitialState,
+  product : state.product.product,
+  productInitialState : state.product.productInitialState,
   cart : state.cart.items,
 });
 

@@ -17,7 +17,7 @@
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    height: 12.958963282937365vh;
+    height: 120px;
     min-width: 306px;
     margin:0 auto;
 }
@@ -36,7 +36,7 @@
 
 @media (min-width: 950px) { 
     .Footer{
-        margin-top: 8.855291576673865vh;
+        margin-top: 82px;
         padding-bottom: 0px;
         padding: 0;
     }
@@ -44,7 +44,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 12.958963282937365vh;
+        height: 122px;
         width: 83.54166666666667vw;
         margin:0 auto;
         flex-direction: row;
@@ -53,7 +53,7 @@
         font-size: 30px;
     }
     .Footer_Data_Logo_Data{
-        margin-top:1.079913606911447vh;
+        margin-top:10px;
     }    
 
 }

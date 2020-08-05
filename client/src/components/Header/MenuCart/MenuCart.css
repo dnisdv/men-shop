@@ -19,6 +19,9 @@
     align-items: center;
     text-decoration: none;
 }
+.MenuCart{
+    z-index: 99999;
+}
 @media (min-width: 950px) { 
     .MenuCart_Title{
         display: block;

@@ -105,7 +105,9 @@
 .ReviewsForm_Rate > .rc-rate-star-full > div > .rc-rate-star-first > .fas.fa-star{
     color:#0A0A0A
 }
-
+.CreateReview{
+    margin-top:50px;
+}
 .CreateReview_Button{
     display: block;
     margin-left:auto;

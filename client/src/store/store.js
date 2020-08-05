@@ -16,7 +16,8 @@ import productsReducer from '../reducers/productsReducer'
 import bannerReducer from '../reducers/bannerReducer'
 import cartReducer from '../reducers/cartReducer'
 import orderReducer from '../reducers/orderReducer'
-
+import checkoutReducer from '../reducers/checkoutReducer'
+import productReducer from '../reducers/productReducer'
 
 export default ({
     authProvider,
@@ -31,7 +32,9 @@ export default ({
         products : productsReducer,
         banner : bannerReducer,
         cart : cartReducer,
-        order : orderReducer
+        order : orderReducer,
+        checkout : checkoutReducer,
+        product: productReducer
     });
     const resettableAppReducer = (state, action) =>
     reducer(action.type !== USER_LOGOUT ? state : undefined, action);
