@@ -114,9 +114,11 @@ router.post("/cart/decreaseProduct", async (req, res) => {
 
 router.post("/cart/setCount", async (req, res) => {
   try {
+    console.log(req.body)
     if (req.session.product) {
       await req.session.product.map((i) => {
-        if (i.productID === req.body.productID) i.count = req.body.count || 0;
+        if (i.productID === req.body.productID && Object.entries(req.body.sku).toString() ===
+        Object.entries(i.sku).toString()) i.count = req.body.count || 0;
         return i.productID === req.body.productID;
       });
     }

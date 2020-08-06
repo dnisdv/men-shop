@@ -36,7 +36,6 @@ const corsOptions = {
 };
 
 const app = express();
-console.log(path.join(__dirname, "uploads"));
 
 app.use(
   session({

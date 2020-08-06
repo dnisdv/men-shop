@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.post("/orders", async (req, res) => {
   try {
+    console.log(req.body)
     const order = await new orderModel({
       ...req.body.data,
       products: req.body.cart,
@@ -97,6 +98,16 @@ router.delete("/orders/:id", async (req, res) => {
   } catch (e) {
     res.status(404).send("Not found");
   }
+});
+
+router.get("/ordersByUser", async (req, res) => {
+  try {
+    const orders = await orderModel.find({user : req.session.userId})
+      .populate('products.productID')
+    res.send(orders)
+  } catch (e) {
+    res.status(500).send(e)
+    }
 });
 
 module.exports = router;
