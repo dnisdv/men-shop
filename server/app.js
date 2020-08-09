@@ -16,25 +16,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+require("dotenv").config();
 
-const {
-  _PORT,
-  NODE_ENV,
-  SESS_NAME,
-  SESS_SECRET,
-  SESS_LIFETIME,
-} = require("./config");
-
-const PORT = _PORT || 5000;
+const PORT = +process.env._PORT || 5000;
 
 require("./db/db.js");
 
-// const corsOptions = {
-//   origin: ["http://localhost:3000", "localhost:3000", "localhost",""],
-//   allowedHeaders: ["content-range", "content-type"],
-//   exposedHeaders: ["content-range", "content-type"],
-//   credentials: true,
-// };
 const corsOptions = {
   origin: true,
   allowedHeaders: ["content-range", "content-type"],
@@ -46,19 +33,19 @@ const app = express();
 
 app.use(
   session({
-    name: SESS_NAME,
-    secret: SESS_SECRET,
+    name: process.env.SESS_NAME,
+    secret: process.env.SESS_SECRET,
     saveUninitialized: false,
     resave: false,
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
       collection: "session",
-      ttl: parseInt(SESS_LIFETIME) / 1000,
+      ttl: parseInt(1000 * 60 * 60 * 2) / 1000,
     }),
     cookie: {
       sameSite: true,
-      secure: NODE_ENV === "production",
-      maxAge: parseInt(SESS_LIFETIME),
+      secure: process.env.NODE_ENV === "production",
+      maxAge: parseInt(1000 * 60 * 60 * 2),
     },
   })
 );

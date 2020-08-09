@@ -1,3 +1,4 @@
+config
 node_modules
 build
 npm-debug.log
@@ -5,4 +6,5 @@ npm-debug.log
 .DS_Store
 uploads
 .vscode
+.env
 config
