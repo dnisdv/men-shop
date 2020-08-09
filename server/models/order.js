@@ -5,8 +5,7 @@ const orderSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required:true 
-    },
+      },
     products: [
       {
         productID: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
@@ -50,7 +49,8 @@ const orderSchema = new mongoose.Schema(
       type: Number,
     },
     shippMethod: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "shippingMethod"
     },
     status: { type: mongoose.Schema.Types.ObjectId, ref: "OrderStatus" },
     created_at: {

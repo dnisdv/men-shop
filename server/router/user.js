@@ -33,7 +33,7 @@ router.post("/users/login", (req, res) => {
 
       req.session.userId = data._id;
 
-      res.send({ username: data.username, email: data.email, _id:data._id });
+      res.send({ username: data.username, email: data.email, _id: data._id });
     });
   } catch (error) {
     res.status(500).send(error);
@@ -154,9 +154,13 @@ router.get("/checkuserauth", async (req, res) => {
   try {
     if (req.session && req.session.userId) {
       const user = await userModel.findById(req.session.userId);
-      return res.send({ username: user.username, email: user.email, _id: user._id });
+      return res.send({
+        username: user.username,
+        email: user.email,
+        _id: user._id,
+      });
     } else {
-      return res.status(401).send();
+      return res.status(401).send([]);
     }
   } catch (e) {
     res.status(500).send(e);

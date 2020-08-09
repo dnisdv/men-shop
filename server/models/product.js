@@ -54,10 +54,6 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    shipping_price: {
-      type: Number,
-      required: true,
-    },
     images: [
       {
         path: {

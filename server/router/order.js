@@ -1,17 +1,20 @@
 const express = require("express");
 const orderModel = require("../models/order");
+const shippingModel = require("../models/shippingMethod");
 const router = express.Router();
 
 router.post("/orders", async (req, res) => {
   try {
-    console.log(req.body)
+    const Shipping = await shippingModel.findById(
+      req.body.data.selectedShipping
+    );
     const order = await new orderModel({
       ...req.body.data,
       products: req.body.cart,
-      fullPrice: req.body.cart.reduce(
-        (a, i) => a + i.count * i.price + i.shipping_price,
-        0
-      ),
+      fullPrice:
+        req.body.cart.reduce((a, i) => a + i.count * i.price, 0) +
+        Shipping.price,
+      shippMethod: req.body.data.selectedShipping,
     });
     order.save();
     delete req.session.product;
@@ -59,7 +62,7 @@ router.get("/orders/:id", async (req, res) => {
   try {
     const order = await orderModel
       .findById(req.params.id)
-      .populate("products.productID");
+      .populate("products.productID shippMethod");
     res.send(order);
   } catch (e) {
     res.status(404).send("Not found");
@@ -68,19 +71,9 @@ router.get("/orders/:id", async (req, res) => {
 
 router.put("/orders/:id", async (req, res) => {
   try {
-    const populatedOrder = await orderModel
-      .findById(req.params.id)
-      .populate("products.productID");
-
-    const totalPrice = populatedOrder.products.reduce(
-      (acc, el) =>
-        acc + el.productID.price * el.count + el.productID.shipping_price,
-      0
-    );
-
     const update = await orderModel.findOneAndUpdate(
       { _id: req.params.id },
-      { ...req.body, fullPrice: totalPrice }
+      { ...req.body }
     );
 
     update.save();
@@ -102,12 +95,13 @@ router.delete("/orders/:id", async (req, res) => {
 
 router.get("/ordersByUser", async (req, res) => {
   try {
-    const orders = await orderModel.find({user : req.session.userId})
-      .populate('products.productID')
-    res.send(orders)
+    const orders = await orderModel
+      .find({ user: req.session.userId })
+      .populate("products.productID status");
+    res.send(orders);
   } catch (e) {
-    res.status(500).send(e)
-    }
+    res.status(500).send(e);
+  }
 });
 
 module.exports = router;

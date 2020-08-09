@@ -7,6 +7,7 @@ const categoryRouter = require("./router/category");
 const cartRoute = require("./router/cart");
 const orderRouter = require("./router/order");
 const bannerRoute = require("./router/banner");
+const shippingRoute = require("./router/shippingMethod");
 const orderStatus = require("./router/orderStatus");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
@@ -28,8 +29,14 @@ const PORT = _PORT || 5000;
 
 require("./db/db.js");
 
+// const corsOptions = {
+//   origin: ["http://localhost:3000", "localhost:3000", "localhost",""],
+//   allowedHeaders: ["content-range", "content-type"],
+//   exposedHeaders: ["content-range", "content-type"],
+//   credentials: true,
+// };
 const corsOptions = {
-  origin: ["http://localhost:3000", "localhost:3000", "localhost"],
+  origin: true,
   allowedHeaders: ["content-range", "content-type"],
   exposedHeaders: ["content-range", "content-type"],
   credentials: true,
@@ -74,6 +81,7 @@ app.use("/api", bannerRoute);
 app.use("/api", adminRoute);
 app.use("/api", cartRoute);
 app.use("/api", orderStatus);
+app.use("/api", shippingRoute);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

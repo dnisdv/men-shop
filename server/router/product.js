@@ -23,7 +23,6 @@ var upload = multer({ dest: "uploads/", storage: storage }).array("imgs", 8);
 
 router.post("/products", upload, async (req, res) => {
   try {
-    console.log(req.body)
     const product = await new productModel({
       ...JSON.parse(req.body.data),
       images: req.files ? req.files : null,
@@ -31,7 +30,7 @@ router.post("/products", upload, async (req, res) => {
     product.save();
     res.send(product);
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.send(e);
   }
 });

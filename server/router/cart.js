@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const shortid = require("shortid");
+const ShippModel = require("../models/shippingMethod");
 
 const sendCart = (session, cb) => {
   if (!session) {
@@ -46,25 +47,38 @@ router.post("/cart/addProduct", (req, res) => {
 router.get("/cart/getProducts", (req, res) => {
   try {
     if (!req.session.product) {
-      return res.send({ msg: "no cart items found" });
+      return res.send([]);
     }
     const TotalPrice = req.session.product.reduce(
       (a, i) => a + i.count * i.price,
       0
     );
-    const ShippPrice = req.session.product.reduce(
-      (a, i) => a + i.shipping_price,
-      0
-    );
-    const Total = TotalPrice + ShippPrice;
+
     return res.send({
       items: req.session.product,
       TotalPrice,
-      ShippPrice,
-      Total,
     });
   } catch (e) {
     return res.status(500).send(e);
+  }
+});
+
+router.post("/cart/calculatecost", async (req, res) => {
+  try {
+    const ShippMethod = await ShippModel.findById(req.body.shippMethod);
+    const subtotal = req.session.product.reduce(
+      (a, i) => a + i.count * i.price,
+      0
+    );
+    const shipping = ShippMethod.price;
+    const total = subtotal + shipping;
+    return res.send({
+      subtotal,
+      shipping,
+      total,
+    });
+  } catch (e) {
+    res.status(500).send();
   }
 });
 
@@ -114,11 +128,14 @@ router.post("/cart/decreaseProduct", async (req, res) => {
 
 router.post("/cart/setCount", async (req, res) => {
   try {
-    console.log(req.body)
     if (req.session.product) {
       await req.session.product.map((i) => {
-        if (i.productID === req.body.productID && Object.entries(req.body.sku).toString() ===
-        Object.entries(i.sku).toString()) i.count = req.body.count || 0;
+        if (
+          i.productID === req.body.productID &&
+          Object.entries(req.body.sku).toString() ===
+            Object.entries(i.sku).toString()
+        )
+          i.count = req.body.count || 0;
         return i.productID === req.body.productID;
       });
     }
@@ -135,7 +152,7 @@ router.post("/cart/setCount", async (req, res) => {
 router.get("/cart/getcartlength", (req, res) => {
   try {
     if (!req.session.product) {
-      return res.sendStatus(400);
+      return res.send({ value: 0 });
     }
     const cartLength = req.session.product.length;
     return res.send({ value: cartLength });
@@ -163,7 +180,7 @@ router.post("/cart/deleteOne", async (req, res) => {
 router.get("/cart/destroyAll", async (req, res) => {
   try {
     delete req.session.product;
-    res.send("HELLLL");
+    res.send("");
   } catch (e) {
     res.satus(500).send(e);
   }
