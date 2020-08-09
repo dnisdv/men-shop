@@ -9,11 +9,12 @@ import {OrderList, OrderEdit, OrderShow} from './Order'
 import {BannerList, BannerEdit, BannerCreate} from './Banner'
 import Dashboard from './Dashboard/Dashboard'
 import {orderStatusCreate, orderStatusEdit, orderStatusList} from './OrderStatus'
-
+import {ShippingCreate, ShippingList, ShippingEdit} from './shippingMethod'
  
 import myDataProvider from './Providers/myDataProvider' 
 import AuthProvider from './Providers/authProvider'
 
+import { createBrowserHistory } from 'history';
 
 const AdminPanel = (props) => {
     
@@ -35,7 +36,7 @@ const AdminPanel = (props) => {
             authProvider={AuthProvider} 
             dataProvider={myDataProvider('http://localhost:5000')}
             title='Admin Panel'
-            history={props.myHistory}
+            history={createBrowserHistory({ basename: '/admin' })}
             >
             <Resource name="api/products" 
                 options={{ label: "Products"}}
@@ -80,7 +81,12 @@ const AdminPanel = (props) => {
                 create={orderStatusCreate} 
                 list={orderStatusList} 
                  /> 
-
+            <Resource name="api/shipping" 
+                options={{ label: "Shipping Methods"}}
+                edit={ShippingEdit} 
+                create={ShippingCreate} 
+                list={ShippingList} 
+                 /> 
         </Admin>
     )
 }

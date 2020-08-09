@@ -73,11 +73,13 @@ import {
           return{
             ...state,
             authenticated:false,
+            loading:false,
             preloader:false
           }
         case SET_LOGOUT_ERROR : 
           return{
             ...state,
+            loading:false,
             error:{
               ...state.error,
               logout: action.payload,
@@ -87,6 +89,7 @@ import {
         case CLEAR_USER_ERROR : 
           return{
             ...state,
+            loading:false,
             error: {
               user: null,
               register: null
@@ -95,6 +98,7 @@ import {
         case CHECK_USERNAME_EXIST :
           return{
             ...state,
+            loading:false,
             usernameExist: action.payload
           }
       default:

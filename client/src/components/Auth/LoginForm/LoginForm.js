@@ -5,6 +5,8 @@ import{ loginUser } from '../../../actions/userActions'
 import { Formik } from 'formik';
 import * as Yup from 'yup'
 import {withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types';
+
 
 const LoginForm = ({loginUser, history, user:{loading, error}}) => {
     
@@ -84,5 +86,10 @@ const mapStateToProps = (state) => ({
     user : state.user
   });
 
+LoginForm.propTypes = {
+    loginUser: PropTypes.func,
+    history: PropTypes.object,
+    user: PropTypes.object
+}
 
 export default withRouter(connect(mapStateToProps,{loginUser})(LoginForm))

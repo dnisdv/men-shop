@@ -1,5 +1,6 @@
 import {
-    GET_ORDERS
+    SET_ORDERS,
+    LOADING_ORDERS
 } from '../types'
 
 import axios from 'axios'
@@ -8,10 +9,11 @@ import axios from 'axios'
 
 export const get_orders = () => dispatch => {
     try{
+        dispatch({type: LOADING_ORDERS})
         return axios.get('http://localhost:5000/api/ordersByUser', {withCredentials : true})
         .then( (res) => {
             return dispatch({
-                type:GET_ORDERS,
+                type:SET_ORDERS,
                 payload: res.data
             })
         })

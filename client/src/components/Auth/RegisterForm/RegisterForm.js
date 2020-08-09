@@ -1,13 +1,13 @@
 import React from 'react'
 import './RegisterForm.css'
 import {connect} from 'react-redux'
-// import validator from 'validator';
 import { Formik } from 'formik';
 import { withRouter } from 'react-router';
 import * as Yup from 'yup'
 
 import {registerUser, checkUsernameExist} from '../../../actions/userActions'
-import axios from 'axios';
+import PropTypes from 'prop-types';
+
 
 const RegisterForm = ({registerUser,checkUsernameExist, user:{loading, usernameExist ,error}, history}) => {
 
@@ -110,6 +110,14 @@ const RegisterForm = ({registerUser,checkUsernameExist, user:{loading, usernameE
 const mapStateToProps = (state) => ({
     user : state.user
   });
+
+  
+RegisterForm.propTypes = {
+    registerUser: PropTypes.func,
+    checkUsernameExist: PropTypes.func,
+    user: PropTypes.object,
+    history: PropTypes.object
+}
 
 
 export default withRouter(connect(mapStateToProps,{checkUsernameExist,registerUser})(RegisterForm))

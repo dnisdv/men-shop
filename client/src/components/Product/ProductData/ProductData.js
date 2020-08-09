@@ -3,6 +3,7 @@ import './ProductData.css'
 import DataCharcs from './DataCharcs/DataCharcs'
 import DataDetails from './DataDetails/DataDetails'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
 
 const ProductData = ({product :{ images, quick_description}}) => {
     return(
@@ -25,6 +26,9 @@ const ProductData = ({product :{ images, quick_description}}) => {
 const mapStateToProps = (state) => ({
     product : state.product.product
   });
-
+ProductData.propTypes = {
+    images:PropTypes.array,
+    quick_description: PropTypes.string
+}
 
 export default connect(mapStateToProps)(ProductData)

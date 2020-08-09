@@ -6,16 +6,19 @@ import {withRouter} from 'react-router-dom'
 import { set_shippMethod } from '../../../actions/checkoutActions'
 import { connect } from 'react-redux';
 import CheckoutShippingItem from './CheckoutShippingItem/CheckoutShippingItem'
+import PropTypes from 'prop-types';
+import {getShippingMethods} from '../../../actions/checkoutActions'
+import Preloader from '../../preloader/preloader'
+import  {createBrowserHistory} from 'history'
 
-import { createBrowserHistory } from 'history'
 
-const CheckoutShipping = ({history, loading_shipp ,checkoutState : {dataFinished}, set_shippMethod}) => {
+const CheckoutShipping = ({history, getShippingMethods ,checkoutState : {completed, selectedShipping, shippMethods, loading}}) => {
     useEffect(() => {
-        if(!dataFinished) {
+        if(!completed.data){
             history.push('/checkout')
         }
-    }, [dataFinished, history, loading_shipp])
-
+        getShippingMethods()
+    }, [getShippingMethods, history, completed])
 
     const formValidation = () => {
         return Yup.object().shape({
@@ -26,35 +29,31 @@ const CheckoutShipping = ({history, loading_shipp ,checkoutState : {dataFinished
     const goBack = () => {
         createBrowserHistory().goBack()
     }
-    if(!dataFinished) return (<span></span>)
 
-
+    if(loading.shippMethods) return <Preloader />
     return(
         <div className='CheckoutShipping'>
             <h1 className='CheckoutShipping_Title'>Shipping method</h1>
-
             <Formik
-                initialValues={{Shipping : ""}}
+                initialValues={{Shipping : selectedShipping ? selectedShipping._id : ""}}
                 validationSchema={formValidation}
                 onSubmit={(values) => {
-                    set_shippMethod(values.Shipping)
                     history.push('/checkout/payment')
                 }}>
             {(props) => (
                 <form className='CheckoutShipping_List' onSubmit={props.handleSubmit}>
-                    <CheckoutShippingItem {...props} 
-                        price='free' 
-                        name='Shipping' 
-                        value="Standart"
-                        id={1} >10 - 20 Standart Shipping
-                    </CheckoutShippingItem>
+                    {shippMethods ? shippMethods.map( (i) => {
+                        return <CheckoutShippingItem {...props} 
+                            key={i._id}
+                            price={i.price} 
+                            data={i}
+                            name='Shipping' 
+                            currency="$"
+                            value={i._id}
+                            id={i._id} >{i.title}
+                        </CheckoutShippingItem>
+                    }): ""}
 
-                    <CheckoutShippingItem {...props} 
-                        price='5.00' 
-                        value="Bussines"
-                        name='Shipping' 
-                        id={2} >2 - 3 Bussines day shipping
-                    </CheckoutShippingItem>
                     {props.errors.Shipping && props.touched.Shipping && (<div className='CheckoutShipping_Input_Feedback'>{props.errors.Shipping}</div>)}
 
                     <div className='CheckoutShipping_Actions'>
@@ -70,7 +69,19 @@ const CheckoutShipping = ({history, loading_shipp ,checkoutState : {dataFinished
 
 const mapStateToProps = (state) => ({
     checkoutState: state.checkout
+    
 })
 
+CheckoutShipping.propTypes = {
+    history: PropTypes.object,
+    loading_shipp: PropTypes.bool,
+    dataFinished: PropTypes.bool,
+    set_shippMethod: PropTypes.func,
+    getShippingMethods: PropTypes.func,
+    completed:PropTypes.object,
+    shippMethods:PropTypes.array
+}
 
-export default withRouter(connect(mapStateToProps, {set_shippMethod})(CheckoutShipping))
+export default withRouter(connect(mapStateToProps, {getShippingMethods, set_shippMethod})(CheckoutShipping))
+
+//TODO add default shippMethod

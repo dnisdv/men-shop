@@ -5,8 +5,6 @@ import BannerCatalog from './BannerCatalog/BannerCatalog'
 
 
 const Banner = () => {
-        
-    
     return(
         <div className='Banner'>
             <BannerData />

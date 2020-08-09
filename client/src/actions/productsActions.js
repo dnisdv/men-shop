@@ -7,13 +7,13 @@ import {
     GET_PRODUCTSBYCATEGORY,
     GET_PRODUCTSBYCATEGORY_ERROR,
     SET_ACTIVECATEGORY,
+    CLEAR_ACTIVECATEGORY,
     LOADING_CATEGORY,
     
 } from '../types'
 import axios from 'axios'
 
 export const get_category = (history) => (dispatch) => {
-    
     dispatch({type : LOADING_CATEGORY})
     axios.get('http://localhost:5000/api/category')
     
@@ -32,6 +32,7 @@ export const get_category = (history) => (dispatch) => {
 }
 
 export const get_products = (page = 0) => (dispatch) => {
+    // dispatch({type: LOADING_PRODUCTS})
     axios.get(`http://localhost:5000/api/products?preview=true&page=${page}`)
     .then( (res) => {
         dispatch({
@@ -52,8 +53,6 @@ export const get_productsByCategory = (category, page = 0) => (dispatch) => {
         payload: category
     })
     dispatch({type: LOADING_PRODUCTS})
-
-
     axios.get(`http://localhost:5000/api/products?preview=true&category=${category}&page=${page}`)
     .then( (res) => {
 
@@ -79,3 +78,12 @@ export const set_activeCategory = (id) => (dispatch) => {
         console.log(e)
     }
 }
+
+export const clear_activeCategory = (id) => (dispatch) => {
+    try{
+        dispatch({type: CLEAR_ACTIVECATEGORY})
+    }catch(e){
+        console.log(e)
+    }
+}
+

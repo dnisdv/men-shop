@@ -6,8 +6,10 @@ import { ThemeContext } from '../../../Context/theme-context'
 
 import {connect} from 'react-redux'
 import {set_activeCategory} from '../../../actions/productsActions'
+import PropTypes from 'prop-types';
 
-const Menu = ({ authenticated}) => {
+
+const Menu = ({authenticated}) => {
 
     const [ModalState, setModalState] = useState(false)
 
@@ -53,7 +55,9 @@ const mapStateToProps = (state) => ({
     authenticated : state.user.authenticated,
   });
 
-
+Menu.propTypes = {
+    authenticated:PropTypes.bool
+}
 
 
 export default connect(mapStateToProps, {set_activeCategory})(Menu)

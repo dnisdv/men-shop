@@ -2,6 +2,7 @@ import React from 'react'
 import './DataCharcs.css'
 
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
 
 const DataCharcs = ({product:{ characteristics}}) => {
 
@@ -29,5 +30,8 @@ const mapStateToProps = (state) => ({
     product : state.product.product
   });
 
+DataCharcs.propTypes = {
+    characteristics: PropTypes.array
+}
 
 export default connect(mapStateToProps)(DataCharcs)

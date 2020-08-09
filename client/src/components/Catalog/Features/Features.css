@@ -14,15 +14,14 @@
 }
 .Features_Item_Title{
     margin:0;
-    position: absolute;
-    width: 50px;
     height: auto;
     overflow-wrap: break-word;
-    bottom: -10%;
     font-size: 18px;
     color:white;
     text-transform: none;
-    
+}
+.Features_Item a{
+    text-decoration: none;
 }
 .Features_Item{
     margin-top:60px;

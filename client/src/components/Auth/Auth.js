@@ -4,8 +4,13 @@ import LoginForm from './LoginForm/LoginForm'
 import RegisterForm from './RegisterForm/RegisterForm'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router';
+import {
+    Redirect
+  } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-const Auth = ({ user : {error}}) => {
+
+const Auth = ({user : {authenticated}}) => {
 
     const [ActiveForm, setActiveForm] = useState('login')
 
@@ -15,6 +20,9 @@ const Auth = ({ user : {error}}) => {
         if(ActiveForm !== 'login' || 'register') return setActiveForm('login')
     }
 
+    if(authenticated) {
+        return <Redirect to="/" />
+    }
     return(
         <div className='Auth'>
 
@@ -38,8 +46,13 @@ const Auth = ({ user : {error}}) => {
     )
 }
 const mapStateToProps = (state) => ({
-    user : state.user
+    user : state.user,
   });
+
+Auth.propTypes = {
+    user: PropTypes.object,
+}
+
 
 
 export default withRouter(connect(mapStateToProps)(Auth))

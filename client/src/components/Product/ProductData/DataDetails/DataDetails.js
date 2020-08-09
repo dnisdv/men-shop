@@ -2,8 +2,9 @@ import React from 'react'
 import './DataDetails.css'
 
 import {connect} from 'react-redux'
-const DataDetails = ({product : {description}}) => {
+import PropTypes from 'prop-types';
 
+const DataDetails = ({product : {description}}) => {
     return(
         <div className='DataDetails'>
             <h2 className='DataDetails_Title'>DETAILS & CARE</h2>
@@ -20,6 +21,8 @@ const DataDetails = ({product : {description}}) => {
 const mapStateToProps = (state) => ({
     product : state.product.product
   });
-
+DataDetails.propTypes = {
+    description: PropTypes.string
+}
 
 export default connect(mapStateToProps)(DataDetails)

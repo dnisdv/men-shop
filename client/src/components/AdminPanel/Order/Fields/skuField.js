@@ -17,7 +17,6 @@ const TextField = ({label, source, record = {} }) => {
                     <th>Rate</th>
                     <th>Stock</th>
                     <th>Count</th>  
-                    <th>Shipp_price</th>
                     <th>Price</th>
                 </tr>
                 </thead>
@@ -26,9 +25,8 @@ const TextField = ({label, source, record = {} }) => {
                             <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td>Shipping_price :</td>
+                            <td>{record.shippMethod.price}$</td>
                             <td>FullPrice :</td>
                             <td>{record.fullPrice}$</td>
                             </tr>
@@ -43,7 +41,6 @@ const TextField = ({label, source, record = {} }) => {
                         <td>{i.productID.rate}</td>
                         <td>{i.sku ? Object.values(i.sku).join(" / ") : ""}</td>
                         <td>{i.count}</td>
-                        <td>{i.productID.shipping_price}$</td>
                         <td>{i.productID.price}$</td>
                     </tr>)
                         }) : null}

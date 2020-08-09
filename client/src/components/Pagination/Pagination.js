@@ -1,7 +1,7 @@
 import React from 'react'
 import './Pagination.css'
 import ReactPaginate from 'react-paginate';
-
+import PropTypes from 'prop-types';
 
 const Pagination = ({items, totalPages, onChange, forcePage}) => {
     return(
@@ -27,6 +27,13 @@ const Pagination = ({items, totalPages, onChange, forcePage}) => {
             : null}
         </div>
     )
+}
+
+Pagination.propTypes = {
+    items: PropTypes.array,
+    totalPages: PropTypes.number,
+    onChange: PropTypes.func,
+    forcePage: PropTypes.number
 }
 
 export default Pagination

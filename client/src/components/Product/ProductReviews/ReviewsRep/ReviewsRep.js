@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 import './ReviewsRep.css'
-
 import { like_review } from '../../../../actions/productActions'
-
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
+
 
 const ReviewsRep = ({likes, reviewId, liked, like_review, user : {authenticated}}) => {
 
@@ -34,5 +34,13 @@ const ReviewsRep = ({likes, reviewId, liked, like_review, user : {authenticated}
 const mapStateToProps = (state) => ({
     user : state.user
 })
+
+ReviewsRep.propTypes = {
+    likes:PropTypes.number,
+    reviewId: PropTypes.string,
+    liked:PropTypes.bool,
+    like_review: PropTypes.func,
+    authenticated: PropTypes.bool,
+}
 
 export default connect(mapStateToProps , {like_review})(ReviewsRep)

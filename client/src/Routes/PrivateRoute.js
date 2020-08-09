@@ -6,6 +6,8 @@ import {
     Redirect
   } from "react-router-dom";
 
+import {checkLogin} from '../actions/userActions'
+
 
 const PrivateRoute = ({checkLogin, authenticated, component: Component, ...rest}) => {
     useEffect(() => {

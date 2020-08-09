@@ -1,15 +1,13 @@
 import React from 'react';
 import {  Create, 
     TextInput, SelectInput,ReferenceInput,
-    ArrayInput , SimpleFormIterator , NumberInput, TabbedForm, FormTab, ImageInput, ImageField, required } from 'react-admin';
+    ArrayInput , SimpleFormIterator , NumberInput, TabbedForm, FormTab, ImageInput, ImageField} from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
 
 
 export default(props) => {
 
-    const isRequired = false
     return(
-    
     <Create title="Create a Product" {...props}>
         <TabbedForm>
         <FormTab label="Images">
@@ -50,7 +48,6 @@ export default(props) => {
                 </SimpleFormIterator>
             </ArrayInput>
             <NumberInput className='PriceNumber' source='price'  />
-            <NumberInput source='shipping_price'  />
 
         </FormTab>
         <FormTab label="Descriptions" >

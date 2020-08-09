@@ -6,8 +6,9 @@ import Pagination from '../../Pagination/Pagination'
 import CreateReview from './CreateReview/CreateReview'
 
 import {connect} from 'react-redux'
-
 import {get_reviewsByProduct} from '../../../actions/productActions'
+import PropTypes from 'prop-types';
+
 
 const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) => {
 
@@ -30,8 +31,6 @@ const ProductReviews = ({product: {rate , _id}, get_reviewsByProduct, reviews}) 
                                 <span className='ProductReviews_Rate_Wrapper_Total'>{reviews.totalReviews} REVIEWS</span>
                             </div>
                     </div>
-
-
                 </div>
                     <Reviews />
                     { reviews && reviews.totalReviews > 3 ?
@@ -53,5 +52,12 @@ const mapStateToProps = (state) => ({
     product : state.product.product,
     reviews: state.product.reviews
   });
+
+ProductReviews.propTypes = {
+    rate:PropTypes.number,
+    _id :PropTypes.number,
+    get_reviewsByProduct:PropTypes.func,
+    reviews:PropTypes.object
+}
 
 export default connect(mapStateToProps, {get_reviewsByProduct})(ProductReviews)

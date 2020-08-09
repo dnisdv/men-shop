@@ -5,39 +5,33 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
 import {pay_order} from '../../../actions/checkoutActions'
+import PropTypes from 'prop-types';
+
 
 const CheckoutPayment = ({
      history,
      pay_order,
-     checkoutState : {data, shippMethod, shippFinished, dataFinished},
+     checkoutState : {data, completed, selectedShipping},
      cartState : {items},
      userState
 }) => {
-
     useEffect(() => {
-        if(!shippFinished || !dataFinished) {
+        if(!selectedShipping || !completed.data ){
             history.push('/checkout')
         }
-    }, [dataFinished, history, shippFinished])
-    
+    }, [selectedShipping, completed, history])
     const goBack = () => {
         createBrowserHistory().goBack()
     }
-    if(!shippFinished || !dataFinished) return (<span></span>)
-
     const payHandle = ( ) => {
-        if(!shippFinished || !dataFinished ) {
-            return history.push('/')
-        }
-        pay_order({...data, shippMethod, user:userState.authenticated ? userState.user._id : null}, items, history)
+        pay_order({...data, selectedShipping : selectedShipping._id, user:userState.authenticated ? userState.user._id : null}, items, history)
     }
 
     return(
         <div  className='CheckoutPayment'>
             <h2 className='CheckoutPayment_Title'>There will be payment</h2>
             
-            <button disabled={!shippFinished || !dataFinished ? true : false } 
-                    onClick={payHandle} 
+            <button onClick={payHandle} 
                     className='CheckoutPayment_PayButton'>PAY</button>
 
             <div className='CheckoutDetails_Actions'>
@@ -52,6 +46,17 @@ const mapStateToProps = (state) => ({
     cartState: state.cart,
     userState: state.user
 })
+
+CheckoutPayment.propTypes = {
+    history: PropTypes.object,
+    pay_order: PropTypes.func,
+    data: PropTypes.object,
+    shippMethod: PropTypes.string,
+    shippFinished: PropTypes.bool,
+    dataFinished: PropTypes.bool,
+    items: PropTypes.array,
+    userState: PropTypes.object
+}
 
 
 export default withRouter(connect(mapStateToProps, {pay_order})(CheckoutPayment))

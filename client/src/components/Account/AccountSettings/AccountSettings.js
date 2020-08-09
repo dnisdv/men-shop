@@ -4,6 +4,8 @@ import * as Yup from 'yup'
 import './AccountSettings.css'
 
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
+
 
 const AccountSettings = ({user}) => {
 
@@ -126,5 +128,9 @@ const AccountSettings = ({user}) => {
 const mapStateToProps = (state) => ({
     user: state.user.user
 })
+
+AccountSettings.propTypes = {
+    user: PropTypes.object
+}
 
 export default connect(mapStateToProps)(AccountSettings)

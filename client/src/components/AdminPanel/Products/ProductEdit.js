@@ -1,7 +1,7 @@
 import React from 'react';
 import {Edit, 
      TextInput, SimpleFormIterator, ArrayInput, SelectInput,ReferenceInput, TabbedForm,
-     FormTab, ImageField, NumberInput, ImageInput, required } from 'react-admin';
+     FormTab, ImageField, NumberInput, ImageInput } from 'react-admin';
 
      import RichTextInput from 'ra-input-rich-text';
 
@@ -49,7 +49,6 @@ export default(props) => (
                 </SimpleFormIterator>
             </ArrayInput>
             <NumberInput className='PriceNumber' source='price'  />
-            <NumberInput source='shipping_price'  />
 
         </FormTab>
         <FormTab label="Descriptions" >

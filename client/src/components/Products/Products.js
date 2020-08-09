@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { get_products, get_productsByCategory, set_activeCategory } from '../../actions/productsActions'
 import {withRouter} from 'react-router'
+import {clear_activeCategory} from '../../actions/productsActions'
+
+import PropTypes from 'prop-types';
+
 
 const Products = 
     ({
@@ -13,19 +17,20 @@ const Products =
         get_productsByCategory, 
         set_activeCategory,
         history, 
-        productsState:{products,  category, loading}
+        clear_activeCategory,
+        productsState:{products, category, loading}
     }) => {
 
     useEffect(() => {
         const categoryPath = history.location.search.split('=')[1]
         if(categoryPath && category){
                 const productId = category.find( (i) => i.title === categoryPath)._id
-                get_productsByCategory(productId)
+                return get_productsByCategory(productId)
         }else{
+            clear_activeCategory()
             get_products()
-            set_activeCategory(null)
         }
-    }, [category, get_products, get_productsByCategory, history.location.search, set_activeCategory])
+    }, [category, get_products, clear_activeCategory, get_productsByCategory, history.location.search, set_activeCategory])
 
 
 
@@ -34,6 +39,7 @@ const Products =
             <div className="cssload-speeding-wheel"></div>
         </div>
     )
+    
     if(loading.product) return preloader
 
     return(
@@ -43,7 +49,7 @@ const Products =
                 <li key={item._id} className='Products_Item'>
                      <div className='Products_Item_IMGWrapper'>
                          <img src={`http://localhost:5000/${item.images[0].path}`} alt='Product' className='Products_Item_IMG' />
-                     </div>
+                     </ div>
 
                      <div className='Products_Item_Data'>
                          <h3 className='Products_Item_Data_Title'>{item.title}</h3>
@@ -64,5 +70,13 @@ const mapStateToProps = (state) => ({
   });
 
 
-export default withRouter(connect(mapStateToProps,{set_activeCategory, get_productsByCategory, get_products})(Products))
+Products.propTypes = {
+    get_products: PropTypes.func,
+    get_productsByCategory: PropTypes.func, 
+    set_activeCategory : PropTypes.func,
+    clear_activeCategory : PropTypes.func,
+    productsState : PropTypes.object
+}
+
+export default withRouter(connect(mapStateToProps,{set_activeCategory,clear_activeCategory, get_productsByCategory, get_products})(Products))
 

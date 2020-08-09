@@ -3,11 +3,12 @@ import './ProductBanner.css'
 import BannerData from './BannerData/BannerData'
 
 import { connect } from 'react-redux'
-
 import Arrow from './Assests/arrows.svg'
 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import PropTypes from 'prop-types';
+
 
 const ProductBanner = ({ product: {images}}) => {
     const [currentImage, setcurrentImage] = useState(0)
@@ -68,5 +69,9 @@ const ProductBanner = ({ product: {images}}) => {
 const mapStateToProps = (state) => ({
     product : state.product.product
   });
+
+ProductBanner.propTypes = {
+    images: PropTypes.array
+}
 
 export default connect(mapStateToProps)(ProductBanner)

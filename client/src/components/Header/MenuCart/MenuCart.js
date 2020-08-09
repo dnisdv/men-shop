@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import {ThemeContext} from '../../../Context/theme-context'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
 
 
 const MenuCart = ({cart}) => {
@@ -23,5 +24,9 @@ const MenuCart = ({cart}) => {
 const mapStateToProps = (state) => ({
     cart : state.cart,
 });
+
+MenuCart.propTypes = {
+    cart: PropTypes.object
+}
 
 export default connect(mapStateToProps)(MenuCart)

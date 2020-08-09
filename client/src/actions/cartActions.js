@@ -2,7 +2,6 @@ import axios from 'axios'
 
 import {
     GET_CART,
-    LOADING_CART,
     LOADING_CART_ACTIONS,
     GET_CART_ERROR,
     GET_CART_LENGTH,
@@ -37,15 +36,12 @@ export const addToCart = (data) => (dispatch) => {
 }
 
     export const getCartProducts = () => (dispatch) => {
-    // dispatch({type: LOADING_CART})
         axios.get('http://localhost:5000/api/cart/getProducts', {withCredentials : true})
         .then((res)=> {
             dispatch({
                 type:GET_CART,
                 items: res.data.items,
                 TotalPrice: res.data.TotalPrice,
-                ShippPrice: res.data.ShippPrice,
-                Total: res.data.Total
             })
         })
         .catch( (err) => {
@@ -66,8 +62,6 @@ export const increaseProduct = (data) => (dispatch) => {
                 type:GET_CART,
                 items: res.data.items,
                 TotalPrice: res.data.TotalPrice,
-                ShippPrice: res.data.ShippPrice,
-                Total: res.data.Total
             })
         })
         .catch( (err) => console.log(err.response))
@@ -83,8 +77,6 @@ export const decreaseProduct = (data) => (dispatch) => {
                 type:GET_CART,
                 items: res.data.items,
                 TotalPrice: res.data.TotalPrice,
-                ShippPrice: res.data.ShippPrice,
-                Total: res.data.Total
             })
         })
         .catch( (err) => console.log(err.response))
@@ -100,8 +92,6 @@ export const setCount = (count) => dispatch => {
             type:GET_CART,
             items: res.data.items,
             TotalPrice: res.data.TotalPrice,
-            ShippPrice: res.data.ShippPrice,
-            Total: res.data.Total
         })
     }
     )
@@ -116,7 +106,12 @@ export const getCartLength = () => dispatch => {
             payload: res.data
         })
     })
-    .catch( (e) => console.log(e.response))
+    .catch( (e) => {
+        dispatch({
+            type:GET_CART_LENGTH,
+            payload: 0
+        })
+    } )
 }
 
 export const deleteOne = (id, sku) => dispatch => {
@@ -135,8 +130,6 @@ export const deleteOne = (id, sku) => dispatch => {
             type:GET_CART,
             items: res.data.items,
             TotalPrice: res.data.TotalPrice,
-            ShippPrice: res.data.ShippPrice,
-            Total: res.data.Total
         })
     })
     .catch( (err) => console.log(err.response))

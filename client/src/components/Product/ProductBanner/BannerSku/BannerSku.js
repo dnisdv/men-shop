@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 
 import {addToCart} from '../../../../actions/cartActions'
 import { get_productInitialState } from '../../../../actions/productActions'
+import PropTypes from 'prop-types';
 
 
 const BannerSku = ({
@@ -35,14 +36,14 @@ const BannerSku = ({
             initialValues={productInitialState}
             validate={(val) => {
               const errors = {}
-                Object.keys(productInitialState).map( (i) => {
-                  if(val[i] === '') return errors[i] = 'Required'
-               })
+              Object.keys(productInitialState).map( (i) => 
+                  val[i] === ''?  errors[i] = 'Required' : false
+              )
               return errors
             }}
-            onSubmit={async (values) => {
-              addToCart({productID: product._id, count:1, sku:values, 
-                        title: product.title, price: product.price, image : product.images[0].path, shipping_price: product.shipping_price})
+            onSubmit={(values) => {
+              return addToCart({productID: product._id, count:1, sku:values, 
+                        title: product.title, price: product.price, image : product.images[0].path})
             }}
             >
             {({
@@ -58,6 +59,7 @@ const BannerSku = ({
                     <Select 
                         key={i._id}
                         name={i.title} 
+                        isSearchable={false}
                         onChange={ (e) => {
                           setValues({...values, [i.title] : e.value})
                         }} 
@@ -84,6 +86,14 @@ const mapStateToProps = (state) => ({
   productInitialState : state.product.productInitialState,
   cart : state.cart.items,
 });
+
+BannerSku.propTypes = {
+  addToCart:PropTypes.func,
+  cart: PropTypes.array,
+  productInitialState: PropTypes.object,
+  product:PropTypes.object,
+  get_productInitialState: PropTypes.func
+}
 
 export default connect(mapStateToProps, {addToCart, get_productInitialState})(BannerSku)
 

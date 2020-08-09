@@ -6,13 +6,14 @@ import {
     GET_PRODUCTSBYCATEGORY,
     GET_PRODUCTSBYCATEGORY_ERROR,
     SET_ACTIVECATEGORY,
-
+    CLEAR_ACTIVECATEGORY
 } from '../types'
   
   const initialState = {
     loading: {
       category:false,
       reviews:false,
+      product:false
     },
     category: null,
     products: null,
@@ -30,7 +31,8 @@ import {
           category: action.payload,
           loading: {
             ...state.loading,
-            category:false
+            category:false,
+            product:false
           }
         }
     case GET_PRODUCTS:
@@ -48,7 +50,6 @@ import {
             ...state,
             loading: {
               ...state.loading,
-              product :true
             }
         }
     case LOADING_CATEGORY: 
@@ -81,6 +82,15 @@ import {
       return{
         ...state,
         activeCategory:action.payload,
+        loading: {
+          ...state.loading,
+          product :true
+        }
+      }
+    case CLEAR_ACTIVECATEGORY :
+      return{
+        ...state,
+        activeCategory: null,
       }
       default:
         return state

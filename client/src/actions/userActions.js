@@ -8,7 +8,8 @@ import {
     CHECK_USERNAME_EXIST,
     SET_USER,
     SET_LOGOUT,
-    SET_LOGOUT_ERROR
+    SET_LOGOUT_ERROR,
+    GET_CART_LENGTH
   } from '../types'
   import axios from 'axios'
   
@@ -73,6 +74,10 @@ import {
     dispatch({
       type: SET_LOGOUT
     })
+    dispatch({
+      type: GET_CART_LENGTH,
+      payload: {value: 0}
+  })
   }
 
   

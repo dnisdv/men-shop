@@ -1,29 +1,48 @@
 import React from 'react'
 import './CheckoutShippingItem.css'
+import PropTypes from 'prop-types';
+import { set_shippMethod } from '../../../../actions/checkoutActions'
 import {connect} from 'react-redux'
 
-
-const CheckoutShippingItem = ({handleBlur,handleChange, name, children, price , id, value, shippMethod}) => {
+const CheckoutShippingItem = ({set_shippMethod, handleBlur,handleChange, name, children, price , id, value, currency ,data, checkoutState: {selectedShipping}}) => {
     return(
         <div className='CheckoutShipping_List_Item'>
         <div className='CheckoutShipping_List_Item_Data'>
             <input value={value} 
                 onBlur={handleBlur} 
-                onChange={handleChange} 
+                onChange={(e) => {
+                    handleChange(e);
+                    set_shippMethod(data)
+                }} 
+                checked={selectedShipping? selectedShipping._id === id : false}
                 className='Checkput'
                 type="radio" id={name + id} 
                 name={name} 
                 />
             <label htmlFor={name + id} className='CheckoutShipping_List_Item_Title'>{children}</label>
         </div>
-        <p className='CheckoutShipping_List_Item_Price'>{price}</p>
+        <p className='CheckoutShipping_List_Item_Price'>{price + currency}</p>
     </div>
     )
 }
 
-
 const mapStateToProps = (state) => ({
-    shippMethod : state.order.shippMethod
-});
+    checkoutState: state.checkout
+})
 
-export default connect(mapStateToProps)(CheckoutShippingItem)
+CheckoutShippingItem.propTypes = {
+    handleBlur: PropTypes.func,
+    handleChange: PropTypes.func,
+    name:PropTypes.string,
+    children: PropTypes.node,
+    price : PropTypes.number,
+    value: PropTypes.string,
+    currency: PropTypes.string,
+    data: PropTypes.object,
+    selectedShipping:PropTypes.object,
+    set_shippMethod:PropTypes.func,
+    id : PropTypes.string,
+
+}
+
+export default connect(mapStateToProps, {set_shippMethod})(CheckoutShippingItem)

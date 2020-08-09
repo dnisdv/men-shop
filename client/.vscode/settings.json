@@ -1,8 +1,6 @@
 {
-    "eslint.codeAction.disableRuleComment": {
-    
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
     },
-    "eslint.codeAction.showDocumentation": {
-    
-    }
-}
+    "eslint.validate": ["javascript"]
+  }

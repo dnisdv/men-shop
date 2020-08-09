@@ -1,5 +1,6 @@
 import React from 'react'
 import './CheckoutDetailsItem.css'
+import PropTypes from 'prop-types';
 
 
 const CheckoutDetailsItem = ({handleChange, handleBlur, values, touched, errors, name, children}) => {
@@ -22,6 +23,15 @@ const CheckoutDetailsItem = ({handleChange, handleBlur, values, touched, errors,
         <label htmlFor={name} className='CheckoutDetails_Input_LabeL'>{children}</label>
     </div>
     )
+}
+CheckoutDetailsItem.propTypes = {
+    handleChange: PropTypes.func,
+    handleBlur: PropTypes.func,
+    values: PropTypes.object,
+    touched: PropTypes.object,
+    errors: PropTypes.object,
+    name: PropTypes.string,
+    children: PropTypes.node
 }
 
 export default CheckoutDetailsItem

@@ -4,15 +4,13 @@ import {connect} from 'react-redux'
 import {get_category, get_productsByCategory, get_products, set_activeCategory} from '../../../actions/productsActions'
 
 import { Link } from 'react-router-dom'
-
 import {withRouter} from 'react-router'
-
+import PropTypes from 'prop-types';
 
 const ProductsCatalog 
     = ({
         get_category, 
         set_activeCategory, 
-        get_productsByCategory, 
         get_products, 
         history,
         products: {activeCategory, loading,category }
@@ -29,7 +27,6 @@ const ProductsCatalog
     }, [get_category])
 
     const selectCategory = (e, id, title) => {
-        // set_activeCategory(id)
         history.push(`?category=${title}`)
         setTimeout(() => {
             setcatalogOpen(false)
@@ -69,5 +66,14 @@ const mapStateToProps = (state) => ({
     products : state.products
   });
 
+ProductsCatalog.propTypes = {
+    get_category: PropTypes.func,
+    set_activeCategory: PropTypes.func,
+    get_products : PropTypes.func,
+    history: PropTypes.object,
+    activeCategory:PropTypes.string,
+    loading:PropTypes.object,
+    category: PropTypes.array,
+}
 
 export default withRouter(connect(mapStateToProps, {get_category,get_products, get_productsByCategory, set_activeCategory})(ProductsCatalog))

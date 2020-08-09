@@ -5,6 +5,7 @@ import Banner from '../../components/Banner/Banner'
 import Catalog from '../../components/Catalog/Catalog'
 
 import {themes} from '../../Context/theme-context'
+import PropTypes from 'prop-types';
 
 
 const MainPage = ({changeTheme}) => {
@@ -23,6 +24,9 @@ const MainPage = ({changeTheme}) => {
             <Catalog />
         </div>
     )
+}
+MainPage.propTypes = {
+    changeTheme: PropTypes.func
 }
 
 export default MainPage

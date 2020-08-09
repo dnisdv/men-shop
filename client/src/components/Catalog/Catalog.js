@@ -13,8 +13,6 @@ const Catalog = () => {
                 <p className='Catalog_Addition_Title'>We create actionable shopper marketing solutions.</p>
                 <p className='Catalog_Addition_Data'>So, the first question on your mind… what is it we do?</p>
             </div>
-
-
             <Features />
         </div>
         

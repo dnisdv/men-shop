@@ -12,7 +12,7 @@ import AccountPage from './Pages/AccountPage/AccountPage'
 import {themes, ThemeContext} from './Context/theme-context'
 import AdminPanel from './components/AdminPanel/AdminPanel';
 // import PublicRoute from './Routes/PublicRoute'
-// import PrivateRoute from './Routes/PrivateRoute'
+import PrivateRoute from './Routes/PrivateRoute'
 import {connect} from 'react-redux'
 import {getCartProducts, addToCart, getCartLength} from './actions/cartActions'
 import {
@@ -22,7 +22,7 @@ import {
 import {checkLogin} from './actions/userActions'
 
 
-function App({checkLogin, getCartProducts, getCartLength, myHistory}) {
+function App({checkLogin, getCartProducts, getCartLength, history, preloader}) {
   useEffect(() => {
     checkLogin()
     getCartLength()
@@ -36,18 +36,20 @@ function App({checkLogin, getCartProducts, getCartLength, myHistory}) {
   } 
   const headerRef = useRef()
   const footerRef = useRef()
+
+  if(preloader) return <span className='Main_Preloader'></span>
   return (
     <React.Fragment>
         <Route exact path='/admin' render={ () => <AdminPanel 
           headerRef={headerRef}
           footerRef={footerRef}
-          myHistory={myHistory}
+          history={history}
         />} />
         <ThemeContext.Provider value={themeHandler}>
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
-                <Route path='/account' component={AccountPage} />
+                <PrivateRoute path='/account' component={AccountPage} />
                 <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
                 <Route path='/cart' component={CartPage} />
                 <Route path='/auth' component={AuthPage} />
@@ -63,8 +65,9 @@ function App({checkLogin, getCartProducts, getCartLength, myHistory}) {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.items
+  cart: state.cart.items,
+  preloader : state.user.preloader,
 });
 export default connect(mapStateToProps,{getCartProducts, getCartLength,addToCart, checkLogin})(App)
 
-// TODO connect stripe
+// TODO CHANGE CHECKOUT PAGE

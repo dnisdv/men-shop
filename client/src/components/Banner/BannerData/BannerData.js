@@ -3,6 +3,7 @@ import './BannerData.css'
 
 import { Link } from 'react-router-dom'
 
+
 const BannerData = () => {
     return(
         <div className='BannerData'>
@@ -13,9 +14,7 @@ const BannerData = () => {
             <p className="BannerData_Addition_Data">Good organized inside antiprotect +  on water</p>
             <p className="BannerData_Addition_Data">Good organized inside antiprotect +  on water</p>
         </div>
-            
             <Link to='/products' className='BannerData_Button'>See Products</Link>
-
     </div>
     )
 }

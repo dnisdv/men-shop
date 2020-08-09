@@ -8,6 +8,7 @@ import Preloader from '../../components/preloader/preloader'
 
 import { connect } from 'react-redux'
 import {get_product, get_reviewsByProduct, clear_product} from '../../actions/productActions'
+import PropTypes from 'prop-types';
 
 
 const ProductPage = ({get_product, match, get_reviewsByProduct, product}) => {
@@ -37,5 +38,12 @@ const mapStateToProps = (state) => ({
     product : state.product.product,
     reviews : state.product.reviews
   });
+
+ProductPage.propTypes = {
+    get_product:PropTypes.func,
+    match:PropTypes.object,
+    get_reviewsByProduct: PropTypes.func,
+    product:PropTypes.object
+}
 
 export default connect(mapStateToProps,{get_product, get_reviewsByProduct, clear_product} )(ProductPage)

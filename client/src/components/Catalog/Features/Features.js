@@ -6,9 +6,10 @@ import Preloader from '../../preloader/preloader'
 import {connect} from 'react-redux'
 import {get_banners} from '../../../actions/bannerActions'
 import {set_activeCategory} from '../../../actions/productsActions'
+import PropTypes from 'prop-types';
+
 
 const Features = ({get_banners, set_activeCategory, banner :{ banners }}) => {
-
     useEffect(() => {
         get_banners()
     }, [get_banners])
@@ -42,5 +43,11 @@ const mapStateToProps = (state) => ({
     banner : state.banner,
     products : state.products
   });
+
+Features.propTypes = {
+    get_banners:PropTypes.func,
+    set_activeCategory:PropTypes.func,
+    banners: PropTypes.array,
+}
 
 export default connect(mapStateToProps, {set_activeCategory, get_banners})(Features)

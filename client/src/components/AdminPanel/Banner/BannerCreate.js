@@ -1,10 +1,8 @@
 import React from 'react';
-import {Create, SimpleForm, TextInput, ReferenceInput, SelectInput, ImageInput, ImageField, required} from 'react-admin'
+import {Create, SimpleForm, TextInput, ReferenceInput, SelectInput} from 'react-admin'
 
 
 export default(props) => {
-
-    const isRequired = false
     return(
         <Create title="Create a Banner" {...props}>
         <SimpleForm>

@@ -7,12 +7,11 @@ import {withRouter} from 'react-router-dom'
 
 import { set_orderData } from '../../../actions/checkoutActions'
 import { connect } from 'react-redux';
-
 import CheckoutDetailsItem from './CheckoutDetailsItem/CheckoutDetailsItem'
+import PropTypes from 'prop-types';
+
 
 const CheckoutDetails = ({history, checkoutState, set_orderData}) => {
-
-
     const formValidation = () => {
         return Yup.object().shape({
             firstName : Yup.string()
@@ -78,5 +77,11 @@ const CheckoutDetails = ({history, checkoutState, set_orderData}) => {
 const mapStateToProps = (state) => ({
     checkoutState : state.checkout.data
   });
+
+CheckoutDetails.propTypes = {
+    history:PropTypes.object,
+    checkoutState:PropTypes.object,
+    set_orderData:PropTypes.func
+}
 
 export default withRouter(connect(mapStateToProps, {set_orderData})(CheckoutDetails))

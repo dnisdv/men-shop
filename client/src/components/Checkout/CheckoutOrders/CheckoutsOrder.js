@@ -2,6 +2,7 @@ import React from 'react'
 import './CheckoutsOrder.css'
 import CheckoutTotal from './CheckoutTotal/CheckoutTotal'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
 
 
 const CheckoutOrders = ({cart}) => {
@@ -20,11 +21,7 @@ const CheckoutOrders = ({cart}) => {
                             <div className='CheckoutOrders_List_Item_DataFirst_Addition'>
                                 {Object.values(i.sku).join('/')}
                             </div>
-                                {i.shipping_price > 0 ? 
-                                <p className='CheckoutOrders_List_Item_DataFirst_ShipPrice'>{i.shipping_price}<span className='Currency'>$</span>
-                                </p>  : 'Ships today'}
                         </div>
-
                         <p className='CheckoutOrders_List_Item_Data_Price'>{i.price}<span className='Currency'>$</span></p>
                     </div>
                 </li>
@@ -37,7 +34,9 @@ const CheckoutOrders = ({cart}) => {
 
 const mapStateToProps = (state) => ({
     cart : state.cart.items,
-    loading: state.cart.loading
 });
+CheckoutOrders.propTypes = {
+    cart: PropTypes.array
+}
 
 export default connect(mapStateToProps)(CheckoutOrders)

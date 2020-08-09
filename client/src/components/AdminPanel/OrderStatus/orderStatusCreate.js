@@ -1,7 +1,6 @@
 import React from 'react';
-import {Create, SimpleForm, TextInput, ReferenceInput, SelectInput, required} from 'react-admin'
+import {Create, SimpleForm, TextInput,required} from 'react-admin'
 
-import RichTextInput from 'ra-input-rich-text';
 
 const orderStatusCreate = (props) => (
     <Create title="Create a Status" {...props}>

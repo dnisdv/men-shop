@@ -21,6 +21,7 @@
     background: none;
     -webkit-text-stroke: 1px white;
     -webkit-text-fill-color: rgba(0,0,0, 0);
+    line-height: 110%;
     }
     .BannerData_Addition{
         display: flex;
@@ -55,15 +56,10 @@
         text-decoration: none;
     }
 
-    
-
-
-
-
 @media (min-width: 950px) { 
     .BannerData{
-        margin-left:11.979166666666666vw;
-        margin-top:6.6115702479338845vh;
+        margin-left:10.7vw;
+        margin-top:6.6vh;
     }
     .BannerData_Button{
         margin-left:0px;

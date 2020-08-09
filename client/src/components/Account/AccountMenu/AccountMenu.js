@@ -6,14 +6,14 @@ import {withRouter} from 'react-router-dom'
 import {logoutUser} from '../../../actions/userActions'
 import {connect} from 'react-redux'
 
+import PropTypes from 'prop-types';
+
 
 const AccountMenu = ({logoutUser, history, user}) => {
 
     const LogOutHandler = () => {
         return logoutUser(history)
     }
-
-
     return( 
         <div className="AccountMenu">
             <h2 className="AccountMenu_Title">Hi {user.username}</h2>
@@ -32,6 +32,13 @@ const AccountMenu = ({logoutUser, history, user}) => {
 const mapStateToProps = (state) => ({
     user: state.user.user
 })
+
+AccountMenu.propTypes = {
+    logoutUser: PropTypes.func,
+    history: PropTypes.object,
+    user: PropTypes.object
+}
+
 
 
 export default withRouter(connect(mapStateToProps, {logoutUser})(AccountMenu))

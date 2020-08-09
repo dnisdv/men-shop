@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import AutosizeInput from 'react-input-autosize';
 import './CartListItem.css'
 import DeleteICON from '../../../../Assests/icons/Delete.svg'
+import PropTypes from 'prop-types';
 
 
 import {
@@ -34,7 +35,6 @@ const CartListItem = ({
         if(stateCount === 1) return
         decreaseProduct({productID: i.productID, sku:i.sku});
         setstatecount(+stateCount - 1)
-        
     }
 
     const changeInputHandle = (e) => {
@@ -102,7 +102,6 @@ const CartListItem = ({
                         className='CartList_Item_DataSecond_Actions_Increase'>+</button>
                 </div>
 
-                <p className='CartList_Item_DataSecond_Shipp'>{i.shipping_price === 0 ? 'Free Shipping' : `shipping : ${i.shipping_price}$`}</p>
             </div>
             
         </div>
@@ -114,6 +113,15 @@ const CartListItem = ({
 const mapStateToProps = (state) => ({
     loading: state.cart.loading
   });
+
+CartListItem.propTypes = {
+    setCount:PropTypes.func,
+    loading:PropTypes.object,
+    increaseProduct: PropTypes.func,
+    decreaseProduct: PropTypes.func,
+    deleteOne:PropTypes.func,
+    i: PropTypes.object
+}
 
 
 export default connect(mapStateToProps, {

@@ -4,6 +4,7 @@ import CheckoutDetails from './CheckoutDetails/CheckoutDetails'
 import CheckoutBreadcrumbs from './CheckoutBreadcrumbs/CheckoutBreadcrumbs'
 import CheckoutShipping from './CheckoutShipping/CheckoutShipping'
 import CheckoutPayment from './CheckoutPayment/CheckoutPayment'
+import PropTypes from 'prop-types';
 
 import {
     Switch,
@@ -12,8 +13,7 @@ import {
   } from "react-router-dom";
 
 
-const Checkout = ({cart, match}) => {
-
+const Checkout = ({match}) => {
     return(
         <div className='Checkout'>
             <CheckoutBreadcrumbs />
@@ -25,6 +25,9 @@ const Checkout = ({cart, match}) => {
             </Switch>
         </div>
     )
+}
+Checkout.propTypes = {
+    match: PropTypes.object
 }
 
 export default withRouter(Checkout)

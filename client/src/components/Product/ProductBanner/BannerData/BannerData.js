@@ -3,18 +3,16 @@ import './BannerData.css'
 import BannerSku from '../BannerSku/BannerSku'
 
 import Rate from 'rc-rate'  
-
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
 
 
-const BannerData = ({product : {rate, shipping_price ,quick_description ,title, price, _id}}) => {
+const BannerData = ({product : {rate, shipping_price ,quick_description ,title, price}}) => {
 
     return(
         <div className='BannerData'>
             <div className='BannerData_Primary'>
                 <div className='BannerData_Primary_Wrapper'>
-                    <span className='BannerData_Primary_Shipping'>{shipping_price ? shipping_price + '$ Shipping' : 'Free shipping'}</span>
-
                     <Rate className='BannerData_Primary_Wrapper_Rating'
                      disabled
                      defaultValue={rate}
@@ -37,6 +35,14 @@ const BannerData = ({product : {rate, shipping_price ,quick_description ,title, 
 const mapStateToProps = (state) => ({
     product : state.product.product
   });
+
+BannerData.propTypes = {
+    rate:PropTypes.number,
+    shipping_price: PropTypes.number,
+    quick_description: PropTypes.string,
+    title:PropTypes.string,
+    price:PropTypes.number
+}
 
 export default connect(mapStateToProps)(BannerData)
 

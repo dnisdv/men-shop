@@ -5,6 +5,7 @@ import Rate from 'rc-rate'
 import * as Yup from 'yup'
 import {connect} from 'react-redux'
 import {add_review, get_reviewsByProduct} from '../../../../actions/productActions'
+import PropTypes from 'prop-types';
 
 
 
@@ -159,5 +160,13 @@ const mapStateToProps = (state) => ({
     userReducer : state.user,
     product : state.product.product
 })
+
+CreateReview.propTypes = {
+    add_review:PropTypes.func,
+    product:PropTypes.object,
+    authenticated: PropTypes.bool,
+    user:PropTypes.object
+
+}
 
 export default connect(mapStateToProps, {add_review, get_reviewsByProduct})(CreateReview)

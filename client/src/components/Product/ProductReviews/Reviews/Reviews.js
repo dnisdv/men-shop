@@ -6,6 +6,8 @@ import Preloader from '../../../preloader/preloader'
 
 import {connect} from 'react-redux'
 import moment from 'moment'
+import PropTypes from 'prop-types';
+
 
 const Reviews = ({reviews, loading}) => {
 
@@ -60,5 +62,10 @@ const mapStateToProps = (state) => ({
     reviews : state.product.reviews,
     loading: state.product.loading.reviews
   });
+
+Reviews.propTypes = {
+    reviews: PropTypes.object,
+    loading: PropTypes.bool
+}
 
 export default connect(mapStateToProps)(Reviews)

@@ -1,6 +1,8 @@
 import {
     SET_CHECKOUT_DATA,
     SET_CHECKOUT_SHIPPMETHOD,
+    SET_SHIPPING_METHODS,
+    LOADING_SHIPPING_METHODS
 } from '../types'
 
 const initialState = {
@@ -16,16 +18,15 @@ const initialState = {
         address : '',
         city : ''
     },
-    dataFinished: false,
-    shippFinished:false,
-    shippMethod: null,
+    completed: {
+      data:false,
+    },
+    shippMethods:null,
+    selectedShipping: null,
     loading:{
-        data:false,
-        shipp:true,
-        payment:true
+        shippMethods:false,
     }
   }
-
 
   export default function (state = initialState, action) {
     switch (action.type) {
@@ -34,6 +35,10 @@ const initialState = {
           ...state,
           data:action.payload,
           dataFinished:true,
+          completed:{
+            ...state.completed,
+            data:true
+          },
           loading: {
             ...state.loading,
             data:false
@@ -42,14 +47,28 @@ const initialState = {
         case SET_CHECKOUT_SHIPPMETHOD :
             return {
               ...state,
-              shippMethod:action.payload,
-              shippFinished:true,
+              selectedShipping:action.payload,
               loading: {
                 ...state.loading,
-                shipp:false
             }
         }
-
+        case SET_SHIPPING_METHODS : 
+            return{
+              ...state,
+              shippMethods:action.payload,
+              loading: {
+                ...state.loading,
+                shippMethods:false
+            }
+            }
+        case LOADING_SHIPPING_METHODS :
+          return{
+            ...state,
+            loading: {
+              ...state.loading,
+              shippMethods:true
+          }
+          }
       default:
         return state
     }

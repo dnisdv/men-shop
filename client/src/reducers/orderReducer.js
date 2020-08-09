@@ -1,17 +1,25 @@
 import {
-    GET_ORDERS
+  SET_ORDERS,
+  LOADING_ORDERS
 } from '../types'
   
   const initialState = {
-    orders: null
+    orders: null,
+    loading:false
   }
   
   export default function (state = initialState, action) {
     switch (action.type) {
-        case GET_ORDERS :
+        case SET_ORDERS :
           return{
             ...state,
-            orders:action.payload
+            orders:action.payload,
+            loading:false
+          }
+        case LOADING_ORDERS : 
+          return{
+            ...state,
+            loading:true
           }
       default:
         return state

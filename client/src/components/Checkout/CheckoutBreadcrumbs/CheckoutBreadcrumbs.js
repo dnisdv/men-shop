@@ -3,9 +3,6 @@ import './CheckoutBreadcrumbs.css'
 
 
 const CheckoutBreadcrumbs = ({bread, setbread}) => {
-
-
-
     return(
         <div className='CheckoutBreadcrumbs'>
 

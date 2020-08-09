@@ -4,12 +4,15 @@ import {connect} from 'react-redux'
 import {get_orders} from '../../../../actions/orderActions'
 import Preloader from '../../../preloader/preloader'
 
-const OrderList = ({orders, get_orders}) => {
+import PropTypes from 'prop-types';
 
+
+const OrderList = ({orders,loading, get_orders}) => {
     useEffect(() => {
         get_orders()
     }, [get_orders])
 
+    if(!orders) return <Preloader />
     return(
         <ul className='OrderList'>
     {
@@ -19,21 +22,17 @@ const OrderList = ({orders, get_orders}) => {
             <li key={i._id} className='OrderList_Item'>
                 <div className='OrderList_Item_Main'>
                     <div className='OrderList_Item_IMG_Wrapper'>
-                        <img src={`http://localhost:5000/${i.productID.images[0].path}`}  className='OrderList_Item_IMG' alt='Product'/>
+                        <img src={`http://192.168.100.5:5000/${i.productID.images[0].path}`}  className='OrderList_Item_IMG' alt='Product'/>
                     </div>
-                    <h2 className='OrderList_Item_Main_Title-Mobile'>{i.productID.title}</h2>
+                    <h2 className='OrderList_Item_Main_Title-Mobile'>{i.productID.title} <span className='OrderList_Item_units'>x{i.count}</span></h2>
                 </div>
 
 
                 <div className='OrderList_Item_Data'>
-                        <h3 className='OrderList_Item_Data_Title'>{i.productID.title}</h3>
+                        <h3 className='OrderList_Item_Data_Title'>{i.productID.title} <span className='OrderList_Item_units'>x{i.count}</span></h3>
                         <div className='OrderList_Item_Data_Char'>
                             <ul className='OrderList_Item_Data_Char_List'>
-                                <li className='OrderList_Item_Data_Char_List_Item'>
-                                    <span className='OrderList_Item_Data_Char_List_Item_Title'>Count :</span>
-                                    <span className='OrderList_Item_Data_Char_List_Item_Value'>{i.count}</span>
-                                </li>
-                                {Object.keys(i.sku).map((key, index) => {
+                                    {Object.keys(i.sku).map((key, index) => {
                                     return (
                                     <li key={index} className='OrderList_Item_Data_Char_List_Item'>
                                         <span className='OrderList_Item_Data_Char_List_Item_Title'>{key} :</span>
@@ -47,21 +46,26 @@ const OrderList = ({orders, get_orders}) => {
                 </div>
                 <div className="OrderList_Item_Status">
                     <span className='OrderList_Item_Status_Preholder'>Status:</span>
-                    <span className='OrderList_Item_Status_Title'>In process</span>
+                    <span className='OrderList_Item_Status_Title'>{k.status ? k.status.label : "In process"}</span>
                 </div>
             </li>)
-        })
-    }) : <Preloader />
+        }) 
+    }) : "no orders yet"
 }
-            
-            
         </ul>
     )
 }
 
 const mapStateToProps = (state) => ({
-    orders : state.order.orders
+    orders : state.order.orders,
+    loading: state.order.loading
 })
+
+OrderList.propTypes = {
+    orders: PropTypes.array,
+    get_orders: PropTypes.func,
+    loading: PropTypes.bool
+}
 
 export default connect(mapStateToProps,{get_orders})(OrderList)
 

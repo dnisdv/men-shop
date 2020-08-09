@@ -14,7 +14,7 @@ import {
 import { createBrowserHistory } from 'history';
 
 const dataProvider = myDataProvider('http://localhost:5000')
-const history = createBrowserHistory({ basename: '/admin' })
+const history = createBrowserHistory()
 
 
 
@@ -22,7 +22,7 @@ const renderApp = () => {
   ReactDOM.render(
     <Router >
     <Provider store={createAdminStore({history, authProvider, dataProvider})}>
-        <App myHistory={history}/>
+        <App history={history}/>
     </Provider>
     </Router>,
 
