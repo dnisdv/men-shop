@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const { SESS_NAME } = require("../config");
 const adminCredentials = {
   _id: 1,
   username: "demo",
@@ -49,7 +48,7 @@ router.delete("/admin", (req, res) => {
     if (admin) {
       return req.session.destroy((err) => {
         if (err) res.status(500).send();
-        res.clearCookie(SESS_NAME);
+        res.clearCookie(process.env.SESS_NAME);
         res.send(admin);
       });
     } else {

@@ -2,7 +2,6 @@ const express = require("express");
 const userModel = require("../models/user");
 const reviewModel = require("../models/review");
 const router = express.Router();
-const { SESS_NAME } = require("../config");
 
 router.post("/users/register", async (req, res) => {
   const { username, email, password } = req.body;
@@ -46,7 +45,7 @@ router.delete("/users/logout", async (req, res) => {
     if (user) {
       return req.session.destroy((err) => {
         if (err) res.status(500).send();
-        res.clearCookie(SESS_NAME);
+        res.clearCookie(process.env.SESS_NAME);
         res.send(user);
       });
     } else {

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
 console.log(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}`);
 mongoose
   .connect(
