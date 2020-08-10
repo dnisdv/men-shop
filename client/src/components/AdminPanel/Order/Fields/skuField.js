@@ -21,7 +21,7 @@ const TextField = ({label, source, record = {} }) => {
                 </tr>
                 </thead>
                 { record.fullPrice ?
-                        <tfoot>
+                        <tfoot key={record._id}>
                             <tr>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -35,7 +35,7 @@ const TextField = ({label, source, record = {} }) => {
                 
                 <tbody>
                     {isObject ? record[source].map( (i) => {
-                        return (<tr>
+                        return (<tr key={record._id}>
                         <td>{i.productID._id}</td>
                         <td>{i.productID.title}</td>
                         <td>{i.productID.rate}</td>

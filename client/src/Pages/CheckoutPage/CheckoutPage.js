@@ -24,8 +24,7 @@ const CheckoutPage = ({headerRef, footerRef, cart}) => {
     return(
         <div className='CheckoutPage'>
             <Checkout />
-            { cart ? <CheckoutOrders /> : null }
-            
+            <CheckoutOrders />
         </div>
     )
 }

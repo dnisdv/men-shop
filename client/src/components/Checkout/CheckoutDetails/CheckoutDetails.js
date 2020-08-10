@@ -1,56 +1,17 @@
 import React from 'react'
 import './CheckoutDetails.css'
-import { Formik } from 'formik';
-import { Link } from 'react-router-dom'
-import * as Yup from 'yup'
-import {withRouter} from 'react-router-dom'
 
 import { set_orderData } from '../../../actions/checkoutActions'
 import { connect } from 'react-redux';
-import CheckoutDetailsItem from './CheckoutDetailsItem/CheckoutDetailsItem'
+import CheckoutDetailsItem from '../CheckoutInput/CheckoutInput'
 import PropTypes from 'prop-types';
 
 
-const CheckoutDetails = ({history, checkoutState, set_orderData}) => {
-    const formValidation = () => {
-        return Yup.object().shape({
-            firstName : Yup.string()
-                .required("Required"),
-            lastName : Yup.string()
-                .required("Required"),
-            company : Yup.string()
-                .required("Required"),
-            email : Yup.string()
-                .email("This must be an email")
-                .required("Required"),
-            phone : Yup.number()
-                .required("Required"),
-            country : Yup.string()
-                .required("Required"),
-            zip : Yup.number()
-                .required("Required"),
-            state: Yup.string()
-                .required("Required"),
-            address : Yup.string()
-                .required("Required"),
-            city : Yup.string()
-                .required("Required")
-        })
-    }
-
+const CheckoutDetails = (props) => {
     return(
         <div className='CheckoutDetails'>
-            <h2 className='CheckoutDetails_Title'>Details</h2>
-            <Formik
-            initialValues={checkoutState}
-            validationSchema={formValidation}
-            onSubmit={(values) => {
-                set_orderData(values)
-                history.push('/checkout/shipping')
-            }}
-            >
-            {(props) => (
-                <form className='CheckoutDetails_Wrapper' onSubmit={props.handleSubmit}>
+            <h2 className='CheckoutDetails_Title'>Billing address</h2>
+                <div className='CheckoutDetails_Wrapper'>
                     <CheckoutDetailsItem {...props} name='firstName'>First Name</CheckoutDetailsItem>
                     <CheckoutDetailsItem {...props} name='lastName'>Last Name</CheckoutDetailsItem>
                     <CheckoutDetailsItem {...props} name='company'>Company</CheckoutDetailsItem>
@@ -61,14 +22,7 @@ const CheckoutDetails = ({history, checkoutState, set_orderData}) => {
                     <CheckoutDetailsItem {...props} name='state'>State</CheckoutDetailsItem>
                     <CheckoutDetailsItem {...props} name='address'>Address</CheckoutDetailsItem>
                     <CheckoutDetailsItem {...props} name='city'>City</CheckoutDetailsItem>
-
-                    <div className='CheckoutDetails_Actions'>
-                        <Link className='CheckoutDetails_Actions_Back' to='/cart'>Back to cart</Link>
-                        <button type='submit' className='CheckoutDetails_Actions_Button'>Next</button>
-                    </div>
-                </form>
-            )}
-            </Formik>
+                </div>
         </div>
     )
 }
@@ -84,4 +38,4 @@ CheckoutDetails.propTypes = {
     set_orderData:PropTypes.func
 }
 
-export default withRouter(connect(mapStateToProps, {set_orderData})(CheckoutDetails))
+export default connect(mapStateToProps, {set_orderData})(CheckoutDetails)

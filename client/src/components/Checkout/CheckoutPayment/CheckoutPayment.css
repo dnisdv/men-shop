@@ -1,4 +1,7 @@
-.CheckoutPayment_Actions_Back{
-    cursor: pointer;
-    text-decoration: underline;
+
+.CheckoutPayment_Title{
+    margin:0;
+}
+.CheckoutPayment{
+    margin-top:70px;
 }

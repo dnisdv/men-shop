@@ -1,19 +1,16 @@
 .CheckoutDetails{
-    display: flex;
+    display: grid;
     flex-direction: column;
     width: 100%;
 }
 
 .CheckoutDetails_Title{
-    font-size: 50px;
     margin:0;
     padding: 0;
+    font-weight: bold;
+    font-size: 24px;
 }
 
-.CheckoutDetails_Actions_Button:disabled,
-.CheckoutDetails_Actions_Button[disables]{
-    opacity: 0.7;
-}
 @media (min-width: 950px) { 
     .Checkout{
         display: flex;
@@ -23,8 +20,24 @@
         margin:0;
         padding:0;
         display: flex;
-
+    }
+    .CheckoutDetails_Wrapper{
+        margin-top:23px;
+        display: grid;
+        grid-template-areas: 
+        "firstName lastName"
+        "email email"
+        "company company"
+        "phone phone"
+        "country zip"
+        "state state"
+        "address address"
+        "city city";
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        justify-items: stretch;
+        align-items: stretch;
     }
 
-
+    
 }

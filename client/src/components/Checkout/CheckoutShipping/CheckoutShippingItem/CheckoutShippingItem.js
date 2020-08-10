@@ -15,7 +15,7 @@ const CheckoutShippingItem = ({set_shippMethod, handleBlur,handleChange, name, c
                     set_shippMethod(data)
                 }} 
                 checked={selectedShipping? selectedShipping._id === id : false}
-                className='Checkput'
+                className='CheckoutShipping_List_Item_Data_Input'
                 type="radio" id={name + id} 
                 name={name} 
                 />

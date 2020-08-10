@@ -16,7 +16,7 @@ const CheckoutTotal = ({checkout:{ selectedShipping }, cart : {TotalPrice, Shipp
 
                 <li className='CheckoutTotal_List_Item CheckoutTotal_List_Item-Shipping'>
                     <h2 className='CheckoutTotal_List_Item_Title CheckoutTotal_List_Item_Title-Shipping'>Shipping</h2>
-                    <p className='CheckoutTotal_List_Item_Value CheckoutTotal_List_Item_Value-Shipping'>{selectedShipping ? selectedShipping.price + "$" : "Will be specifed later" }</p>
+                    <p className='CheckoutTotal_List_Item_Value CheckoutTotal_List_Item_Value-Shipping'>{selectedShipping ? selectedShipping.price + "$" : "Select shipping method" }</p>
                 </li>
 
                 <li className='CheckoutTotal_List_Item CheckoutTotal_List_Item-Total'>

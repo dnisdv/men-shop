@@ -5,12 +5,25 @@
     justify-content: center;
     padding:50px 0px;
 }
+.Checkout_Logo{
+    background-color: black;
+    color:white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0px;
+}
+.Checkout_Form{
+    margin-top:20px;
+}
 @media (min-width: 950px) { 
     .Checkout{
-        width: 820px;
+        width: 620px;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
-
+}
+.Checkout_Form_Submit{
+    margin-top:70px;
 }

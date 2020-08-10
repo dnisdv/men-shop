@@ -46,7 +46,7 @@
     font-weight: 600;
 }
 .CheckoutTotal_List_Item-Total{
-    border-top:5px solid black
+    border-top:2px solid black
 }
 
 @media (min-width: 950px) { 
@@ -59,10 +59,7 @@
 
 
 @media (max-width: 1508px) { 
-    .CheckoutTotal{
-        margin-left:0px;
-        margin-right: 0px;
-    }
+
     .CheckoutTotal_List_Item{
         display: flex;
         align-items: center;

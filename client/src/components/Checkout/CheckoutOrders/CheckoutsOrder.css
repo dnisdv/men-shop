@@ -1,8 +1,16 @@
-.CheckoutOrders{
-    display: none;
-}
 
 @media (min-width: 950px) { 
+    .CheckoutOrders{
+        width: 500px;
+        background-color: rgb(250, 248, 251);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        z-index: 99999;
+        padding-top:50px;
+        position: fixed;
+        right: 0;
+    }
     .CheckoutOrders_List{
         margin:0;
         padding: 0;
@@ -66,15 +74,7 @@
         font-size: 18px;
         font-weight: 500;
     }
-    .CheckoutOrders{
-        width: 27.604166666666668vw;
-        background-color: rgb(250, 248, 251);
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        z-index: 99999;
-    }
+
     .CheckoutOrders_List_Item_DataFirst_Addition{
         display: flex;
         padding: 10px 0px;
@@ -88,36 +88,4 @@
         margin:0;
         padding: 0;
     }
-}
-
-@media (max-width: 1508px) { 
-    .CheckoutOrders{
-        display: none;
-        width: 250px;
-    }
-    .CheckoutOrders{
-        width: auto;
-        background:none;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        z-index: 99999;
-        width: 603px;
-        display: none;
-    }
-    .CheckoutOrders_Title{
-        margin-left:0px;
-        margin-right: 0px;
-    }
-    .CheckoutOrders_List{
-        margin-left:0px;
-        margin-right: 0px;
-        margin-top:5px
-    }
-    .CheckoutTotal{
-        margin-left:0px;
-        margin-right: 0px;
-    }
-
 }
