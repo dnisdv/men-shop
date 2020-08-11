@@ -9,7 +9,7 @@ import {withRouter} from 'react-router'
 import {clear_activeCategory} from '../../actions/productsActions'
 
 import PropTypes from 'prop-types';
-
+import Preloader from '../preloader/preloader'
 
 const Products = 
     ({
@@ -33,18 +33,11 @@ const Products =
     }, [category, get_products, clear_activeCategory, get_productsByCategory, history.location.search, set_activeCategory])
 
 
-
-    const preloader = (
-        <div className={`cssload-container ${true || (products && products.length) <= 0 ? "cssload-containerProducts-noItems" : ""}`}>
-            <div className="cssload-speeding-wheel"></div>
-        </div>
-    )
-    
-    if(loading.product) return preloader
+    if(loading.product) return <div className='Products_Preloader'><Preloader /></div>
 
     return(
         <ul className={`Products ${products && products.length <= 0 ? "mobile-noItems" : ""}`}>
-            {products && products.length !== 0 ? products.map( (item) => {
+            {products && products.length !== 0  ? products.map( (item) => {
                 return(
                 <li key={item._id} className='Products_Item'>
                      <div className='Products_Item_IMGWrapper'>
@@ -59,7 +52,7 @@ const Products =
                      </div>
                  </li>
                 )
-            }) : <span className="Products_Feedback">sorry, no products yet</span>}
+            }) : <div className='Products_Feedback_Wrapper'><span className="Products_Feedback">sorry, no products yet</span></div>}
         </ul>
     )
 }

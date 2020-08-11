@@ -23,8 +23,8 @@ const CheckoutPage = ({headerRef, footerRef, cart}) => {
     }, [footerRef, headerRef])
     return(
         <div className='CheckoutPage'>
-            <Checkout />
             <CheckoutOrders />
+            <Checkout />
         </div>
     )
 }

@@ -1,7 +1,8 @@
 .cssload-container {
 	width: 100%;
-    text-align: center;
-    transform: translateY(50%);
+	text-align: center;
+	display: flex;
+	text-align: center;
 }
 
 .cssload-speeding-wheel {

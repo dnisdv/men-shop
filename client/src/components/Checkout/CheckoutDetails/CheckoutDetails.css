@@ -11,6 +11,26 @@
     font-size: 24px;
 }
 
+.CheckoutDetails_Wrapper{
+    margin-top:23px;
+    display: grid;
+    grid-template-areas: 
+    "firstName"
+    "lastName"
+    "email"
+    "company "
+    "phone"
+    "country"
+    "zip"
+    "state "
+    "address "
+    "city ";
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
 @media (min-width: 950px) { 
     .Checkout{
         display: flex;
@@ -22,8 +42,7 @@
         display: flex;
     }
     .CheckoutDetails_Wrapper{
-        margin-top:23px;
-        display: grid;
+
         grid-template-areas: 
         "firstName lastName"
         "email email"
@@ -33,10 +52,8 @@
         "state state"
         "address address"
         "city city";
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-        justify-items: stretch;
-        align-items: stretch;
+
+        
     }
 
     
