@@ -1,0 +1,106 @@
+.Features{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    margin-top:5px;
+    color:white;
+}
+.Features_Item_Img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    z-index: 8;
+    
+}
+.Features_Item_Title{
+    margin:0;
+    height: auto;
+    overflow-wrap: break-word;
+    font-size: 18px;
+    color:white;
+    text-transform: none;
+}
+.Features_Item a{
+    text-decoration: none;
+}
+.Features_Item{
+    margin-top:60px;
+    position: relative;    
+}
+
+
+@media (min-width: 950px) { 
+    .Features{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .Features_Item{
+        margin:0;
+    }
+    .Features_Item_Title{
+        /* bottom:-20px; */
+        bottom:2.0661157024793386vh;
+
+        /* left:-20px; */
+        left:1.0416666666666667vw;
+
+        font-size: 21px;
+    }
+    .Features_Item_Img{
+        width: auto;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .Features_Item-0{
+        /* margin-top:188px; */
+        margin-top:19.421487603305785vh;
+        /* width: 430px; */
+        width: 22.395833333333332vw;
+        /* height: 573px; */
+        height: 59.19421487603306vh;
+    }
+    .Features_Item_Img{
+        width: 100%;
+        height: 100%;
+    }
+   
+
+    .Features_Item-1{
+        /* margin-right: 64px; */
+        margin-right: 3.3333333333333335vw;
+        /* width: 631px; */
+        width: 32.864583333333336vw;
+
+        /* height: 382px; */
+        height: 39.46280991735537vh;
+    }
+    .Features_Item-2{
+        /* margin-top:207px; */
+        margin-top:21.384297520661157vh;
+        /* width: 635px; */
+        width: 33.072916666666664vw;
+        /* height: 388px; */
+        height:  40.082644628099175vh;
+    }
+
+    .Features_Item-3{
+        /* margin-right: 117px; */
+        margin-right: 6.09375vw;
+        /* width: 455px; */
+        width:  23.697916666666668vw;
+        /* height: 338px; */
+        height: 34.917355371900825vh;
+    }
+    .Features_Item-3::after{
+        content:'So, the first question on your mind… what is it we do?';
+        display: block;
+        position: absolute;
+        width: 200px;
+        font-style: 18px;
+        bottom:-200px;
+        left:200px;
+    }
+
+}

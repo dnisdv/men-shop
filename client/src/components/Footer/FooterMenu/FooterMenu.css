@@ -1,0 +1,26 @@
+.FooterMenu{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:5.399568034557236vh;
+}
+.FooterMenu_Item:first-child{
+    margin-left:0px;
+}
+.FooterMenu_Item{
+    margin-left:1.25vw;
+    font-size: 13px;
+}
+
+@media (min-width: 950px) { 
+    .FooterMenu_Item{
+        margin-left:3.8541666666666665vw;
+        font-size: 17px
+    }
+    .FooterMenu{
+        margin:0;
+    }
+}

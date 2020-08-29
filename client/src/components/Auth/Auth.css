@@ -1,0 +1,80 @@
+.Auth{
+    width: 100%;
+}
+.Auth_Toggle_Button{
+    padding: 0;
+    margin:0;
+    background: none;
+    border:none;
+    margin-left:9px;
+    color:rgb(58, 58, 58);
+    font-size: 15px;
+    text-decoration: solid 1px black;
+    cursor: pointer;
+}
+.Auth_Socials{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.Auth_Socials_Item{
+    width: 30%;
+    height: 48px;
+    border-radius: 0%;
+    border:none;
+    border:1px solid black;
+    font-weight: 700;
+    cursor: pointer;
+}
+.Auth_Socials_Item_Gmail:hover{
+    background-color: #FF6A6A;
+    color:white;
+    border:none
+}
+.Auth_Socials_Item_Facebook:hover{
+    background-color: #3B5998;
+    color:white;
+    border:none
+}
+.Auth_Socials_Item_VK:hover{
+    background-color: #4c75a3;
+    color:white;
+    border:none
+}
+.Auth_Toggle_Main{
+    padding: 0px ;
+    margin:0px;
+    margin-top:9px;
+}
+.Auth_Data_Title{
+    width: 150px;
+}
+.Auth_Socials{
+    margin-top:50px;
+}
+.Auth_Error{
+    display: block;
+    margin-top:20px;
+    color:red
+}
+
+@media (min-width: 950px) { 
+    .Auth{
+        width: 350px;
+        margin-left:90px;
+        margin-right:100px;
+    }
+    .Auth_Toggle{
+        margin-top:20px;
+    }
+    .Auth_Socials_Item{
+        width: 30%;
+        height: 60px;
+        border-radius: 0%;
+        border:none;
+        border:1px solid black;
+        ;
+        font-weight: 700;
+    }
+
+}

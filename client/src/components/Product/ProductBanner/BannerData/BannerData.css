@@ -1,0 +1,95 @@
+
+.BannerData_Primary{
+    display: flex;  
+    align-items: center;
+    justify-content: space-between;
+}
+.BannerData_Primary_quick_description{
+    display: none;
+}
+.BannerData_Primary_Title{
+    padding: 0;
+    margin:0;
+    line-height: 1.5;
+    position: relative;
+}
+.BannerData_Primary_Title::after{
+    content:"";
+    width: 76px;
+    height: 3px;
+    background-color: black;
+    position: absolute;
+    bottom:-10px;
+    left:0;
+}
+.BannerData_Primary_Price{
+    font-weight: 100;
+}
+.BannerData_Primary{
+    margin-top:63px;
+}
+.BannerData_Primary_Wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.BannerData_Primary_Shipping{
+    font-size: 14px;
+    font-weight: 100;
+}
+.BannerData_Primary_Wrapper_Rating{
+    display: flex;
+    list-style: none;
+    margin:0;
+    padding: 0;
+    margin-top:9px;
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star > div > .rc-rate-star-second{
+    display: none;
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star > div > .rc-rate-star-first > .fas.fa-star{
+    font-size: 18px;
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star-zero > div > .rc-rate-star-first > .fas.fa-star{
+    color:#CCCCCC
+}
+.BannerData_Primary_Wrapper_Rating > .rc-rate-star-full > div > .rc-rate-star-first > .fas.fa-star{
+    color:#0A0A0A
+}
+
+
+
+@media (min-width: 950px) { 
+    .BannerData_Primary{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .BannerData_Primary_Price{
+        margin-top:58px;
+        margin-bottom: 0;
+    }
+    .BannerData_Primary_Title{
+        font-size: 34px;
+        width: 100%;
+        margin-top:5px
+    }
+    .BannerData{
+        width: 20.833333333333332vw;
+    }
+    .BannerData_Primary_quick_description{
+        margin-top:45px;
+        display: block;
+    }
+
+    .BannerData::after{
+        content:"";
+        width: 2px;
+        height: 80%;
+        background-color: #00000013;
+        display: block;
+        position: absolute;
+        top:0;
+        left:-100px;
+    }
+
+}

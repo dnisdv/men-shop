@@ -1,0 +1,113 @@
+.BannerData_Title{
+    margin:0;
+    position: absolute;
+    top:0;
+    left:-10px;
+    font-size: 69px;
+    width:340px;
+    z-index: -1;
+    color:white;
+    position: absolute;
+
+}
+.BannerData_Title_Shadow{
+    margin:0;
+    position: absolute;
+    top:0;
+    left:-10px;
+    font-size: 69px;
+    width:340px;
+    z-index: 999;
+    background: none;
+    -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: rgba(0,0,0, 0);
+    line-height: 110%;
+    }
+    .BannerData_Addition{
+        display: flex;
+        justify-content: space-between;    
+        margin-top:47px;
+
+    }
+    .BannerData_Button{
+        margin-top:47px;
+        display: flex;
+        justify-content: center;
+    }
+    .BannerData_Addition_Data{
+        text-align: left;
+        margin:0;
+        font-size: 14px;
+        width: 118px;
+    }
+    .BannerData_Button{
+        width: 254px;
+        height: 75px;
+        font-size: 18px;
+        border: 3px solid white;
+        color: white;
+        background: none;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-top:50px;
+        text-decoration: none;
+    }
+
+@media (min-width: 950px) { 
+    .BannerData{
+        margin-left:10.7vw;
+        margin-top:6.6vh;
+    }
+    .BannerData_Button{
+        margin-left:0px;
+    }
+
+    .BannerData_Title_Shadow{
+        opacity: 0.08;
+    }
+    .BannerData_Addition{
+        display: none;
+    }
+    .BannerData_Title{
+
+
+        font-size: 58px;
+        margin:0;
+        margin-bottom: 15.49586776859504vh;
+        position: relative;
+        z-index: 3
+    }
+    .BannerData_Title::after{
+        content: "";
+        display: block;
+        width: 7.8125vw;
+        height: 0.8264462809917356vh;
+        background-color: #fff;
+        position: absolute;
+        bottom:-6.198347107438017vh;
+        cursor:none
+    }
+    .BannerData_Addition_Data{
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        -khtml-user-select: none; 
+        -webkit-user-select: none; 
+        -webkit-touch-callout: none;
+    }
+    
+}
+
+
+@media (min-width: 950px) and (max-width: 1206px) { 
+    .BannerData{
+        margin-left: 0px;
+    }
+    .Banner{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}

@@ -1,0 +1,132 @@
+.ProductsCatalog{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.ProductsCatalog_Title{
+    margin:0;
+    padding: 0;
+    font-size: 14px;
+    margin-bottom: 11px;
+    display: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    color:black;
+}
+.ProductsCatalog_List_Item{
+    font-size: 18px;
+    margin-top:22px;
+    color:#929292;
+    cursor: pointer;
+}
+.ProductsCatalog_List_Item:last-child{
+    margin-bottom: 22px;
+}
+.ProductsCatalog_List_Item_Link{
+    color:inherit;
+    text-decoration: none;
+}
+.ProductsCatalog_Modal{
+    position: absolute;
+    display: none;   
+    background-color: white;
+    z-index: 1000;
+    width: 266px;
+    top:-20px;
+    left:-18px;
+    width: 226px;
+}
+.ProductsCatalog_Title-Mobile{
+    padding:0px;
+    z-index: 999999;
+    background: none;
+    border:none;
+    padding-bottom: 9px;
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+.ProductsCatalog_Modal_BG{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0,0,0 ,0.2);
+    top:0;
+    left:0;
+    display: none;
+}
+.ProductsCatalog_List{
+    margin:0;
+    padding: 0;
+    margin-right: 26px;
+    list-style: none;
+    display: block;
+}
+.ProductsCatalog.CatalogOpen > .ProductsCatalog_Modal{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.ProductsCatalog.CatalogOpen > .ProductsCatalog_Modal_BG{
+    display: block;
+}
+.ProductsCatalog_List_Item_ACTIVE{
+    color:black;
+}
+.ProductsCatalog_List_Item_ACTIVE::before{
+    content:"";
+    margin-right: 0.2604166666666667vw;
+    border:2px solid black;
+}
+.ProductsCatalog_List_Item_Disabled{
+    opacity: 0.5;
+}
+.ProductsCatalog_List_Item_ACTIVE.ProductsCatalog_List_Item_Disabled{
+    opacity: 1 !important;
+}
+
+@media (min-width: 950px) { 
+    .ProductsCatalog{
+        margin-top:125px;
+    }
+    .ProductsCatalog_List{
+        margin:0;
+        width: 10vw;
+
+    }
+    .ProductsCatalog_List_Item{
+        font-size: 18px;
+        margin-top:22px;
+        color:#929292;
+    }
+    .ProductsCatalog_Modal{
+        display: block;
+    }
+    .ProductsCatalog_Title-Mobile{
+        display: none
+    }
+    .ProductsCatalog_Title{
+        margin:0;
+        padding: 0;
+        margin-bottom: 1.187904967602592vh;
+        color:#585858;
+        display: block;
+        font-size: 24px;
+    }
+    .ProductsCatalog_Modal{
+        position: relative;
+        background: none;
+        top:0;
+        left:0;
+    }
+    .ProductsCatalog_List_Item_ACTIVE{
+        color:black;
+    }
+    .ProductsCatalog {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+    }
+}

@@ -1,0 +1,47 @@
+
+.MenuCart_Title{display: none;}
+
+.MenuCart_Wrapper{
+    width: 1.5625vw;
+    height: 3.239740820734341vh;
+    min-width: 30px ;
+    min-height: 3px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.MenuCart_Link{
+    display: flex;
+    color:inherit;
+    align-items: center;
+    text-decoration: none;
+}
+.MenuCart{
+    z-index: 99999;
+}
+@media (min-width: 950px) { 
+    .MenuCart_Title{
+        display: block;
+        color:inherit;
+        font-size: 16px;
+    }
+    
+    .MenuCart{
+        color:black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        order:3;
+    }
+    .MenuCart_Wrapper{
+        margin-left:0.46875vw;
+        min-width: 30px ;
+        min-height: 4px;
+    }
+    .MenuCart_Wrapper_Count{
+        font-size:16px;
+    }
+}

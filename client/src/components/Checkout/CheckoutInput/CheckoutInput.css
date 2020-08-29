@@ -1,0 +1,68 @@
+.CheckoutInput{
+    padding: 25px 30px 12px;
+    border:none;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    border: 1px solid #aeb3b6;
+    box-sizing: border-box;
+}
+.CheckoutInput_Wrapp{
+    position: relative;
+}
+.CheckoutInput_LabeL{
+    position: absolute;
+    top:0;
+    left:30px;
+    cursor: text;
+    top: 45%;
+    transform: translateY(-45%);
+    transition: 0.2s ease;
+    font-size: 14px;  
+    font-weight: 600;
+}
+
+.CheckoutInput:focus ~  .CheckoutInput_LabeL{
+    top: 25%;
+    transform: translateY(-25%);
+    font-size:12px;
+}
+.CheckoutInput:not([value=""]) ~ .CheckoutInput_LabeL{
+  top: 25%;
+  transform: translateY(-25%);
+  font-size:12px;
+}
+
+
+.CheckoutInput_Error{
+    border:1px solid red;
+    animation: shake 0.42s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(1px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(1px, 0, 0);
+    }
+  }
+
+
+
+@media (min-width: 950px) { 
+    .CheckoutInput_LabeL{
+        font-size: 16px;
+    }
+}
+

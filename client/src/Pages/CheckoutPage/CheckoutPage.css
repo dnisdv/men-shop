@@ -1,0 +1,23 @@
+.CheckoutPage{
+    width: 306px;
+    margin:0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (min-width: 750px) { 
+    .CheckoutPage{
+        width: 60vw;
+        margin:0;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+@media (max-width : 928px){
+    .CheckoutPage{
+        width: 50vw;
+        min-width: 306px;
+    }
+}

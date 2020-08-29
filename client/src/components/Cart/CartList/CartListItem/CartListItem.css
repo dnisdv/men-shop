@@ -1,0 +1,163 @@
+.CartList_Item_DataSecond_Actions_Count > input{
+    text-align: center;
+}
+.CartList_Item_DataFirst_Price{
+    text-align: right;
+    margin-top:10px
+}
+.CartList_Item_Data_Wrapp_Delete{
+    width: 10px;
+    height: 10px;
+    text-align: right;
+}
+.CartList_Item_Data_Wrapp_Button{
+    width: auto;
+    padding: 0;
+    border:none;
+    background: none;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.CartList_Item{
+    display: flex;
+    align-items: center;
+    margin-top:40px;
+}
+.CartList_Item_Data{
+    display: flex;
+    flex-direction: column;
+    margin-left:14px;
+    justify-content: space-between;
+    height: 100%;
+    flex: 1;
+}
+.CartList_Item_DataFirst_Title{
+    margin:0;
+    padding: 0;
+    font-size:14px;
+    font-weight: 400;
+    width: 100px;
+}
+.CartList_Item_DataFirst_Price{
+    margin:0;
+    padding: 0;
+    width: auto;
+}
+.CartList_Item_IMG_Wrapper{
+    width: 68px;
+    height: 71px;
+}
+.CartList_Item_IMG{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.CartList_Item_DataSecond_Actions{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.CartList_Item_DataSecond_Actions_Count{
+    margin:0;
+    padding: 0;
+    margin:0px 7px 0px 7px;
+    font-size: 14px;
+}
+.CartList_Item_DataSecond_Actions_Count::-ms-clear {display: none;}
+
+.CartList_Item_DataFirst{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-items: center;
+}
+.CartList_Item_DataSecond{
+    display: flex;
+    justify-content: space-between;
+}
+.CartList_Item_DataSecond_Shipp{
+    font-size: 14px;
+    margin:0;
+    padding: 0;
+}
+.CartList_Item_DataSecond_Actions_Decrease,
+.CartList_Item_DataSecond_Actions_Increase{
+    padding: 0px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    background: none;
+    border:1px solid black;
+    cursor: pointer;
+
+}
+
+.CartList_Item_Data_Addition{
+    display: flex;
+    margin-bottom: 10px;
+}
+.CartList_Item_Data_Addition_Size{
+    margin:0;
+    padding: 0;
+}
+.CartList_Item_Data_Addition_Color{
+    margin:0;
+    padding: 0;
+}
+.CartList_NoItems_FeedBack{
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+@media (min-width: 950px) { 
+    .CartList_NoItems_FeedBack{
+        font-size: 24px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+    }
+    .CartList_Item_IMG_Wrapper{
+        width: 110px;
+        height: 110px;
+    }
+    .CartList_Item:first-child{
+        margin:0;
+    }
+    .CartList_Item_Data{
+        margin-left:50px;
+    }
+    .CartList_Item_DataFirst_Title{
+        font-size: 20px;
+        width: 80%;
+        font-weight: 500;
+    }
+    .CartList_Item_DataFirst_Price{
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .CartList_Item_DataSecond_Shipp{
+        font-size: 16px;
+        color:rgba(0, 0, 0, 0.5);
+    }
+    .CartList_Item_DataSecond_Actions_Increase{
+        width: 32px;
+        height: 32px;
+    }
+    .CartList_Item_DataSecond_Actions_Decrease{
+        width: 32px;
+        height: 32px;
+    }
+
+}

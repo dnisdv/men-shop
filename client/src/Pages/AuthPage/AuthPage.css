@@ -1,0 +1,37 @@
+.AuthPage{
+    width: 306px;
+    margin:0 auto;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.AuthPage_IMG{
+    display: none;
+    animation: ma .4s linear;
+}
+@keyframes ma{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+@media (min-width: 950px) { 
+    .AuthPage{
+        width: 83.54166666666667vw;
+        display: flex;
+        justify-content: space-between;
+        height: 80vh;
+        align-items: center;
+    }
+    .AuthPage_IMG{
+        width:  39.739583333333336vw;
+        height: 76.34297520661157vh;
+        object-fit: cover;
+    }
+    .AuthPage_IMG{
+        display: block;
+    }
+}

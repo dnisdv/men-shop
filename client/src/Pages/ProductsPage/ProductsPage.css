@@ -1,0 +1,25 @@
+.ProductsPage{
+        max-width: 15.9375vw;
+        margin: 0 auto;
+        margin-top:0px;
+        min-width: 306px;
+        
+}
+.Products_Wrapper{
+        width: 100%;
+}
+
+@media (min-width: 950px) { 
+        .ProductsPage{
+            max-width: 83.54166666666667vw;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            margin-top:3.023758099352052vh;
+
+    }
+    .Products_Wrapper{
+            margin-left:7vw;
+            min-height:calc(100vh - 112px - 3vh)
+    }
+}

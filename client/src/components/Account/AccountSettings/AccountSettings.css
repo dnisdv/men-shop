@@ -1,0 +1,67 @@
+.AccountSettings_Input{
+    padding: 25px 21px;
+    padding-right: 0px;
+}
+.AccountSettings{
+    width: 990px;
+}
+
+.AccountSettings_Form{
+    margin-top:34px;
+}
+.AccountSettings_Form_Wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.AccountSettings_Button{
+    width: 100%;
+    margin-top:28px;
+    padding: 20px 0px;
+    background-color: #fff;
+    cursor: pointer;
+    border:1px solid black;
+    font-weight: 700;
+}
+.AccountSettings_Contact_Title{
+    margin:0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.AccountSettings_Contact{
+    margin-top: 100px;
+
+}
+.AccountSettings_Title1{
+    margin:0;
+    padding: 0;
+    font-weight: inherit;
+}
+.AccountSettings_Title2{
+    margin:0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-weight: inherit;
+}
+.AccountSettings_Title2::before{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    margin-left:20px;
+    margin-right:30px;
+
+}
+.AccountSettings_Title_Wrapper{
+    font-size: 22px;
+    font-weight: 400;
+}
+
