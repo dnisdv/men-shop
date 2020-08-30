@@ -22,11 +22,11 @@ import productReducer from '../reducers/productReducer'
 export default ({
     authProvider,
     dataProvider,
-    history,
+    AdminHistory,
 }) => {
     const reducer = combineReducers({
         admin: adminReducer,
-        router: connectRouter(history),
+        router: connectRouter(AdminHistory),
 
         user: userReducer,
         products : productsReducer,
@@ -69,7 +69,7 @@ export default ({
         composeEnhancers(
             applyMiddleware(
                 sagaMiddleware,
-                routerMiddleware(history),
+                routerMiddleware(AdminHistory),
                 ...middleware,
             ),
             // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

@@ -14,8 +14,6 @@ import {ShippingCreate, ShippingList, ShippingEdit} from './shippingMethod'
 import myDataProvider from './Providers/myDataProvider' 
 import AuthProvider from './Providers/authProvider'
 
-import { createBrowserHistory } from 'history';
-
 const AdminPanel = (props) => {
     
 
@@ -36,7 +34,7 @@ const AdminPanel = (props) => {
             authProvider={AuthProvider} 
             dataProvider={myDataProvider('http://localhost:5000')}
             title='Admin Panel'
-            history={createBrowserHistory({ basename: '/admin' })}
+            history={props.history}
             >
             <Resource name="api/products" 
                 options={{ label: "Products"}}
