@@ -1,9 +1,18 @@
 import React from 'react'
 import './CartTotal.css'
-import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
+import Button from '../../Button/Button'
 
+const buttonStyles = {
+    width:"300px",
+    height:"53px",
+    textTransform: "uppercase",
+    fontSize:"14px",
+    marginTop:"40px",
+    fontWeight:"700",
+    marginLeft:"auto"
+}
 
 const CartTotal = ({cart :{TotalPrice, items}}) => {
     return(
@@ -18,8 +27,8 @@ const CartTotal = ({cart :{TotalPrice, items}}) => {
             
             {
                items ? items.length !== 0 ?
-                <Link className='CartTotal_Link_Buy' to='/checkout'><button className='CartTotal_Button_Buy'>Checkout</button></Link>
-                : <button disabled className='CartTotal_Button_Buy'>Checkout</button> : <button disabled className='CartTotal_Button_Buy'>Checkout</button>
+               <Button styles={buttonStyles} to='/checkout'>Checkout</Button>
+                : <Button styles={buttonStyles} disabled>Checkout</Button> : <Button styles={buttonStyles} disabled>Checkout</Button>
             }
         </div>
     )

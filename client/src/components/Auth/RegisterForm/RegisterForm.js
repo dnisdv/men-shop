@@ -7,11 +7,17 @@ import * as Yup from 'yup'
 
 import {registerUser, checkUsernameExist} from '../../../actions/userActions'
 import PropTypes from 'prop-types';
+import Button from '../../Button/Button'
 
+
+const buttonStyles = {
+    height: "57px",
+    fontWeight: "400",
+    fontSize:"13px",
+    marginTop:"40px"
+}
 
 const RegisterForm = ({registerUser,checkUsernameExist, user:{loading, usernameExist ,error}, history}) => {
-
-
     const formValidation = () => {
         return Yup.object().shape({
             email: Yup.string()
@@ -29,9 +35,7 @@ const RegisterForm = ({registerUser,checkUsernameExist, user:{loading, usernameE
 
     return(
         <div className='RegisterForm'>
-
             {error.register ? <span className='Auth_Error'>{error.register}</span> : null}
-
             <Formik
             initialValues={{username: '', email: '', password: '' }}
             validationSchema={formValidation}
@@ -96,9 +100,7 @@ const RegisterForm = ({registerUser,checkUsernameExist, user:{loading, usernameE
                       }
                 />
                 {errors.password && touched.password && (<div className='RegisterForm_Input_Feedback'>{errors.password}</div>)}
-                <button className='RegisterForm_Button' type="submit" disabled={loading}>
-                    Submit
-                </button>
+                <Button type="submit" disabled={loading} styles={buttonStyles} >Submit</Button>
                 </form>
             )}
             </Formik>

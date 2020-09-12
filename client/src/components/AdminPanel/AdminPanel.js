@@ -10,13 +10,16 @@ import {BannerList, BannerEdit, BannerCreate} from './Banner'
 import Dashboard from './Dashboard/Dashboard'
 import {orderStatusCreate, orderStatusEdit, orderStatusList} from './OrderStatus'
 import {ShippingCreate, ShippingList, ShippingEdit} from './shippingMethod'
+
+import {orders, banners, products, reviews, shipp_method, users, category, status} from './assests/icons'
  
 import myDataProvider from './Providers/myDataProvider' 
 import AuthProvider from './Providers/authProvider'
 
-const AdminPanel = (props) => {
-    
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory({ basename: "/admin" })
 
+const AdminPanel = (props) => {
     useEffect( ()=> {
         const header = props.headerRef.current
         const footer = props.footerRef.current
@@ -34,31 +37,36 @@ const AdminPanel = (props) => {
             authProvider={AuthProvider} 
             dataProvider={myDataProvider('http://localhost:5000')}
             title='Admin Panel'
-            history={props.history}
+            history={history}
             >
             <Resource name="api/products" 
                 options={{ label: "Products"}}
                 edit={ProductEdit} 
                 create={ProductCreate} 
                 list={ProductList} 
+                icon={ () => <img src={products} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
                  />
             <Resource name="api/reviews" 
                 options={{ label: "Reviews"}}
                 edit={ReviewEdit} 
                 create={ReviewCreate} 
                 list={ReviewList} 
+                icon={ () => <img src={reviews} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
+
                  />
             <Resource name="api/users" 
                 options={{ label: "Users"}}
                 edit={UserEdit} 
                 create={UserCreate} 
                 list={UserList} 
+                icon={ () => <img src={users} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
                  />
             <Resource name="api/category" 
                 options={{ label: "Category"}}
                 edit={CategoryEdit} 
                 create={CategoryCreate} 
                 list={CategoryList} 
+                icon={ () => <img src={category} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
                 />      
             <Resource name="api/orders" 
                 options={{ label: "Orders"}}
@@ -66,24 +74,29 @@ const AdminPanel = (props) => {
                 // create={OrderCreate} 
                 list={OrderList} 
                 show={OrderShow}
+                icon={ () => <img src={orders} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
                  /> 
             <Resource name="api/banner" 
                 options={{ label: "Banners"}}
                 edit={BannerEdit} 
                 create={BannerCreate} 
                 list={BannerList} 
+                icon={ () => <img src={banners} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
+
                  /> 
             <Resource name="api/status" 
-                options={{ label: "Status"}}
+                options={{ label: "Order Status"}}
                 edit={orderStatusEdit} 
                 create={orderStatusCreate} 
                 list={orderStatusList} 
+                icon={ () => <img src={status} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
                  /> 
             <Resource name="api/shipping" 
                 options={{ label: "Shipping Methods"}}
                 edit={ShippingEdit} 
                 create={ShippingCreate} 
                 list={ShippingList} 
+                icon={ () => <img src={shipp_method} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
                  /> 
         </Admin>
     )

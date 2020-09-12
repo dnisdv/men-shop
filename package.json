@@ -1,0 +1,23 @@
+{
+  "name": "men-shop",
+  "version": "1.0.0",
+  "description": "\"# men-shop\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run server",
+    "server": "cd server && npm install && npm start",
+    "client": "cd client && npm install && npm start",
+    "heroku-postbuild": "cd client && (npm install && npm run build)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnisdv/men-shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnisdv/men-shop/issues"
+  },
+  "homepage": "https://github.com/dnisdv/men-shop#readme"
+}

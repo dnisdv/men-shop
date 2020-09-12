@@ -71,10 +71,6 @@
     margin-left:auto;
 }
 
-.CartTotal_Button_Buy:disabled,
-.CartTotal_Button_Buy[disabled]{
-    opacity:0.8
-}
 
 @media (min-width: 950px) { 
     .CartTotal_Total_Title{
@@ -82,12 +78,6 @@
     }
     .CartTotal_Total_Value{
         font-size: 24px;
-    }
-    .CartTotal_Button_Buy{
-        display: block;
-        margin-left:auto;
-        width: 300px;
-        text-transform: uppercase;
     }
     .CartTotal_Data{
         width: auto;

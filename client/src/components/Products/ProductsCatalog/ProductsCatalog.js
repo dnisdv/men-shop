@@ -28,9 +28,7 @@ const ProductsCatalog
 
     const selectCategory = (e, id, title) => {
         history.push(`?category=${title}`)
-        setTimeout(() => {
-            setcatalogOpen(false)
-        }, 200);
+        setcatalogOpen(false)
     }
     const selectAllCategory = (e) => {
         get_products()
@@ -38,7 +36,6 @@ const ProductsCatalog
     }
 
     return(
-        
             <div className={`ProductsCatalog ${catalogOpen ? 'CatalogOpen' : ''}`}>
                 <Link onClick={selectAllCategory} className='ProductsCatalog_Title' to="/Products">Products</Link>
                 <button onClick={mobileCatalogHandler} className='ProductsCatalog_Title-Mobile'>Products</button>

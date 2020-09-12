@@ -8,7 +8,7 @@
     z-index: -1;
     color:white;
     position: absolute;
-
+    display: none;
 }
 .BannerData_Title_Shadow{
     margin:0;
@@ -27,42 +27,12 @@
         display: flex;
         justify-content: space-between;    
         margin-top:47px;
-
-    }
-    .BannerData_Button{
-        margin-top:47px;
-        display: flex;
-        justify-content: center;
-    }
-    .BannerData_Addition_Data{
-        text-align: left;
-        margin:0;
-        font-size: 14px;
-        width: 118px;
-    }
-    .BannerData_Button{
-        width: 254px;
-        height: 75px;
-        font-size: 18px;
-        border: 3px solid white;
-        color: white;
-        background: none;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        margin-top:50px;
-        text-decoration: none;
     }
 
 @media (min-width: 950px) { 
     .BannerData{
         margin-left:10.7vw;
         margin-top:6.6vh;
-    }
-    .BannerData_Button{
-        margin-left:0px;
     }
 
     .BannerData_Title_Shadow{
@@ -72,13 +42,12 @@
         display: none;
     }
     .BannerData_Title{
-
-
         font-size: 58px;
         margin:0;
         margin-bottom: 15.49586776859504vh;
         position: relative;
-        z-index: 3
+        z-index: 3;
+        display:block;
     }
     .BannerData_Title::after{
         content: "";

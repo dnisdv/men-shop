@@ -3,8 +3,20 @@
         margin: 0 auto;
         margin-top:0px;
         min-width: 306px;
-        
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        animation: fade 0.8s;
 }
+
+@keyframes fade {
+        from{
+                opacity: 0;  
+        }to{
+                opacity: 1;
+        }
+}
+
 .Products_Wrapper{
         width: 100%;
 }
@@ -16,8 +28,10 @@
             display: flex;
             justify-content: space-between;
             margin-top:3.023758099352052vh;
+            flex-direction: row;
 
     }
+    
     .Products_Wrapper{
             margin-left:7vw;
             min-height:calc(100vh - 112px - 3vh)

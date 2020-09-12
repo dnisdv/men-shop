@@ -38,6 +38,14 @@
         justify-content: flex-start;
         align-items: flex-start;
         margin-top:70px;
+        animation:fade 0.8s;
+    }
+    @keyframes fade {
+        from{
+                opacity: 0;  
+        }to{
+                opacity: 1;
+        }
     }
     .Cart_Main{
         width: 100%;

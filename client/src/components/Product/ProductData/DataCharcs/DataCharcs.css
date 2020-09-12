@@ -12,6 +12,7 @@
     margin:0;
     padding: 0;
     list-style: none;
+    margin-top:20px;
 }
 .DataCharcs_List_Item_Index{
     font-size: 24px;
@@ -20,6 +21,7 @@
 .DataCharcs_List_Item_Data_Title{
     font-style: 20px;
     text-align: right;
+    font-weight: normal;
 }
 .DataCharcs_List_Item_Data_Description{
     margin:0 auto;
@@ -61,7 +63,7 @@
         align-items: center;
     }
     .DataCharcs_Title{
-        font-size: 18px;
+        font-size: 24px;
     }
     .DataCharcs_List_Item_Data_Description{
         margin:0;
@@ -71,6 +73,8 @@
     .DataCharcs_List_Item_Data_Title{
         font-size: 18px;
         font-weight: 200;
+        font-weight: 700;
+        color:rgb(49, 49, 49)
     }
     .DataCharcs_List_Item{
         padding-top:20px;

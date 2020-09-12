@@ -3,7 +3,7 @@ import {  Create,
     TextInput, SelectInput,ReferenceInput,
     ArrayInput , SimpleFormIterator , NumberInput, TabbedForm, FormTab, ImageInput, ImageField} from 'react-admin';
 import RichTextInput from 'ra-input-rich-text';
-
+import { InputAdornment } from '@material-ui/core';
 
 export default(props) => {
 
@@ -14,7 +14,7 @@ export default(props) => {
             <ImageInput multiple source="images" label="Related pictures" accept="image/*">
                 <ImageField source="url" title="title" />
             </ImageInput>
-
+        
         </FormTab>   
         <FormTab label="Details">
         <ReferenceInput allowEmpty source="category" reference="api/category" >
@@ -47,7 +47,13 @@ export default(props) => {
                     </ArrayInput>
                 </SimpleFormIterator>
             </ArrayInput>
-            <NumberInput className='PriceNumber' source='price'  />
+            <NumberInput className='PriceNumber' source='price' InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    $
+                                </InputAdornment>
+                        ),
+                    }} />
 
         </FormTab>
         <FormTab label="Descriptions" >

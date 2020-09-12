@@ -7,15 +7,12 @@
     height: 300px ;
     display: block;
     margin:0 auto;
-    object-fit: cover;
+    object-fit: scale-down;
 }
-
 .carouselProvider{
     width: 300px ;
     height: 300px ;
 }
-
-
 .BannerData_Button-Mobile{
     display: block;
     margin-top:26px;
@@ -43,17 +40,20 @@
         display: flex;
         justify-content: space-between;
         min-height: 80vh;
+        margin-top:70px;
     }
     .ProductBanner_IMG{
         width: 46.25vw;
         height: 705px;
         z-index: 9;
     }
+    .ProductBanner_Wrapper{
+    }
     .ProductBanner_Images{
         display: flex;
         justify-content: center;
-        align-items: center;
         position: relative;
+        align-items: center;
     }
     .BannerData_Button-Mobile{
         display: none;

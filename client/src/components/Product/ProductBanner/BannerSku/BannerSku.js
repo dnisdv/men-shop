@@ -8,7 +8,6 @@ import {addToCart} from '../../../../actions/cartActions'
 import { get_productInitialState } from '../../../../actions/productActions'
 import PropTypes from 'prop-types';
 
-
 const BannerSku = ({
   addToCart,
   cart,
@@ -18,12 +17,12 @@ const BannerSku = ({
 }) => {
   
   const [CartActive, setCartActive] = useState(false)
-
   useEffect(() => {
     if(cart){
-      cart.map( (i) => {
+      const cartItems = cart.map( (i) => {
         return product._id === i.productID
-      }).includes(true) ? setCartActive(true) : setCartActive(false) 
+      })
+      cartItems.includes(true) ? setCartActive(true) : setCartActive(false);
     }
     get_productInitialState(product._id)
   }, [cart, get_productInitialState, product._id])
@@ -70,9 +69,8 @@ const BannerSku = ({
                         {errors[i.title] && touched[i.title] && (<div className='RegisterForm_Input_Feedback'>{errors[i.title]}</div>)}
                     </div>
                   ))}
-                    <input type='submit' 
-                    value={CartActive ? `Added To Cart` :'Add To Cart'} 
-                    className={`ProductBannerSku_Button ${CartActive ? 'ProductBannerSku_Button_Cart_Finished' : ''}`}></input>
+                    <button type='submit' 
+                    className={`ProductBannerSku_Button ${CartActive ? 'ProductBannerSku_Button_Cart_Finished' : ''}`}>{CartActive ? `Added To Cart` :'Add To Cart'}</button>
                 </form>
             )}
             </Formik>
@@ -101,15 +99,23 @@ export default connect(mapStateToProps, {addToCart, get_productInitialState})(Ba
 const customStyles = {
   option: (styles, state) => ({
     ...styles,
-    fontWeight: state.isSelected ? 900 : 400
-    
+    fontWeight: state.isSelected ? 700 : 400,
+    border: 'none',
+    color: 'black',
+    "&:active": {
+      background:"rgba(0,0,0,0.2)"
+    },
+    padding: 10,
+    backgroundColor:'white'
   }),
   control: (styles) => ({
     ...styles,
+    boxShadow: "none",
     border: 'none',
     borderBottom: '1px solid black',
-    focus:'none'
+    '&:hover': { borderColor: 'gray' }, 
   }),
+
 }
 
 

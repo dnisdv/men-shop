@@ -1,5 +1,5 @@
 import React from 'react';
-import {Edit, SimpleForm, TextInput, ReferenceInput, SelectInput, required} from 'react-admin'
+import {Edit, SimpleForm, TextInput, ReferenceInput, SelectInput} from 'react-admin'
 
 import RichTextInput from 'ra-input-rich-text';
 
@@ -9,7 +9,7 @@ export default(props) => (
     <Edit title="Review Edit" {...props}>
         <SimpleForm>
             <TextInput disabled source="id" />
-            <ReferenceInput source="user" reference="api/users" validate={required()}>
+            <ReferenceInput source="user" reference="api/users" >
                 <SelectInput optionText="username" />
             </ReferenceInput>
             <TextInput fullWidth source="title" />

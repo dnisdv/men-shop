@@ -2,7 +2,14 @@ import React from 'react'
 import './Catalog.css'
 import Features from './Features/Features'
 
-import { Link } from 'react-router-dom'
+import Button from '../Button/Button'
+
+const buttonStyles = {
+    border:"1px solid rgba(255,255,255,0.05)",
+    margin: "0 auto",
+    fontWeight:"700",
+    height:"100%",
+}
 
 const Catalog = () => {
     return(
@@ -16,8 +23,9 @@ const Catalog = () => {
             <Features />
         </div>
         
-        <Link className='Catalog_Button' to='/products'>Show Products</Link>
-        
+        <div className='Catalog_Button_Wrapper'>
+            <Button styles={buttonStyles} buttonType='white' to='/products'>Show Products</Button>
+        </div>
         </React.Fragment>
     )
 }

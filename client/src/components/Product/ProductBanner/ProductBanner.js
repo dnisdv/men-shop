@@ -19,44 +19,46 @@ const ProductBanner = ({ product: {images}}) => {
     return(
         <React.Fragment>
             <div className='ProductBanner'>
-                <div className='ProductBanner_Images'>
-                    <div className='ProductBanner_Images_All'>
-                        {images.map( (i, index) => 
-                                <img 
-                                    key={i._id}
+                <div className='ProductBanner_Wrapper'>
+                    <div className='ProductBanner_Images'>
+                        <div className='ProductBanner_Images_All'>
+                            {images.map( (i, index) => 
+                                    <img 
+                                        key={i._id}
+                                        data-index={index}
+                                        onClick={changeHandle}
+                                        className={`ProductBanner_Images_ALL_IMG`} alt='ProductImage' 
+                                        src={`http://localhost:5000/${i.path}`}
+                                    >
+                            </img>)}
+                        </div>
+                        <div className='ProductBanner_IMG'>
+                            <CarouselProvider
+                                className='carouselProvider'
+                                naturalSlideWidth={100}
+                                naturalSlideHeight={125}
+                                currentSlide={currentImage}
+                                totalSlides={images.length}>
+                                <Slider>   
+                                    {images.map( (i, index) => <Slide 
+                                    innerClassName="ProductBanner_IMG-Slide"
+                                    key={i._id} index={index}>
+                                    <img 
                                     data-index={index}
-                                    onClick={changeHandle}
-                                    className={`ProductBanner_Images_ALL_IMG`} alt='ProductImage' 
+                                    className='ProductBanner_IMG' alt='ProductImage' 
                                     src={`http://localhost:5000/${i.path}`}
-                                >
-                        </img>)}
-                    </div>
-                    <div className='ProductBanner_IMG'>
-                        <CarouselProvider
-                            className='carouselProvider'
-                            naturalSlideWidth={100}
-                            naturalSlideHeight={125}
-                            currentSlide={currentImage}
-                            totalSlides={images.length}>
-                            <Slider>   
-                                {images.map( (i, index) => <Slide 
-                                innerClassName="ProductBanner_IMG-Slide"
-                                key={i._id} index={index}>
-                                <img 
-                                data-index={index}
-                                className='ProductBanner_IMG' alt='ProductImage' 
-                                src={`http://localhost:5000/${i.path}`}
-                                >
-                                </img></Slide>)}
-                            </Slider>
-                            <ButtonBack className="carouselProvider_Button carouselProvider_Button-Prev">
-                                <img alt='prevIcon' className="carouselProvider_Button_IMG carouselProvider_Button_IMG-Prev" src={Arrow} />
-                            </ButtonBack>
+                                    >
+                                    </img></Slide>)}
+                                </Slider>
+                                <ButtonBack className="carouselProvider_Button carouselProvider_Button-Prev">
+                                    <img alt='prevIcon' className="carouselProvider_Button_IMG carouselProvider_Button_IMG-Prev" src={Arrow} />
+                                </ButtonBack>
 
-                            <ButtonNext className="carouselProvider_Button carouselProvider_Button-Next">
-                                <img alt='nextIcon' className="carouselProvider_Button_IMG carouselProvider_Button_IMG-Next" src={Arrow} />
-                            </ButtonNext>
-                        </CarouselProvider> 
+                                <ButtonNext className="carouselProvider_Button carouselProvider_Button-Next">
+                                    <img alt='nextIcon' className="carouselProvider_Button_IMG carouselProvider_Button_IMG-Next" src={Arrow} />
+                                </ButtonNext>
+                            </CarouselProvider> 
+                        </div>
                     </div>
                 </div>
 

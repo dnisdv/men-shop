@@ -4,9 +4,16 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    animation:fade .8s;
 }
 
-
+@keyframes fade {
+    from{
+            opacity: 0;  
+    }to{
+            opacity: 1;
+    }
+}
 @media (min-width: 750px) { 
     .CheckoutPage{
         width: 60vw;

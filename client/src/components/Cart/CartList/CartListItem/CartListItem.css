@@ -93,9 +93,9 @@
     align-items: center;
     border:none;
     background: none;
-    border:1px solid black;
+    border:1px solid rgba(0, 0, 0, 0.5);
     cursor: pointer;
-
+    opacity: 0.5;
 }
 
 .CartList_Item_Data_Addition{

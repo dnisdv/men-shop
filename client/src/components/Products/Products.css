@@ -7,6 +7,9 @@
     width: 100%;   
     height: 100%;
 }
+.Products_Loading{
+    height: 100vh;
+}
 
 .Products_Item{
     margin-top: 50px;
@@ -33,10 +36,12 @@
 .Products_Item_Data_Title{
     margin:0;
     margin-top:15px;
+    word-break: break-word;
 }
 .Products_Item_Data_Description{
     margin:0;
     padding: 0;
+    word-break: break-word;
     display: none;
 }
 .Products_Item_Data_Link{
@@ -49,6 +54,7 @@
     font-size: 16px;
     width: auto;
 }
+
 .Products_Item_Data_Link::after{
     content: "";
     display: block;
@@ -57,10 +63,14 @@
     height: 10px;
     background-color: #D7D7D7;
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     z-index: -1;
     left: 0;
 }
+.Products_Item_IMGWrapper{
+    background-color: #F2F2F2;
+}
+
 .Products_Item_Data_Price{
     margin:0;
     margin-top:auto;
@@ -68,8 +78,9 @@
 }
 .Products_Item_IMG{
     height:19.43vh;
-    object-fit: cover;
+    object-fit: scale-down;
     min-width: 120px;
+    width: 120px;
 }
 
 /* PRELOADEDR ANIMATION */
@@ -86,10 +97,17 @@
     text-align: center;
 
 }
-.Products_Preloader{
-    display: flex;
-    align-items: center;
-    height: calc(100vh - 380px);
+
+.Products_Item{
+    animation: fade 0.8s;
+}
+
+@keyframes fade {
+    from{
+            opacity: 0;  
+    }to{
+            opacity: 1;
+    }
 }
 
 @media (min-width: 950px) {
@@ -124,11 +142,17 @@
         display: block;
     }
     .Products_Item_Data_Link{
-        margin-top:55px;
+        margin-top:10px;
         font-size: 40px;
+        transition: all 0.2s ease;
     }
     .Products_Item_Data_Link::after{
         width: 5.885416666666667vw;
+        transition: all 0.2s ease;
+    }
+    .Products_Item_Data_Link:hover::after{
+        height: calc(100% - 10px);
+        transition: all 0.2s ease;
     }
     .Products_Item_Data_Price{
         margin:0;
@@ -136,9 +160,25 @@
         font-size: 20px;
         font-weight: 100;
     }
-    .Products_Item_IMGWrapper{
-        background-color: #F2F2F2;
-    }
 
+    .Products_Item_IMGWrapper{
+        overflow: hidden;
+        transition: all .2s ease;
+    }
+    .Products_Item_IMG{
+        transition: all .2s ease;
+    }
+    .Products_Item_IMGLink:hover .Products_Item_IMGWrapper .Products_Item_IMG{
+        transform:scale(1.1);
+        transition: all .2s ease;
+
+    }
+    .Products_Item_IMGLink:hover .Products_Item_IMGWrapper{
+        transform:scale(0.95);
+        transition: all .2s ease;
+    }
+    .Products_Item_IMGLink:hover ~  .Products_Item_Data .Products_Item_Data_Link::after{
+        height: calc(100% - 10px);
+    }
     
 }

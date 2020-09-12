@@ -4,8 +4,6 @@ import ProductBanner from '../../components/Product/ProductBanner/ProductBanner'
 import ProductData from '../../components/Product/ProductData/ProductData'
 import ProductReviews from '../../components/Product/ProductReviews/ProductReviews'
 
-import Preloader from '../../components/preloader/preloader'
-
 import { connect } from 'react-redux'
 import {get_product, get_reviewsByProduct, clear_product} from '../../actions/productActions'
 import PropTypes from 'prop-types';
@@ -22,7 +20,7 @@ const ProductPage = ({get_product, match, get_reviewsByProduct, product}) => {
 
     }, [get_product, get_reviewsByProduct, match.params.id])
     
-    if(!product) return <div className='ProductPage ProductPage-Preloader'><Preloader /></div>
+    if(!product) return <div className='ProductPageFull'></div>
 
 
     return(

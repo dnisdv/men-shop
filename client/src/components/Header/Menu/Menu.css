@@ -1,5 +1,6 @@
 .Menu_Icon{
     display: block;
+    cursor: pointer;
 }
 .Menu_Icon_Item{
     display: block;

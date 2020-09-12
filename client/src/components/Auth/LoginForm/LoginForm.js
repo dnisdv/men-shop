@@ -6,7 +6,14 @@ import { Formik } from 'formik';
 import * as Yup from 'yup'
 import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types';
+import Button from '../../Button/Button'
 
+const buttonStyles = {
+    height: "57px",
+    fontWeight: "400",
+    fontSize:"13px",
+    marginTop:"40px"
+}
 
 const LoginForm = ({loginUser, history, user:{loading, error}}) => {
     
@@ -19,7 +26,7 @@ const LoginForm = ({loginUser, history, user:{loading, error}}) => {
                 .required("Required")
         })
     }
-    
+
 
     return(
         <div className='LoginForm'>
@@ -70,13 +77,11 @@ const LoginForm = ({loginUser, history, user:{loading, error}}) => {
                       }
                 />
                 {errors.password && touched.password && (<div className='LoginForm_Input_Feedback'>{errors.password}</div>)}
-                <button className='LoginForm_Button' type="submit" disabled={loading}>
-                    Submit
-                </button>
+                <Button type="submit" disabled={loading} styles={buttonStyles} >Submit</Button>
                 </form>
             )}
+            
             </Formik>
-
         </div>
     )
 } 

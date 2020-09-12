@@ -9,7 +9,7 @@ import {pay_order} from "../../actions/checkoutActions"
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
-const Checkout = ({pay_order, userState, history, cartState:{items}}) => {
+const Checkout = ({pay_order, userState, history,checkout, cartState:{items}}) => {
     const formValidation = () => {
         return Yup.object().shape({
             firstName : Yup.string()
@@ -47,7 +47,7 @@ const Checkout = ({pay_order, userState, history, cartState:{items}}) => {
         state: '',
         address : '',
         city : '',
-        Shipping: '',
+        Shipping: checkout && checkout.selectedShipping ? checkout.selectedShipping :'',
     }
 
     return(
@@ -75,7 +75,7 @@ const Checkout = ({pay_order, userState, history, cartState:{items}}) => {
 
 
 const mapStateToProps = (state) => ({
-    checkoutState: state.checkout,
+    checkout: state.checkout,
     cartState: state.cart,
     userState: state.user
 })

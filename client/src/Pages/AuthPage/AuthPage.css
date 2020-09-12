@@ -6,6 +6,14 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    animation:fade .8s;
+}
+@keyframes fade {
+    from{
+            opacity: 0;  
+    }to{
+            opacity: 1;
+    }
 }
 .AuthPage_IMG{
     display: none;

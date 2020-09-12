@@ -78,7 +78,9 @@
 .OrderList_Item_units{
   font-weight: 100;
 }
-
+.OrderList_Item_Data_Char{
+    margin-top:40px
+}
 
 @media (max-width: 1450px) { 
   .OrderList_Item{
@@ -149,6 +151,7 @@
     padding-bottom: 17px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
+ 
   .OrderList_Item_Status{
     margin:0;
   }

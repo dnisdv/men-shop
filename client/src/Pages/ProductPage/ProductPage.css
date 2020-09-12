@@ -3,15 +3,16 @@
     display: flex;
     justify-content: center;
 }
-.ProductsPage{
-    display: flex;
-    flex-direction: column;
+.ProductPage{
+    animation: fade 0.8s;
 }
-
-
-@media (min-width: 950px) {
-    .ProductsPage{
-        flex-direction: row;
+@keyframes fade {
+    from{
+            opacity: 0;  
+    }to{
+            opacity: 1;
     }
-
+}
+.ProductPageFull{
+    height: 100vh;
 }

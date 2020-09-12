@@ -10,20 +10,7 @@
     margin-top:15px;
     border:1px solid black
 }
-.RegisterForm_Button{
-    margin-top:13px;
-}
 
-.RegisterForm_Button{
-    width: 100%;
-    height: 57px;
-    border:none;
-    background:none;
-    border:1px solid black;
-    background-color: black;
-    color:white;
-    cursor: pointer;
-}
 .RegisterForm_Input_Error{
     border :1px solid red;
 }
@@ -35,16 +22,11 @@
     font-size: 14px;
     margin-top:3px;
 }
-.RegisterForm_Button:disabled{
-    opacity: .5;
-}
 @media (min-width: 950px) { 
     .RegisterForm_Input{
         margin-top:20px;
         padding: 24px 0px 24px 20px;
         font-size: 14px;
     }
-    .RegisterForm_Button{
-        margin-top:40px;
-    }
+
 }

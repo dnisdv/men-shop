@@ -1,19 +1,37 @@
 const express = require("express");
 const productModel = require("../models/product");
 const reviewModel = require("../models/review");
-
+const ordersModel = require("../models/order");
+const fs = require("fs");
 const router = express.Router();
 var multer = require("multer");
 
 var storage = multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, "./uploads");
+    const topdir = "./uploads";
+    var dir = `./uploads/${req.ui}`;
+    try {
+      if (!fs.existsSync(topdir)) {
+        fs.mkdirSync(topdir);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+    try {
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+
+    callback(null, dir);
   },
   filename: function (req, file, callback) {
     if (file.mimetype === "image/jpeg") {
-      var name = Date.now() + "." + "jpg";
+      var name = file.originalname + "." + "jpg";
     } else if (file.mimetype === "image/png") {
-      name = Date.now() + "." + "png";
+      name = file.originalname + "." + "png";
     }
     callback(null, name);
   },
@@ -21,19 +39,30 @@ var storage = multer.diskStorage({
 
 var upload = multer({ dest: "uploads/", storage: storage }).array("imgs", 8);
 
-router.post("/products", upload, async (req, res) => {
-  try {
-    const product = await new productModel({
-      ...JSON.parse(req.body.data),
-      images: req.files ? req.files : null,
+router.post(
+  "/products",
+  function (req, res, next) {
+    req.ui = Date.now();
+    upload(req, res, function (err) {
+      if (err) {
+        return res.end("Something went wrong!");
+      }
+      next();
     });
-    product.save();
-    res.send(product);
-  } catch (e) {
-    console.log(e);
-    res.send(e);
+  },
+  (req, res) => {
+    try {
+      const product = new productModel({
+        ...JSON.parse(req.body.data),
+        images: req.files ? req.files : null,
+      });
+      product.save();
+      res.send(product);
+    } catch (e) {
+      res.send(e);
+    }
   }
-});
+);
 
 //Find prouduct
 router.get("/products/:id", async (req, res) => {
@@ -50,6 +79,7 @@ router.delete("/products/:id", async (req, res) => {
   try {
     const product = await productModel.findOneAndDelete(req.params.id);
     await reviewModel.deleteMany({ product: req.params.id });
+    await ordersModel.deleteMany({ ["products.productID"]: req.params.id });
     if (!product) {
       return res.status(404).send("Product not found");
     }

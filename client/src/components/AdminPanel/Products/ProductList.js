@@ -1,16 +1,20 @@
 import React from 'react';
-import { List, Datagrid, DateField, TextField, 
+import { List, Datagrid, DateField, TextField, NumberField,
     EditButton } from 'react-admin';
+    import './Products.css'
 
 export default (props) => {
     return(
     <List title="Product List" {...props}>
         <Datagrid>
             <TextField source="id" />
-            <TextField source="title" />
+            <TextField className='ProductListTitle' source="title" />
             <DateField source="created_at" />
             <TextField source="rate" />
-            <TextField source="price" />
+            <NumberField source="price" options={{
+                    style: 'currency',
+                    currency: 'USD',
+                }} />
             <EditButton basePath="products" />
         </Datagrid>
     </List>

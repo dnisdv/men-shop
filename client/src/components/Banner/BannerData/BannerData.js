@@ -1,10 +1,11 @@
 import React from 'react'
 import './BannerData.css'
-
-import { Link } from 'react-router-dom'
-
+import Button from '../../Button/Button'
 
 const BannerData = () => {
+    const buttonStyles={
+        width:"258px",
+    }
     return(
         <div className='BannerData'>
         <h2 className='BannerData_Title'>URBAN GADGETS FOR YOUR STYLE</h2>
@@ -14,7 +15,9 @@ const BannerData = () => {
             <p className="BannerData_Addition_Data">Good organized inside antiprotect +  on water</p>
             <p className="BannerData_Addition_Data">Good organized inside antiprotect +  on water</p>
         </div>
-            <Link to='/products' className='BannerData_Button'>See Products</Link>
+        <div className="BannerData_Button_Wrapper">
+            <Button to='/products' styles={buttonStyles} buttonType='white'>See Products</Button>
+        </div>
     </div>
     )
 }

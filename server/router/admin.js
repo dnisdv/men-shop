@@ -22,7 +22,7 @@ router.post("/admin", (req, res) => {
     };
     res.send("success");
   } catch (e) {
-    res.status(500).send(e);
+    res.sendStatus(500);
   }
 });
 

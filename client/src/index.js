@@ -13,17 +13,16 @@ import {
 } from "react-router-dom";
 import { createBrowserHistory } from 'history';
 
+const history = createBrowserHistory({basename:"/"})
 const dataProvider = myDataProvider('http://localhost:5000')
-
-const AdminHistory = createBrowserHistory({ basename: "/admin" })
-
 const renderApp = () => {
   ReactDOM.render(
-    <Router history={createBrowserHistory()}>
-      <Provider store={createAdminStore({AdminHistory, authProvider, dataProvider})}>
-              <App history={AdminHistory}/>
-      </Provider>
-    </Router>,
+    <Provider store={createAdminStore({history, authProvider, dataProvider})}>
+      <Router basename='/' history={history}>
+            <App />
+      </Router>
+    </Provider>
+    ,
 
     document.getElementById("root")
   );
