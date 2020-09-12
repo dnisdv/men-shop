@@ -18,7 +18,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 require("dotenv").config();
 
-const PORT = +process.env._PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 require("./db/db.js");
 
