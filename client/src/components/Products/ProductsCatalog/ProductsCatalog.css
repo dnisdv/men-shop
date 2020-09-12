@@ -124,9 +124,4 @@
     .ProductsCatalog_List_Item_ACTIVE{
         color:black;
     }
-    .ProductsCatalog {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 20px;
-    }
 }
