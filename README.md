@@ -3,7 +3,7 @@
 
 ## Demo
 
-This application is deployed on Heroku. Please check it out :smile: [here](https://mern-store-80202.herokuapp.com/).
+This application is deployed on Heroku. Please check it out :smile: [here](https://mern0men-shop.herokuapp.com/).
 
 
 ### Requirements:
@@ -21,7 +21,6 @@ $ cd men-shop
 ```
     DB_USER=
     DB_PASS=
-    PORT=
     NODE_ENV=
     SESS_NAME=
     SESS_SECRET=
