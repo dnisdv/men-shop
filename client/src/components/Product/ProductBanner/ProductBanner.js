@@ -28,7 +28,7 @@ const ProductBanner = ({ product: {images}}) => {
                                         data-index={index}
                                         onClick={changeHandle}
                                         className={`ProductBanner_Images_ALL_IMG`} alt='ProductImage' 
-                                        src={`http://localhost:5000/${i.path}`}
+                                        src={`/${i.path}`}
                                     >
                             </img>)}
                         </div>
@@ -46,7 +46,7 @@ const ProductBanner = ({ product: {images}}) => {
                                     <img 
                                     data-index={index}
                                     className='ProductBanner_IMG' alt='ProductImage' 
-                                    src={`http://localhost:5000/${i.path}`}
+                                    src={`/${i.path}`}
                                     >
                                     </img></Slide>)}
                                 </Slider>

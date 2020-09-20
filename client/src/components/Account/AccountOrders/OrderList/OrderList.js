@@ -23,7 +23,7 @@ const OrderList = ({orders,loading, get_orders}) => {
                 <div className='OrderList_Item_Main'>
                     <Link to={`/product/${i.productID._id}`}>
                         <div className='OrderList_Item_IMG_Wrapper'>
-                            <img src={`http://localhost:5000/${i.productID.images[0].path}`}  className='OrderList_Item_IMG' alt='Product'/>
+                            <img src={`/${i.productID.images[0].path}`}  className='OrderList_Item_IMG' alt='Product'/>
                         </div>
                     </Link>
                     <h2 className='OrderList_Item_Main_Title-Mobile'>{i.productID.title} <span className='OrderList_Item_units'>x{i.count}</span></h2>

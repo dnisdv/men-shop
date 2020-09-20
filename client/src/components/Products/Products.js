@@ -50,7 +50,7 @@ const Products =
                 <li key={item._id} className='Products_Item'>
                     <Link to={`/product/${item._id}`} className='Products_Item_IMGLink'>
                         <div className='Products_Item_IMGWrapper'>
-                            <img src={`http://localhost:5000/${item.images[0].path}`} alt='Product' className='Products_Item_IMG' />
+                            <img src={`/${item.images[0].path}`} alt='Product' className='Products_Item_IMG' />
                         </ div>
                     </Link>
                      <div className='Products_Item_Data'>

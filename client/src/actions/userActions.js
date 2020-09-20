@@ -15,7 +15,7 @@ import {
   
   export const loginUser = (userData, history) => (dispatch) => {
     axios
-      .post('http://localhost:5000/api/users/login', userData, { withCredentials: true },
+      .post('/api/users/login', userData, { withCredentials: true },
       )
       .then((res) => {
         dispatch({ 
@@ -38,7 +38,7 @@ import {
         dispatch({ type: LOADING_USER })
 
     axios
-      .post('http://localhost:5000/api/users/register', newUserData, { withCredentials: true })
+      .post('/api/users/register', newUserData, { withCredentials: true })
       .then((res) => {
         dispatch({ type: REGISTER_USER })
         dispatch({ type: CLEAR_USER_ERROR})
@@ -53,7 +53,7 @@ import {
   }
 
   export const checkUsernameExist = (username, history) => (dispatch) => {
-    axios.post('http://localhost:5000/api/users/checkusername', {username})
+    axios.post('/api/users/checkusername', {username})
     .then((res) => {
       dispatch({
         type : CHECK_USERNAME_EXIST,
@@ -84,7 +84,7 @@ import {
  export const checkLogin = () => (dispatch) => {
     dispatch({ type: LOADING_USER })
     try{
-      return axios.get('http://localhost:5000/api/checkuserauth', {withCredentials : true})
+      return axios.get('/api/checkuserauth', {withCredentials : true})
       .then( (res)=>{
           dispatch({
             type:SET_USER,
@@ -105,7 +105,7 @@ import {
 
 
 export const logoutUser = (history) => (dispatch) => {
-    return axios.delete('http://localhost:5000/api/users/logout', {withCredentials : true})
+    return axios.delete('/api/users/logout', {withCredentials : true})
     .then( (res) => {
         dispatch({
           type:SET_LOGOUT

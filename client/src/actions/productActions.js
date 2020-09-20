@@ -11,7 +11,7 @@ import {
 import axios from 'axios'
 
 export const get_product = (id) => (dispatch) => {
-    axios.get(`http://localhost:5000/api/products/${id}`)
+    axios.get(`/api/products/${id}`)
     .then( async (res) => {
         dispatch({
             type: GET_PRODUCT,
@@ -37,7 +37,7 @@ export const get_product = (id) => (dispatch) => {
  
 export const get_productInitialState = (id) => (dispatch) => {
     try{
-        axios.get(`http://localhost:5000/api/products/${id}`)
+        axios.get(`/api/products/${id}`)
         .then( async ({data}) => {    
             let State ={}
             if(data.stock) {
@@ -62,7 +62,7 @@ export const get_productInitialState = (id) => (dispatch) => {
  export const get_reviewsByProduct = (id, page = 0) => (dispatch) => {
     dispatch({type:LOADING_REVIEWS})
 
-    axios.get(`http://localhost:5000/api/reviews/product/${id}?page=${page}`, {withCredentials : true})
+    axios.get(`/api/reviews/product/${id}?page=${page}`, {withCredentials : true})
     .then( (res) => {
         dispatch({
             type: GET_REVIEWSBYPRODUCT,
@@ -79,8 +79,8 @@ export const get_productInitialState = (id) => (dispatch) => {
 
 export const add_review = (data, id) => dispatch => {
     try{
-        axios.post(`http://localhost:5000/api/reviews`, data, {withCredentials: true}).then( (res) => {
-            axios.get(`http://localhost:5000/api/reviews/product/${id}`, {withCredentials : true})
+        axios.post(`/api/reviews`, data, {withCredentials: true}).then( (res) => {
+            axios.get(`/api/reviews/product/${id}`, {withCredentials : true})
                 .then( (res) => {
                     dispatch({
                         type: GET_REVIEWSBYPRODUCT,
@@ -96,7 +96,7 @@ export const add_review = (data, id) => dispatch => {
 
 export const like_review = (reviewId) => dispatch => {
     try{
-        axios.post(`http://localhost:5000/api/likereview/${reviewId}`,{}, {withCredentials: true})
+        axios.post(`/api/likereview/${reviewId}`,{}, {withCredentials: true})
         .then( (res) => {
              dispatch({
                  type: "LIKED"

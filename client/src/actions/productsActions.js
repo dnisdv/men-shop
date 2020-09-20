@@ -15,7 +15,7 @@ import axios from 'axios'
 
 export const get_category = (history) => (dispatch) => {
     dispatch({type : LOADING_CATEGORY})
-    axios.get('http://localhost:5000/api/category')
+    axios.get('/api/category')
     
     .then( (res) => {
         dispatch({
@@ -33,7 +33,7 @@ export const get_category = (history) => (dispatch) => {
 
 export const get_products = (page = 0) => (dispatch) => {
     // dispatch({type: LOADING_PRODUCTS})
-    axios.get(`http://localhost:5000/api/products?preview=true&page=${page}`)
+    axios.get(`/api/products?preview=true&page=${page}`)
     .then( (res) => {
         dispatch({
             type:GET_PRODUCTS,
@@ -53,7 +53,7 @@ export const get_productsByCategory = (category, page = 0) => (dispatch) => {
         payload: category
     })
     dispatch({type: LOADING_PRODUCTS})
-    axios.get(`http://localhost:5000/api/products?preview=true&category=${category}&page=${page}`)
+    axios.get(`/api/products?preview=true&category=${category}&page=${page}`)
     .then( (res) => {
 
         dispatch({

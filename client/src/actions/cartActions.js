@@ -11,7 +11,7 @@ import {
 
 
 export const addToCart = (data) => (dispatch) => {
-        axios.post('http://localhost:5000/api/cart/addProduct', data, {withCredentials : true})
+        axios.post('/api/cart/addProduct', data, {withCredentials : true})
         .then( (res) => {
             dispatch({
                 type: GET_CART_LENGTH,
@@ -36,7 +36,7 @@ export const addToCart = (data) => (dispatch) => {
 }
 
     export const getCartProducts = () => (dispatch) => {
-        axios.get('http://localhost:5000/api/cart/getProducts', {withCredentials : true})
+        axios.get('/api/cart/getProducts', {withCredentials : true})
         .then((res)=> {
             dispatch({
                 type:GET_CART,
@@ -56,7 +56,7 @@ export const addToCart = (data) => (dispatch) => {
 
 export const increaseProduct = (data) => (dispatch) => {
     dispatch({type: LOADING_CART_ACTIONS})
-       axios.post('http://localhost:5000/api/cart/increaseProduct',data, {withCredentials : true})
+       axios.post('/api/cart/increaseProduct',data, {withCredentials : true})
         .then( (res) => {
             dispatch({
                 type:GET_CART,
@@ -71,7 +71,7 @@ export const increaseProduct = (data) => (dispatch) => {
 export const decreaseProduct = (data) => (dispatch) => {
     dispatch({type: LOADING_CART_ACTIONS})
 
-       axios.post('http://localhost:5000/api/cart/decreaseProduct',data, {withCredentials : true})
+       axios.post('/api/cart/decreaseProduct',data, {withCredentials : true})
         .then( (res) => {
             dispatch({
                 type:GET_CART,
@@ -86,7 +86,7 @@ export const decreaseProduct = (data) => (dispatch) => {
 export const setCount = (count) => dispatch => {
     dispatch({type: LOADING_CART_ACTIONS})
 
-    axios.post('http://localhost:5000/api/cart/setCount',count, {withCredentials : true})
+    axios.post('/api/cart/setCount',count, {withCredentials : true})
     .then((res)=> {
         dispatch({
             type:GET_CART,
@@ -99,7 +99,7 @@ export const setCount = (count) => dispatch => {
 }
 
 export const getCartLength = () => dispatch => {
-    axios.get('http://localhost:5000/api/cart/getcartlength', {withCredentials : true})
+    axios.get('/api/cart/getcartlength', {withCredentials : true})
     .then((res)=> {
         dispatch({
             type:GET_CART_LENGTH,
@@ -116,7 +116,7 @@ export const getCartLength = () => dispatch => {
 
 export const deleteOne = (id, sku) => dispatch => {
 
-    axios.post(`http://localhost:5000/api/cart/deleteOne`, {id, sku}, {withCredentials : true})
+    axios.post(`/api/cart/deleteOne`, {id, sku}, {withCredentials : true})
     .then((res)=> {
         dispatch({
             type:DELETE_ONEPRODUCT,

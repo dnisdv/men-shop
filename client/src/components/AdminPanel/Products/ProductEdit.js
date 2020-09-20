@@ -157,7 +157,7 @@ const ImageField = props => {
                             <img
                                 alt={fileTitleValue}
                                 title={fileTitleValue}
-                                src={isLocal ? sourceValue : `http://localhost:5000/` + sourceValue}
+                                src={isLocal ? sourceValue : `/` + sourceValue}
                                 className={classes.image}
                             />
                         </li>
@@ -174,7 +174,7 @@ const ImageField = props => {
             <img
                 title={titleValue}
                 alt={titleValue}
-                src={ isLocal ? sourceValue :"http://localhost:5000/" + sourceValue}
+                src={ isLocal ? sourceValue :"/" + sourceValue}
                 className={classes.image}
             />
         </div>

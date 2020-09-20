@@ -10,7 +10,7 @@ import axios from 'axios'
 export const get_orders = () => dispatch => {
     try{
         dispatch({type: LOADING_ORDERS})
-        return axios.get('http://localhost:5000/api/ordersByUser', {withCredentials : true})
+        return axios.get('/api/ordersByUser', {withCredentials : true})
         .then( (res) => {
             return dispatch({
                 type:SET_ORDERS,

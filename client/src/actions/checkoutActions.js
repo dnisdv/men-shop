@@ -34,7 +34,7 @@ export const set_shippMethod = (method) => dispatch => {
 
 export const pay_order = (data, cart, history) => dispatch => {
     try{
-        return axios.post('http://localhost:5000/api/orders', {data, cart}, {withCredentials : true})
+        return axios.post('/api/orders', {data, cart}, {withCredentials : true})
         .then( (res) => {
             dispatch({
                 type: PAY_CHECKOUT_ORDER
@@ -62,7 +62,7 @@ export const pay_order = (data, cart, history) => dispatch => {
 export const getShippingMethods = () => dispatch => {
     // dispatch({type: LOADING_SHIPPING_METHODS})
     try{
-        return axios.get('http://localhost:5000/api/shipping')
+        return axios.get('/api/shipping')
         .then( (res) => {
             dispatch({
                 type:SET_SHIPPING_METHODS,

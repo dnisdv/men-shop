@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const authProvider = {
     login: ({ username, password }) => {
-        return axios.post('http://localhost:5000/api/admin',{username, password}, {withCredentials : true})
+        return axios.post('/api/admin',{username, password}, {withCredentials : true})
         .then( (res) => {
            return Promise.resolve()
         })
@@ -11,7 +11,7 @@ const authProvider = {
         })
     },
     logout: () => {
-        return axios.delete('http://localhost:5000/api/admin', {withCredentials : true})
+        return axios.delete('/api/admin', {withCredentials : true})
         .then( (res) => {
             return Promise.reject()
         })
@@ -21,7 +21,7 @@ const authProvider = {
     },
     checkError: () => Promise.resolve(),
     checkAuth: () =>{
-        return axios.get('http://localhost:5000/api/admin', {withCredentials : true})
+        return axios.get('/api/admin', {withCredentials : true})
         .then( (res) => {
             return Promise.resolve()
         })
