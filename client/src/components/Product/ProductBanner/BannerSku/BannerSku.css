@@ -2,9 +2,7 @@
     width: 100%;
     margin-top:50px;
 }
-.BannerSku_Item_Select{
-    z-index: 99999;
-}
+
 .BannerSku_Item_Select{
     width: 100%;
     margin-top:50px;
@@ -62,7 +60,6 @@
 .ProductBannerSku_Button {
     background: black;
     border: 1px solid black;
-    z-index: 1;
   }
   .ProductBannerSku_Button:after {
     position: absolute;
