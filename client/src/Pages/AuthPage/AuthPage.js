@@ -8,7 +8,7 @@ const AuthPage = () => {
     })
     return(
         <div className='AuthPage'>
-            <img src='https://cutt.ly/1tOmSoS' alt='Decoration' className='AuthPage_IMG' />
+                <img src='https://cutt.ly/1tOmSoS' alt='Decoration' className='AuthPage_IMG' />
             <Auth/>
         </div>
     )

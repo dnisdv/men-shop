@@ -9,7 +9,6 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import PropTypes from 'prop-types';
 
-
 const ProductBanner = ({ product: {images}}) => {
     const [currentImage, setcurrentImage] = useState(0)
     const changeHandle = (e) => {
@@ -22,6 +21,7 @@ const ProductBanner = ({ product: {images}}) => {
                 <div className='ProductBanner_Wrapper'>
                     <div className='ProductBanner_Images'>
                         <div className='ProductBanner_Images_All'>
+                            
                             {images.map( (i, index) => 
                                     <img 
                                         key={i._id}
@@ -30,7 +30,8 @@ const ProductBanner = ({ product: {images}}) => {
                                         className={`ProductBanner_Images_ALL_IMG`} alt='ProductImage' 
                                         src={`/${i.path}`}
                                     >
-                            </img>)}
+                            </img>
+                            )}
                         </div>
                         <div className='ProductBanner_IMG'>
                             <CarouselProvider

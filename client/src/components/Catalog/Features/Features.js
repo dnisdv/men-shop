@@ -29,14 +29,13 @@ const Features = ({get_banners, set_activeCategory, banner :{ banners }}) => {
                     className={`Features_Item Features_Item-${index}`}>
                         <Link to={`/products?category=${i.category.title}`}>
                             <div className='Features_Item_Img_wrap'>
-                                <img src={i.image} alt='backpack' className={`Features_Item_Img Features_Item_Img-${index}`} />
+                                    <img src={i.image} alt='backpack' className={`Features_Item_Img Features_Item_Img-${index}`} />
                             </div>
                             <h2 className='Features_Item_Title'>{i.title}</h2>
                         </Link>
                 </li>
                 )
             }) : null}
-
         </ul>
     )
 }

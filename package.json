@@ -7,7 +7,7 @@
     "start": "npm run server",
     "server": "cd server && npm install && npm start",
     "client": "cd client && npm install && npm start",
-    "build:client": "cd client && (npm install && npm run build)", 
+    "build:client": "cd client && (npm install && npm run build)",
     "heroku-postbuild": "npm run build:client"
   },
   "repository": {
@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/dnisdv/men-shop/issues"
   },
-  "homepage": "https://github.com/dnisdv/men-shop#readme"
+  "homepage": "https://github.com/dnisdv/men-shop#readme",
+  "dependencies": {}
 }
