@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
 import axios from 'axios'
 import { Provider } from 'react-redux'
-import createAdminStore from './store/store'
-import myDataProvider from './components/AdminPanel/Providers/myDataProvider'
-import authProvider from './components/AdminPanel/Providers/authProvider'
+import store from './store/store'
 import {
   Router,
 } from "react-router-dom";
@@ -18,10 +15,9 @@ if(process.env.NODE_ENV !== "production"){
 }
 
 const history = createBrowserHistory()
-const dataProvider = myDataProvider('')
 const renderApp = () => {
   ReactDOM.render(
-    <Provider store={createAdminStore({history, authProvider, dataProvider})}>
+    <Provider store={store()}>
       <Router basename='/' history={history}>
             <App />
       </Router>

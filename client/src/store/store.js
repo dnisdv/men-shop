@@ -1,13 +1,4 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import { routerMiddleware, connectRouter } from 'connected-react-router';
-import createSagaMiddleware from 'redux-saga';
-import { all, fork } from 'redux-saga/effects';
-import {
-    adminReducer,
-    adminSaga,
-    USER_LOGOUT
-} from 'react-admin';
-
 import thunk from 'redux-thunk'
 
 
@@ -19,15 +10,8 @@ import orderReducer from '../reducers/orderReducer'
 import checkoutReducer from '../reducers/checkoutReducer'
 import productReducer from '../reducers/productReducer'
 
-export default ({
-    authProvider,
-    dataProvider,
-    history,
-}) => {
+export default () => {
     const reducer = combineReducers({
-        admin: adminReducer,
-        router: connectRouter(history),
-
         user: userReducer,
         products : productsReducer,
         banner : bannerReducer,
@@ -36,20 +20,9 @@ export default ({
         checkout : checkoutReducer,
         product: productReducer
     });
-    const resettableAppReducer = (state, action) =>
-    reducer(action.type !== USER_LOGOUT ? state : undefined, action);
 
 
     const middleware = [thunk]
-
-    const saga = function* rootSaga() {
-        yield all(
-            [
-                adminSaga(dataProvider, authProvider),
-            ].map(fork)
-        );
-    };
-    const sagaMiddleware = createSagaMiddleware();
 
     const composeEnhancers =
     (process.env.NODE_ENV === 'development' &&
@@ -63,19 +36,14 @@ export default ({
 
 
     const store = createStore(
-        resettableAppReducer,
+        reducer,
         {},
         composeEnhancers(
             applyMiddleware(
-                sagaMiddleware,
-                routerMiddleware(history),
                 ...middleware,
             ),
-            // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
         ),        
     );
 
-
-    sagaMiddleware.run(saga);
     return store;
 };

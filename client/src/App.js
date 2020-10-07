@@ -10,8 +10,6 @@ import CartPage from './Pages/CartPage/CartPage'
 import CheckoutPage from './Pages/CheckoutPage/CheckoutPage'
 import AccountPage from './Pages/AccountPage/AccountPage'
 import {themes, ThemeContext} from './Context/theme-context'
-import AdminPanel from './components/AdminPanel/AdminPanel';
-// import PublicRoute from './Routes/PublicRoute'
 import PrivateRoute from './Routes/PrivateRoute'
 import {connect} from 'react-redux'
 import {getCartProducts, addToCart, getCartLength} from './actions/cartActions'
@@ -44,11 +42,6 @@ function App({checkLogin, getCartProducts, getCartLength, history, preloader}) {
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
-              <Route exact path='/admin' render={ () => <AdminPanel 
-                      headerRef={headerRef}
-                      footerRef={footerRef}
-                      history={history}
-                    />} /> 
                 <PrivateRoute path='/account' component={AccountPage} />
                 <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
                 <Route path='/cart' component={CartPage} />

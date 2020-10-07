@@ -38,7 +38,11 @@
     .BannerData{
         margin-left:10vw;
         margin-top:2.6vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
+    
     .BannerData_Button_Wrapper{
         display: block;
     }

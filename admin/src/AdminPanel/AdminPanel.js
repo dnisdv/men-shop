@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import { Admin, Resource } from 'react-admin';
 
 import {ProductList, ProductEdit, ProductCreate} from './Products'
@@ -16,28 +16,13 @@ import {orders, banners, products, reviews, shipp_method, users, category, statu
 import myDataProvider from './Providers/myDataProvider' 
 import AuthProvider from './Providers/authProvider'
 
-import { createBrowserHistory } from 'history';
-const history = createBrowserHistory({ basename: "/admin" })
-
-const AdminPanel = (props) => {
-    useEffect( ()=> {
-        const header = props.headerRef.current
-        const footer = props.footerRef.current
-        header.style.display = 'none'
-        footer.style.display = 'none'
-        return( () => {
-            header.style.display = 'flex'
-            footer.style.display = 'flex'
-        })
-    }, [props.footerRef, props.headerRef])
-
+const AdminPanel = () => {
     return(
         <Admin 
             dashboard={Dashboard} 
             authProvider={AuthProvider} 
             dataProvider={myDataProvider('')}
             title='Admin Panel'
-            history={history}
             >
             <Resource name="api/products" 
                 options={{ label: "Products"}}
@@ -71,7 +56,6 @@ const AdminPanel = (props) => {
             <Resource name="api/orders" 
                 options={{ label: "Orders"}}
                 edit={OrderEdit} 
-                // create={OrderCreate} 
                 list={OrderList} 
                 show={OrderShow}
                 icon={ () => <img src={orders} style={{opacity: 0.5}} width="23px" height="23px  " alt="products" />}
