@@ -56,6 +56,7 @@
     .Features_Item-0{
         margin-top:19.42vh;
         width: 22.395vw;
+        max-width: 429px;
     }
     .Features_Item_Img{
         width: 100%;
@@ -67,15 +68,18 @@
     .Features_Item-1{
         margin-right: 3.33vw;
         width: 32.86vw;
+        max-width: 630px;
     }
     .Features_Item-2{
         margin-top:21.38vh;
         width: 33vw;
+        max-width: 633px;
     }
 
     .Features_Item-3{
         margin-right: 6.09375vw;
-        width:  23.69vw;
+        width: 23.69vw;
+        max-width: 454px;
     }
     .Features_Item-3::after{
         content:'So, the first question on your mind… what is it we do?';

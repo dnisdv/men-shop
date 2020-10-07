@@ -8,7 +8,6 @@ import { get_products, get_productsByCategory, set_activeCategory } from '../../
 import {withRouter} from 'react-router'
 import {clear_activeCategory} from '../../actions/productsActions'
 
-
 import PropTypes from 'prop-types';
 
 const Products = 
@@ -23,7 +22,6 @@ const Products =
         const [noItems, setnoItems] = useState("")
 
     useEffect(() => {
-
         let timeout = setTimeout( () => {
             setnoItems("Sorry no items")
         },2000)

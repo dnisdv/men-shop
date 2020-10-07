@@ -58,6 +58,7 @@
     }
     .BannerCatalog_Img--Main{
         width: 39.114583333333336vw;
+        max-width: 751px;
         height: 590px;
         object-fit: cover;
         margin-left: 3.6458333333333335vw;
@@ -66,6 +67,7 @@
 
     .BannerCatalog_Img--Second{
         width:  16.302083333333332vw;
+        max-width: 312px;
         height:  230px;
         object-fit: cover;
         margin-top:4.235537190082645vh;
@@ -74,6 +76,7 @@
     
     .BannerCatalog_Img--Third{
         width: 24.166666666666668vw;
+        max-width: 464px;
         height: 350px;
         object-fit: cover;
         margin-top:4.235537190082645vh;    

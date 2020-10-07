@@ -29,6 +29,7 @@
 @media (min-width: 950px) { 
     .AuthPage{
         width: 83.54166666666667vw;
+        max-width: 1604px;
         display: flex;
         justify-content: space-between;
         height: 80vh;
@@ -37,6 +38,8 @@
     .AuthPage_IMG{
         width:  39.739583333333336vw;
         height: 76.34297520661157vh;
+        max-width: 1465px;
+        max-height: 764px;
         object-fit: cover;
     }
     .AuthPage_IMG{

@@ -14,12 +14,12 @@
     .Banner{
         color:white;
         display: flex;
+        max-width: 1604px;
         width: 83.54166666666667vw;
         margin:0 auto;
         justify-content: space-between;
         margin-top:50px;
         flex-direction: row;
-
     }
 
 }

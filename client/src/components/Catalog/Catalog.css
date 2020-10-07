@@ -38,6 +38,7 @@
 @media (min-width: 950px) { 
     .Catalog{
         width: 83.54166666666667vw;
+        max-width: 1604px;
     }
     .Catalog_Button_Wrapper{
         width:744px;

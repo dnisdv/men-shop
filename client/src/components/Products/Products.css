@@ -119,6 +119,8 @@
 
     .Products_Item{
         margin-top:74px;
+        display: flex;
+        justify-content: space-between;
     } 
     .Products_Item_IMG{
         width:30.3125vw; 
@@ -127,9 +129,10 @@
         max-width: 581px;
     }
     .Products_Item_Data{
-        margin-left:9.89vw;
         width: 14.89vw;
+        max-width: 315px;
         justify-content: center;
+        margin-right: 5vw;
     }
 
     .Products_Item_Data_Category{

@@ -43,7 +43,6 @@
     margin:0;
 }
 .Menu_List_Item{
-    
     margin-top:5.075593952483802vh;
     color:inherit;
 }
@@ -87,7 +86,7 @@
     }
     .Menu_List_Item{
         margin-top:0px;
-        margin-right: 6.510416666666667vw;
+        margin-right: 125px;
     }
     .Menu_Icon{
         display: none;

@@ -11,13 +11,13 @@
     margin-left:0px;
 }
 .FooterMenu_Item{
-    margin-left:1.25vw;
+    margin-left:24px;
     font-size: 13px;
 }
 
 @media (min-width: 950px) { 
     .FooterMenu_Item{
-        margin-left:3.8541666666666665vw;
+        margin-left:74px;
         font-size: 17px
     }
     .FooterMenu{

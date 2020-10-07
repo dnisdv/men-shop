@@ -13,7 +13,8 @@
 
 @media (min-width: 950px) { 
         .ProductsPage{
-            max-width: 83.54166666666667vw;
+            width: 83.54166666666667vw;
+            max-width: 1604px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;

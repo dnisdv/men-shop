@@ -46,6 +46,7 @@
         justify-content: space-between;
         align-items: center;
         height: 122px;
+        max-width: 1604px;
         width: 83.54166666666667vw;
         margin:0 auto;
         flex-direction: row;
