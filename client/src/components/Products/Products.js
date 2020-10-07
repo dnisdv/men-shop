@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import './Products.css'
 import arrowRight from '../../Assests/icons/arrow-right.svg'
 
@@ -19,12 +19,8 @@ const Products =
         clear_activeCategory,
         productsState:{products, category, loading}
     }) => {
-        const [noItems, setnoItems] = useState("")
 
     useEffect(() => {
-        let timeout = setTimeout( () => {
-            setnoItems("Sorry no items")
-        },2000)
           
 
         const categoryPath = history.location.search.split('=')[1]
@@ -35,9 +31,6 @@ const Products =
             clear_activeCategory()
             get_products()
         }
-        return( () => {
-            clearTimeout(timeout);
-        })
     }, [category, get_products, clear_activeCategory, get_productsByCategory, history.location.search, set_activeCategory])
 
     if(loading.product) return <div className='Products_Loading'></div>
@@ -61,7 +54,7 @@ const Products =
                      </div>
                  </li>
                 )
-            }) : <div className='Products_Loading'>{noItems}</div>}
+            }) : !loading && !products ? <div className='Products_Loading'></div> : "" }
         </ul>
     )
 }

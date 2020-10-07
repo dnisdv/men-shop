@@ -24,7 +24,7 @@
     }
     
     .Products_Wrapper{
-            margin-left:7vw;
-            min-height:calc(100vh - 112px - 3vh)
+            min-height:calc(100vh - 112px - 3vh);
+            width: 75%;
     }
 }
