@@ -9,18 +9,20 @@ import {get_product, get_reviewsByProduct, clear_product} from '../../actions/pr
 import PropTypes from 'prop-types';
 
 
-const ProductPage = ({get_product, match, get_reviewsByProduct, product}) => {
-
+const ProductPage = ({get_product, match, get_reviewsByProduct, product, clear_product}) => {
     useEffect(() => {  
         window.scrollTo(0, 0)
         if(match.params.id){
             get_product(match.params.id)
             get_reviewsByProduct(match.params.id)
         }
-
-    }, [get_product, get_reviewsByProduct, match.params.id])
+        
+        return( () => {
+            clear_product()
+        })
+    }, [get_product, get_reviewsByProduct, match.params.id, clear_product])
     
-    if(!product) return <div className='ProductPageFull'></div>
+    if(!product || product === null) return <div className='ProductPageFull'></div>
 
 
     return(
@@ -41,7 +43,8 @@ ProductPage.propTypes = {
     get_product:PropTypes.func,
     match:PropTypes.object,
     get_reviewsByProduct: PropTypes.func,
-    product:PropTypes.object
+    product:PropTypes.object,
+    clear_product:PropTypes.func
 }
 
 export default connect(mapStateToProps,{get_product, get_reviewsByProduct, clear_product} )(ProductPage)

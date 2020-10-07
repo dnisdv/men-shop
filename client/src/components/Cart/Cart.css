@@ -39,6 +39,7 @@
         align-items: flex-start;
         margin-top:70px;
         animation:fade 0.8s;
+        justify-content: space-between;
     }
     @keyframes fade {
         from{
@@ -48,8 +49,8 @@
         }
     }
     .Cart_Main{
-        width: 100%;
-        margin-left: 15.416666666666666vw;
+        width: 54vw;
+        max-width: 1050px;
     }
     .Cart_Data_Title{
         font-size: 82px;

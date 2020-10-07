@@ -58,7 +58,7 @@
     }
     .BannerCatalog_Img--Main{
         width: 39.114583333333336vw;
-        height: 61.98347107438016vh;
+        height: 590px;
         object-fit: cover;
         margin-left: 3.6458333333333335vw;
         display: block;
@@ -66,7 +66,7 @@
 
     .BannerCatalog_Img--Second{
         width:  16.302083333333332vw;
-        height:  24.380165289256198vh;
+        height:  230px;
         object-fit: cover;
         margin-top:4.235537190082645vh;
         display: block;
@@ -74,7 +74,7 @@
     
     .BannerCatalog_Img--Third{
         width: 24.166666666666668vw;
-        height: 36.260330578512395vh;
+        height: 350px;
         object-fit: cover;
         margin-top:4.235537190082645vh;    
         margin-left:2.1354166666666665vw;

@@ -96,7 +96,11 @@
         display: block;
         width: auto;
         order:2;
-        margin-left:auto
+        margin-left:auto;
+    }
+    .Menu_Wrapper.MenuActive{
+        overflow: hidden;
+        position: fixed;
     }
 
     .Menu_List_Item > a {

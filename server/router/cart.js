@@ -52,11 +52,11 @@ router.get("/cart/getProducts", (req, res) => {
     const TotalPrice = req.session.product.reduce(
       (a, i) => a + i.count * i.price,
       0
-    );
+    ).toFixed(2)
 
     return res.send({
       items: req.session.product,
-      TotalPrice,
+      TotalPrice: +TotalPrice,
     });
   } catch (e) {
     return res.status(500).send(e);
@@ -72,6 +72,7 @@ router.post("/cart/calculatecost", async (req, res) => {
     );
     const shipping = ShippMethod.price;
     const total = subtotal + shipping;
+      console.log(total)
     return res.send({
       subtotal,
       shipping,

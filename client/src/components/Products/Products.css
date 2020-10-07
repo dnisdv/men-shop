@@ -78,7 +78,7 @@
 }
 
 .Products_Item_IMG{
-    height:19.43vh;
+    height:127px;
     object-fit: scale-down;
     min-width: 120px;
     width: 120px;
@@ -123,6 +123,8 @@
     .Products_Item_IMG{
         width:30.3125vw; 
         height:43.84vh;
+        max-height: 415px;
+        max-width: 581px;
     }
     .Products_Item_Data{
         margin-left:9.89vw;

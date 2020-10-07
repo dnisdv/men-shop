@@ -4,8 +4,8 @@
     display: flex;
     justify-content: space-between;
     color:#fff;
-    padding-top:4.319654427645788vh;
-    padding-bottom: 4.319654427645788vh;
+    padding-top:40px;
+    padding-bottom: 40px;
     align-items: center;
 }
 .Header_wrapper{
@@ -41,7 +41,8 @@
 }
 
     .Header{
-        max-width: 83.54166666666667vw;
+        width: 83.54166666666667vw;
+        max-width: 1604px;
         margin:0 auto;
         display: flex;
         justify-content: space-between;

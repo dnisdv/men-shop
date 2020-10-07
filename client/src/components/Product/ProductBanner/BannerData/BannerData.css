@@ -78,6 +78,7 @@
         margin-top:5px
     }
     .BannerData{
+        min-width: 200px;
         width: 20.833333333333332vw;
     }
     .BannerData_Primary_quick_description{

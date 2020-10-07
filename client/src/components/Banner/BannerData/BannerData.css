@@ -2,7 +2,6 @@
     margin:0;
     position: absolute;
     top:0;
-    left:-10px;
     font-size: 69px;
     width:340px;
     z-index: -1;
@@ -14,7 +13,7 @@
     margin:0;
     position: absolute;
     top:0;
-    left:-10px;
+    left:0px;
     font-size: 69px;
     width:340px;
     z-index: 999;
@@ -28,11 +27,20 @@
         justify-content: space-between;    
         margin-top:47px;
     }
+    .BannerData_Button_Wrapper{
+        display: flex;
+        justify-content: center;
+        margin-top:20px;
+
+    }
 
 @media (min-width: 950px) { 
     .BannerData{
-        margin-left:10.7vw;
-        margin-top:6.6vh;
+        margin-left:10vw;
+        margin-top:2.6vh;
+    }
+    .BannerData_Button_Wrapper{
+        display: block;
     }
 
     .BannerData_Title_Shadow{
@@ -72,7 +80,7 @@
 
 @media (min-width: 950px) and (max-width: 1206px) { 
     .BannerData{
-        margin-left: 0px;
+        margin-left: 4.6vw;
     }
     .Banner{
         flex-direction: row;

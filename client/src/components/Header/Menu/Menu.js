@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import './Menu.css'
 
 import { Link } from "react-router-dom";
@@ -9,18 +9,7 @@ import {set_activeCategory} from '../../../actions/productsActions'
 import PropTypes from 'prop-types';
 
 
-const Menu = ({authenticated}) => {
-
-    const [ModalState, setModalState] = useState(false)
-
-    const ModalStateHandler = (e) =>{
-        setModalState(!ModalState)
-    }
-    const closeModalHandler = () =>{
-        setModalState(false)
-
-    }
-
+const Menu = ({authenticated, ModalStateHandler, closeModalHandler, ModalState}) => {
     const theme = useContext(ThemeContext)
     return(
         <div style={{ color:theme.foreground }} className="Menu">

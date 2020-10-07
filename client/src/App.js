@@ -44,18 +44,17 @@ function App({checkLogin, getCartProducts, getCartLength, history, preloader}) {
           <div style={{ backgroundColor: themeHandler.background }} className="App">
               <Header headerRef={headerRef} />
               <Switch>
-
+              <Route exact path='/admin' render={ () => <AdminPanel 
+                      headerRef={headerRef}
+                      footerRef={footerRef}
+                      history={history}
+                    />} /> 
                 <PrivateRoute path='/account' component={AccountPage} />
                 <Route path='/checkout' render={ () => <CheckoutPage footerRef={footerRef} headerRef={headerRef} />} />
                 <Route path='/cart' component={CartPage} />
                 <Route path='/auth' component={AuthPage} />
                 <Route path="/product/:id" component={ProductPage} />
                 <Route path="/products" component={ProductsPage} />
-                <Route exact path='/admin' render={ () => <AdminPanel 
-                      headerRef={headerRef}
-                      footerRef={footerRef}
-                      history={history}
-                    />} /> 
                 <Route path="/" render={() => <MainPage changeTheme={toggleTheme} />}  /> 
                </Switch>
               <Footer footerRef={footerRef} />

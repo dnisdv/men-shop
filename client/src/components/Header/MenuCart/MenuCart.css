@@ -2,8 +2,8 @@
 .MenuCart_Title{display: none;}
 
 .MenuCart_Wrapper{
-    width: 1.5625vw;
-    height: 3.239740820734341vh;
+    width: 30px;
+    height: 30px;
     transform: scale(0.9);
     min-width: 30px ;
     min-height: 3px;

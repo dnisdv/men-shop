@@ -17,7 +17,7 @@ if(process.env.NODE_ENV !== "production"){
   axios.defaults.baseURL = "http://localhost:5000";
 }
 
-const history = createBrowserHistory({basename:"/"})
+const history = createBrowserHistory()
 const dataProvider = myDataProvider('')
 const renderApp = () => {
   ReactDOM.render(
