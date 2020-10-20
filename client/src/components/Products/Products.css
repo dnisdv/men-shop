@@ -26,7 +26,7 @@
     flex-shrink: none;
     align-items: flex-start;
     width: auto;
-    margin-left:120px;
+    margin-left: 30px;
 }
 .Products_Item_Data_Category{
     margin-top:2px;
@@ -35,7 +35,6 @@
 }
 .Products_Item_Data_Title{
     margin:0;
-    margin-top:15px;
     word-break: break-word;
 }
 .Products_Item_Data_Description{
@@ -130,6 +129,8 @@
         width: 14.89vw;
         max-width: 315px;
         justify-content: center;
+        margin-left:120px;
+
     }
 
     .Products_Item_Data_Category{
@@ -137,6 +138,7 @@
     }
     .Products_Item_Data_Title{
         margin:0;
+        margin-top:15px;
         font-size: 18px ;
     }
     .Products_Item_Data_Description{

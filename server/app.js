@@ -43,7 +43,7 @@ app.use(
       ttl: parseInt(1000 * 60 * 60 * 2) / 1000,
     }),
     cookie: {
-      sameSite: true,
+      // sameSite: true,
       // secure: process.env.NODE_ENV === "production",
       maxAge: parseInt(1000 * 60 * 60 * 2),
     },
